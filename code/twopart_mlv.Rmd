@@ -1,0 +1,130 @@
+
+rm(list=ls()) 
+setwd("C:/Users/Devin/Dropbox/Projects/Longterm Health Spending/code")
+library(mvtnorm) # random draw from multivariate normal
+library(MCMCpack)   # iwish distribution used in updating Sigma
+library(data.table)
+library(coda)
+source("0b-func_mcmc.R")
+set.seed(100)
+
+
+---
+title: "Habits"
+author: John Doe
+date: March 22, 2005
+output: html_document:
+toc: true
+    toc_depth: 2
+---
+
+
+# Header
+
+# SIMULATE DATA ----------------------------------------------------------------
+n <- 10000 # number of individuals
+T <- 5 # number of years
+N <- n * T
+id <- seq(1, n)
+
+# DATA AT YEAR 0 
+d.0 <- rbinom(n, 1, .80)
+y.0 <- d.0 * rlnorm(n, meanlog = 7.5, sdlog = 1)
+ly.0 <- ifelse(y.0 > 0, log(y.0), 0)
+age.0 <- rnorm(n, 65, 10)
+
+# TRUE PARAMETERS
+alpha <- c(.5, .05, .5)
+beta <- c(6, .1, .25)
+kappa <- qnorm(.018)
+sigma2 <- 1
+Sigma <- matrix(c(.5, .25, .25, .3), nrow = 2, ncol = 2)
+
+# FUNCTION TO SIMULATE DATA
+sim <- function(pmort = .02, SIGMA = Sigma) {
+  # UNOBSERVED HETEROGENEITY
+  b <- rmvnorm(n, mean = rep(0, 2), sigma = SIGMA) 
+  
+  # INITIALIZE LOOP
+  age <- c(age.0, rep(NA, N))
+  l_d <- l_ly <- rep(NA, N + n)  
+  m <- c(rep(0, n), rep(NA, N))
+  d <- c(d.0, rep(NA, N))
+  y <- c(y.0, rep(NA, N))
+  l_obs <- 1:n 
+  
+  # LOOP
+  for (t in 1:T){
+    # update time varying data
+    obs <- (l_obs[1] + n):(l_obs[n] + n)
+    age[obs] <- age[l_obs] + 1
+    l_d[obs] <- d[l_obs]
+    l_ly[obs] <- ifelse(y[l_obs] > 0, log(y[l_obs]), 0)
+    x1 <- as.matrix(data.table(int = 1, c_age = (age[obs] - 65)/10, l_d = l_d[obs]))
+    x2 <- as.matrix(data.table(int = 1, c_age = (age[obs] - 65)/10, l_ly = l_ly[obs]))
+    
+    # mortality 
+    m.tmp <- rbinom(n, 1, pmort)
+    m[obs] <- ifelse(m[l_obs] == 0, m.tmp, 1)
+    
+    # expenditures
+    d[obs] <- rbinom(n, 1, pnorm(x1 %*% alpha + b[, 1]))
+    y[obs] <- d[obs] * rlnorm(n, meanlog = x2 %*% beta + b[, 2], sdlog = sigma2)
+    
+    # counter
+    l_obs <- obs
+  }
+  dat <- data.table(id = rep(id, (T + 1)), year = rep(seq(0, T), each = n),
+                y = y, d = d, m = m, b1 = rep(b[, 1], each = (T + 1)), 
+                b2 = rep(b[, 2], each = (T + 1)),
+                age = age, l_d = l_d, l_ly = l_ly)
+  dat <- dat[order(id, year)]
+  dat[, int := 1]
+  dat[, c_age := (age - 65)/10]
+  dat[, ly := ifelse(y > 0, log(y), NA)]
+  return(dat)
+}
+
+# DYNAMIC TWO-PART MODEL WITH NO UNOBSERVED HETEROGENEITY ----------------------
+dat <- sim(SIGMA = Sigma * 0)
+probit <- glm(d ~ c_age + l_d, family=binomial(link=probit), dat[m == 0])
+lm <- lm(ly ~ c_age + l_ly, dat[m == 0])
+cbind(coef(probit), confint(probit), alpha)
+cbind(coef(lm), confint(lm), beta)
+
+# DYNAMIC TWO-PART MODEL WITH CORRELATED UNOBSERVED HETEROGENEITY --------------
+# SETTING UP DATA
+dat <- sim(SIGMA = Sigma)
+dat <- dat[year > 0 & m == 0]
+ni <- dat[, .N, by = "id"]$N
+x1 <- as.matrix(dat[, .(int, c_age, l_d)])
+x2 <- as.matrix(dat[, .(int, c_age, l_ly)])
+b1 <- dat[, .(b1 = mean(b1)), by = "id"] 
+b2 <- dat[, .(b2 = mean(b2)), by = "id"] 
+
+# PRIORS AND INITITAL VALUES
+priors <- list(malpha = rep(0, ncol(x1)), Valpha = diag(10, ncol(x1)), 
+               mbeta = rep(0, ncol(x2)), Vbeta = diag(10, ncol(x2)),
+               sigma2.shape = 1, sigma2.rate = 1,
+               Sigma.v = 3, Sigma.S = diag(2))
+inits <- list()
+inits$alpha <- alpha
+inits$beta <- beta
+inits$sigma2 <- summary(lm)$sigma^2
+inits$Sigma <- riwish(v = 75, S = 79 * Sigma)
+inits$b <- cbind(b1$b1, b2$b2)
+
+# GIBBS SAMPLER
+gibbs <- Gibbs(nsim = 10000, thin = 10, burn = 5000, y = dat$y, 
+               x1 = x1, x2 = x2, ni = ni, id = dat$id, 
+               priors = priors, init = inits)
+alpha.mcmc <- as.mcmc(gibbs$alpha)
+beta.mcmc <- as.mcmc(gibbs$beta)
+sigma2.mcmc <- as.mcmc(gibbs$sigma2)
+Sigma.mcmc <- as.mcmc(gibbs$Sigma) 
+
+# TRACEPLOTS
+plot(alpha.mcmc, density = FALSE)
+plot(beta.mcmc, density = FALSE)
+plot(sigma2.mcmc, density = FALSE)
+plot(Sigma.mcmc, density = FALSE)
