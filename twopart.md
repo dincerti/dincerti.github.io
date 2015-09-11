@@ -6,7 +6,7 @@ title: Two-part Models
 {:toc}
 
 ### Overview
-Two-part models are often used to model strictly positive variables with a large number of zero values. They are consequently formulated as a mixture of a binomial distribution and a strictly positive distribution. I focus on continuous distributions for the positive values but two-part models---typically referred to as hurdle models---are used for count data as well. R code for this page is [here](r/twopart.R). 
+Two-part models are often used to model strictly positive variables with a large number of zero values. They are consequently formulated as a mixture of a binomial distribution and a strictly positive distribution. I focus on continuous distributions for the positive values but two-part models---typically referred to as hurdle models---are used for count data as well. This page provides [R code](r/twopart.R) for these kinds of models. 
 
 ### Health Expenditure Data from the MEPS
 Two-part models are commonly used to model healthcare expenditure data because a large fraction of patients don't spend anything on medical care in a given time period. To see this, lets look at some real expenditure data from the Medical Expenditure Panel Survey (MEPS). We'll write a small R function to download SAS data sets from the MEPS website. 
@@ -22,7 +22,7 @@ Download <- function(url) {
   df <- data.table(read.xport(zc))
 }
 {% endhighlight %}
-Using this function, we can download data from the 2012 Full Year Consolidated Data Files available [here](http://meps.ahrq.gov/mepsweb/data_stats/download_data_files_detail.jsp?cboPufNumber=HC-155). We'll need to use the package `foreign` to read in the SAS file. We'll use `data.table` objects from the `data.table` package, which can be manipulated much more quickly than large `data.frame` objects.
+Using this function, we can download data from the [2012 Full Year Consolidated Data Files](http://meps.ahrq.gov/mepsweb/data_stats/download_data_files_detail.jsp?cboPufNumber=HC-155). We'll need to use the package `foreign` to read in the SAS file. We'll use `data.table` objects from the `data.table` package, which can be manipulated much more quickly than large `data.frame` objects.
 
 {% highlight r %}
 library(foreign)
@@ -56,7 +56,7 @@ ggplot(meps, aes(x = logtotexp12)) +
 The data is approximately normally distributed, albeit skewed slightly to the left. Since the response variable is essentially normal, the error term in a linear regression model---or equivalently the response variable conditional on covariates---is likely approximately normal as well.
 
 ### Model Choice
-Two-part models can be easily estimated by using separate regression models for the binomial distribution and the continuous distribution. The binomial component is typically modeled using either a logistic regression or a probit model. The continuous component can be modeled using standard ordinary least squares (OLS) or with generalized linear models (GLMs).
+Two-part models can be easily estimated using separate regression models for the binomial distribution and the continuous distribution. The binomial component is typically modeled using either a logistic regression or a probit model. The continuous component can be modeled using standard ordinary least squares (OLS) or with generalized linear models (GLMs).
 
 Different models for the continuous component can dramatically alter the results so model selection is important. This choice will depend on the goals of the analysis. 
 
@@ -89,7 +89,7 @@ To test our model we will estimate it on half of the data and then use the param
 set.seed(100)
 meps <- meps[, sample := sample(c("train", "test"), nrow(meps), replace = TRUE)]
 {% endhighlight %}
-We fit the binary portion of the model using logistic regression. The continuous component is modeled in three different ways: with a simple OLS regression on spending in levels, with OLS on the log of spending, and with a gamma GLM. The gamma model is estimated with a log link function, which constrains the predicted means to be positive and ensures that the mean expenditures are a linear function of the coefficients on the log scale. 
+We fit the binary portion of the model using logistic regression. The continuous component is modeled in three different ways: with a simple OLS regression on spending in levels, with OLS on the log of spending, and with a gamma GLM. The gamma model is estimated with a log link function, which constrains the predicted means to be positive and ensures that mean expenditures are a linear function of the coefficients on the log scale. 
 
 {% highlight r %}
 Fm <- function(y, xvars){
@@ -128,7 +128,7 @@ E[\log(Y)]=X\beta,
 \end{aligned}
 $$
 
-and $E[\exp(\log(Y))] \neq \exp(E[\log(Y)])$. We can however estimate mean expenditures if the error term, $\epsilon = \log Y - X\beta$, is normally distributed with a constant variance, $\sigma^2$. Then, using the properties of the lognormal distribution,
+and $E[\exp(\log(Y))] \neq \exp(E[\log(Y)])$. We can however estimate mean expenditures if the error term, $\epsilon = \log Y - X\beta$, is normally distributed with a constant variance (i.e. homoskedastic), $\sigma^2$. Then, using the properties of the lognormal distribution,
 
 $$
 \begin{aligned}
@@ -168,11 +168,11 @@ The main difficulty with log transformed OLS is that the retransformation is inv
 
 $$
 \begin{aligned}
-E[Y] &= \exp(X\beta) \times \rm{E}[\exp(\epsilon)|X].
+E[Y|Y > 0] &= \exp(X\beta) \times \rm{E}[\exp(\epsilon)|X].
 \end{aligned}
 $$
 
-The second term can be estimated using the Duan Smearing factor, which uses empirical distribution of the errors. That is, letting $\phi(x) = \rm{E}[\exp(\epsilon) \vert X]$,
+The second term can be estimated using the Duan Smearing factor, which uses the empirical distribution of the errors. That is, letting $\phi(x) = \rm{E}[\exp(\epsilon) \vert X]$,
 
 $$
 \begin{aligned}
@@ -239,7 +239,7 @@ c(sum(res^2)/gamma.fit$df.res, summary(gamma.fit)$dispersion)
 {% highlight text %}
 ## [1] 11.60442 11.60442
 {% endhighlight %}
-We would prefer to estimate the shape parameter using maximum likelihood. We can do this using the function `gamma.shape` from the `MASS` package. With the shape parameter in hand we can then estimate the rate parameter as $\hat{b} = \hat{a}/\hat{\mu_i}$ where $\hat{\mu_i}$ is the predicted mean for the $i$'th respondent. With these maximum likelihood estimates, we can then simulate expenditures using the logistic-gamma model.
+We would prefer to estimate the shape parameter using maximum likelihood. We can do this using the function `gamma.shape` from the `MASS` package. With the shape parameter in hand we can then estimate the rate parameter as $\hat{b}_i = \hat{a}/\hat{\mu}_i$ where $\hat{\mu}_i$ is the predicted mean for the $i$'th respondent. With these maximum likelihood estimates, we can then simulate expenditures using the logistic-gamma model.
 
 {% highlight r %}
 a <- gamma.shape(gamma.fit)$alpha
