@@ -12,7 +12,7 @@ This page describes the dynamic two-part model that I have used in my research (
 With longitudinal data, it is necessary to model the persistence in spending from one period to the next. The model does this in two ways: first, it includes lagged dependent variables and second, it allows for individual specific random regression coefficients. I focus on the case in which only intercepts vary across individuals so the model can be referred to as a dynamic random-intercept two-part model.
 
 ### The Model
-Let $d_{it}\equiv I(d_{it}^{\ast} > 0) = I(y_{it} > 0)$ so that the latent variable $d_{it}^{\ast}$ describes whether expenditures are positive or zero. The model can then be written as,
+Let $$d_{it}\equiv I(d_{it}^{\ast} > 0) = I(y_{it} > 0)$$ so that the latent variable $d_{it}^{\ast}$ describes whether expenditures are positive or zero. The model can then be written as,
 
 $$
 \begin{aligned}
