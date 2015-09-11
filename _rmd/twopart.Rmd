@@ -72,11 +72,13 @@ E[\log(Y)]=X\beta,
 $$
 
 and $E[\exp(\log(Y))] \neq \exp(E[\log(Y)])$. We can however estimate mean expenditures if the error term, $\epsilon = \log Y - X\beta$, is normally distributed with a constant variance, $\sigma^2$. Then, using the properties of the lognormal distribution,
+
 $$
 \begin{aligned}
 E[Y|Y>0]&= \exp(X\beta + \sigma^2/2).
 \end{aligned}
 $$
+
 With this in mind, expenditures can be predicted as follows.
 ```{r pred}
 ```
