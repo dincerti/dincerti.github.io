@@ -82,7 +82,7 @@ rmse <- c(RMSE(pred$totexp12, pred$ols),
 names(rmse) <- c("OLS", "Log OLS", "Gamma")
 print(rmse)
 
-## @ knitr smearing
+## @knitr smearing
 meps <- meps[, agecat := cut(age, breaks = c(0, 1, seq(5, 90, 5)), 
                              right = FALSE)]
 epsilon <- data.table(age = logols.fit$mode$age, res = logols.fit$res)

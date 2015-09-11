@@ -129,11 +129,13 @@ E[\log(Y)]=X\beta,
 $$
 
 and $E[\exp(\log(Y))] \neq \exp(E[\log(Y)])$. We can however estimate mean expenditures if the error term, $\epsilon = \log Y - X\beta$, is normally distributed with a constant variance, $\sigma^2$. Then, using the properties of the lognormal distribution,
+
 $$
 \begin{aligned}
 E[Y|Y>0]&= \exp(X\beta + \sigma^2/2).
 \end{aligned}
 $$
+
 With this in mind, expenditures can be predicted as follows.
 
 {% highlight r %}
@@ -160,11 +162,27 @@ print(rmse)
 ##      OLS  Log OLS    Gamma 
 ## 11231.37 11571.56 11269.72
 {% endhighlight %}
+The log OLS model performs the worst because of the retransformation issue. The OLS and gamma models produce similar results and the OLS model actually performs the best. This shows that OLS is a reasonable estimator of the conditional expectation even when the errors are clearly not normally distributed.
 
+The main difficulty with log transformed OLS is that the retransformation is invalid if the errors are not normally distributed with a constant variance. Without the normality assumption, expected expenditures are given by
 
+$$
+\begin{aligned}
+E[Y] &= \exp(X\beta) \times \rm{E}[\exp(\epsilon)|X].
+\end{aligned}
+$$
+
+The second term can be estimated using the Duan Smearing factor, which uses empirical distribution of the errors. That is, letting $\phi(x) = \rm{E}[\exp(\epsilon) \vert X]$,
+
+$$
+\begin{aligned}
+\hat{\phi}&= \frac{1}{n}\sum_{i=1}^{n} \exp(\hat{\epsilon}),
+\end{aligned}
+$$
+
+where $\hat{\epsilon} = \log Y - X\hat{\beta}$ and $i$ refers to the $i$'th survey respondent. The smearing factor can also be estimated separately for different groups if one believes that the error term is non constant (i.e. heteroskedastic). We estimate both a constant smearing factor and a smearing factor the varies by age categories. The age categories are ages $0-1, 1-4, 5-9, \ldots, 80-84$ and $85+$. 
 
 {% highlight r %}
-## @ knitr smearing
 meps <- meps[, agecat := cut(age, breaks = c(0, 1, seq(5, 90, 5)), 
                              right = FALSE)]
 epsilon <- data.table(age = logols.fit$mode$age, res = logols.fit$res)
@@ -187,26 +205,6 @@ print(rmse)
 ##   Log OLS Homoskedastic Smearing Log OLS Heteroskedastic Smearing 
 ##                         11580.14                         11299.95
 {% endhighlight %}
-The log OLS model performs the worst because of the retransformation issue. The OLS and gamma models produce similar results and the OLS model actually performs the best. This shows that OLS is a reasonable estimator of the conditional expectation even when the errors are clearly not normally distributed.
-
-The main difficulty with log transformed OLS is that the retransformation is invalid if the errors are not normally distributed with a constant variance. Without the normality assumption, expected expenditures are given by
-
-$$
-\begin{aligned}
-E[Y] &= \exp(X\beta) \times \rm{E}[\exp(\epsilon)|X].
-\end{aligned}
-$$
-
-The second term can be estimated using the Duan Smearing factor, which uses empirical distribution of the errors. That is, letting $\phi(x) = \rm{E}[\exp(\epsilon) \vert X]$,
-
-$$
-\begin{aligned}
-\hat{\phi}&= \frac{1}{n}\sum_{i=1}^{n} \exp(\hat{\epsilon}),
-\end{aligned}
-$$
-
-where $\hat{\epsilon} = \log Y - X\hat{\beta}$ and $i$ refers to the $i$'th survey respondent. The smearing factor can also be estimated separately for different groups if one believes that the error term is non constant (i.e. heteroskedastic). We estimate both a constant smearing factor and a smearing factor the varies by age categories. The age categories are ages $0-1, 1-4, 5-9, \ldots, 80-84$ and $85+$. 
-
 We can see that adjusting for non-normality makes almost no difference in the RMSEs because the error term is already approximately normally distributed. On the other hand, adjusting for the non-constant variance improves the prediction considerably. In the end, predictions from the gamma model, the OLS regression in levels, and the log OLS regression with non-constant variance are very similar.
 
 ### Predictive Simulation
