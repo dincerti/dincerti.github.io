@@ -1,3 +1,4 @@
+
 /* Space out content a bit */
 body {
   padding-top: 20px;
@@ -42,12 +43,8 @@ h6{
 	color: #337ab7;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
+.text-primary {
+  color: #337ab7;
 }
 
 /* Custom page header */
@@ -77,6 +74,10 @@ h6{
 }
 .container-narrow > hr {
   margin: 30px 0;
+}
+
+body .main-container {
+max-width: 730px;
 }
 
 /* Main marketing message and sign up button */

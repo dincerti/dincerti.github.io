@@ -1,0 +1,139 @@
+---
+layout: rmd
+title: Two-part Models
+---
+* TOC
+{:toc}
+```{r echo=FALSE}
+read_chunk('r/twopart.R')
+```
+### Overview
+Two-part models are often used to model strictly positive variables with a large number of zero values. They are consequently formulated as a mixture of a binomial distribution and a strictly positive distribution. I focus on continuous distributions for the positive values but two-part models---typically referred to as hurdle models---are used for count data as well. 
+
+### Health Expenditure Data from the MEPS
+Two-part models are commonly used to model healthcare expenditure data because a large fraction of patients don't spend anything on medical care in a given time period. To see this, lets look at some real expenditure data from the Medical Expenditure Panel Survey (MEPS). We'll write a small R function to download SAS data sets from the MEPS website. 
+```{r download_function}
+```
+Using this function, we can download data from the 2012 Full Year Consolidated Data Files available [here](http://meps.ahrq.gov/mepsweb/data_stats/download_data_files_detail.jsp?cboPufNumber=HC-155). We'll need to use the package `foreign` to read in the SAS file. We'll use `data.table` objects from the `data.table` package, which can be manipulated much more quickly than large `data.frame` objects.
+```{r meps_download, cache = TRUE}
+```
+Now lets plot the distribution of expenditures.
+```{r twopart_hist, echo = -1, message = FALSE, warning=FALSE}
+```
+The distribution of expenditures is heavily right skewed: there are many small values (the fraction of nonspenders is `r round(mean(meps$totexp12 == 0), 2)`) and a few very large ones. This suggests 1) that a two-part model might be appropriate for this data and 2) that positive expenditures are not normally distributed. Common right skewed distributions that could be used to model positive expenditures include the lognormal distribution and the gamma distribution. 
+
+If the data is lognormally distributed, then the log of expenditures follows a normal distribution. We can investigate whether this is the case with the following plot. (Note that the syntax `DT <- DT[...]` is redundant but R Markdown prints the the output otherwise.)
+```{r twopart_loghist}
+```
+The data is approximately normally distributed, albeit skewed slightly to the left. Since the response variable is essentially normal, the error term in a linear regression model---or equivalently the response variable conditional on covariates---is likely approximately normal as well.
+
+### Model Choice
+Two-part models can be easily estimated by using separate regression models for the binomial distribution and the continuous distribution. The binomial component is typically modeled using either a logistic regression or a probit model. The continuous component can be modeled using standard ordinary least squares (OLS) or with generalized linear models (GLMs).
+
+Different models for the continuous component can dramatically alter the results so model selection is important. This choice will depend on the goals of the analysis. 
+
+We saw that positive expenditures are very right skewed. If the data analyst is only concerned with modeling mean expenditures, then standard OLS on nontransformed expenditures might work fine regardless (as long as the OLS linearity assumption is satisfied). However, if the analyst needs to model the entire distribution of expenditures, then using a distribution that is appropriate for the data at hand is paramount.
+
+### Predicting Mean Expenditures
+Before we begin we have to edit the variables in the MEPS to make them suitable for modeling. We model expenditures as a function of age, self-reported health status, race and ethnicity, and insurance status. A more accurate prediction model would also include variables containing detailed clinical information, but we will not consider clinical data here.
+```{r meps_vars}
+```
+Lets subset our data set to exclude unnecessary variables and limit ourselves to non-missing observations.
+```{r meps_subset}
+```
+To test our model we will estimate it on half of the data and then use the parameters to predict expenditures for the other half. To do so, we'll create a randomly chosen variable indicating whether the respondent is in the training set or the test set.
+```{r meps_sample}
+```
+We fit the binary portion of the model using logistic regression. The continuous component is modeled in three different ways: with a simple OLS regression on spending in levels, with OLS on the log of spending, and with a gamma GLM. The gamma model is estimated with a log link function, which constrains the predicted means to be positive and ensures that the mean expenditures are a linear function of the coefficients on the log scale. 
+```{r fit}
+```
+Using these models we can predict mean expenditures, $Y$, given a matrix of covariates, $X$, as follows,
+
+$$
+\begin{aligned}
+E[Y|X] &= \Pr(Y >0|X)\times E(Y|Y>0, X).
+\end{aligned}
+$$
+
+The first term can be easily estimated using a logistic regression. The second term is easy to estimate if the expected value of $Y$ is being modeled directly. For instance, in a gamma GLM with a log link, we model the log of mean expenditures,
+
+$$
+\begin{aligned}
+\log(E[Y])=X\beta,
+\end{aligned}
+$$
+
+where $\beta$ is the coefficient vector and we have suppressed the dependence of $E[Y]$ on $X$. We can therefore obtain the mean of expenditures by simply exponentiating $\log(E[Y])$. Things are less straightforward in the logtransformed OLS regression since we are modeling the mean of log expenditures,
+
+$$
+\begin{aligned}
+E[\log(Y)]=X\beta,
+\end{aligned}
+$$
+
+and $E[\exp(\log(Y))] \neq \exp(E[\log(Y)])$. We can however estimate mean expenditures if the error term, $\epsilon = \log Y - X\beta$, is normally distributed with a constant variance, $\sigma^2$. Then, using the properties of the lognormal distribution,
+$$
+\begin{aligned}
+E[Y|Y>0]&= \exp(X\beta + \sigma^2/2).
+\end{aligned}
+$$
+With this in mind, expenditures can be predicted as follows.
+```{r pred}
+```
+We will assess model fit using the root mean square error (RMSE). THE RMSE is just the square root of the mean square error (MPE), which has a nice interpretation because it can decomposed into the sum of the variance and squared bias of the prediction. 
+```{r rmse}
+```
+The log OLS model performs the worst because of the retransformation issue. The OLS and gamma models produce similar results and the OLS model actually performs the best. This shows that OLS is a reasonable estimator of the conditional expectation even when the errors are clearly not normally distributed.
+
+The main difficulty with log transformed OLS is that the retransformation is invalid if the errors are not normally distributed with a constant variance. Without the normality assumption, expected expenditures are given by
+
+$$
+\begin{aligned}
+E[Y] &= \exp(X\beta) \times \rm{E}[\exp(\epsilon)|X].
+\end{aligned}
+$$
+
+The second term can be estimated using the Duan Smearing factor, which uses empirical distribution of the errors. That is, letting $\phi(x) = \rm{E}[\exp(\epsilon) \vert X]$,
+
+$$
+\begin{aligned}
+\hat{\phi}&= \frac{1}{n}\sum_{i=1}^{n} \exp(\hat{\epsilon}),
+\end{aligned}
+$$
+
+where $\hat{\epsilon} = \log Y - X\hat{\beta}$ and $i$ refers to the $i$'th survey respondent. The smearing factor can also be estimated separately for different groups if one believes that the error term is non constant (i.e. heteroskedastic). We estimate both a constant smearing factor and a smearing factor the varies by age categories. The age categories are ages $0-1, 1-4, 5-9, \ldots, 80-84$ and $85+$. 
+```{r smearing}
+```
+We can see that adjusting for non-normality makes almost no difference in the RMSEs because the error term is already approximately normally distributed. On the other hand, adjusting for the non-constant variance improves the prediction considerably. In the end, predictions from the gamma model, the OLS regression in levels, and the log OLS regression with non-constant variance are very similar.
+
+### Predictive Simulation
+We have focused on estimating mean expenditures so the distribution of the error term has not been terribly important. In other cases we might want to construct prediction intervals or simulate the entire distribution of expenditures for a new population. 
+
+Here we will use simulation to compare predictions from the models to observed data. [Andrew Gelman and Jennifer Hill](http://www.stat.columbia.edu/~gelman/arm/) refer to this type of simulation as predictive simulation. 
+
+We will consider three two-part models for health expenditures: a logistic-normal model, a logistic-lognormal model and a logistic-gamma model. For the normal and lognormal models we will assume that the error term is constant across individuals. Both the lognormal and gamma distributions have the desirable property that the variance is proportional to square of the mean.
+
+Lets begin by simulating data from the logistic-normal model.
+```{r logistic_normal}
+```
+We use a similar simulation procedure for the logistic-lognormal model
+```{r logistic_lognormal}
+```
+To simulate data from a gamma distribution, it is necessary to estimate a shape parameter, $a_i$, and rate parameter, $b_i$, for each survey respondent. We will assume that the shape parameter is constant across observations, which implies that $E(Y_i)=\mu_i = a/b_i$. R uses methods of moments to estimate the dispersion parameter---which is the inverse of the shape parameter---in a gamma GLM. Programmatically, it divides the sum of the squared 'working' residuals by the number of degrees of freedom in the model. 
+```{r mom_dispersion}
+```
+We would prefer to estimate the shape parameter using maximum likelihood. We can do this using the function `gamma.shape` from the `MASS` package. With the shape parameter in hand we can then estimate the rate parameter as $\hat{b} = \hat{a}/\hat{\mu_i}$ where $\hat{\mu_i}$ is the predicted mean for the $i$'th respondent. With these maximum likelihood estimates, we can then simulate expenditures using the logistic-gamma model.
+```{r logistic_gamma}
+```
+Now lets take a look at how well our models fit the observed data.
+```{r twopart_yrepden}
+```
+As expected, the logistic-normal model performs horribly since non-negative expenditures are highly right skewed. The logistic-normal model also allows for negative expenditures which is clearly undesirable since expenditures cannot be negative. The logistic-gamma and logistic-lognormal models both fit the data pretty well although the lognormal model seems to predict the distribution of expenditures slightly better. 
+
+We can also compare the quantiles of the simulated distributions to the quantile of the observed data.
+```{r yrep_quantiles}
+```
+Here we see that the logistic-lognormal model is more accurate at the 30th percentile while simulated data from both the logistic-gamma model and logistic-lognormal model are similar at the upper quantiles. The logistic regression also accurately predicts the proportion of individuals with zero expenditures.
+
+### Summary
+There is unfortunately no one-size fits all model for healhcare expenditure data. A logistic regression predicts whether expenditures are nonzero well, but models for positive expenditures must be chosen on a case by case basis. If predicting mean costs is the primary goal than an OLS regression on expenditures in levels is straightforward and works pretty well. If an analyst is concerned about making inferences on the regression coefficients, then an OLS regression on the log of expenditures is likely preferable because regression coefficients are more likely to be linear on the log scale than on the raw scale. Lastly, if an analyst wants to predict the entire distribution of expenditures, then both the lognormal and gamma models should be considered.   

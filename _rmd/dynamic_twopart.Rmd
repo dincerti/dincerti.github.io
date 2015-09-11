@@ -1,0 +1,166 @@
+---
+layout: rmd
+title: Dynamic Two-part Models
+---
+* TOC
+{:toc}
+```{r echo=FALSE}
+read_chunk('r/dynamic_twopart.R')
+```
+
+### Overview
+This page describes the dynamic two-part model that I have used in my research (see [here](papers\longterm_spending.pdf)). It extends the [cross-sectional two-part model](twopart.html) to a longitudinal setting and provides the R code necessary for estimation.  
+
+With longitudinal data, it is necessary to model the persistence in spending from one period to the next. The model does this in two ways: first, it includes lagged dependent variables and second, it allows for individual specific random regression coefficients. I focus on the case in which only intercepts vary across individuals so the model can be referred to as a dynamic random-intercept two-part model.
+
+### The Model
+Let $d_{it}\equiv I(d_{it}^{\star} > 0) = I(y_{it} > 0)$ so that the latent variable $d_{it}^{\star}$ describes whether expenditures are positive or zero. The model can then be written as,
+
+$$
+\begin{aligned}
+d_{it}^{\star} &= x_{1it}^{T}\alpha + b_{1i} + \epsilon_{1it},\\
+\log (y_{it}|d_{it}^{*} >0) &=  x_{2it}^{T}\beta + b_{2i} + \epsilon_{2it},
+\end{aligned}
+$$
+
+where $\alpha$ and $\beta$ are the vectors of coefficients for the explanatory variables, and $b_{1i}$ and $b_{2i}$ are the random intercepts. We assume that $\epsilon_{1it}\sim N(0, 1)$ so that the binomial component is a probit model and $\epsilon_{2it}\sim N(0, \sigma^2_\epsilon)$ so that the continuous component is a lognormal model. Importantly, both $x_{1it}$ and $x_{2it}$ contain lagged values of (functions of) spending. In particular, $x_{1it}$ contains $d_{it-1}$ and $x_{2it}$ contains a variable equal to $\log(y_{it-1})$ if $y_{it-1}>0$ and $0$ otherwise. Other functions of lagged spending are possible but we will use those here for illustrative purposes.
+
+The random intercepts are assumed to be jointly normal,
+
+$$
+\begin{aligned}
+b_i = \begin{bmatrix}
+b_{1i}\\
+b_{2i}
+\end{bmatrix} &\sim  N
+\begin{bmatrix}
+\begin{pmatrix}
+0 \\
+0
+\end{pmatrix},
+\Sigma_b = 
+\begin{pmatrix}
+\sigma_1^2 & \rho\sigma_{1}\sigma_{2}\\
+\rho\sigma_{1}\sigma_{2} & \sigma_{2}^2 \\
+\end{pmatrix}
+\end{bmatrix},
+\end{aligned}
+$$
+
+where $\rho$ is the correlation between $b_{1i}$ and $b_{2i}$. It is worth noting that if the design matrices, $x_{1it}$ and $x_{2it}$, contain an intercept, then $b_{1i}$ and $b_{2i}$ can be treated as error terms that are constant across individuals. In some disciplines, such as economics, these error terms are referred to as unobserved heterogeneity. 
+
+To illustrate, consider the second part of the two-part model and let $\eta_{it} = \epsilon_{2it} + b_{2i}$. The variances and covariances of $\eta_{it}$ are then,
+
+$$
+\begin{aligned}
+\rm{Var}(\eta_{it})&=\sigma^2_\epsilon + \sigma_2^2\\
+\rm{Cov}(\eta_{it}, \eta_{is}) &= b_{2i} \; \rm{for}\; s\neq t\\
+\rm{Cov}(\eta_{it}, \eta_{js}) &= 0\; \rm{for}\; s\neq t\; \rm{and}\; i \neq j.
+\end{aligned}
+$$
+
+In other words the error terms are correlated within individuals but not over time across different individuals.
+
+### Mortality
+In order to model spending over time it is necessary to model mortality as well. Here, we ignore possible correlations between spending and mortality and assume that individuals die during during period $t$ at a rate, $m_{it}$, that is increasing with age. We model the death rate with a simple probit model,
+
+$$
+Pr(m_{it}=1)=\Phi(z_{it}^{T}\kappa),
+$$
+
+where $z_{it}$ contains an intercept and age covariates, and $\kappa$ is the corresponding vector of coefficients. To obtain a reasonable estimate for $\kappa$, we can download  estimates of the probability of dying within one year by age from an actuarial life table published by Social Security using the `XML` package. For simplicity, we will use the death rates for males.
+
+The function `readHTMLTable` returns a list of HTML tables. We extract the first and second columns from the second table which contains the information we want.
+```{r lifetable, message = FALSE, warning=FALSE}
+```
+With the data in hand, we can model the death rates as a function of age. To ensure that coefficient estimates are on a reasonable scale and that the intercept has an interesting interpretation, we center and scale all age variables using the function `CSage` below. Since we are assuming that death rates can be modeled with a probit model, it follows that $\Phi^{-1}(p_{it}) = z_{it}^{T}\kappa$ where $p_{it}= Pr(m_{it}=1)$. We can therefore estimate the regression coefficients with simple OLS.
+```{r mort_fit}
+```
+The model fits the data quite well after age 25 or so, which suggests that we can predict mortality very accurately as a function of age.
+```{r dynamic_twopart_mortplot}
+```
+
+### Simulating Data
+A great way to understand a model is to simulate data according to the assumed data generating process. That is, first set the parameters to their "true" values and simulate the model given these parameter values. Next, estimate parameters based on the simulated data using a chosen statistical method and compare the estimated values to the true values.
+
+Before doing this, we will load a couple of R packages. The `mvtnorm` package can be used to draw the random intercepts from their bivariate normal distribution and the `data.table` package is useful for manipulating larger datasets. We should also set the seed to ensure that the results are reproducible.
+```{r sim_setup, message = FALSE, warning = FALSE}
+```
+In order to simulate the model, we will need period $0$ data, which is assumed to be known as baseline. For simplicity, we will use small design matrices, $x_{1}$ and $x_{2}$, that contain an intercept, a covariate for age, and a function of lagged spending. The model is therefore only dependent on initial spending levels and age. The function `InitData` creates the necessary initial values for a desired sample size. Values for $y$ and age are drawn from distributions so that they are resonably consistent with observed health spending and the age distribution in the United States.
+```{r initdat_func}
+```
+The true values for the parameters are set as follows.
+```{r true_params}
+```
+We can now create a function that simulates longitudinal data using the model. The simulation begins with a set number of individuals alive during period $1$. Expenditures are predicted for a chosen number of simulation periods, say $T$, althogh some individuals die before reaching period $T$. 
+```{r sim_func}
+```
+The function can be summarized as follows. First, it draws the random intercepts from their bivariate normal distribution. Second, it draws period $0$ data and initializes the vectors that we would like to store for analysis. Third, it recursively simulates the model for the desired number of periods by:
+
+1. Updating the design matrices to reflect spending in the previous period and being 1 year older.
+2. Drawing death indicators.
+3. For survivors, simulating expenditures according to the two-part model. 
+4. Incrementing the number of periods by 1 unless t = T.
+
+The simulation ultimately returns a dataset with all relevant variables from the simulation.
+
+### A Model with No Random Intercepts
+Before moving on to the full model, we will investigate a model in which everyone has the same intercept. This is similar to a [cross-sectional two-part model](twopart.html) except that it includes lagged dependent variables. We will simulate data for 10, 000 individuals over 5 periods using the `sim` function.
+```{r sim_noint}
+```
+The parameters can be esimated using a probit model for the first part and OLS for the second part. The sample size is reasonably large so the estimated parameters should be close to their true values. 
+```{r d_probit}
+```
+As expected, the estimated parameters are very close to the true values and that they fall with the 95\% confidence intervals. The OLS estimates are more precisely estimated and even closer to the true values.
+```{r ly_lm}
+```
+it is important to note however that although the confidence intervals worked for this particular simulation, we can't be sure that the coverage probabilities are correct. To check coverage probabilities we would need to simulate the data multiple times, estimate the parameters for each simulation, and check whether the true values were contained within the 95\% confidence intervals for 95\% of the simulations. As an example, let's check coverage for the second part of the model by simulating data 1000 times,
+```{r cov95, cache = TRUE}
+```
+The confidence intervals are working as intended as the true coefficient values are contained within the 95\% confidence interval approximately 950 out of 1000 times.
+
+### MCMC
+Estimating a model with random intercepts that are correlated across both components of the two-part model is more difficult. As a result, this section is somewhat technical and requires Bayesian Markov Chain Monte Carlo (MCMC) methods. This means that we will need to write down the full joint posterior density for the model. Letting $\theta = (\alpha^T, \beta^T, \sigma^2_\epsilon)^T$ and $T_i$ represent the number of years that individual $i$ is observed before death, the conditional density of expenditures for indidivual $i$, $f(y_{i1}, y_{i2}, \ldots, y_{iT} |y_{i0}, \theta, b_i)$, can (under the model) be written as,
+
+$$
+\begin{aligned}
+\prod_{t=1}^{T_i} f(y_{it}|y_{it-1}, \theta, b_i) &= \prod_{t=1}^{T_i}  (1-\Phi(\mu_{1it})^{1-d_{it}} \left[\Phi(\mu_{1it})\times \rm{LN}(y_{it};\mu_{2it}, \sigma^2_\epsilon)\right]^{d_{it}},\\
+\mu_{1it}&= x^T_{1it} \alpha + b_{1i}, \\
+\mu_{2it}&= x^T_{2it} \beta + b_{2i},
+\end{aligned}
+$$
+
+where $\rm{LN}(\cdot)$ is the lognormal distribution. Given prior distributions, $p(\theta)$ and $p(\Sigma_b)$, the joint posterior density is then,
+
+$$
+\begin{aligned}
+p(\theta, b_i, \Sigma_b|y) &\propto p(\theta)p(\Sigma_b)\prod_{i=1}^n \prod_{t=1}^{T_i}  f(y_{it}|y_{it-1}, \theta, b_i)p(b_i|\Sigma_b),
+\end{aligned}
+$$
+
+where $y$ is the stacked vector of $y_{it}$ and there are $n$ individuals. 
+
+A [Gbbs](https://en.wikipedia.org/wiki/Gibbs_sampling) sampling algorithm estimates the parameters by partitioning the joint posterior distribution into conditional distributions. For full details see Appendix C [here](..\papers\longterm_spending.pdf). The R function `gibbs` contained in the R file [dynamic_twopart_mcmc.R](../r/dynamic_twopart_mcmc.R) implements the Gibbs sampler. The function `gibbs` relies on five functions which sample $\alpha$, $\beta$, $\sigma^2_\epsilon$, $b_i$ and $\Sigma_b$. Conjugate priors were chosen for all of the parameters except $b_i$ so sampling straightforward. The conditional distribution of $b_i$ is nonstandard so it is sampled using a random-walk [Metropolis](https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm) step.
+
+Before implementing the Gibbs sampler we will simulate data assuming that there is unobserved heterogeneity. 
+```{r sim}
+```
+We must then specify priors and initial values. We need the `MCMCpack` package to sample from an inverse Wishart distribution. 
+```{r mcmc_init, message = FALSE, warning=FALSE}
+```
+The Gibbs sampler is run on 10,000 iterations. The sequence is thinned by keeping every 10th draw and the first 5,000 iterations are discarded as burn-in. Since the simulation takes around 17 minutes on my ThinkPad W530 Mobile Workstation, it is not a bad idea to save the output.
+```{r gibbs, eval = FALSE, cache = TRUE}
+```
+The simulated posterior densities are returned in list. It is useful to convert the parameter vectors and matrices to a Markov Chain Monte Carlo object using the `coda` package.
+```{r convert_mcmc, eval = TRUE, echo = -1, cache = TRUE}
+```
+Before summarizing the posterior densities, we must test to see whether our chains have converged. Convergence can be inspected visually with a traceplot, which plots a draw from the posterior density at each iteration against the iteration number. A chain that has converged should have reached a stationary distribution with a relatively constant mean and variance. The parameter values should jump around the posterior density rather than getting stuck in certain regions. To illustrate, consider the traceplot for $\sigma^2_\epsilon$.
+```{r dynamic_twopart_traceplot}
+```
+The variance parameter appears to have converged; however, this plot could could be misleading if $\sigma^2_\epsilon$ has only converged to a local region and has not explored the full posterior. It is in general a good idea to run multiple chains with dispersed starting values to ensure that this is not the case. The Gelman-Rubin convergence diagnostic can then be used to test convergence. We will not do that here to keep things simple, but it is good practice.
+
+Now lets look at the posterior quantiles for some of the parameters and compare them to their true values.
+```{r post_quantiles}
+```
+The estimated parameters seem to be converging to their true values, which suggests that the Bayesian algorithm is working as intended. 
+

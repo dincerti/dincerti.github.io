@@ -1,0 +1,7 @@
+
+name: Devin Incerti
+markdown: kramdown
+highlighter:  pygments
+host: localhost
+gems:
+  - jekyll-sitemap
