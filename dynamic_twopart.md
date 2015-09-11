@@ -68,7 +68,7 @@ $$
 Pr(m_{it}=1)=\Phi(z_{it}^{T}\kappa),
 $$
 
-where $$z_{it}$$ contains an intercept and age covariates, and $$\kappa$$ is the corresponding vector of coefficients. To obtain a reasonable estimate for $$\kappa$$, we can download  estimates of the probability of dying within one year by age from an actuarial life table published by Social Security using the `XML` package. For simplicity, we will use the death rates for males.
+where $$z_{it}$$ contains an intercept and age covariates, $$\kappa$$ is the corresponding vector of coefficients, and $$\Phi(\cdot)$$ is the cumulative distribution function (CDF) of the standard normal density. To obtain a reasonable estimate for $$\kappa$$, we can download  estimates of the probability of dying within one year by age from an actuarial life table published by Social Security using the `XML` package. For simplicity, we will use the death rates for males.
 
 The function `readHTMLTable` returns a list of HTML tables. We extract the first and second columns from the second table which contains the information we want.
 
@@ -82,7 +82,7 @@ lt$V1 <- as.numeric(lt$V1)
 lt$V2 <- as.numeric(lt$V2)
 colnames(lt) <- c("age", "mrate")
 {% endhighlight %}
-With the data in hand, we can model the death rates as a function of age. To ensure that coefficient estimates are on a reasonable scale and that the intercept has an interesting interpretation, we center and scale all age variables using the function `CSage` below. Since we are assuming that death rates can be modeled with a probit model, it follows that $$\Phi^{-1}(p_{it}) = z_{it}^{T}\kappa$$ where $$p_{it}= Pr(m_{it}=1)$$. We can therefore estimate the regression coefficients with simple OLS.
+With the data in hand, we can model the death rates as a function of age. To ensure that coefficient estimates are on a reasonable scale and that the intercept has an interesting interpretation, we center and scale all age variables using the function `CSage`. Since we are assuming that death rates can be modeled with a probit model, it follows that $$\Phi^{-1}(p_{it}) = z_{it}^{T}\kappa$$ where $$p_{it}= Pr(m_{it}=1)$$. We can therefore estimate the regression coefficients with simple OLS.
 
 {% highlight r %}
 CSage <- function(x) (x - 65)/10
@@ -113,7 +113,7 @@ library(mvtnorm) # draw from multivariate normal
 library(data.table)
 set.seed(101)
 {% endhighlight %}
-In order to simulate the model, we will need period $$0$$ data, which is assumed to be known as baseline. For simplicity, we will use small design matrices, $$x_{1}$$ and $$x_{2}$$, that contain an intercept, a covariate for age, and a function of lagged spending. The model is therefore only dependent on initial spending levels and age. The function `InitData` creates the necessary initial values for a desired sample size. Values for $$y$$ and age are drawn from distributions so that they are resonably consistent with observed health spending and the age distribution in the United States.
+In order to simulate the model, we will need period $$0$$ data, which is assumed to be known as baseline. For simplicity, we will use small design matrices, $$x_{1}$$ and $$x_{2}$$, that contain an intercept, a covariate for age, and a function of lagged spending. The model is therefore only dependent on initial spending levels and age. The function `InitData` creates the necessary initial values for a desired sample size. Values for $$y$$ and age are drawn from distributions so that they are reasonably consistent with the distributions of observed health spending and age in the United States.
 
 {% highlight r %}
 InitData <- function(n){
@@ -136,7 +136,7 @@ kappa <- coef(mrate.lm)
 sigma2 <- 1
 Sigma <- matrix(c(.5, .25, .25, .3), nrow = 2, ncol = 2)
 {% endhighlight %}
-We can now create a function that simulates longitudinal data using the model. The simulation begins with a set number of individuals alive during period $$1$$. Expenditures are predicted for a chosen number of simulation periods, say $$T$$, althogh some individuals die before reaching period $$T$$. 
+We can now create a function that simulates longitudinal data using the model. The simulation begins with a set number of individuals alive during period $$1$$. Expenditures are predicted for a chosen number of simulation periods, say $$T$$, although some individuals die before reaching period $$T$$. 
 
 {% highlight r %}
 # FUNCTION TO SIMULATE DATA
@@ -213,7 +213,7 @@ library(mvtnorm)
 dat <- sim(SIGMA = Sigma * 0)
 dat <- dat[year > 0]
 {% endhighlight %}
-The parameters can be esimated using a probit model for the first part and OLS for the second part. The sample size is reasonably large so the estimated parameters should be close to their true values. 
+The parameters can be estimated using a probit model for the first part and OLS for the second part. The sample size is reasonably large so the estimated parameters should be close to their true values. 
 
 {% highlight r %}
 d.probit <- glm(d ~ c_age + l_d, family=binomial(link=probit), dat)
@@ -228,7 +228,7 @@ cbind(coef(d.probit), confint.default(d.probit), alpha)
 ## c_age       0.0491027 0.04329019 0.05491521  0.05
 ## l_d         0.5017248 0.47327538 0.53017420  0.50
 {% endhighlight %}
-As expected, the estimated parameters are very close to the true values and that they fall with the 95% confidence intervals. The OLS estimates are more precisely estimated and even closer to the true values.
+As expected, the estimated parameters are very close to the true values and that they fall within the 95% confidence intervals. The OLS estimates are more precisely estimated and even closer to the true values.
 
 {% highlight r %}
 ly.lm <- lm(ly ~ c_age + l_ly, dat)
@@ -266,7 +266,7 @@ apply(cov.95, 1, mean)
 The confidence intervals are working as intended as the true coefficient values are contained within the 95% confidence interval approximately 950 out of 1000 times.
 
 ### MCMC
-Estimating a model with random intercepts that are correlated across both components of the two-part model is more difficult. As a result, this section is somewhat technical and requires Bayesian Markov Chain Monte Carlo (MCMC) methods. This means that we will need to write down the full joint posterior density for the model. Letting $$\theta = (\alpha^T, \beta^T, \sigma^2_\epsilon)^T$$ and $$T_i$$ represent the number of years that individual $$i$$ is observed before death, the conditional density of expenditures for indidivual $$i$$, $$f(y_{i1}, y_{i2}, \ldots, y_{iT} |y_{i0}, \theta, b_i)$$, can (under the model) be written as,
+Estimating a model with random intercepts that are correlated across both components of the two-part model is more difficult. As a result, this section is somewhat technical and requires Bayesian Markov Chain Monte Carlo (MCMC) methods. This means that we will need to write down the full joint posterior density for the model. Letting $$\theta = (\alpha^T, \beta^T, \sigma^2_\epsilon)^T$$ and $$T_i$$ represent the number of years that individual $$i$$ is observed before death, the conditional density of expenditures for individual $$i$$, $$f(y_{i1}, y_{i2}, \ldots, y_{iT} |y_{i0}, \theta, b_i)$$, can (under the model) be written as,
 
 $$
 \begin{aligned}
@@ -286,9 +286,9 @@ $$
 
 where $y$ is the stacked vector of $$y_{it}$$ and there are $$n$$ individuals. 
 
-A [Gbbs](https://en.wikipedia.org/wiki/Gibbs_sampling) sampling algorithm estimates the parameters by partitioning the joint posterior distribution into conditional distributions. For full details see Appendix C [here](..\papers\longterm_spending.pdf). The R function `gibbs` contained in the R file [dynamic_twopart_mcmc.R](../r/dynamic_twopart_mcmc.R) implements the Gibbs sampler. The function `gibbs` relies on five functions which sample $$\alpha$$, $$\beta$$, $$\sigma^2_\epsilon$$, $$b_i$$ and $$\Sigma_b$$. Conjugate priors were chosen for all of the parameters except $$b_i$$ so sampling straightforward. The conditional distribution of $$b_i$$ is nonstandard so it is sampled using a random-walk [Metropolis](https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm) step.
+A [Gbbs](https://en.wikipedia.org/wiki/Gibbs_sampling) sampling algorithm estimates the parameters by partitioning the joint posterior distribution into conditional distributions. For full details see Appendix C [here](..\papers\longterm_spending.pdf). The R function `gibbs` contained in the R file [dynamic_twopart_mcmc.R](../r/dynamic_twopart_mcmc.R) implements the Gibbs sampler. The function `gibbs` relies on five functions which sample $$\alpha$$, $$\beta$$, $$\sigma^2_\epsilon$$, $$b_i$$ and $$\Sigma_b$$. Conjugate priors were chosen for all of the parameters except $$b_i$$ so sampling is straightforward. The conditional distribution of $$b_i$$ is nonstandard so it is sampled using a random-walk [Metropolis](https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm) step.
 
-Before implementing the Gibbs sampler we will simulate data assuming that there is unobserved heterogeneity. 
+Before implementing the Gibbs sampler we will simulate data with random intercepts. 
 
 {% highlight r %}
 dat <- sim(sim.T = 5, SIGMA = Sigma)
@@ -314,7 +314,7 @@ inits$sigma2 <- rnorm(1, summary(ly.lm)$sigma^2, .2)
 inits$Sigma <- riwish(v = 75, S = 79 * Sigma)
 inits$b <- cbind(b1$b1, b2$b2)
 {% endhighlight %}
-The Gibbs sampler is run on 10,000 iterations. The sequence is thinned by keeping every 10th draw and the first 5,000 iterations are discarded as burn-in. Since the simulation takes around 17 minutes on my ThinkPad W530 Mobile Workstation, it is not a bad idea to save the output.
+The Gibbs sampler is run on 10,000 iterations. The sequence is thinned by keeping every 10th draw and the first 5,000 iterations are discarded as burn-in. The simulation takes around 17 minutes on my computer, so it is not a bad idea to save the output.
 
 {% highlight r %}
 source("r/dynamic_twopart_mcmc.R")
@@ -323,7 +323,7 @@ gibbs <- Gibbs(nsim = 10000, thin = 10, burn = 5000, y = dat$y,
                priors = priors, init = inits)
 save(gibbs, file = "output/gibbs.RData")
 {% endhighlight %}
-The simulated posterior densities are returned in list. It is useful to convert the parameter vectors and matrices to a Markov Chain Monte Carlo object using the `coda` package.
+The simulated posterior densities are returned in a list. It is useful to convert the parameter vectors and matrices to a Markov Chain Monte Carlo object using the `coda` package.
 
 {% highlight r %}
 library(coda)
@@ -340,7 +340,7 @@ plot(sigma2.mcmc, density = FALSE,
 {% endhighlight %}
 
 <img src="/figs/dynamic_twopart_traceplot-1.png" title="plot of chunk dynamic_twopart_traceplot" alt="plot of chunk dynamic_twopart_traceplot" style="display: block; margin: auto;" />
-The variance parameter appears to have converged; however, this plot could could be misleading if $$\sigma^2_\epsilon$$ has only converged to a local region and has not explored the full posterior. It is in general a good idea to run multiple chains with dispersed starting values to ensure that this is not the case. The Gelman-Rubin convergence diagnostic can then be used to test convergence. We will not do that here to keep things simple, but it is good practice.
+The variance parameter appears to have converged; however, this plot could could be misleading if $$\sigma^2_\epsilon$$ has only converged to a local region and has not explored the full posterior. It is, in general, a good idea to run multiple chains with dispersed starting values to ensure that this is not the case. The Gelman-Rubin convergence diagnostic can then be used to test convergence. We will not do that here to keep things simple, but it is good practice.
 
 Now lets look at the posterior quantiles for some of the parameters and compare them to their true values.
 
