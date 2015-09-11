@@ -111,7 +111,7 @@ library(mvtnorm) # draw from multivariate normal
 library(data.table)
 set.seed(100)
 {% endhighlight %}
-In order to simulate the model, we will need period $$0$$ data, which is assumed to be known as baseline. For simplicity, we will use small design matrices, $$x_{1}$$ and $$x_{2}$$, that contain an intercept, a covariate for age, and a function of lagged spending. The model is therefore only dependent on initial spending levels and age. The function `InitData` creates the necessary initial values for a desired sample size. Values for $y$ and age are drawn from distributions so that they are resonably consistent with observed health spending and the age distribution in the United States.
+In order to simulate the model, we will need period $$0$$ data, which is assumed to be known as baseline. For simplicity, we will use small design matrices, $$x_{1}$$ and $$x_{2}$$, that contain an intercept, a covariate for age, and a function of lagged spending. The model is therefore only dependent on initial spending levels and age. The function `InitData` creates the necessary initial values for a desired sample size. Values for $$y$$ and age are drawn from distributions so that they are resonably consistent with observed health spending and the age distribution in the United States.
 
 {% highlight r %}
 InitData <- function(n){
@@ -134,7 +134,7 @@ kappa <- coef(mrate.lm)
 sigma2 <- 1
 Sigma <- matrix(c(.5, .25, .25, .3), nrow = 2, ncol = 2)
 {% endhighlight %}
-We can now create a function that simulates longitudinal data using the model. The simulation begins with a set number of individuals alive during period $1$. Expenditures are predicted for a chosen number of simulation periods, say $T$, althogh some individuals die before reaching period $T$. 
+We can now create a function that simulates longitudinal data using the model. The simulation begins with a set number of individuals alive during period $$1$$. Expenditures are predicted for a chosen number of simulation periods, say $$T$$, althogh some individuals die before reaching period $$T$$. 
 
 {% highlight r %}
 # FUNCTION TO SIMULATE DATA
@@ -194,7 +194,7 @@ sim <- function(sim.T = 5, sim.n = 10000, SIGMA, Alpha = alpha,
   return(dat)
 }
 {% endhighlight %}
-The function can be summarized as follows. First, it draws the random intercepts from their bivariate normal distribution. Second, it draws period $0$ data and initializes the vectors that we would like to store for analysis. Third, it recursively simulates the model for the desired number of periods by:
+The function can be summarized as follows. First, it draws the random intercepts from their bivariate normal distribution. Second, it draws period $$0$$ data and initializes the vectors that we would like to store for analysis. Third, it recursively simulates the model for the desired number of periods by:
 
 1. Updating the design matrices to reflect spending in the previous period and being 1 year older.
 2. Drawing death indicators.
@@ -264,7 +264,7 @@ apply(cov.95, 1, mean)
 The confidence intervals are working as intended as the true coefficient values are contained within the 95\% confidence interval approximately 950 out of 1000 times.
 
 ### MCMC
-Estimating a model with random intercepts that are correlated across both components of the two-part model is more difficult. As a result, this section is somewhat technical and requires Bayesian Markov Chain Monte Carlo (MCMC) methods. This means that we will need to write down the full joint posterior density for the model. Letting $\theta = (\alpha^T, \beta^T, \sigma^2_\epsilon)^T$ and $T_i$ represent the number of years that individual $i$ is observed before death, the conditional density of expenditures for indidivual $i$, $f(y_{i1}, y_{i2}, \ldots, y_{iT} |y_{i0}, \theta, b_i)$, can (under the model) be written as,
+Estimating a model with random intercepts that are correlated across both components of the two-part model is more difficult. As a result, this section is somewhat technical and requires Bayesian Markov Chain Monte Carlo (MCMC) methods. This means that we will need to write down the full joint posterior density for the model. Letting $$\theta = (\alpha^T, \beta^T, \sigma^2_\epsilon)^T$$ and $$T_i$$ represent the number of years that individual $$i$$ is observed before death, the conditional density of expenditures for indidivual $$i$$, $$f(y_{i1}, y_{i2}, \ldots, y_{iT} |y_{i0}, \theta, b_i)$$, can (under the model) be written as,
 
 $$
 \begin{aligned}
@@ -274,7 +274,7 @@ $$
 \end{aligned}
 $$
 
-where $\rm{LN}(\cdot)$ is the lognormal distribution. Given prior distributions, $p(\theta)$ and $p(\Sigma_b)$, the joint posterior density is then,
+where $$\rm{LN}(\cdot)$$ is the lognormal distribution. Given prior distributions, $$p(\theta)$$ and $$p(\Sigma_b)$$, the joint posterior density is then,
 
 $$
 \begin{aligned}
@@ -282,9 +282,9 @@ p(\theta, b_i, \Sigma_b|y) &\propto p(\theta)p(\Sigma_b)\prod_{i=1}^n \prod_{t=1
 \end{aligned}
 $$
 
-where $y$ is the stacked vector of $y_{it}$ and there are $n$ individuals. 
+where $y$ is the stacked vector of $$y_{it}$$ and there are $$n$$ individuals. 
 
-A [Gbbs](https://en.wikipedia.org/wiki/Gibbs_sampling) sampling algorithm estimates the parameters by partitioning the joint posterior distribution into conditional distributions. For full details see Appendix C [here](..\papers\longterm_spending.pdf). The R function `gibbs` contained in the R file [dynamic_twopart_mcmc.R](../r/dynamic_twopart_mcmc.R) implements the Gibbs sampler. The function `gibbs` relies on five functions which sample $\alpha$, $\beta$, $\sigma^2_\epsilon$, $b_i$ and $\Sigma_b$. Conjugate priors were chosen for all of the parameters except $b_i$ so sampling straightforward. The conditional distribution of $b_i$ is nonstandard so it is sampled using a random-walk [Metropolis](https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm) step.
+A [Gbbs](https://en.wikipedia.org/wiki/Gibbs_sampling) sampling algorithm estimates the parameters by partitioning the joint posterior distribution into conditional distributions. For full details see Appendix C [here](..\papers\longterm_spending.pdf). The R function `gibbs` contained in the R file [dynamic_twopart_mcmc.R](../r/dynamic_twopart_mcmc.R) implements the Gibbs sampler. The function `gibbs` relies on five functions which sample $$\alpha$$, $$\beta$$, $$\sigma^2_\epsilon$$, $$b_i$$ and $$\Sigma_b$$. Conjugate priors were chosen for all of the parameters except $$b_i$$ so sampling straightforward. The conditional distribution of $$b_i$$ is nonstandard so it is sampled using a random-walk [Metropolis](https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm) step.
 
 Before implementing the Gibbs sampler we will simulate data assuming that there is unobserved heterogeneity. 
 
@@ -330,7 +330,7 @@ beta.mcmc <- as.mcmc(gibbs$beta)
 sigma2.mcmc <- as.mcmc(gibbs$sigma2)
 Sigma.mcmc <- as.mcmc(gibbs$Sigma) 
 {% endhighlight %}
-Before summarizing the posterior densities, we must test to see whether our chains have converged. Convergence can be inspected visually with a traceplot, which plots a draw from the posterior density at each iteration against the iteration number. A chain that has converged should have reached a stationary distribution with a relatively constant mean and variance. The parameter values should jump around the posterior density rather than getting stuck in certain regions. To illustrate, consider the traceplot for $\sigma^2_\epsilon$.
+Before summarizing the posterior densities, we must test to see whether our chains have converged. Convergence can be inspected visually with a traceplot, which plots a draw from the posterior density at each iteration against the iteration number. A chain that has converged should have reached a stationary distribution with a relatively constant mean and variance. The parameter values should jump around the posterior density rather than getting stuck in certain regions. To illustrate, consider the traceplot for $$\sigma^2_\epsilon$$.
 
 {% highlight r %}
 plot(sigma2.mcmc, density = FALSE, 
@@ -338,7 +338,7 @@ plot(sigma2.mcmc, density = FALSE,
 {% endhighlight %}
 
 <img src="/figs/dynamic_twopart_traceplot-1.png" title="plot of chunk dynamic_twopart_traceplot" alt="plot of chunk dynamic_twopart_traceplot" style="display: block; margin: auto;" />
-The variance parameter appears to have converged; however, this plot could could be misleading if $\sigma^2_\epsilon$ has only converged to a local region and has not explored the full posterior. It is in general a good idea to run multiple chains with dispersed starting values to ensure that this is not the case. The Gelman-Rubin convergence diagnostic can then be used to test convergence. We will not do that here to keep things simple, but it is good practice.
+The variance parameter appears to have converged; however, this plot could could be misleading if $$\sigma^2_\epsilon$$ has only converged to a local region and has not explored the full posterior. It is in general a good idea to run multiple chains with dispersed starting values to ensure that this is not the case. The Gelman-Rubin convergence diagnostic can then be used to test convergence. We will not do that here to keep things simple, but it is good practice.
 
 Now lets look at the posterior quantiles for some of the parameters and compare them to their true values.
 
