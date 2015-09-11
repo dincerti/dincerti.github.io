@@ -45,7 +45,7 @@ b_{2i}
 \end{aligned}
 $$
 
-where $\rho$ is the correlation between $$b_{1i}$$ and $$b_{2i}$$. It is worth noting that if the design matrices, $$x_{1it}$$ and $$x_{2it}$$, contain an intercept, then $$b_{1i}$$ and $$b_{2i}$$ can be treated as error terms that are constant across individuals. In some disciplines, such as economics, these error terms are referred to as unobserved heterogeneity. 
+where $\rho$ is the correlation between $$b_{1i}$$ and $$b_{2i}$$. It is worth noting that if $$x_{1it}$$ and $$x_{2it}$$ contain an intercept, then $$b_{1i}$$ and $$b_{2i}$$ can be treated as error terms that are constant across individuals. In some disciplines, such as economics, these error terms are referred to as unobserved heterogeneity. 
 
 To illustrate, consider the second part of the two-part model and let $$\eta_{it} = \epsilon_{2it} + b_{2i}$$. The variances and covariances of $$\eta_{it}$$ are then,
 
