@@ -14,7 +14,7 @@ This page describes the dynamic two-part model that I have used in my research (
 With longitudinal data, it is necessary to model the persistence in spending from one period to the next. The model does this in two ways: first, it includes lagged dependent variables and second, it allows for individual specific random regression coefficients. I focus on the case in which only intercepts vary across individuals so the model can be referred to as a dynamic random-intercept two-part model.
 
 ### The Model
-Let $$d_{it}\equiv I(d_{it}^{\ast} > 0) = I(y_{it} > 0)$$ so that the latent variable $d_{it}^{\ast}$ describes whether expenditures are positive or zero. The model can then be written as,
+Let $$d_{it}\equiv I(d_{it}^{\ast} > 0) = I(y_{it} > 0)$$ so that the latent variable $$d_{it}^{\ast}$$ describes whether expenditures are positive or zero. The model can then be written as,
 
 $$
 \begin{aligned}
@@ -23,7 +23,7 @@ d_{it}^{\ast} &= x_{1it}^{T}\alpha + b_{1i} + \epsilon_{1it},\\
 \end{aligned}
 $$
 
-where $$\alpha$$ and $$\beta$$ are the vectors of coefficients for the explanatory variables, and $$b_{1i}$$ and $$b_{2i}$$ are the random intercepts. We assume that $$\epsilon_{1it}\sim N(0, 1)$$ so that the binomial component is a probit model and $\epsilon_{2it}\sim N(0, \sigma^2_\epsilon)$ so that the continuous component is a lognormal model. Importantly, both $x_{1it}$ and $x_{2it}$ contain lagged values of (functions of) spending. In particular, $x_{1it}$ contains $d_{it-1}$ and $x_{2it}$ contains a variable equal to $\log(y_{it-1})$ if $y_{it-1}>0$ and $0$ otherwise. Other functions of lagged spending are possible but we will use those here for illustrative purposes.
+where $$\alpha$$ and $$\beta$$ are the vectors of coefficients for the explanatory variables, and $$b_{1i}$$ and $$b_{2i}$$ are the random intercepts. We assume that $$\epsilon_{1it}\sim N(0, 1)$$ so that the binomial component is a probit model and $$\epsilon_{2it}\sim N(0, \sigma^2_\epsilon)$$ so that the continuous component is a lognormal model. Importantly, both $$x_{1it}$$ and $$x_{2it}$$ contain lagged values of (functions of) spending. In particular, $$x_{1it}$$ contains $$d_{it-1}$$ and $$x_{2it}$$ contains a variable equal to $$\log(y_{it-1})$$ if $$y_{it-1}>0$$ and $$0$$ otherwise. Other functions of lagged spending are possible but we will use those here for illustrative purposes.
 
 The random intercepts are assumed to be jointly normal,
 
@@ -47,9 +47,9 @@ b_{2i}
 \end{aligned}
 $$
 
-where $\rho$ is the correlation between $b_{1i}$ and $b_{2i}$. It is worth noting that if the design matrices, $x_{1it}$ and $x_{2it}$, contain an intercept, then $b_{1i}$ and $b_{2i}$ can be treated as error terms that are constant across individuals. In some disciplines, such as economics, these error terms are referred to as unobserved heterogeneity. 
+where $\rho$ is the correlation between $$b_{1i}$$ and $$b_{2i}$$. It is worth noting that if the design matrices, $$x_{1it}$$ and $x_{2it}$, contain an intercept, then $b_{1i}$ and $b_{2i}$ can be treated as error terms that are constant across individuals. In some disciplines, such as economics, these error terms are referred to as unobserved heterogeneity. 
 
-To illustrate, consider the second part of the two-part model and let $\eta_{it} = \epsilon_{2it} + b_{2i}$. The variances and covariances of $\eta_{it}$ are then,
+To illustrate, consider the second part of the two-part model and let $$\eta_{it} = \epsilon_{2it} + b_{2i}$$. The variances and covariances of $$\eta_{it}$$ are then,
 
 $$
 \begin{aligned}
@@ -62,18 +62,18 @@ $$
 In other words the error terms are correlated within individuals but not over time across different individuals.
 
 ### Mortality
-In order to model spending over time it is necessary to model mortality as well. Here, we ignore possible correlations between spending and mortality and assume that individuals die during during period $t$ at a rate, $m_{it}$, that is increasing with age. We model the death rate with a simple probit model,
+In order to model spending over time it is necessary to model mortality as well. Here, we ignore possible correlations between spending and mortality and assume that individuals die during during period $$t$$ at a rate, $$m_{it}$$, that is increasing with age. We model the death rate with a simple probit model,
 
 $$
 Pr(m_{it}=1)=\Phi(z_{it}^{T}\kappa),
 $$
 
-where $z_{it}$ contains an intercept and age covariates, and $\kappa$ is the corresponding vector of coefficients. To obtain a reasonable estimate for $\kappa$, we can download  estimates of the probability of dying within one year by age from an actuarial life table published by Social Security using the `XML` package. For simplicity, we will use the death rates for males.
+where $$z_{it}$$ contains an intercept and age covariates, and $$\kappa$$ is the corresponding vector of coefficients. To obtain a reasonable estimate for $$\kappa$$, we can download  estimates of the probability of dying within one year by age from an actuarial life table published by Social Security using the `XML` package. For simplicity, we will use the death rates for males.
 
 The function `readHTMLTable` returns a list of HTML tables. We extract the first and second columns from the second table which contains the information we want.
 ```{r lifetable, message = FALSE, warning=FALSE}
 ```
-With the data in hand, we can model the death rates as a function of age. To ensure that coefficient estimates are on a reasonable scale and that the intercept has an interesting interpretation, we center and scale all age variables using the function `CSage` below. Since we are assuming that death rates can be modeled with a probit model, it follows that $\Phi^{-1}(p_{it}) = z_{it}^{T}\kappa$ where $p_{it}= Pr(m_{it}=1)$. We can therefore estimate the regression coefficients with simple OLS.
+With the data in hand, we can model the death rates as a function of age. To ensure that coefficient estimates are on a reasonable scale and that the intercept has an interesting interpretation, we center and scale all age variables using the function `CSage` below. Since we are assuming that death rates can be modeled with a probit model, it follows that $$\Phi^{-1}(p_{it}) = z_{it}^{T}\kappa$$ where $$p_{it}= Pr(m_{it}=1)$$. We can therefore estimate the regression coefficients with simple OLS.
 ```{r mort_fit}
 ```
 The model fits the data quite well after age 25 or so, which suggests that we can predict mortality very accurately as a function of age.
@@ -86,7 +86,7 @@ A great way to understand a model is to simulate data according to the assumed d
 Before doing this, we will load a couple of R packages. The `mvtnorm` package can be used to draw the random intercepts from their bivariate normal distribution and the `data.table` package is useful for manipulating larger datasets. We should also set the seed to ensure that the results are reproducible.
 ```{r sim_setup, message = FALSE, warning = FALSE}
 ```
-In order to simulate the model, we will need period $0$ data, which is assumed to be known as baseline. For simplicity, we will use small design matrices, $x_{1}$ and $x_{2}$, that contain an intercept, a covariate for age, and a function of lagged spending. The model is therefore only dependent on initial spending levels and age. The function `InitData` creates the necessary initial values for a desired sample size. Values for $y$ and age are drawn from distributions so that they are resonably consistent with observed health spending and the age distribution in the United States.
+In order to simulate the model, we will need period $$0$$ data, which is assumed to be known as baseline. For simplicity, we will use small design matrices, $$x_{1}$$ and $$x_{2}$$, that contain an intercept, a covariate for age, and a function of lagged spending. The model is therefore only dependent on initial spending levels and age. The function `InitData` creates the necessary initial values for a desired sample size. Values for $y$ and age are drawn from distributions so that they are resonably consistent with observed health spending and the age distribution in the United States.
 ```{r initdat_func}
 ```
 The true values for the parameters are set as follows.
