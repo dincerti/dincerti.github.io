@@ -23,7 +23,7 @@ d_{it}^{\ast} &= x_{1it}^{T}\alpha + b_{1i} + \epsilon_{1it},\\
 \end{aligned}
 $$
 
-where $\alpha$ and $\beta$ are the vectors of coefficients for the explanatory variables, and $b_{1i}$ and $b_{2i}$ are the random intercepts. We assume that $\epsilon_{1it}\sim N(0, 1)$ so that the binomial component is a probit model and $\epsilon_{2it}\sim N(0, \sigma^2_\epsilon)$ so that the continuous component is a lognormal model. Importantly, both $x_{1it}$ and $x_{2it}$ contain lagged values of (functions of) spending. In particular, $x_{1it}$ contains $d_{it-1}$ and $x_{2it}$ contains a variable equal to $\log(y_{it-1})$ if $y_{it-1}>0$ and $0$ otherwise. Other functions of lagged spending are possible but we will use those here for illustrative purposes.
+where $$\alpha$$ and $$\beta$$ are the vectors of coefficients for the explanatory variables, and $$b_{1i}$$ and $$b_{2i}$$ are the random intercepts. We assume that $$\epsilon_{1it}\sim N(0, 1)$$ so that the binomial component is a probit model and $\epsilon_{2it}\sim N(0, \sigma^2_\epsilon)$ so that the continuous component is a lognormal model. Importantly, both $x_{1it}$ and $x_{2it}$ contain lagged values of (functions of) spending. In particular, $x_{1it}$ contains $d_{it-1}$ and $x_{2it}$ contains a variable equal to $\log(y_{it-1})$ if $y_{it-1}>0$ and $0$ otherwise. Other functions of lagged spending are possible but we will use those here for illustrative purposes.
 
 The random intercepts are assumed to be jointly normal,
 
