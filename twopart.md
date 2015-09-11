@@ -168,7 +168,7 @@ The main difficulty with log transformed OLS is that the retransformation is inv
 
 $$
 \begin{aligned}
-E[Y|X > 0] &= \exp(X\beta) \times \rm{E}[\exp(\epsilon)|X].
+E[Y|Y > 0] &= \exp(X\beta) \times \rm{E}[\exp(\epsilon)|X].
 \end{aligned}
 $$
 
