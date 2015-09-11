@@ -31,7 +31,7 @@ ggplot(lt, aes(x = age, y = qnorm_mrate)) + geom_point(size = 1) +
 ## @knitr sim_setup
 library(mvtnorm) # draw from multivariate normal
 library(data.table)
-set.seed(100)
+set.seed(101)
 
 ## @knitr initdat_func
 InitData <- function(n){

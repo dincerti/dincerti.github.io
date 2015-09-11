@@ -111,7 +111,7 @@ Before doing this, we will load a couple of R packages. The `mvtnorm` package ca
 {% highlight r %}
 library(mvtnorm) # draw from multivariate normal
 library(data.table)
-set.seed(100)
+set.seed(101)
 {% endhighlight %}
 In order to simulate the model, we will need period $$0$$ data, which is assumed to be known as baseline. For simplicity, we will use small design matrices, $$x_{1}$$ and $$x_{2}$$, that contain an intercept, a covariate for age, and a function of lagged spending. The model is therefore only dependent on initial spending levels and age. The function `InitData` creates the necessary initial values for a desired sample size. Values for $$y$$ and age are drawn from distributions so that they are resonably consistent with observed health spending and the age distribution in the United States.
 
@@ -223,10 +223,10 @@ cbind(coef(d.probit), confint.default(d.probit), alpha)
 
 
 {% highlight text %}
-##                             2.5 %     97.5 % alpha
-## (Intercept) 0.49885632 0.46938895 0.52832370  0.50
-## c_age       0.04875333 0.04296868 0.05453798  0.05
-## l_d         0.49120307 0.46285221 0.51955393  0.50
+##                            2.5 %     97.5 % alpha
+## (Intercept) 0.4974950 0.46780679 0.52718311  0.50
+## c_age       0.0491027 0.04329019 0.05491521  0.05
+## l_d         0.5017248 0.47327538 0.53017420  0.50
 {% endhighlight %}
 As expected, the estimated parameters are very close to the true values and that they fall with the 95% confidence intervals. The OLS estimates are more precisely estimated and even closer to the true values.
 
@@ -239,9 +239,9 @@ cbind(coef(ly.lm), confint(ly.lm), beta)
 
 {% highlight text %}
 ##                             2.5 %    97.5 % beta
-## (Intercept) 5.99886608 5.97283940 6.0248928 6.00
-## c_age       0.09651274 0.09187113 0.1011544 0.10
-## l_ly        0.24948909 0.24614595 0.2528322 0.25
+## (Intercept) 5.99624297 5.97006151 6.0224244 6.00
+## c_age       0.09924079 0.09458576 0.1038958 0.10
+## l_ly        0.25130232 0.24795744 0.2546472 0.25
 {% endhighlight %}
 it is important to note however that although the confidence intervals worked for this particular simulation, we can't be sure that the coverage probabilities are correct. To check coverage probabilities we would need to simulate the data multiple times, estimate the parameters for each simulation, and check whether the true values were contained within the 95% confidence intervals for 95% of the simulations. As an example, let's check coverage for the second part of the model by simulating data 1000 times,
 
