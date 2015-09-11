@@ -8,7 +8,7 @@ title: Two-part Models
 read_chunk('r/twopart.R')
 ```
 ### Overview
-Two-part models are often used to model strictly positive variables with a large number of zero values. They are consequently formulated as a mixture of a binomial distribution and a strictly positive distribution. I focus on continuous distributions for the positive values but two-part models---typically referred to as hurdle models---are used for count data as well. 
+Two-part models are often used to model strictly positive variables with a large number of zero values. They are consequently formulated as a mixture of a binomial distribution and a strictly positive distribution. I focus on continuous distributions for the positive values but two-part models---typically referred to as hurdle models---are used for count data as well. R code for this page is [here](r/twopart.R). 
 
 ### Health Expenditure Data from the MEPS
 Two-part models are commonly used to model healthcare expenditure data because a large fraction of patients don't spend anything on medical care in a given time period. To see this, lets look at some real expenditure data from the Medical Expenditure Panel Survey (MEPS). We'll write a small R function to download SAS data sets from the MEPS website. 
