@@ -1,5 +1,6 @@
 
 # This is the R code for the R Markdown file twopart.Rmd
+setwd("C:/Users/Devin/Dropbox/Projects/dincerti.github.io")
 
 ## ---- HEALTH EXPENDITURE DATA FROM THE MEPS ----------------------------------
 ## @knitr download_function

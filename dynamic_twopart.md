@@ -319,7 +319,7 @@ source("r/dynamic_twopart_mcmc.R")
 gibbs <- Gibbs(nsim = 10000, thin = 10, burn = 5000, y = dat$y, 
                x1 = x1, x2 = x2, ni = ni, id = dat$id, 
                priors = priors, init = inits)
-save(gibbs, file = "_output/gibbs.RData")
+save(gibbs, file = "output/gibbs.RData")
 {% endhighlight %}
 The simulated posterior densities are returned in list. It is useful to convert the parameter vectors and matrices to a Markov Chain Monte Carlo object using the `coda` package.
 
@@ -349,10 +349,10 @@ cbind(summary(alpha.mcmc)$quant, alpha)
 
 
 {% highlight text %}
-##             2.5%       25%       50%        75%      97.5% alpha
-## int   0.45829112 0.4874728 0.5019642 0.51857787 0.54431445  0.50
-## c_age 0.04744042 0.0527224 0.0556788 0.05865639 0.06338047  0.05
-## l_d   0.48649163 0.5107201 0.5231492 0.53453077 0.55803951  0.50
+##             2.5%        25%        50%        75%      97.5% alpha
+## int   0.43667047 0.46759930 0.48504669 0.49987207 0.53040524  0.50
+## c_age 0.03701827 0.04240177 0.04554813 0.04879016 0.05514034  0.05
+## l_d   0.47623616 0.50304348 0.51558136 0.53004923 0.55465324  0.50
 {% endhighlight %}
 
 
@@ -364,10 +364,10 @@ cbind(summary(beta.mcmc)$quant, beta)
 
 
 {% highlight text %}
-##             2.5%        25%       50%       75%     97.5% beta
-## int   5.97539317 5.99851030 6.0083482 6.0197755 6.0447618 6.00
-## c_age 0.09477152 0.09922584 0.1013768 0.1036129 0.1075638 0.10
-## l_ly  0.24477377 0.24745898 0.2490009 0.2503346 0.2527174 0.25
+##            2.5%        25%        50%        75%     97.5% beta
+## int   5.9433682 5.96312116 5.97560613 5.98680677 6.0071493 6.00
+## c_age 0.0871133 0.09194349 0.09420716 0.09663533 0.1014231 0.10
+## l_ly  0.2469678 0.24913068 0.25051688 0.25187327 0.2548241 0.25
 {% endhighlight %}
 
 
@@ -380,7 +380,7 @@ c(summary(sigma2.mcmc)$quant, sigma2)
 
 {% highlight text %}
 ##      2.5%       25%       50%       75%     97.5%           
-## 0.9716913 0.9833131 0.9886084 0.9942258 1.0049080 1.0000000
+## 0.9850542 0.9966137 1.0027020 1.0084922 1.0213431 1.0000000
 {% endhighlight %}
 
 
@@ -393,10 +393,10 @@ cbind(summary(Sigma.mcmc)$quant, c(Sigma))
 
 {% highlight text %}
 ##              2.5%       25%       50%       75%     97.5%     
-## Sigma11 0.4373255 0.4587478 0.4713075 0.4844740 0.5154888 0.50
-## Sigma12 0.2191050 0.2297992 0.2376904 0.2442094 0.2598715 0.25
-## Sigma12 0.2191050 0.2297992 0.2376904 0.2442094 0.2598715 0.25
-## Sigma22 0.2676696 0.2785685 0.2852601 0.2916875 0.3032796 0.30
+## Sigma11 0.4509504 0.4725421 0.4884947 0.5036067 0.5391468 0.50
+## Sigma12 0.2075306 0.2199094 0.2265067 0.2338062 0.2480678 0.25
+## Sigma12 0.2075306 0.2199094 0.2265067 0.2338062 0.2480678 0.25
+## Sigma22 0.2612393 0.2715018 0.2778633 0.2849412 0.2952004 0.30
 {% endhighlight %}
 The estimated parameters seem to be converging to their true values, which suggests that the Bayesian algorithm is working as intended. 
 

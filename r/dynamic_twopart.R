@@ -1,5 +1,6 @@
 
 # This is the R code for the R Markdown file dynamic_twopart.Rmd
+setwd("C:/Users/Devin/Dropbox/Projects/dincerti.github.io")
 
 ## ---- MORTALITY --------------------------------------------------------------
 ## @knitr lifetable
@@ -163,10 +164,10 @@ source("r/dynamic_twopart_mcmc.R")
 gibbs <- Gibbs(nsim = 10000, thin = 10, burn = 5000, y = dat$y, 
                x1 = x1, x2 = x2, ni = ni, id = dat$id, 
                priors = priors, init = inits)
-save(gibbs, file = "_output/gibbs.RData")
+save(gibbs, file = "output/gibbs.RData")
 
 ## @knitr convert_mcmc
-load("_output/gibbs.RData")
+load("output/gibbs.RData")
 library(coda)
 alpha.mcmc <- as.mcmc(gibbs$alpha)
 beta.mcmc <- as.mcmc(gibbs$beta)
