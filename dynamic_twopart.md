@@ -228,7 +228,7 @@ cbind(coef(d.probit), confint.default(d.probit), alpha)
 ## c_age       0.04875333 0.04296868 0.05453798  0.05
 ## l_d         0.49120307 0.46285221 0.51955393  0.50
 {% endhighlight %}
-As expected, the estimated parameters are very close to the true values and that they fall with the 95\% confidence intervals. The OLS estimates are more precisely estimated and even closer to the true values.
+As expected, the estimated parameters are very close to the true values and that they fall with the 95% confidence intervals. The OLS estimates are more precisely estimated and even closer to the true values.
 
 {% highlight r %}
 ly.lm <- lm(ly ~ c_age + l_ly, dat)
@@ -243,7 +243,7 @@ cbind(coef(ly.lm), confint(ly.lm), beta)
 ## c_age       0.09651274 0.09187113 0.1011544 0.10
 ## l_ly        0.24948909 0.24614595 0.2528322 0.25
 {% endhighlight %}
-it is important to note however that although the confidence intervals worked for this particular simulation, we can't be sure that the coverage probabilities are correct. To check coverage probabilities we would need to simulate the data multiple times, estimate the parameters for each simulation, and check whether the true values were contained within the 95\% confidence intervals for 95\% of the simulations. As an example, let's check coverage for the second part of the model by simulating data 1000 times,
+it is important to note however that although the confidence intervals worked for this particular simulation, we can't be sure that the coverage probabilities are correct. To check coverage probabilities we would need to simulate the data multiple times, estimate the parameters for each simulation, and check whether the true values were contained within the 95% confidence intervals for 95% of the simulations. As an example, let's check coverage for the second part of the model by simulating data 1000 times,
 
 {% highlight r %}
 nsims <- 1000
@@ -263,7 +263,7 @@ apply(cov.95, 1, mean)
 {% highlight text %}
 ## [1] 0.950 0.959 0.949
 {% endhighlight %}
-The confidence intervals are working as intended as the true coefficient values are contained within the 95\% confidence interval approximately 950 out of 1000 times.
+The confidence intervals are working as intended as the true coefficient values are contained within the 95% confidence interval approximately 950 out of 1000 times.
 
 ### MCMC
 Estimating a model with random intercepts that are correlated across both components of the two-part model is more difficult. As a result, this section is somewhat technical and requires Bayesian Markov Chain Monte Carlo (MCMC) methods. This means that we will need to write down the full joint posterior density for the model. Letting $$\theta = (\alpha^T, \beta^T, \sigma^2_\epsilon)^T$$ and $$T_i$$ represent the number of years that individual $$i$$ is observed before death, the conditional density of expenditures for indidivual $$i$$, $$f(y_{i1}, y_{i2}, \ldots, y_{iT} |y_{i0}, \theta, b_i)$$, can (under the model) be written as,

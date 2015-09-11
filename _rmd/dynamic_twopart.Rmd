@@ -113,13 +113,13 @@ Before moving on to the full model, we will investigate a model in which everyon
 The parameters can be esimated using a probit model for the first part and OLS for the second part. The sample size is reasonably large so the estimated parameters should be close to their true values. 
 ```{r d_probit}
 ```
-As expected, the estimated parameters are very close to the true values and that they fall with the 95\% confidence intervals. The OLS estimates are more precisely estimated and even closer to the true values.
+As expected, the estimated parameters are very close to the true values and that they fall with the 95% confidence intervals. The OLS estimates are more precisely estimated and even closer to the true values.
 ```{r ly_lm}
 ```
-it is important to note however that although the confidence intervals worked for this particular simulation, we can't be sure that the coverage probabilities are correct. To check coverage probabilities we would need to simulate the data multiple times, estimate the parameters for each simulation, and check whether the true values were contained within the 95\% confidence intervals for 95\% of the simulations. As an example, let's check coverage for the second part of the model by simulating data 1000 times,
+it is important to note however that although the confidence intervals worked for this particular simulation, we can't be sure that the coverage probabilities are correct. To check coverage probabilities we would need to simulate the data multiple times, estimate the parameters for each simulation, and check whether the true values were contained within the 95% confidence intervals for 95% of the simulations. As an example, let's check coverage for the second part of the model by simulating data 1000 times,
 ```{r cov95, cache = TRUE}
 ```
-The confidence intervals are working as intended as the true coefficient values are contained within the 95\% confidence interval approximately 950 out of 1000 times.
+The confidence intervals are working as intended as the true coefficient values are contained within the 95% confidence interval approximately 950 out of 1000 times.
 
 ### MCMC
 Estimating a model with random intercepts that are correlated across both components of the two-part model is more difficult. As a result, this section is somewhat technical and requires Bayesian Markov Chain Monte Carlo (MCMC) methods. This means that we will need to write down the full joint posterior density for the model. Letting $$\theta = (\alpha^T, \beta^T, \sigma^2_\epsilon)^T$$ and $$T_i$$ represent the number of years that individual $$i$$ is observed before death, the conditional density of expenditures for indidivual $$i$$, $$f(y_{i1}, y_{i2}, \ldots, y_{iT} |y_{i0}, \theta, b_i)$$, can (under the model) be written as,
