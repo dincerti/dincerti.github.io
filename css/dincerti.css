@@ -94,3 +94,12 @@ max-width: 730px;
     margin-bottom: 30px;
   }
 }
+
+
+/* This of course assumes you're using .navbar-inverse */
+
+/* Navbar main background */
+
+.navbar {
+    background-color: white;
+}
