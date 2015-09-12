@@ -47,10 +47,11 @@ h6{
   color: #337ab7;
 }
 
-/* Custom page header */
+/* horizontal line below header (i.e. navigation bar) */
 .header {
   border-bottom: 1px solid #e5e5e5;
 }
+
 /* Make the Devin Incerti heading the same height as the navigation */
 .header h3 {
   margin-top: 0;
@@ -95,11 +96,22 @@ max-width: 730px;
   }
 }
 
-
-/* This of course assumes you're using .navbar-inverse */
-
-/* Navbar main background */
-
+/* Navbar settings*/
 .navbar {
     background-color: white;
+	min-height:70px;
+	border-bottom: 0;
+	border-top: 0;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  /*color: white;
+   background-color: #337ab7; */
+}
+
+.pull-right .navbar {
+    left: auto;
+    right: -1;
 }
