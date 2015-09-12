@@ -1,15 +1,31 @@
 
 	<div class="container">
-      <div class="header">
-        <nav>
-          <ul class="nav nav-pills pull-right">
+	<div class="header clearfix">
+	
+	<nav>
+	<!---Menu bar --->
+	<div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+		 <span class="icon-bar"></span>
+    </button>
+	<h3 class="text-muted">Devin Incerti</h3>
+	</div>						
+	
+	<!--- Navigation --->
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<ul class="nav nav-pills pull-right">
 			<li {% if page.url == '/index.html' %}class="active"{% endif %}><a href="/index.html">About</a></li>
             <li {% if page.url == '/cv.html' %}class="active"{% endif %}}><a href="/cv.html">CV</a></li>
             <li {% if page.url == '/code.html' %}class="active"{% endif %}><a href="/code.html">Code</a></li>
             <li {% if page.url == '/projects.html' %}class="active"{% endif %}><a href="/projects.html">Projects</a></li>
           </ul>
-        </nav>
-        <h3 class="text-muted">Devin Incerti</h3>
-      </div>
+	 </div>
+     </nav>
+	 
+	 </div> <!-- /header -->
 	 </div> <!-- /container -->
 	 
