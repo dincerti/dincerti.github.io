@@ -1,21 +1,52 @@
 
-	<div class="container">
-	<div class="header clearfix">
-	
-	<nav>
+<div class="container">
+<div class="header clearfix">
 
-		<ul class="nav nav-pills pull-right">
-			<li {% if page.url == '/index.html' %}class="active"{% endif %}><a href="/index.html">About</a></li>
-            <li {% if page.url == '/cv.html' %}class="active"{% endif %}}><a href="/cv.html">CV</a></li>
-            <li {% if page.url == '/code.html' %}class="active"{% endif %}><a href="/code.html">Code</a></li>
-            <li {% if page.url == '/projects.html' %}class="active"{% endif %}><a href="/projects.html">Projects</a></li>
-          </ul>
-	
-     </nav>
-     
-	 <h3 class="text-muted">Devin Incerti</h3>
+<!-- nav sm+ --> 
+<div class="hidden-xs">
+<nav>
+	<ul class="nav nav-pills pull-right">
+		<li {% if page.url == '/index.html' %}class="active"{% endif %}><a href="/index.html">About</a></li>
+		<li {% if page.url == '/cv.html' %}class="active"{% endif %}><a href="/cv.html">CV</a></li>
+		<li {% if page.url == '/code.html' or page.layout == 'rmd' %}class="dropdown active"{% else %} class="dropdown"{% endif %}>
+		<a class="dropdown-toggle" data-toggle="dropdown" href="code.html" role="button" aria-haspopup="true" aria-expanded="false">
+		Code <span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu">
+			<li><a href="code.html">Overview</a></li>
+			<li role="separator" class="divider"></li>
+			<li class="dropdown-header">Healthcare</li>
+			<li><a href="twopart.html">Two-part Models</a></li>
+			<li><a href="dynamic_twopart.html">Dynamic Two-part Models</a></li>
+		</ul>
+		<li {% if page.url == '/projects.html' %}class="active"{% endif %}><a href="/projects.html">Projects</a></li>
+	 </ul>
+</nav>
+<h3 class="text-muted">Devin Incerti</h3>
+</div>
 
-      
-	 </div> <!-- /header -->
-	 </div> <!-- /container -->
-	 
+<!-- nav xs -->
+<div id="nav-xs" class="visible-xs">
+   <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" >Devin Incerti</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/index.html">About</a></li>
+		<li><a href="/cv.html">CV</a></li>
+		<li><a href="/cv.html">Code</a></li>
+		<li><a href="/cv.html">Projects</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+</div> 
+
+
+
+
+</div> <!-- /header -->
+</div> <!-- /container -->
