@@ -111,3 +111,8 @@ max-width: 730px;
    background-color: #337ab7; */
 }
 
+.bs-sidebar .nav > .active > ul {
+    display: block;
+    margin-bottom: 8px;
+}
+
