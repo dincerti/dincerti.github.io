@@ -1,30 +1,35 @@
 
+<!-- nav sm+ --> 
 <div class="hidden-xs">
 <div class="container">
 <div class="header clearfix">
-
-<!-- nav sm+ --> 
-
 <nav>
 	<ul class="nav nav-pills pull-right">
 		<li {% if page.url == '/index.html' %}class="active"{% endif %}><a href="/index.html">About</a></li>
 		<li {% if page.url == '/cv.html' %}class="active"{% endif %}><a href="/cv.html">CV</a></li>
-		<li {% if page.url == '/code.html' or page.layout == 'rmd' %}class="dropdown active"{% else %} class="dropdown"{% endif %}>
-		<a class="dropdown-toggle" data-toggle="dropdown" href="code.html" role="button" aria-haspopup="true" aria-expanded="false">
-		Code <span class="caret"></span>
-		</a>
-		<ul class="dropdown-menu">
-			<li><a href="code.html">Overview</a></li>
-			<li role="separator" class="divider"></li>
-			<li class="dropdown-header">Healthcare</li>
-			<li><a href="twopart.html">Two-part Models</a></li>
-			<li><a href="dynamic_twopart.html">Dynamic Two-part Models</a></li>
-		</ul>
+		<li {% if page.url == '/code.html' or page.layout == 'rmd' %}class="active"{% endif %}><a href="/code.html">Code</a></li>
 		<li {% if page.url == '/projects.html' %}class="active"{% endif %}><a href="/projects.html">Projects</a></li>
 	 </ul>
 </nav>
 <h3 class="text-muted">Devin Incerti</h3>
 </div>
-
 </div> <!-- /header -->
 </div> <!-- /container -->
+
+<!-- table of contents button --> 
+{% if page.layout == 'rmd' %}
+	<div class="container">
+	<div class="btn-group">
+	  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+		Table of Contents <span class="caret"></span>
+	  </button>
+	  <ul class="dropdown-menu">
+				<li><a href="code.html">Overview</a></li>
+			<li role="separator" class="divider"></li>
+			<li class="dropdown-header">Healthcare</li>
+			<li><a href="twopart.html">Two-part Models</a></li>
+			<li><a href="dynamic_twopart.html">Dynamic Two-part Models</a></li>
+	  </ul>
+	</div>
+	</div> <!-- /container -->
+{% endif %}
