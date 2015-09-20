@@ -54,7 +54,7 @@ To illustrate, consider the second part of the two-part model and let $$\eta_{it
 $$
 \begin{aligned}
 \rm{Var}(\eta_{it})&=\sigma^2_\epsilon + \sigma_2^2\\
-\rm{Cov}(\eta_{it}, \eta_{is}) &= b_{2i} \; \rm{for}\; s\neq t\\
+\rm{Cov}(\eta_{it}, \eta_{is}) &= \sigma_2^2 \; \rm{for}\; s\neq t\\
 \rm{Cov}(\eta_{it}, \eta_{js}) &= 0\; \rm{for}\; s\neq t\; \rm{and}\; i \neq j.
 \end{aligned}
 $$
@@ -261,7 +261,7 @@ apply(cov.95, 1, mean)
 
 
 {% highlight text %}
-## [1] 0.950 0.959 0.949
+## [1] 0.946 0.950 0.948
 {% endhighlight %}
 The confidence intervals are working as intended as the true coefficient values are contained within the 95% confidence interval approximately 950 out of 1000 times.
 

@@ -56,7 +56,7 @@ To illustrate, consider the second part of the two-part model and let $$\eta_{it
 $$
 \begin{aligned}
 \rm{Var}(\eta_{it})&=\sigma^2_\epsilon + \sigma_2^2\\
-\rm{Cov}(\eta_{it}, \eta_{is}) &= b_{2i} \; \rm{for}\; s\neq t\\
+\rm{Cov}(\eta_{it}, \eta_{is}) &= \sigma_2^2 \; \rm{for}\; s\neq t\\
 \rm{Cov}(\eta_{it}, \eta_{js}) &= 0\; \rm{for}\; s\neq t\; \rm{and}\; i \neq j.
 \end{aligned}
 $$
