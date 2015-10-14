@@ -1,9 +1,16 @@
 - title: Main
   docs:
-  - code
-- title: Healthcare
+  - analytics
+- title: Regression
   docs:
   - twopart
+- title: Classification
+  docs:
+  - diabetes_highcost
+- title: Hierarchical Modeling
+  docs:
   - dynamic_twopart
+
+
 
 

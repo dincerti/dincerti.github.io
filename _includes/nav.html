@@ -15,7 +15,7 @@
       <ul class="nav navbar-nav ">
 			<li {% if page.url == '/index.html' %}class="active"{% endif %}><a href="/index.html">About</a></li>
 			<li {% if page.url == '/cv.html' %}class="active"{% endif %}><a href="/cv.html">CV</a></li>
-			<li {% if page.url == '/code.html' or page.layout == 'rmd' %}class="active"{% endif %}><a href="/code.html">Code</a></li>
+			<li {% if page.url == '/analytics.html' or page.layout == 'rmd' %}class="active"{% endif %}><a href="/analytics.html">Analytics</a></li>
 			<li {% if page.url == '/projects.html' %}class="active"{% endif %}><a href="/projects.html">Projects</a></li>
       </ul>
     </div><!--/.nav-collapse -->
@@ -32,7 +32,7 @@
 	<ul class="nav nav-pills pull-right">
 		<li {% if page.url == '/index.html' %}class="active"{% endif %}><a href="/index.html">About</a></li>
 		<li {% if page.url == '/cv.html' %}class="active"{% endif %}><a href="/cv.html">CV</a></li>
-		<li {% if page.url == '/code.html' or page.layout == 'rmd' %}class="active"{% endif %}><a href="/code.html">Code</a></li>
+		<li {% if page.url == '/analytics.html' or page.layout == 'rmd' %}class="active"{% endif %}><a href="/analytics.html">Analytics</a></li>
 		<li {% if page.url == '/projects.html' %}class="active"{% endif %}><a href="/projects.html">Projects</a></li>
 	 </ul>
 </nav>
@@ -49,10 +49,13 @@
 		Table of Contents <span class="caret"></span>
 	  </button>
 	  <ul class="dropdown-menu">
-				<li><a href="code.html">Overview</a></li>
+				<li><a href="analytics.html">Overview</a></li>
 			<li role="separator" class="divider"></li>
-			<li class="dropdown-header">Healthcare</li>
+			<li class="dropdown-header">Regression</li>
 			<li><a href="twopart.html">Two-part Models</a></li>
+			<li class="dropdown-header">Classification</li>
+			<li><a href="diabetes_highcost.html">Predicting Diabetes Costs</a></li>
+			<li class="dropdown-header">Hierarchical Modeling</li>
 			<li><a href="dynamic_twopart.html">Dynamic Two-part Models</a></li>
 	  </ul>
 	</div>

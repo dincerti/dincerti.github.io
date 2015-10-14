@@ -1,0 +1,25 @@
+
+	<div class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Devin Incerti</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav ">
+     	<li {% if page.url == '/index.html' %}class="active"{% endif %}><a href="/index.html">About</a></li>
+            <li {% if page.url == '/cv.html' %}class="active"{% endif %}}><a href="/cv.html">CV</a></li>
+            <li {% if page.url == '/code.html' %}class="active"{% endif %}><a href="/code.html">Code</a></li>
+            <li {% if page.url == '/projects.html' %}class="active"{% endif %}><a href="/projects.html">Projects</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+	<hr>
+  </div><!--/.container -->
+</div> <!--/.navbar -->
+
+
+	
