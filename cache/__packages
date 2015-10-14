@@ -1,0 +1,17 @@
+base
+knitr
+data.table
+ggplot2
+MASS
+foreign
+XML
+mvtnorm
+coda
+MCMCpack
+ineq
+Matrix
+foreach
+glmnet
+randomForest
+gplots
+ROCR
