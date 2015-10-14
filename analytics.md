@@ -14,9 +14,9 @@ The entire site is generated from plain text Markdown and HTML using [Jekyll](ht
 * Mathematical Modeling
 * Causal Inference
 * Regression
-    + [Two-part models](twopart.html)
+    + [Two-part Models](twopart.html)
 * Classification
-    + [Predicting high cost diabetes patients](diabetes_highcost.html)
+    + [Predicting High Cost Diabetes Patients](diabetes_highcost.html)
 * Hierarchical Modeling
-    + [Dynamic Two-part models](dynamic_twopart.html)    
+    + [Dynamic Two-part Models](dynamic_twopart.html)    
     
