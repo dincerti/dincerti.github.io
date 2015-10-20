@@ -8,50 +8,57 @@
 
 <url>
   <loc>http://devinincerti.com/</loc>
-  <lastmod>2015-09-12T05:42:58+00:00</lastmod>
-  <changefreq>hourly</changefreq>
-  <priority>1.00</priority>
+  <lastmod>2015-10-20T06:02:44+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://devinincerti.com/index.html</loc>
-  <lastmod>2015-09-12T05:42:58+00:00</lastmod>
-  <changefreq>hourly</changefreq>
-  <priority>0.80</priority>
+  <lastmod>2015-10-20T06:02:44+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://devinincerti.com/cv.html</loc>
-  <lastmod>2015-09-12T05:42:58+00:00</lastmod>
-  <changefreq>hourly</changefreq>
-  <priority>0.80</priority>
+  <lastmod>2015-10-20T06:02:44+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 <url>
-  <loc>http://devinincerti.com/code.html</loc>
-  <lastmod>2015-09-12T05:42:58+00:00</lastmod>
-  <changefreq>hourly</changefreq>
-  <priority>0.80</priority>
+  <loc>http://devinincerti.com/analytics.html</loc>
+  <lastmod>2015-10-20T06:02:44+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://devinincerti.com/projects.html</loc>
-  <lastmod>2015-09-12T05:42:58+00:00</lastmod>
-  <changefreq>hourly</changefreq>
-  <priority>0.80</priority>
+  <lastmod>2015-10-20T06:02:44+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 <url>
-  <loc>http://devinincerti.com/cv.pdf</loc>
-  <lastmod>2015-09-12T05:42:58+00:00</lastmod>
-  <changefreq>hourly</changefreq>
-  <priority>0.64</priority>
+  <loc>http://devinincerti.com/dincerti_cv.pdf</loc>
+  <lastmod>2015-10-20T06:02:44+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://devinincerti.com/markov_cohort.html</loc>
+  <lastmod>2015-10-20T06:02:44+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://devinincerti.com/twopart.html</loc>
-  <lastmod>2015-09-12T05:42:58+00:00</lastmod>
-  <changefreq>hourly</changefreq>
-  <priority>0.64</priority>
+  <lastmod>2015-10-20T06:02:44+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://devinincerti.com/diabetes_highcost.html</loc>
+  <lastmod>2015-10-20T06:02:44+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://devinincerti.com/dynamic_twopart.html</loc>
-  <lastmod>2015-09-12T05:42:58+00:00</lastmod>
-  <changefreq>hourly</changefreq>
-  <priority>0.64</priority>
+  <lastmod>2015-10-20T06:02:44+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://devinincerti.com/references.html</loc>
+  <lastmod>2015-10-20T06:02:44+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 </urlset>

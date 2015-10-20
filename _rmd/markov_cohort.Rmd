@@ -115,7 +115,7 @@ Armed with the simulation results, we can plot survival curves by treatment.
 ```
 Due to the estimated relative risk of disease progression, the survival curve for combination therapy lies above the curve for monotherapy. That said, costs are higher for combination therapy because of 1) additional drug costs for lamivudine and 2) patients being treated longer due to increased survival.
 
-To summarize the cost-effectiveness of the intervention, we can use the incremental cost-effectiveness ratio (ICER), or,
+To summarize the cost-effectiveness of the intervention we can use the incremental cost-effectiveness ratio (ICER), or,
 
 $$
 \begin{aligned}

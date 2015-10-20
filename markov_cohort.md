@@ -114,6 +114,9 @@ A cohort simulation uses the Makov model to measure the experiences of a hypothe
 We load an R function that simulates the costs and effects of an intervention given a transition matrix ```P```; an initial row vector ```z0``` containing the number of patients in each state at time $$0$$; the number of cycles ```ncycles```, the costs in each state; the quality of life weights; and a discount factor for future costs. (Note that, like the original paper, the discount factor is only applied to costs, although a discount could be applied to life-years as well.) 
 
 
+{% highlight r %}
+source("r/markov.R")
+{% endhighlight %}
 
 
 {% highlight r %}
@@ -203,7 +206,7 @@ ggplot(dat = surv.df, aes(x = cylce, y = surv, col = lab)) + geom_line() +
 <img src="/figs/survival-1.png" title="plot of chunk survival" alt="plot of chunk survival" style="display: block; margin: auto;" />
 Due to the estimated relative risk of disease progression, the survival curve for combination therapy lies above the curve for monotherapy. That said, costs are higher for combination therapy because of 1) additional drug costs for lamivudine and 2) patients being treated longer due to increased survival.
 
-To summarize the cost-effectiveness of the intervention, we can use the incremental cost-effectiveness ratio (ICER), or,
+To summarize the cost-effectiveness of the intervention we can use the incremental cost-effectiveness ratio (ICER), or,
 
 $$
 \begin{aligned}

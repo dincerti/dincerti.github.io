@@ -2,7 +2,7 @@
 layout: default
 ---
 
-These webpages contain code for analyzing a number of questions related to health care using quantitative methods. The analyses are separated into five categories based on quantitative technique. Categories were chosen because of their application to specific types of problems, although there is obviously significant overlap across categories. 
+These webpages contain code for analyzing a number of questions related to health care using quantitative methods. The analyses are separated into categories based on quantitative technique. Categories were chosen because of their application to specific types of problems, although there is obviously significant overlap across categories. 
 
 Methodologies include machine learning algorithms, Bayesian statistical techniques, experimental and quasi-experimental methods, and mathematical models. 
 
