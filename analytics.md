@@ -10,7 +10,7 @@ Each webpage contains an analysis written in [R markdown](http://rmarkdown.rstud
  
 ### Table of Contents
 * **Mathematical Modeling**
-  + [Markov Cohort Model](markov_cohort.html)
+  + [Markov Cohort Models](markov_cohort.html)
 * **Causal Inference**
 * **Regression**
     + [Two-part Models](twopart.html)
