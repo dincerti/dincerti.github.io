@@ -26,3 +26,4 @@ files <- list.files(path = file.path(path.site, "_rmd"), pattern = ".rmd",
 rmd2md(file = "twopart.Rmd")
 rmd2md(file = "dynamic_twopart.Rmd")
 rmd2md(file = "diabetes_highcost.Rmd")
+rmd2md(file = "markov_cohort.Rmd")

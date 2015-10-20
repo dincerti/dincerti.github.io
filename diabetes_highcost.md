@@ -11,7 +11,7 @@ Disease management programs provide organized, proactive care to patients with s
 
 This section uses a few machine learning techniques (logistic regression, ridge regression, and random forests) to predict future high cost diabetes patients.
 
-To replicate this page you will need this [R script](r/diabetes_highcost.R).  
+To replicate this page you will need the following [R script](r/diabetes_highcost.R) and [dataset](data/mepsdiab.csv). 
 
 ### Data
 We first load the data and examine some summary statistics.
@@ -153,33 +153,113 @@ library("ROCR")
 # predictions
 p.mat <- cbind(p1 = p.logistic, p2 = p.ridge[, 1], p3 = p.rf[, 2])
 labels.mat <- matrix(y.test, nrow = length(y.test), ncol = ncol(preds))
-pred <- prediction(p.mat, labels.mat)
+{% endhighlight %}
 
+
+
+{% highlight text %}
+## Error in ncol(preds): object 'preds' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
+pred <- prediction(p.mat, labels.mat)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in is.data.frame(labels): object 'labels.mat' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 # roc curve
 perf <- performance(pred, "tpr", "fpr")
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in performance(pred, "tpr", "fpr"): object 'pred' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 roc.dat <- data.frame(fpr = do.call("c", perf@x.values), 
                        tpr = do.call("c", perf@y.values))
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in do.call("c", perf@x.values): object 'perf' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 len <- do.call("c", lapply(perf@x.values, length))
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in lapply(perf@x.values, length): object 'perf' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 roc.dat$lab <- rep(c("Logistic regression", "Logistic ridge regression", 
                      "Random forest"), times = len)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in eval(expr, envir, enclos): object 'len' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 ggplot(roc.dat, aes(x = fpr, y = tpr, col = lab)) + geom_line() +
   xlab("False positive rate") +
   ylab("True positive rate") + theme(legend.title=element_blank()) + 
   theme(legend.position = "bottom")
 {% endhighlight %}
 
-<img src="/figs/roc-1.png" title="plot of chunk roc" alt="plot of chunk roc" style="display: block; margin: auto;" />
+
+
+{% highlight text %}
+## Error in ggplot(roc.dat, aes(x = fpr, y = tpr, col = lab)): object 'roc.dat' not found
+{% endhighlight %}
 The area under the ROC curve, or the AUC, can be used to summarize the performance of the models. It has a nice interpretation because it can be shown to be equal to the Wilcoxon rank-sum test, or as the proportion of random pairs consisting of a high cost and a non high-cost patient in which the model assigns a higher probability of being a high cost patient to the actual high cost patient.
 
 {% highlight r %}
 auc <- as.numeric(performance(pred, "auc")@y.values)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in performance(pred, "auc"): object 'pred' not found
+{% endhighlight %}
+
+
+
+{% highlight r %}
 print(auc)
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## [1] 0.8006998 0.8446820 0.8351444
+## Error in print(auc): object 'auc' not found
 {% endhighlight %}
 We can see that both the logistic ridge regression and the random forest yield similar results.
 

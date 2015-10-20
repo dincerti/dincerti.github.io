@@ -1,9 +1,9 @@
 
 {% comment %}
-Map grabs the code sections, giving us an array of arrays. Join, flattens all
+Map grabs the analytics sections, giving us an array of arrays. Join, flattens all
 the items to a comma delimited string. Split turns it into an array again.
 {% endcomment %}
-{% assign docs = site.data.code | map: 'docs' | join: ',' | split: ',' %}
+{% assign docs = site.data.analytics | map: 'docs' | join: ',' | split: ',' %}
 
 {% comment %}
 Because this is built for every page, lets find where we are in the ordered

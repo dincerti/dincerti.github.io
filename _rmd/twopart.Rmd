@@ -95,7 +95,7 @@ E[Y|Y > 0] &= \exp(X\beta) \times \rm{E}[\exp(\epsilon)|X].
 \end{aligned}
 $$
 
-The second term can be estimated using the Duan Smearing factor, which uses the empirical distribution of the errors. That is, letting $\phi(x) = \rm{E}[\exp(\epsilon) \vert X]$,
+The second term can be estimated using the Duan Smearing factor ([Duan83](references.html#Duan83)), which uses the empirical distribution of the errors. That is, letting $\phi(x) = \rm{E}[\exp(\epsilon) \vert X]$,
 
 $$
 \begin{aligned}
@@ -111,7 +111,7 @@ We can see that adjusting for non-normality makes almost no difference in the RM
 ### Predictive Simulation
 We have focused on estimating mean expenditures so the distribution of the error term has not been terribly important. In other cases we might want to construct prediction intervals or simulate the entire distribution of expenditures for a new population. 
 
-Here we will use simulation to compare predictions from the models to observed data. [Andrew Gelman and Jennifer Hill](http://www.stat.columbia.edu/~gelman/arm/) refer to this type of simulation as predictive simulation. 
+Here we will use simulation to compare predictions from the models to observed data. [Andrew Gelman and Jennifer Hill](references.html#GH07) refer to this type of simulation as predictive simulation. 
 
 We will consider three two-part models for health expenditures: a logistic-normal model, a logistic-lognormal model and a logistic-gamma model. For the normal and lognormal models we will assume that the error term is constant across individuals. Both the lognormal and gamma distributions have the desirable property that the variance is proportional to square of the mean.
 

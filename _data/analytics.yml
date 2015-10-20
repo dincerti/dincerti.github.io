@@ -1,6 +1,9 @@
 - title: Main
   docs:
   - analytics
+- title: Mathematical Modeling
+  docs:
+  - markov_cohort
 - title: Regression
   docs:
   - twopart

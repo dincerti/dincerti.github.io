@@ -116,3 +116,23 @@ max-width: 730px;
     margin-bottom: 8px;
 }
 
+/* definition lists */
+dl {
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0
+}
+dt {
+  float: left;
+  width: 13%;
+  padding: 0;
+  margin: 0
+  clear: left
+}
+dd {
+  float: left;
+  width: 87%;
+  padding: 0;
+  margin: 0
+}
