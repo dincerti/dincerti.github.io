@@ -28,11 +28,11 @@ In our example, HIV patients can be in one of the following 4 states at a given 
 
 **Transition Matrix**
 
-At any given points in time, the row vector $$z_{jt} = [z_{1jt}\; z_{2jt}\; z_{3jt}\; z_{4jt}]$$ represents the total number of HIV patients in each of the 4 states using treatment $$j$$ at time $$t$$. This vector, $$z_{jt}$$, changes over time according to a transition matrix, $$P_{jt}$$,
+At any given points in time, the row vector $$z_{kt} = [z_{1kt}\; z_{2kt}\; z_{3kt}\; z_{4kt}]$$ represents the total number of HIV patients in each of the 4 states using treatment $$k$$ at time $$t$$. This vector, $$z_{kt}$$, changes over time according to a transition matrix, $$P_{kt}$$,
 
 $$
 \begin{aligned}
-\underbrace{z_{jt}}_{1 \times 4} &= \underbrace{z_{j,t-1}}_{1 \times 4} \underbrace{P_{jt}}_{4 \times 4},
+\underbrace{z_{kt}}_{1 \times 4} &= \underbrace{z_{k,t-1}}_{1 \times 4} \underbrace{P_{kt}}_{4 \times 4},
 \end{aligned}
 $$
 
@@ -40,7 +40,7 @@ where
 
 $$
 \begin{aligned}
-P_{jt} &=
+P_{kt} &=
 \begin{bmatrix}
 p_{11} & p_{12} & p_{13} & p_{14}\\
 p_{21} & p_{22} & p_{23} & p_{24}\\
@@ -121,7 +121,7 @@ $$
 \end{aligned}
 $$
 
-where $$c_j$$ and $$e_j$$ refer to the costs and effects under treatment $$j$$ respectively. In R,
+where $$c_k$$ and $$e_k$$ refer to the costs and effects under treatment $$k$$ respectively. In R,
 ```{r icer}
 ```
 which suggest that a decision-maker should only approve combination therapy if he or she is willing to pay over ```r round(icer, 0)``` pounds for an additional life-year gained.
