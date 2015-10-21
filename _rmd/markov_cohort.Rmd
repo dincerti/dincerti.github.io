@@ -89,10 +89,8 @@ In R, we have:
 **Quality of Life Weights**
 
 Treatment effects are typically measured by quality-adjusted life-years (QALYs). However, we follow the original paper which measured effectiveness with (unadjusted) life-years. In mathematical terms, this means that the 4 states are weighted with the row vector $$[1\; 1\; 1\; 0]$$. 
-
 ```{r effects}
 ```
-
 ### Cohort Simulation in R
 A cohort simulation uses the Makov model to measure the experiences of a hypothetical cohort, say 1000 patients, over a set period of time (i.e. 20 years), under each treatment option. 
 

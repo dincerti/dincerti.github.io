@@ -1,3 +1,4 @@
+## @knitr jags_markov_cohort
 model {
 # lognormal distribution for relative risk
   rr ~ dlnorm(mu.lrr, tau.lrr)

@@ -4,6 +4,7 @@
 - title: Mathematical Modeling
   docs:
   - markov_cohort
+  - bayesian_markov_cohort
 - title: Regression
   docs:
   - twopart

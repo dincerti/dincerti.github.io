@@ -4,13 +4,13 @@ setwd("C:/Users/Devin/Dropbox/Projects/dincerti.github.io")
 rm(list=ls()) 
 
 ## ---- PARAMETERS -------------------------------------------------------------
-## @knitr transition_matrix
+## @knitr transition_table
 tt <- matrix(c(1251, 350, 116, 17,
              0, 731, 512, 15,
              0, 0, 1312, 437),
              ncol = 4, nrow = 3, byrow = TRUE)
 
-## @knitr relative risk
+## @knitr relative_risk
 rr.est <- .509
 lrr.est <- log(.509)
 lrr.upper <- log(.710)
@@ -24,28 +24,34 @@ alpha <- rep(1, S)
 mu.lrr <- lrr.est
 tau.lrr <- 1/lrr.se^2
 params <- c("rr", "p")
+jags.data <- list("mu.lrr", "tau.lrr", "S", "n", "alpha", "tt") 
 
 ## @knitr run_jags
 library("R2jags")
-jags.data <- list("mu.lrr", "tau.lrr", "S", "n", "alpha", "tt") 
+set.seed(100)
 jagsfit <- jags(data = jags.data, parameters.to.save = params,
                  model.file = "jags/markov_cohort.txt", n.chains = 3,
-                 n.iter = 10000)
+                 n.iter = 10000, n.thin = 5, progress.bar = "none")
+
+
+## @knitr jags_output
 print(jagsfit)
+
+## @knitr jags_combine_chains
 jagsfit.mcmc <- do.call("rbind", as.mcmc(jagsfit))
 
 ## @knitr conjugate_prior
 library(MCMCpack)
-summary(rdirichlet(nrow(jagsfit.mcmc), tt[1, ] + alpha[1])[, 1])
-summary(as.numeric(jagsfit.mcmc[, "p[1,1]"]))
+summary(rdirichlet(nrow(jagsfit.mcmc), tt[1, ] + alpha[1])[, 2])
+summary(as.numeric(jagsfit.mcmc[, "p[1,2]"]))
 
 ## ---- MARKOV MODEL -----------------------------------------------------------
-## @knitr parameters
+## @knitr costs_effects
 c.zidovudine <- 2278
 c.lamivudine <- 2086.50
 c.0 <- c(2756 + c.zidovudine, 3052 + c.zidovudine, 9007 + c.zidovudine, 0)
 c.1 <- c(c.0[1:3] + c.lamivudine, 0)
-ncycles <- 20
+qolw <- c(1, 1, 1, 0)
 
 ## @knitr transition_matrix
 TMatrix <- function(probs, rr){
@@ -60,19 +66,20 @@ TMatrix <- function(probs, rr){
 
 ## @knitr simulation
 source("r/markov.R")
+ncycles <- 20
 delta.c <- rep(NA, nrow(jagsfit.mcmc))
 delta.e <- rep(NA, nrow(jagsfit.mcmc))
 for (i in 1:nrow(jagsfit.mcmc)){
   tp <- TMatrix(probs = jagsfit.mcmc[i, 2:13], rr = jagsfit.mcmc[, "rr"][i])
-  sim0 <- MarkovCohort(P = tp$P0,  z0 = c(1000, 0, 0, 0), t = ncycles,
-                       costs = c.0, effects = c(1, 1, 1, 0), 
+  sim0 <- MarkovCohort(P = tp$P0,  z0 = c(1000, 0, 0, 0), ncycles = ncycles,
+                       costs = c.0, qolw = qolw, 
                        discount = 0.06)  
   sim1 <- MarkovCohort(P = c(replicate(2, tp$P1, simplify = FALSE), 
                              replicate(ncycles - 2, tp$P0, simplify = FALSE)),
-                       z0 = c(1000, 0, 0, 0), t = ncycles,
+                       z0 = c(1000, 0, 0, 0), ncycles = ncycles,
                        costs = c(replicate(2, c.1, simplify = FALSE),
                                  replicate(ncycles - 2, c.0, simplify = FALSE)),
-                       effects = c(1, 1, 1, 0), discount = 0.06)
+                       qolw = qolw, discount = 0.06)
   delta.c[i] <- (sum(sim1$c) - sum(sim0$c))
   delta.e[i] <- (sum(sim1$e) - sum(sim0$e))
 }
