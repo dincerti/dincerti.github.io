@@ -28,7 +28,7 @@ There are considerable differences in spending among those with diabetes, as the
 
 Since spending is highly concentrated disease management programs could potentially reduce costs significantly if they could identify future high spenders.
 
-### Modelling 
+### Modeling 
 For the purpose of this analysis, we will classify high cost patients as those in the upper 10th percentile of the spending distribution. The primary predictor variables (or features) are spending in the previous year and an indicator variable for being a high spender in the previous year. Other variables include age, self-reported health status, how diabetes is being treated (with diet, medication, and/or insulin), whether diabetes has caused kidney or eye problems, and [single-level clinical classification system (CCS) categories](https://www.hcup-us.ahrq.gov/toolssoftware/ccs/CCSUsersGuide.pdf) (i.e. comorbidities). 
 ```{r variables}
 ```
