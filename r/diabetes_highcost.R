@@ -83,7 +83,7 @@ library("ROCR")
 
 # predictions
 p.mat <- cbind(p1 = p.logistic, p2 = p.ridge[, 1], p3 = p.rf[, 2])
-labels.mat <- matrix(y.test, nrow = length(y.test), ncol = ncol(preds))
+labels.mat <- matrix(y.test, nrow = length(y.test), ncol = ncol(p.mat))
 pred <- prediction(p.mat, labels.mat)
 
 # roc curve
