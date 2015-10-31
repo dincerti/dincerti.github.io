@@ -19,5 +19,5 @@ Each webpage contains an analysis written in [R markdown](http://rmarkdown.rstud
   + [Predicting High Cost Diabetes Patients](diabetes_highcost.html)
 * **Hierarchical Modeling**
   + [Bayesian Meta-Analysis](bayesian_meta_analysis.html)  
-  + [Dynamic Two-part Models](dynamic_twopart.html)    
+  + [Two-part Random Effects for Longitudinal Data](twopart_re_longitudinal.html)    
     

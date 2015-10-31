@@ -1,12 +1,13 @@
 
-# This is the R code for the R Markdown file dynamic_twopart.Rmd
+# This is the R code for the R Markdown file twopart_re_longitudinal.R
 setwd("C:/Users/Devin/Dropbox/Projects/dincerti.github.io")
 
 ## ---- MORTALITY --------------------------------------------------------------
 ## @knitr lifetable
 library(XML)
-lt <- readHTMLTable("http://www.ssa.gov/oact/STATS/table4c6.html", 
-                    stringsAsFactors = FALSE)
+library(httr)
+lt <- GET("http://www.ssa.gov/oact/STATS/table4c6.html")
+lt <- readHTMLTable(rawToChar(lt$content), stringsAsFactors = F)
 lt <- lt[[2]][, c("V1", "V2")]
 lt <- lt[-c(1:2), ]
 lt$V1 <- as.numeric(lt$V1)
@@ -160,14 +161,14 @@ inits$Sigma <- riwish(v = 75, S = 79 * Sigma)
 inits$b <- cbind(b1$b1, b2$b2)
 
 ## @knitr gibbs
-source("r/dynamic_twopart_mcmc.R")
+source("r/twopart_re_mcmc.R")
 gibbs <- Gibbs(nsim = 10000, thin = 10, burn = 5000, y = dat$y, 
                x1 = x1, x2 = x2, ni = ni, id = dat$id, 
                priors = priors, init = inits)
-save(gibbs, file = "output/gibbs.RData")
+save(gibbs, file = "output/twopart_re_longitudinal.RData")
 
 ## @knitr convert_mcmc
-load("output/gibbs.RData")
+load("output/twopart_re_longitudinal.RData")
 library(coda)
 alpha.mcmc <- as.mcmc(gibbs$alpha)
 beta.mcmc <- as.mcmc(gibbs$beta)

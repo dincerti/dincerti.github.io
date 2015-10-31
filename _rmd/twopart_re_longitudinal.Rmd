@@ -1,17 +1,19 @@
 ---
 layout: rmd
-title: Dynamic Two-part Models
+title: Two-part Random Effects Models for Longitudinal Data
 ---
 * TOC
 {:toc}
-
+```{r echo=FALSE}
+read_chunk('r/twopart_re_longitudinal.R')
+```
 
 ### Overview
 This page describes the dynamic two-part model that I have used in my research (see [here](papers\longterm_spending.pdf)). It extends the [cross-sectional two-part model](twopart.html) to a longitudinal setting and provides the R code necessary for estimation. 
 
 With longitudinal data, it is necessary to model the persistence in spending from one period to the next. The model does this in two ways: first, it includes lagged dependent variables and second, it allows for individual specific random regression coefficients. I focus on the case in which only intercepts vary across individuals so the model can be referred to as a dynamic random-intercept two-part model.
 
-To replicate this page you will need this [R script](r/dynamic_twopart.R) and these [functions](r/dynamic_twopart_mcmc.R).  
+To replicate this page you will need this [R script](r/twopart_re_longitudinal.R) and these [functions](r/twopart_re_mcmc.R).  
 
 ### The Model
 Let $$d_{it}\equiv I(d_{it}^{\ast} > 0) = I(y_{it} > 0)$$ so that the latent variable $$d_{it}^{\ast}$$ describes whether expenditures are positive or zero. The model can then be written as,
@@ -71,131 +73,30 @@ $$
 where $$z_{it}$$ contains an intercept and age covariates, $$\kappa$$ is the corresponding vector of coefficients, and $$\Phi(\cdot)$$ is the cumulative distribution function (CDF) of the standard normal density. To obtain a reasonable estimate for $$\kappa$$, we can download  estimates of the probability of dying within one year by age from an actuarial life table published by Social Security using the `XML` package. For simplicity, we will use the death rates for males.
 
 The function `readHTMLTable` returns a list of HTML tables. We extract the first and second columns from the second table which contains the information we want.
-
-{% highlight r %}
-library(XML)
-lt <- readHTMLTable("http://www.ssa.gov/oact/STATS/table4c6.html", 
-                    stringsAsFactors = FALSE)
-lt <- lt[[2]][, c("V1", "V2")]
-lt <- lt[-c(1:2), ]
-lt$V1 <- as.numeric(lt$V1)
-lt$V2 <- as.numeric(lt$V2)
-colnames(lt) <- c("age", "mrate")
-{% endhighlight %}
+```{r lifetable, message = FALSE, warning=FALSE}
+```
 With the data in hand, we can model the death rates as a function of age. To ensure that coefficient estimates are on a reasonable scale and that the intercept has an interesting interpretation, we center and scale all age variables using the function `CSage`. Since we are assuming that death rates can be modeled with a probit model, it follows that $$\Phi^{-1}(p_{it}) = z_{it}^{T}\kappa$$ where $$p_{it}= Pr(m_{it}=1)$$. We can therefore estimate the regression coefficients with simple OLS.
-
-{% highlight r %}
-CSage <- function(x) (x - 65)/10
-lt$c_age <- CSage(lt$age)
-lt$qnorm_mrate <- qnorm(lt$mrate)
-mrate.lm <- lm(qnorm_mrate ~ c_age +  I(c_age^2) + I(c_age^3), data = lt)
-{% endhighlight %}
+```{r mort_fit}
+```
 The model fits the data quite well after age 25 or so, which suggests that we can predict mortality very accurately as a function of age.
-
-{% highlight r %}
-library(ggplot2)
-theme_set(theme_bw())
-lt$phat <- predict(mrate.lm, lt)
-ggplot(lt, aes(x = age, y = qnorm_mrate)) + geom_point(size = 1) + 
-  geom_line(aes(y = phat), col = "blue") +
-  xlab("Age") + ylab(expression(Phi^-1*"(mortality rate)"))
-{% endhighlight %}
-
-<img src="/figs/dynamic_twopart_mortplot-1.png" title="plot of chunk dynamic_twopart_mortplot" alt="plot of chunk dynamic_twopart_mortplot" style="display: block; margin: auto;" />
+```{r dynamic_twopart_mortplot}
+```
 
 ### Simulating Data
 A great way to understand a model is to simulate data according to the assumed data generating process. That is, first set the parameters to their "true" values and simulate the model given these parameter values. Next, estimate parameters based on the simulated data using a chosen statistical method and compare the estimated values to the true values.
 
 Before doing this, we will load a couple of R packages. The `mvtnorm` package can be used to draw the random intercepts from their bivariate normal distribution and the `data.table` package is useful for manipulating larger datasets. We should also set the seed to ensure that the results are reproducible.
-
-{% highlight r %}
-library(mvtnorm) # draw from multivariate normal
-library(data.table)
-set.seed(101)
-{% endhighlight %}
+```{r sim_setup, message = FALSE, warning = FALSE}
+```
 In order to simulate the model, we will need period $$0$$ data, which is assumed to be known as baseline. For simplicity, we will use small design matrices, $$x_{1}$$ and $$x_{2}$$, that contain an intercept, a covariate for age, and a function of lagged spending. The model is therefore only dependent on initial spending levels and age. The function `InitData` creates the necessary initial values for a desired sample size. Values for $$y$$ and age are drawn from distributions so that they are reasonably consistent with the distributions of observed health spending and age in the United States.
-
-{% highlight r %}
-InitData <- function(n){
-  d.0 <- rbinom(n, 1, .80)
-  y.0 <- d.0 * rlnorm(n, meanlog = 7.5, sdlog = 1)
-  usage <- data.frame(min = seq(0, 85, 5), max = c(seq(4, 85, 5), 120), 
-                      perc = c(6.5, 6.6, 6.7, 7.1, 7, 6.8, 6.5, 6.5, 6.8, 7.4,
-                               7.2, 6.4, 5.4, 4, 3, 2.4, 1.9, 1.8)) 
-  agegrp <- sample(nrow(usage), n, replace=TRUE, prob = usage$perc/100)
-  age.0 <- round(usage$min[agegrp] + runif(n) * (usage$max[agegrp] - usage$min[agegrp])) 
-  return(data.frame(age = age.0, y = y.0))
-}
-{% endhighlight %}
+```{r initdat_func}
+```
 The true values for the parameters are set as follows.
-
-{% highlight r %}
-alpha <- c(.5, .05, .5)
-beta <- c(6, .1, .25)
-kappa <- coef(mrate.lm)
-sigma2 <- 1
-Sigma <- matrix(c(.5, .25, .25, .3), nrow = 2, ncol = 2)
-{% endhighlight %}
+```{r true_params}
+```
 We can now create a function that simulates longitudinal data using the model. The simulation begins with a set number of individuals alive during period $$1$$. Expenditures are predicted for a chosen number of simulation periods, say $$T$$, although some individuals die before reaching period $$T$$. 
-
-{% highlight r %}
-# FUNCTION TO SIMULATE DATA
-sim <- function(sim.T = 5, sim.n = 10000, SIGMA, Alpha = alpha, 
-                Beta = beta, Kappa = kappa, Sigma2 = sigma2) {
-  
-  # RANDOM INTERCEPTS
-  b <- rmvnorm(sim.n, mean = rep(0, 2), sigma = SIGMA) 
-  
-  # INITIALIZE LOOP
-  init <- InitData(sim.n)
-  N <- sim.n * sim.T
-  age <- c(init$age, rep(NA, N))
-  l_d <- l_ly <- rep(NA, N + sim.n)  
-  m <- c(rep(0, sim.n), rep(NA, N))
-  d <- c(1 * (init$y > 0), rep(NA, N))
-  y <- c(init$y, rep(NA, N))
-  l_obs <- 1:sim.n 
-  
-  # RECURSIVELY SIMULATE MODEL
-  for (t in 1:sim.T){
-    # update time varying data
-    obs <- (l_obs[1] + sim.n):(l_obs[sim.n] + sim.n)
-    age[obs] <- age[l_obs] + 1
-    c_age <- CSage(age[obs])
-    l_d[obs] <- d[l_obs]
-    l_ly[obs] <- ifelse(y[l_obs] > 0, log(y[l_obs]), 0)
-    x1 <- as.matrix(data.table(int = 1, c_age = c_age, l_d = l_d[obs]))
-    x2 <- as.matrix(data.table(int = 1, c_age = c_age, l_ly = l_ly[obs]))
-    
-    # mortality 
-    z <- as.matrix(data.table(int = 1, c_age = c_age, c_age2 = c_age^2, 
-                              c_age3 = c_age^3))
-    m.tmp <- rbinom(sim.n, 1, pnorm(z %*% Kappa))
-    m[obs] <- ifelse(m[l_obs] == 0, m.tmp, 1) # set m = 1 in all periods after death
-    
-    # expenditures
-    d[obs] <- rbinom(sim.n, 1, pnorm(x1 %*% Alpha + b[, 1]))
-    y[obs] <- d[obs] * rlnorm(sim.n, meanlog = x2 %*% Beta + b[, 2], 
-                              sdlog = sqrt(Sigma2))
-    
-    # counter
-    l_obs <- obs 
-  }
-  
-  # RESULTS
-  dat <- data.table(id = rep(seq(1, sim.n), (sim.T + 1)), 
-                    year = rep(seq(0, sim.T), each = sim.n),
-                    y = y, d = d, m = m, b1 = rep(b[, 1], each = (sim.T + 1)), 
-                    b2 = rep(b[, 2], each = (sim.T + 1)),
-                    age = age, l_d = l_d, l_ly = l_ly)
-  dat <- dat[order(id, year)]
-  dat[, int := 1]
-  dat[, c_age := CSage(age)]
-  dat[, ly := ifelse(y > 0, log(y), NA)]
-  dat <- dat[m == 0] # drop individuals after death
-  return(dat)
-}
-{% endhighlight %}
+```{r sim_func}
+```
 The function can be summarized as follows. First, it draws the random intercepts from their bivariate normal distribution. Second, it draws period $$0$$ data and initializes the vectors that we would like to store for analysis. Third, it recursively simulates the model for the desired number of periods by:
 
 1. Updating the design matrices to reflect spending in the previous period and being 1 year older.
@@ -207,62 +108,17 @@ The simulation ultimately returns a dataset with all relevant variables from the
 
 ### A Model with No Random Intercepts
 Before moving on to the full model, we will investigate a model in which everyone has the same intercept. This is similar to a [cross-sectional two-part model](twopart.html) except that it includes lagged dependent variables. We will simulate data for 10, 000 individuals over 5 periods using the `sim` function.
-
-{% highlight r %}
-library(mvtnorm) 
-dat <- sim(SIGMA = Sigma * 0)
-dat <- dat[year > 0]
-{% endhighlight %}
+```{r sim_noint}
+```
 The parameters can be estimated using a probit model for the first part and OLS for the second part. The sample size is reasonably large so the estimated parameters should be close to their true values. 
-
-{% highlight r %}
-d.probit <- glm(d ~ c_age + l_d, family=binomial(link=probit), dat)
-cbind(coef(d.probit), confint.default(d.probit), alpha)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-##                            2.5 %     97.5 % alpha
-## (Intercept) 0.4974950 0.46780679 0.52718311  0.50
-## c_age       0.0491027 0.04329019 0.05491521  0.05
-## l_d         0.5017248 0.47327538 0.53017420  0.50
-{% endhighlight %}
+```{r d_probit}
+```
 As expected, the estimated parameters are very close to the true values and that they fall within the 95% confidence intervals. The OLS estimates are more precisely estimated and even closer to the true values.
-
-{% highlight r %}
-ly.lm <- lm(ly ~ c_age + l_ly, dat)
-cbind(coef(ly.lm), confint(ly.lm), beta)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-##                             2.5 %    97.5 % beta
-## (Intercept) 5.99624297 5.97006151 6.0224244 6.00
-## c_age       0.09924079 0.09458576 0.1038958 0.10
-## l_ly        0.25130232 0.24795744 0.2546472 0.25
-{% endhighlight %}
+```{r ly_lm}
+```
 it is important to note however that although the confidence intervals worked for this particular simulation, we can't be sure that the coverage probabilities are correct. To check coverage probabilities we would need to simulate the data multiple times, estimate the parameters for each simulation, and check whether the true values were contained within the 95% confidence intervals for 95% of the simulations. As an example, let's check coverage for the second part of the model by simulating data 1000 times,
-
-{% highlight r %}
-nsims <- 1000
-cov.95 <- matrix(NA, length(beta), nsims)
-for (i in 1:nsims){
-  dat <- sim(sim.n = 1000, SIGMA = Sigma * 0) 
-  lm.sim <- lm(ly ~ c_age + l_ly, dat[year > 0])
-  beta.hat <- coef(lm.sim)
-  beta.se <- summary(lm.sim)$coef[, 2]
-  cov.95[, i] <- abs(beta - beta.hat) < abs(qnorm(.025)) * beta.se
-}
-apply(cov.95, 1, mean)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## [1] 0.946 0.950 0.948
-{% endhighlight %}
+```{r cov95, cache = TRUE}
+```
 The confidence intervals are working as intended as the true coefficient values are contained within the 95% confidence interval approximately 950 out of 1000 times.
 
 ### MCMC
@@ -286,119 +142,27 @@ $$
 
 where $y$ is the stacked vector of $$y_{it}$$ and there are $$n$$ individuals. 
 
-A [Gbbs](https://en.wikipedia.org/wiki/Gibbs_sampling) sampling algorithm estimates the parameters by partitioning the joint posterior distribution into conditional distributions. For full details see Appendix C [here](..\papers\longterm_spending.pdf). The R function `gibbs` contained in the R file [dynamic_twopart_mcmc.R](../r/dynamic_twopart_mcmc.R) implements the Gibbs sampler. The function `gibbs` relies on five functions which sample $$\alpha$$, $$\beta$$, $$\sigma^2_\epsilon$$, $$b_i$$ and $$\Sigma_b$$. Conjugate priors were chosen for all of the parameters except $$b_i$$ so sampling is straightforward. The conditional distribution of $$b_i$$ is nonstandard so it is sampled using a random-walk [Metropolis](https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm) step.
+A [Gbbs](https://en.wikipedia.org/wiki/Gibbs_sampling) sampling algorithm estimates the parameters by partitioning the joint posterior distribution into conditional distributions. For full details see Appendix C [here](papers\longterm_spending.pdf). The R function `gibbs` contained in the R file [twopart_re_mcmc.R](r/twopart_re_mcmc.R) implements the Gibbs sampler. The function `gibbs` relies on five functions which sample $$\alpha$$, $$\beta$$, $$\sigma^2_\epsilon$$, $$b_i$$ and $$\Sigma_b$$. Conjugate priors were chosen for all of the parameters except $$b_i$$ so sampling is straightforward. The conditional distribution of $$b_i$$ is nonstandard so it is sampled using a random-walk [Metropolis](https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm) step.
 
 Before implementing the Gibbs sampler we will simulate data with random intercepts. 
-
-{% highlight r %}
-dat <- sim(sim.T = 5, SIGMA = Sigma)
-dat <- dat[year > 0]
-ni <- dat[, .N, by = "id"]$N
-x1 <- as.matrix(dat[, .(int, c_age, l_d)])
-x2 <- as.matrix(dat[, .(int, c_age, l_ly)])
-b1 <- dat[, .(b1 = mean(b1)), by = "id"] 
-b2 <- dat[, .(b2 = mean(b2)), by = "id"] 
-{% endhighlight %}
+```{r sim}
+```
 We must then specify priors and initial values. We need the `MCMCpack` package to sample from an inverse Wishart distribution. 
-
-{% highlight r %}
-library(MCMCpack)   # iwish distribution used in updating Sigma
-priors <- list(malpha = rep(0, ncol(x1)), Valpha = diag(10, ncol(x1)), 
-               mbeta = rep(0, ncol(x2)), Vbeta = diag(10, ncol(x2)),
-               sigma2.shape = 1, sigma2.rate = 1,
-               Sigma.v = 3, Sigma.S = diag(2))
-inits <- list()
-inits$alpha <- rnorm(length(alpha), coef(d.probit), summary(d.probit)$coef[, 2])
-inits$beta <- rnorm(length(beta), coef(ly.lm), summary(ly.lm)$coef[, 2])
-inits$sigma2 <- rnorm(1, summary(ly.lm)$sigma^2, .2)
-inits$Sigma <- riwish(v = 75, S = 79 * Sigma)
-inits$b <- cbind(b1$b1, b2$b2)
-{% endhighlight %}
+```{r mcmc_init, message = FALSE, warning=FALSE}
+```
 The Gibbs sampler is run on 10,000 iterations. The sequence is thinned by keeping every 10th draw and the first 5,000 iterations are discarded as burn-in. The simulation takes around 17 minutes on my computer, so it is not a bad idea to save the output.
-
-{% highlight r %}
-source("r/dynamic_twopart_mcmc.R")
-gibbs <- Gibbs(nsim = 10000, thin = 10, burn = 5000, y = dat$y, 
-               x1 = x1, x2 = x2, ni = ni, id = dat$id, 
-               priors = priors, init = inits)
-save(gibbs, file = "output/gibbs.RData")
-{% endhighlight %}
+```{r gibbs, eval = FALSE, cache = TRUE}
+```
 The simulated posterior densities are returned in a list. It is useful to convert the parameter vectors and matrices to a Markov Chain Monte Carlo object using the `coda` package.
-
-{% highlight r %}
-library(coda)
-alpha.mcmc <- as.mcmc(gibbs$alpha)
-beta.mcmc <- as.mcmc(gibbs$beta)
-sigma2.mcmc <- as.mcmc(gibbs$sigma2)
-Sigma.mcmc <- as.mcmc(gibbs$Sigma) 
-{% endhighlight %}
+```{r convert_mcmc, eval = TRUE, echo = -1, cache = TRUE}
+```
 Before summarizing the posterior densities, we must test to see whether our chains have converged. Convergence can be inspected visually with a traceplot, which plots a draw from the posterior density at each iteration against the iteration number. A chain that has converged should have reached a stationary distribution with a relatively constant mean and variance. The parameter values should jump around the posterior density rather than getting stuck in certain regions. To illustrate, consider the traceplot for $$\sigma^2_\epsilon$$.
-
-{% highlight r %}
-plot(sigma2.mcmc, density = FALSE, 
-     main = expression("Traceplot of"~sigma[epsilon]^2))
-{% endhighlight %}
-
-<img src="/figs/dynamic_twopart_traceplot-1.png" title="plot of chunk dynamic_twopart_traceplot" alt="plot of chunk dynamic_twopart_traceplot" style="display: block; margin: auto;" />
+```{r dynamic_twopart_traceplot}
+```
 The variance parameter appears to have converged; however, this plot could could be misleading if $$\sigma^2_\epsilon$$ has only converged to a local region and has not explored the full posterior. It is, in general, a good idea to run multiple chains with dispersed starting values to ensure that this is not the case. The Gelman-Rubin convergence diagnostic can then be used to test convergence. We will not do that here to keep things simple, but it is good practice.
 
 Now lets look at the posterior quantiles for some of the parameters and compare them to their true values.
-
-{% highlight r %}
-cbind(summary(alpha.mcmc)$quant, alpha)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-##             2.5%       25%        50%        75%      97.5% alpha
-## int   0.44046571 0.4722581 0.48636551 0.50258775 0.53487785  0.50
-## c_age 0.03893628 0.0450013 0.04838949 0.05156439 0.05795736  0.05
-## l_d   0.46599560 0.4957959 0.50779076 0.52182250 0.54288219  0.50
-{% endhighlight %}
-
-
-
-{% highlight r %}
-cbind(summary(beta.mcmc)$quant, beta)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-##             2.5%       25%       50%       75%     97.5% beta
-## int   5.97318381 5.9944066 6.0052975 6.0169836 6.0404721 6.00
-## c_age 0.09617806 0.1005619 0.1028311 0.1053711 0.1100077 0.10
-## l_ly  0.24661444 0.2495093 0.2511423 0.2526172 0.2553920 0.25
-{% endhighlight %}
-
-
-
-{% highlight r %}
-c(summary(sigma2.mcmc)$quant, sigma2)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-##      2.5%       25%       50%       75%     97.5%           
-## 0.9849518 0.9960281 1.0024497 1.0091080 1.0211294 1.0000000
-{% endhighlight %}
-
-
-
-{% highlight r %}
-cbind(summary(Sigma.mcmc)$quant, c(Sigma))
-{% endhighlight %}
-
-
-
-{% highlight text %}
-##              2.5%       25%       50%       75%     97.5%     
-## Sigma11 0.4384404 0.4661165 0.4820910 0.4999167 0.5439414 0.50
-## Sigma12 0.2193016 0.2323016 0.2398776 0.2474791 0.2615161 0.25
-## Sigma12 0.2193016 0.2323016 0.2398776 0.2474791 0.2615161 0.25
-## Sigma22 0.2787302 0.2915340 0.2988604 0.3068722 0.3204585 0.30
-{% endhighlight %}
+```{r post_quantiles}
+```
 The estimated parameters seem to be converging to their true values, which suggests that the Bayesian algorithm is working as intended. 
 

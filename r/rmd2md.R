@@ -24,7 +24,7 @@ files <- list.files(path = file.path(path.site, "_rmd"), pattern = ".rmd",
 
 # convert
 rmd2md(file = "twopart.Rmd")
-rmd2md(file = "dynamic_twopart.Rmd")
+rmd2md(file = "twopart_re_longitudinal.Rmd")
 rmd2md(file = "diabetes_highcost.Rmd")
 rmd2md(file = "markov_cohort.Rmd")
 rmd2md(file = "bayesian_markov_cohort.Rmd")

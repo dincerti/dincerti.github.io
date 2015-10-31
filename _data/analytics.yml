@@ -14,7 +14,7 @@
 - title: Hierarchical Modeling
   docs:
   - bayesian_meta_analysis
-  - dynamic_twopart
+  - twopart_re_longitudinal
 
 
 
