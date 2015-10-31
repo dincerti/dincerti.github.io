@@ -1,0 +1,145 @@
+---
+layout: rmd
+title: Bayesian Meta-Analysis
+---
+* TOC
+{:toc}
+```{r echo=FALSE}
+read_chunk('r/bayesian_meta_analysis.R')
+```
+
+### Overview
+Meta-analysis is frequently used to summarize results from multiple research studies. Since studies can be thought of as [exchangeable](https://en.wikipedia.org/wiki/Bayesian_hierarchical_modeling#Exchangeability), it is natural to analyze them using a hierarchical structure. 
+
+This page uses a Bayesian hierarchical model to conduct a meta-analysis of 9 randomized controlled trials (RCTs) of breast cancer screening. The analysis first replicates the frequentist results reported in [Marm13](references.html#Marm13) and then reexamines them in a Bayesian framework. The RCTs used in the meta-analysis are summarized in more detail by [GJ11](references.html#GJ11).
+
+To replicate this page you will need the following [R](r/bayesian_meta_analysis.R) and [Stan](stan/bayesian_meta_analysis.stan) scripts. 
+
+### Previous RCTs and Relative Risks
+We begin by placing data from previous trials into a data frame using the summaries provided in [GJ11](references.html#GJ11). The treatment (group 1) is screening with mammography and the control (group 0) is no screening. The outcome in the treatment and control groups for study $$j$$, $$d_{1j}$$ and $$d_{0j}$$ respectively, is the number of breast cancer deaths during 13 years of follow up for women at least 50 years of age. There are $$n_{0j}$$ and $$n_{1j}$$ patients in the treatment and control groups respectively. 
+
+```{r rcts}
+```
+
+The relevant statistic for the meta-analysis is the relative risk ratio, or $$p_{1j}$$/$$p_{0j}$$, where $$p_{1j} = d_{1j}/n_{1j}$$ and $$p_{0j} = d_{0j}/n_{0j}$$. We work with the log of the relative risk ratio, $$y_j = log(p_{1j}) - log(p_{0j})$$, because it is approximately normally distributed even in relatively small samples. We can calculate the variance of each term of $$y_j$$ by treating $$p_{1j}$$ and $$p_{0j}$$ as sample proportions and using the [delta method](https://en.wikipedia.org/wiki/Delta_method), so that the variance of $$y_j$$ is,
+
+$$
+\begin{aligned}
+\sigma^2_j &\approx \frac{1 - p_{1j}}{n_{1j}p_{1j}} + \frac{1 - p_{0j}}{n_{0j}p_{0j}}.  \\
+\end{aligned}
+$$
+
+We can then calculate a point estimates for the relative risk in each study as well as a 95 percent confidence interval.
+
+```{r relative_risk}
+```
+
+The results can be visualized nicely by creating a [forest plot](https://en.wikipedia.org/wiki/Forest_plot) with the `metafor` package.
+
+```{r forest_plot}
+```
+
+### Hiearchical Model
+The results from the separate RCTs can be modeled using a hierarchical model. We use the fact that the log of the relative risk is approximately normally distributed and *assume* that the random effects follow a normal distribution,
+
+$$
+\begin{aligned}
+y_j &\sim N(\theta_j, \sigma^2_j)  \\
+\theta_j &\sim N(\mu, \tau),
+\end{aligned}
+$$
+
+where $$\sigma^2_j$$ is assumed to be known with certainty (this assumption is not problematic because the binomial variances in each study are estimated precisely due to the large sample sizes). Meta-analyses are typically concerned with the overall mean, $$\mu$$.
+
+There are, in general, three ways to estimate the random effects, $$\theta_j$$.
+
+* *No-pooling:* there is a separate model for each study and $$\theta_j=y_j$$. This is a special case of the hierarchical model in which $$\tau = \infty$$.
+* *Complete-pooling:* patients in each study are random samples from a common distribution so $$\theta_j = \mu$$. This is a special case of the hierarchical model in with $$\tau = 0$$.
+* *Partial-pooling:* the hierarchical model is a compromise between the no-pooling and the complete-pooling estimates. In this case $$\tau$$ is unknown and $$\theta_j$$ is closer to $$\mu$$ when $$\tau$$ is small relative to $$\sigma^2_j$$, and closer to $$y_j$$ when the reverse is true.
+
+### Estimation
+
+#### No-pooling Estimates
+A fixed-effect meta-analysis model completely pools the relative risk estimates across studies. The overall mean is commonly estimated by taking an inverse-variance weighted average of studies. This can be done in using the `rma` function in the `metafor` package. 
+
+```{r fixed_effects}
+```
+
+The relative risk and 95 percent confidence intervals are identical to the fixed-effect meta-analysis results reported in [GJ11](references.html#GJ11). We can check to see that the point estimate is identical to taking a weighted average of the relative risks in the RCTs.
+
+```{r weighed_mean}
+```
+
+
+#### Maximum Likelihood Estimation
+A hierarchical model applied to meta-analysis is typically referred to as a random-effect meta-analysis model in the medical literature. The parameters of the hierarchical model can be estimated in either a frequentist or a Bayesian framework. In a frequentist setup, point estimates (rather than probability distributions) for the parameters are estimated. This can be done in a number of ways, but here we will estimate the parameters with restricted maximum likelihood (REML) using the `rma` function.
+
+```{r random_effects}
+```
+
+This analysis reproduces the results reported in [Marm13](references.html#Marm13).
+
+#### Bayesian Estimation
+One problem with the maximum likelihood approach is that it does not account for uncertainty in $$\tau$$ and produces confidence intervals for $$\mu$$ that are too narrow. A Bayesian model that produces complete probability distributions for each parameter can be estimated using the probabilistic programming language [Stan](http://mc-stan.org/). We begin by preparing the data.
+
+```{r stan_data}
+```
+
+The model is specified in the file [bayesian_meta_analysis.stan](stan/bayesian_meta_analysis.stan). Note that we can rewrite the upper-level model as $$\theta_j =  \mu + \tau \eta$$ where $$\eta \sim N(0, 1)$$, which speeds up the Stan code. Furthermore, $$\mu$$ and $$\tau$$ are given uniform priors.
+
+{% highlight stan %}
+data {
+  int<lower=0> J; // number of trials 
+  real y[J]; // estimated log relative risk
+  real<lower=0> sigma[J]; // se of log relative risk
+}
+parameters {
+  real mu; 
+  real<lower=0> tau;
+  real eta[J];
+}
+transformed parameters {
+  real theta[J];
+  for (j in 1:J)
+    theta[j] <- mu + tau * eta[j];
+}
+model {
+  eta ~ normal(0, 1);
+  y ~ normal(theta, sigma);
+}
+{% endhighlight %}
+
+We fit the model and extract samples from the joint posterior distribution.
+
+```{r stan_fit, results = "hide", warning = FALSE, cache = TRUE}
+```
+
+As expected, the 95 percent credible interval for the exponential of the overall mean is slightly wider that the 95 percent confidence interval produced using REML.
+
+```{r ci_mu}
+```
+
+This addditional uncertainty comes from averaging over $$\tau$$, which has a rather wide probability distribution. 
+
+```{r ci_tau}
+```
+
+The effects, $$\theta_j$$, are shrunk toward the overall mean, $$\mu$$. The following plot examines the degree of shrinkage by comparing the effects from the Bayesian model to the relative risks when each study is analyzed separately. 
+
+```{r theta_plot, fig.height = 6, fig.width = 8}
+```
+
+There is considerable shrinkage and the degree of shrinkage is larger for studies where the relative risks are estimated less precisely. The 95 percent credible intervals using the Bayesian approach are also narrower than the 95 percent confidence intervals from the individual studies because the hierarchical model pools information across RCTs
+
+Although most meta-anlayes focus on the overall mean, there are other quantities of interest that may be more meaningful. For example, it might me more useful to predict the effect of mammography screening in a new population by making a prediction about a new study effect, say $$\tilde{\theta}_j$$, rather than from $$\mu$$. Predictions in a new population can be made very easily in a Bayesian framework because the study effects are assumed to be exchangable; that is, we can simulate the posterior distribution of $$\tilde{\theta_j}$$ by drawing $$\tilde{\theta}_j \sim N(\mu, \tau)$$ using the values of $$\mu$$ and $$\tau$$ drawn from the posterior simulation.
+
+```{r prediction}
+```
+
+Although the posterior medians are similar, the 95 percent credible interval for $$exp(\tilde{\theta}_j)$$ is much wider than for $$exp(\mu)$$.
+
+```{r prediction_ci}
+```
+
+
+
