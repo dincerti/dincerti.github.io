@@ -14,9 +14,10 @@ Each webpage contains an analysis written in [R markdown](http://rmarkdown.rstud
   + [Bayesian Markov Cohort Models](bayesian_markov_cohort.html)
 * **Causal Inference**
 * **Regression**
-    + [Two-part Models](twopart.html)
+  + [Two-part Models](twopart.html)
 * **Classification**
-    + [Predicting High Cost Diabetes Patients](diabetes_highcost.html)
+  + [Predicting High Cost Diabetes Patients](diabetes_highcost.html)
 * **Hierarchical Modeling**
-    + [Dynamic Two-part Models](dynamic_twopart.html)    
+  + [Bayesian Meta-Analysis](bayesian_meta_analysis.html)  
+  + [Dynamic Two-part Models](dynamic_twopart.html)    
     

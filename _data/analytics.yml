@@ -13,6 +13,7 @@
   - diabetes_highcost
 - title: Hierarchical Modeling
   docs:
+  - bayesian_meta_analysis
   - dynamic_twopart
 
 
