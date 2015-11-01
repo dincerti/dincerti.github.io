@@ -44,6 +44,7 @@ c(exp(me.re$b), exp(me.re$ci.lb), exp(me.re$ci.ub))
 ## ---- BAYESIAN META ANALYSIS -------------------------------------------------
 ## @knitr stan_data
 library("rstan")
+set.seed(101)
 J <- nrow(rct)
 stan.dat <- list(J = J, y = rct$lrr, sigma = rct$lse)
 
@@ -67,9 +68,10 @@ p.dat <- rbind(p.dat, rct[, c("lower", "upper", "rr")])
 p.dat$lab <- rep(c("Theta", "Y"), each = J)
 p.dat$id <- rep(seq(9, 1), 2)
 p.dat$idlab <- factor(p.dat$id, labels = rev(paste(rct$study, rct$year, sep = ", ")))
+p.dat$yint <- mean(exp(post$mu))
 ggplot(p.dat, aes(x = idlab, y = rr, ymin = lower, ymax = upper, col = lab)) +  
   geom_pointrange(aes(col = lab), position = position_dodge(width = 0.50)) +
-  coord_flip() + geom_hline(aes(yintercept = mean(exp(post$mu))), lty = 2) +  xlab("") + 
+  coord_flip() + geom_hline(aes(yintercept = yint), lty = 2) +  xlab("") + 
   ylab("")  + theme(legend.position="bottom") + 
   scale_colour_discrete(name="", 
                         labels = c("Theta" = bquote("Random effect:"~exp(theta[J])~" "),

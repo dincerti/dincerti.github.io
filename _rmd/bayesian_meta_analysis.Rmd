@@ -16,7 +16,7 @@ This page uses a Bayesian hierarchical model to conduct a meta-analysis of 9 ran
 To replicate this page you will need the following [R](r/bayesian_meta_analysis.R) and [Stan](stan/bayesian_meta_analysis.stan) scripts. 
 
 ### Previous RCTs and Relative Risks
-We begin by placing data from previous trials into a data frame using the summaries provided in [GJ11](references.html#GJ11). The treatment (group 1) is screening with mammography and the control (group 0) is no screening. The outcome in the treatment and control groups for study $$j$$, $$d_{1j}$$ and $$d_{0j}$$ respectively, is the number of breast cancer deaths during 13 years of follow up for women at least 50 years of age. There are $$n_{0j}$$ and $$n_{1j}$$ patients in the treatment and control groups respectively. 
+We begin by placing data from previous trials into a data frame using the summaries provided in [GJ11](references.html#GJ11). The treatment (group 1) is screening with mammography and the control (group 0) is no screening. The outcome in the treatment and control groups for study $$j$$, $$d_{1j}$$ and $$d_{0j}$$ respectively, is the number of breast cancer deaths during 13 years of follow up for women at least 50 years of age. There are $$n_{1j}$$ and $$n_{0j}$$ patients in the treatment and control groups respectively. 
 
 ```{r rcts}
 ```
@@ -36,7 +36,7 @@ We can then calculate a point estimates for the relative risk in each study as w
 
 The results can be visualized nicely by creating a [forest plot](https://en.wikipedia.org/wiki/Forest_plot) with the `metafor` package.
 
-```{r forest_plot}
+```{r forest_plot, warning = FALSE}
 ```
 
 ### Hiearchical Model
@@ -82,7 +82,7 @@ This analysis reproduces the results reported in [Marm13](references.html#Marm13
 #### Bayesian Estimation
 One problem with the maximum likelihood approach is that it does not account for uncertainty in $$\tau$$ and produces confidence intervals for $$\mu$$ that are too narrow. A Bayesian model that produces complete probability distributions for each parameter can be estimated using the probabilistic programming language [Stan](http://mc-stan.org/). We begin by preparing the data.
 
-```{r stan_data}
+```{r stan_data, warning = FALSE, message = FALSE}
 ```
 
 The model is specified in the file [bayesian_meta_analysis.stan](stan/bayesian_meta_analysis.stan). Note that we can rewrite the upper-level model as $$\theta_j =  \mu + \tau \eta$$ where $$\eta \sim N(0, 1)$$, which speeds up the Stan code. Furthermore, $$\mu$$ and $$\tau$$ are given uniform priors.
@@ -111,7 +111,7 @@ model {
 
 We fit the model and extract samples from the joint posterior distribution.
 
-```{r stan_fit, results = "hide", warning = FALSE, cache = TRUE}
+```{r stan_fit, results = "hide", warning = FALSE, cache = FALSE}
 ```
 
 As expected, the 95 percent credible interval for the exponential of the overall mean is slightly wider that the 95 percent confidence interval produced using REML.

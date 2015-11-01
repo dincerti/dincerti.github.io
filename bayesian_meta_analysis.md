@@ -14,7 +14,7 @@ This page uses a Bayesian hierarchical model to conduct a meta-analysis of 9 ran
 To replicate this page you will need the following [R](r/bayesian_meta_analysis.R) and [Stan](stan/bayesian_meta_analysis.stan) scripts. 
 
 ### Previous RCTs and Relative Risks
-We begin by placing data from previous trials into a data frame using the summaries provided in [GJ11](references.html#GJ11). The treatment (group 1) is screening with mammography and the control (group 0) is no screening. The outcome in the treatment and control groups for study $$j$$, $$d_{1j}$$ and $$d_{0j}$$ respectively, is the number of breast cancer deaths during 13 years of follow up for women at least 50 years of age. There are $$n_{0j}$$ and $$n_{1j}$$ patients in the treatment and control groups respectively. 
+We begin by placing data from previous trials into a data frame using the summaries provided in [GJ11](references.html#GJ11). The treatment (group 1) is screening with mammography and the control (group 0) is no screening. The outcome in the treatment and control groups for study $$j$$, $$d_{1j}$$ and $$d_{0j}$$ respectively, is the number of breast cancer deaths during 13 years of follow up for women at least 50 years of age. There are $$n_{1j}$$ and $$n_{0j}$$ patients in the treatment and control groups respectively. 
 
 
 {% highlight r %}
@@ -53,6 +53,19 @@ The results can be visualized nicely by creating a [forest plot](https://en.wiki
 
 {% highlight r %}
 library("metafor")
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Loading required package: Matrix
+## Loading 'metafor' package (version 1.9-7). For an overview 
+## and introduction to the package please type: help(metafor).
+{% endhighlight %}
+
+
+
+{% highlight r %}
 p <- forest(x = rct$rr, ci.lb = rct$lower, ci.ub = rct$upper, 
        slab = paste(rct$study, rct$year, sep = ", "), refline = 1)
 text(min(p$xlim), .88 * max(p$ylim), "Study and Year", pos = 4, font = 2)
@@ -133,6 +146,7 @@ One problem with the maximum likelihood approach is that it does not account for
 
 {% highlight r %}
 library("rstan")
+set.seed(101)
 J <- nrow(rct)
 stan.dat <- list(J = J, y = rct$lrr, sigma = rct$lse)
 {% endhighlight %}
@@ -181,7 +195,7 @@ quantile(exp(post$mu), probs = c(.025, .5, .975))
 
 {% highlight text %}
 ##      2.5%       50%     97.5% 
-## 0.6978364 0.8037518 0.9121379
+## 0.7094239 0.8053394 0.8991152
 {% endhighlight %}
 
 This addditional uncertainty comes from averaging over $$\tau$$, which has a rather wide probability distribution. 
@@ -194,8 +208,8 @@ quantile(post$tau, probs = c(.025, .5, .975))
 
 
 {% highlight text %}
-##        2.5%         50%       97.5% 
-## 0.005904769 0.102681732 0.319760130
+##       2.5%        50%      97.5% 
+## 0.00600682 0.10122178 0.28488279
 {% endhighlight %}
 
 The effects, $$\theta_j$$, are shrunk toward the overall mean, $$\mu$$. The following plot examines the degree of shrinkage by comparing the effects from the Bayesian model to the relative risks when each study is analyzed separately. 
@@ -210,9 +224,10 @@ p.dat <- rbind(p.dat, rct[, c("lower", "upper", "rr")])
 p.dat$lab <- rep(c("Theta", "Y"), each = J)
 p.dat$id <- rep(seq(9, 1), 2)
 p.dat$idlab <- factor(p.dat$id, labels = rev(paste(rct$study, rct$year, sep = ", ")))
+p.dat$yint <- mean(exp(post$mu))
 ggplot(p.dat, aes(x = idlab, y = rr, ymin = lower, ymax = upper, col = lab)) +  
   geom_pointrange(aes(col = lab), position = position_dodge(width = 0.50)) +
-  coord_flip() + geom_hline(aes(yintercept = mean(exp(post$mu))), lty = 2) +  xlab("") + 
+  coord_flip() + geom_hline(aes(yintercept = yint), lty = 2) +  xlab("") + 
   ylab("")  + theme(legend.position="bottom") + 
   scale_colour_discrete(name="", 
                         labels = c("Theta" = bquote("Random effect:"~exp(theta[J])~" "),
@@ -245,7 +260,7 @@ quantile(exp(theta.new), probs = c(.025, .5, .975))
 
 {% highlight text %}
 ##      2.5%       50%     97.5% 
-## 0.5817056 0.8014013 1.1010020
+## 0.5947561 0.8053630 1.0867972
 {% endhighlight %}
 
 
