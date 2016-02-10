@@ -13,7 +13,6 @@ Each webpage contains an analysis written in [R markdown](http://rmarkdown.rstud
   + [Markov Cohort Models](markov_cohort.html)
   + [Bayesian Markov Cohort Models](bayesian_markov_cohort.html)
 * **Causal Inference**
-  + [Optimal Treatments in a Factorial Voting Experiment](factorial_design.html)
 * **Regression**
   + [Two-part Models](twopart.html)
 * **Classification**
