@@ -2,7 +2,7 @@
 layout: default
 ---
 
-These webpages contain code for analyzing a number of questions related to health care using quantitative methods. The analyses are separated into categories based on quantitative technique. Categories were chosen because of their application to specific types of problems, although there is obviously significant overlap across categories. 
+These webpages apply quantitative methods to a number of applied problems. The analyses are separated into categories based on quantitative technique. Categories were chosen because of their application to specific types of problems, although there is obviously significant overlap across categories. 
 
 Methodologies include machine learning algorithms, Bayesian statistical techniques, experimental and quasi-experimental methods, and mathematical models. 
 
@@ -13,6 +13,7 @@ Each webpage contains an analysis written in [R markdown](http://rmarkdown.rstud
   + [Markov Cohort Models](markov_cohort.html)
   + [Bayesian Markov Cohort Models](bayesian_markov_cohort.html)
 * **Causal Inference**
+  + [Optimal Treatments in a Factorial Voting Experiment](factorial_design.html)
 * **Regression**
   + [Two-part Models](twopart.html)
 * **Classification**
