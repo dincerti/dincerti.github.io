@@ -13,7 +13,7 @@ One problem with the [Markov cohort model](markov_cohort.html) estimated on the 
 
 Here, we repeat the HIV example in a Bayesian manner using these [R](r/bayesian_markov_cohort.R) and [JAGS](jags/markov_cohort.txt) scripts. 
 
-### Paramter Uncertainty in the Markov Model
+### Parameter Uncertainty in the Markov Model
 There are three sources of parameter uncertainty that the model might account for:
 
 * uncertainty in the transition matrices,
@@ -85,7 +85,7 @@ We must combine the posterior draws from the separate chains.
 ```{r jags_combine_chains}
 ```
 
-It is worth noting that although I have used JAGS (mainly because it makes it easy to expand the model), JAGS is not actually needed in this case. Since we used a Dirichlet prior for the multinomial distribution, one can show that the posterior distribution for the Dirichlet-multinomial model follows a Dirichlet distribution with parameters $$\alpha' = (\alpha'_1, \alpha'_2, \alpha'_3, \alpha'_4)$$ where $$\alpha'_s = \alpha_s + y_s$$ and $$y_s$$ is the total number of individuals transitioning to state $$s$$.
+It is worth noting that although I have used JAGS (mainly because it makes it easy to extend the model), JAGS is not actually needed in this case. Since we used a Dirichlet prior for the multinomial distribution, one can show that the posterior distribution for the Dirichlet-multinomial model follows a Dirichlet distribution with parameters $$\alpha' = (\alpha'_1, \alpha'_2, \alpha'_3, \alpha'_4)$$ where $$\alpha'_s = \alpha_s + y_s$$ and $$y_s$$ is the total number of individuals transitioning to state $$s$$.
 
 We can see this in R by considering individuals transitioning from state 1 to state 2. We compare random draws from a Dirichlet distribution with the appropriate posterior parameters and posterior draws from the JAGs model. 
 

@@ -11,7 +11,7 @@ One problem with the [Markov cohort model](markov_cohort.html) estimated on the 
 
 Here, we repeat the HIV example in a Bayesian manner using these [R](r/bayesian_markov_cohort.R) and [JAGS](jags/markov_cohort.txt) scripts. 
 
-### Paramter Uncertainty in the Markov Model
+### Parameter Uncertainty in the Markov Model
 There are three sources of parameter uncertainty that the model might account for:
 
 * uncertainty in the transition matrices,
@@ -111,26 +111,26 @@ print(jagsfit)
 ##  3 chains, each with 10000 iterations (first 5000 discarded), n.thin = 5
 ##  n.sims = 3000 iterations saved
 ##          mu.vect sd.vect   2.5%    25%    50%    75%  97.5%  Rhat n.eff
-## p[1,1]     0.721   0.011  0.700  0.714  0.721  0.728  0.742 1.001  3000
+## p[1,1]     0.720   0.011  0.699  0.713  0.720  0.728  0.741 1.001  3000
 ## p[2,1]     0.000   0.000  0.000  0.000  0.000  0.000  0.000 1.000     1
 ## p[3,1]     0.000   0.000  0.000  0.000  0.000  0.000  0.000 1.000     1
-## p[1,2]     0.201   0.010  0.182  0.195  0.201  0.208  0.220 1.001  3000
-## p[2,2]     0.580   0.014  0.553  0.571  0.580  0.589  0.607 1.001  3000
+## p[1,2]     0.202   0.010  0.183  0.195  0.202  0.208  0.221 1.001  3000
+## p[2,2]     0.580   0.014  0.553  0.571  0.580  0.590  0.607 1.002  1100
 ## p[3,2]     0.000   0.000  0.000  0.000  0.000  0.000  0.000 1.000     1
 ## p[1,3]     0.067   0.006  0.056  0.063  0.067  0.071  0.080 1.001  3000
-## p[2,3]     0.407   0.014  0.380  0.398  0.407  0.416  0.435 1.001  3000
-## p[3,3]     0.750   0.010  0.729  0.743  0.750  0.757  0.770 1.001  3000
-## p[1,4]     0.010   0.002  0.006  0.009  0.010  0.012  0.015 1.001  3000
-## p[2,4]     0.013   0.003  0.007  0.010  0.012  0.015  0.020 1.002  1000
-## p[3,4]     0.250   0.010  0.230  0.243  0.250  0.257  0.271 1.001  3000
-## rr         0.517   0.090  0.360  0.455  0.509  0.572  0.715 1.001  2600
-## deviance  44.408   3.531 39.598 41.775 43.692 46.309 52.809 1.001  3000
+## p[2,3]     0.407   0.014  0.380  0.398  0.407  0.416  0.434 1.002  1400
+## p[3,3]     0.750   0.010  0.730  0.743  0.750  0.757  0.770 1.001  2600
+## p[1,4]     0.010   0.002  0.006  0.009  0.010  0.012  0.016 1.001  2200
+## p[2,4]     0.013   0.003  0.007  0.010  0.012  0.015  0.020 1.001  2200
+## p[3,4]     0.250   0.010  0.230  0.243  0.250  0.257  0.270 1.001  2600
+## rr         0.516   0.091  0.361  0.451  0.508  0.571  0.722 1.001  3000
+## deviance  44.350   3.408 39.665 41.864 43.720 46.136 52.903 1.001  3000
 ## 
 ## For each parameter, n.eff is a crude measure of effective sample size,
 ## and Rhat is the potential scale reduction factor (at convergence, Rhat=1).
 ## 
 ## DIC info (using the rule, pD = var(deviance)/2)
-## pD = 6.2 and DIC = 50.6
+## pD = 5.8 and DIC = 50.2
 ## DIC is an estimate of expected predictive error (lower deviance is better).
 {% endhighlight %}
 
@@ -141,7 +141,7 @@ We must combine the posterior draws from the separate chains.
 jagsfit.mcmc <- do.call("rbind", as.mcmc(jagsfit))
 {% endhighlight %}
 
-It is worth noting that although I have used JAGS (mainly because it makes it easy to expand the model), JAGS is not actually needed in this case. Since we used a Dirichlet prior for the multinomial distribution, one can show that the posterior distribution for the Dirichlet-multinomial model follows a Dirichlet distribution with parameters $$\alpha' = (\alpha'_1, \alpha'_2, \alpha'_3, \alpha'_4)$$ where $$\alpha'_s = \alpha_s + y_s$$ and $$y_s$$ is the total number of individuals transitioning to state $$s$$.
+It is worth noting that although I have used JAGS (mainly because it makes it easy to extend the model), JAGS is not actually needed in this case. Since we used a Dirichlet prior for the multinomial distribution, one can show that the posterior distribution for the Dirichlet-multinomial model follows a Dirichlet distribution with parameters $$\alpha' = (\alpha'_1, \alpha'_2, \alpha'_3, \alpha'_4)$$ where $$\alpha'_s = \alpha_s + y_s$$ and $$y_s$$ is the total number of individuals transitioning to state $$s$$.
 
 We can see this in R by considering individuals transitioning from state 1 to state 2. We compare random draws from a Dirichlet distribution with the appropriate posterior parameters and posterior draws from the JAGs model. 
 
@@ -168,7 +168,7 @@ summary(as.numeric(jagsfit.mcmc[, "p[1,2]"]))
 
 {% highlight text %}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.1704  0.1949  0.2014  0.2014  0.2077  0.2353
+##  0.1627  0.1955  0.2017  0.2019  0.2084  0.2410
 {% endhighlight %}
 
 As expected, the two distributions are essentially identical.
@@ -231,6 +231,8 @@ One advantage of a Bayesian approach is that uncertainty can be incorporated int
 
 
 {% highlight r %}
+library("ggplot2")
+theme_set(theme_bw())
 ce.dat <- data.frame(delta.c = delta.c, delta.e = delta.e)
 ggplot(data = ce.dat, aes(x = delta.e, y = delta.c)) + geom_point() +
   xlab("Effectiveness difference") + ylab("Cost difference")
