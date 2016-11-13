@@ -1,5 +1,6 @@
 # This is the R code for the R Markdown file markov_cohort.Rmd
 library("cea")
+library("abind")
 rm(list=ls()) 
 mlogit.beta <- readRDS("cea/output/mlogit_bayes.rds")
 
@@ -10,31 +11,12 @@ x <- matrix(c(rep(1, length(ages)), ages), ncol = 2)
 x <- x[rep(seq_len(nrow(x)), times = 2), ]
 x <- cbind(x, rep(c(0, 1), each = length(ages)))
 colnames(x) <- c("int", "age", "male")
-n.x <- nrow(x)
 
 ## @knitr transprob_alive
-mlogit_prob <- function(x, beta) {
-  log.odds <- as.matrix(x) %*% beta
-  odds <- cbind(exp(0), exp(log.odds))
-  odds.sum <- apply(odds, 1, sum) 
-  p <- odds/odds.sum
-  return(p)
-}
-nsims <- nrow(mlogit.beta[[1]])
-p <- matrix(NA, nrow = nsims * n.x, ncol = 3 * 3)
-id <- data.frame(sim = rep(seq(1, nsims), each = n.x),
-                 age = rep(x[, "age"], times = nsims),
-                 male = rep(x[, "male"], times = nsims))
-id$cycle <- id$age - ages[1]
-j1 <- 1; j2 <- 3
-for (j in 1:3){
-  for (i in 1:nsims){
-    betaij <- matrix(mlogit.beta[[j]][i, ], ncol = 2, byrow = T)
-    indices <- ((i - 1) * nrow(x) + 1):(i * nrow(x))
-    p[indices, j1:j2] <- mlogit_prob(x, betaij)
-  }
-  j1 <- j1 + 3; j2 <- j2 + 3
-}
+p.good <- predict_MCMCmnl(mlogit.beta[[1]], x, 3)
+p.fair <- predict_MCMCmnl(mlogit.beta[[2]], x, 3)
+p.poor <- predict_MCMCmnl(mlogit.beta[[3]], x, 3)
+p <- abind(p.good, p.fair, p.poor, along = 2)
 
 ## @knitr adjust_death
 lt <- read.csv("data/period_lt_2013.csv")

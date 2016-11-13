@@ -64,7 +64,7 @@ qx_sample <- function(ages, qx, nsims){
   age.death <- rep(NA, nsims)
   n.ages <- length(ages)
   for (i in 1:nsims){
-    death <- rbinom(n.ages, 1, prob)
+    death <- rbinom(n.ages, 1, qx)
     age.death[i] <- ages[which(death == 1)[1]]
   }
   return(age.death)
