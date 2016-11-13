@@ -1,5 +1,5 @@
 
 name: Devin Incerti
 markdown: kramdown
-highlighter:  pygments
+highlighter:  Rouge
 host: localhost
