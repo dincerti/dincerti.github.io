@@ -63,7 +63,7 @@ Once the inputs are selected by the user, we need to display some output. This i
 
 Three other functions, `sidebarPanel`, `mainPanel`, and `fluidPage` simply tell our web browser how to display our selectInput widget and our HTML table on the page. `fluidPage` is especially useful because it automatically scales the components on the page to fit the browser width.
 
-### Shiny Server
+### Server
 The final piece of the puzzle is `server.R`, which is where all the R computations lie. This is one of the main advantages of Shiny, because it makes it very easy to use R to make server side calculations on a web page. R has a vast array of statistical and compuational algorithms, so this integration prevents the web developer from having to write code for an algorithm in another language such as javascript. 
 
 Even in our simple app, we are able to use R's data.table package to quickly manipulate a dataset based on a user's selections. Our aim was to help radiologists quickly determine whether a patient would be likely to have a particular given their clinical findings (which we refer to as features.) To do this, we used the `server.R` code below to count the number of (user chosen) features associated with each disease. 
@@ -82,13 +82,13 @@ shinyServer(function(input, output) {
 })
 {% endhighlight %}
 
-The workhorse function in the code above is renderDataTable, which converts an R data.frame, matrix, or data.table into an HTML table from the JQuery Javascript plugin DataTable. We named this table "Table", which recall from above, we display in our `ui.R` using `dataTableOutput("Table")`. 
+The workhorse function in the code above is `renderDataTable`, which converts an R data.frame, matrix, or data.table into an HTML table from the JQuery Javascript plugin DataTable. We named this table "Table", which recall from above, we display in our `ui.R` using `dataTableOutput("Table")`. 
 
-To create the "Table" object, we manipulate the diseases data.table according to the features selected by the user (`input$features`). In particular, the line, `x <- diseases[feature %in% input$features]` subsets the dataset so that it only includes the user chosen features. The second line `x <- x[, .N, by = disease]`, which is the most important line of code, then counts the number of features associated with each disease. This allows us to determine which diseases are most likely to be associated with a particular set of features. 
+To create the "Table" object, we manipulate the diseases data.table according to the features selected by the user (`input$features`). In particular, the line, `x <- diseases[feature %in% input$features]` subsets the dataset so that it only includes the user chosen features. The second line `x <- x[, .N, by = disease]`, counts the number of features associated with each disease. This allows us to determine which diseases are most likely to be associated with a particular set of features. 
 
-The remaining lines of code are more for making the data.table presentable than anyything else. TO be exact we sort the table so the diseases with the most matching features are on top and give the columns reasonable names. 
+The remaining lines of code make the data.table more presentable. To be exact we sort the table so the diseases with the most matching features appear at the top of the table and give the columns reasonable names. 
 
-It's also worth noting that since we are using the DataTable JQuery plugin, we can pass arguments from R to the DataTable. For example, in our app, we set the default text to display in an empty table as "No disease match found". A full list of options can be found by visting the DataTable website.
+It's also worth noting that since we are using the DataTable JQuery plugin, we can pass arguments from R to the DataTable. For example, in our app, we set the default text to display in an empty table as "No disease match found". A full list of options can be found by visting the DataTable [website](https://datatables.net/).
 
 ### Concluding Thoughts
 Our hope is that this app will help radiologists efficiently diagnose patients given their clinical findings. Our aim is to help others create similar apps to help clinicians. Shiny is particularly advantageous because it allows developers to integrate R's computational power with the web. We used R to quickly manipulate a dataset given user chosen options, but R's vast array of statistical algorithms could also be used for more complicated tasks, such as predicting the probability having a disease given clinical findings. 
