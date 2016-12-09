@@ -27,7 +27,7 @@ params <- c("rr", "p")
 jags.data <- list("mu.lrr", "tau.lrr", "S", "n", "alpha", "tt") 
 
 ## @knitr run_jags
-library("R2jags")
+library("R2jags")f
 set.seed(100)
 jagsfit <- jags(data = jags.data, parameters.to.save = params,
                  model.file = "jags/markov_cohort.txt", n.chains = 3,
