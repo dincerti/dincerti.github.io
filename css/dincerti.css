@@ -157,15 +157,10 @@ max-width: 730px;
   }
 
 /* Style dt and dd so they are on the same line */
-dl {
-  width: 100%;
-  overflow: hidden;
-  padding: 0;
-  margin: 0
-}
-
+/*
 dt {
   float: left;
+  clear: left;
   width: 10%;
   margin-right, margin-left, margin-top: 0;
   margin-bottom: 10px;
@@ -176,6 +171,26 @@ dd {
   width: 90%;
   margin-right, margin-left, margin-top: 0;
   margin-bottom: 10px;
+} 
+*/
+dt {
+  float: left;
+  clear: left;
+  width: 60px; 
+  margin-bottom: 10px;
+}
+
+dd {
+  margin-left: 60px;
+  margin-bottom: 10px;
+  
+}
+
+dl {
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0
 }
 
 /* List for blog posts*/
