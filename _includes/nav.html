@@ -15,8 +15,9 @@
       <ul class="nav navbar-nav ">
 			<li {% if page.url == '/index.html' %}class="active"{% endif %}><a href="/index.html">About</a></li>
 			<li {% if page.url == '/cv.html' %}class="active"{% endif %}><a href="/cv.html">CV</a></li>
-			<li {% if page.url == '/analytics.html' or page.layout == 'rmd' %}class="active"{% endif %}><a href="/analytics.html">Analytics</a></li>
-			<li {% if page.url == '/shinyapps.html' %}class="active"{% endif %}><a href="/shinyapps.html">Shiny Apps</a></li>
+			<!-- <li {% if page.url == '/cea.html' %}class="active"{% endif %}><a href="/cea.html">R packages </a></li> -->
+			<li {% if page.url == '/shinyapps.html' or page.layout == 'apps' %}class="active"{% endif %}><a href="/shinyapps.html">Shiny Apps</a></li>
+			<li {% if page.url == '/blog.html' or page.layout == 'post' %}class="active"{% endif %}><a href="/blog.html">Blog</a></li>
       </ul>
     </div><!--/.nav-collapse -->
 	<hr>
@@ -32,8 +33,9 @@
 	<ul class="nav nav-pills pull-right">
 		<li {% if page.url == '/index.html' %}class="active"{% endif %}><a href="/index.html">About</a></li>
 		<li {% if page.url == '/cv.html' %}class="active"{% endif %}><a href="/cv.html">CV</a></li>
-		<li {% if page.url == '/analytics.html' or page.layout == 'rmd' %}class="active"{% endif %}><a href="/analytics.html">Analytics</a></li>
+			<!-- <li {% if page.url == '/cea.html' %}class="active"{% endif %}><a href="/cea.html">R packages </a></li> -->
 		<li {% if page.url == '/shinyapps.html' or page.layout == 'apps' %}class="active"{% endif %}><a href="/shinyapps.html">Shiny Apps</a></li>
+		<li {% if page.url == '/blog.html' or page.layout == 'post' %}class="active"{% endif %}><a href="/blog.html">Blog</a></li>
 	 </ul>
 </nav>
 <h3 class="text-muted">Devin Incerti</h3>

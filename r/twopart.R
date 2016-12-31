@@ -1,24 +1,8 @@
-
 # This is the R code for the R Markdown file twopart.Rmd
-setwd("C:/Users/Devin/Dropbox/Projects/dincerti.github.io")
 
 ## ---- HEALTH EXPENDITURE DATA FROM THE MEPS ----------------------------------
-## @knitr download_function
-Download <- function(url) {
-  tf <- tempfile()
-  td <- tempdir()
-  download.file(url = url, tf)
-  zc <- unzip(tf, exdir = td)
-  files <- list.files(tf)
-  if(length(files) > 1) stop("More than one data file inside zip folder")
-  df <- data.table(read.xport(zc))
-}
-
-## @knitr meps_download
-library(foreign)
-library(data.table)
-meps <- Download("http://meps.ahrq.gov/data_files/pufs/h155ssp.zip")
-setnames(meps, tolower(names(meps))) # convert column names to lower case
+## @knitr meps_load
+meps <- readRDS("data/meps-fyc-2012.rds")
 
 ## @knitr twopart_hist
 library(data.table)

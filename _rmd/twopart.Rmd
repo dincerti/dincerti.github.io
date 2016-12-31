@@ -1,22 +1,21 @@
 ---
-layout: rmd
+layout: post
 title: Two-part Models
 ---
 * TOC
 {:toc}
 ```{r echo=FALSE}
-read_chunk('r/twopart.R')
+knitr::read_chunk('r/twopart.R')
 ```
 ### Overview
-Two-part models are often used to model strictly positive variables with a large number of zero values. They are consequently formulated as a mixture of a binomial distribution and a strictly positive distribution. I focus on continuous distributions for the positive values but two-part models---typically referred to as hurdle models---are used for count data as well. This page provides [R code](r/twopart.R) for these kinds of models. 
+Two-part models are often used to model strictly positive variables with a large number of zero values. They are consequently formulated as a mixture of a binomial distribution and a strictly positive distribution. I focus on continuous distributions for the positive values but two-part models---typically referred to as hurdle models---are used for count data as well. This page provides [R code]({{site.url}}/r/twopart.R) for these kinds of models. 
 
 ### Health Expenditure Data from the MEPS
-Two-part models are commonly used to model healthcare expenditure data because a large fraction of patients don't spend anything on medical care in a given time period. To see this, lets look at some real expenditure data from the Medical Expenditure Panel Survey (MEPS). We'll write a small R function to download SAS data sets from the MEPS website. 
-```{r download_function}
+Two-part models are commonly used to model healthcare expenditure data because a large fraction of patients don't spend anything on medical care in a given time period. To see this, lets look at some real expenditure data from the Medical Expenditure Panel Survey (MEPS). We'll use the [2012 Full Year Consolidated Data Files](http://meps.ahrq.gov/mepsweb/data_stats/download_data_files_detail.jsp?cboPufNumber=HC-155). Too speed up our data manipulations, I recommend suing the `data.table` package.
+
+```{r meps_load}
 ```
-Using this function, we can download data from the [2012 Full Year Consolidated Data Files](http://meps.ahrq.gov/mepsweb/data_stats/download_data_files_detail.jsp?cboPufNumber=HC-155). We'll need to use the package `foreign` to read in the SAS file. We'll use `data.table` objects from the `data.table` package, which can be manipulated much more quickly than large `data.frame` objects.
-```{r meps_download, cache = TRUE}
-```
+
 Now lets plot the distribution of expenditures.
 ```{r twopart_hist, echo = -1, message = FALSE, warning=FALSE}
 ```
@@ -95,7 +94,7 @@ E[Y|Y > 0] &= \exp(X\beta) \times \rm{E}[\exp(\epsilon)|X].
 \end{aligned}
 $$
 
-The second term can be estimated using the Duan Smearing factor ([Duan83](references.html#Duan83)), which uses the empirical distribution of the errors. That is, letting $\phi(x) = \rm{E}[\exp(\epsilon) \vert X]$,
+The second term can be estimated using the Duan Smearing factor ([Duan83]({{site.url}}/references.html#Duan83)), which uses the empirical distribution of the errors. That is, letting $\phi(x) = \rm{E}[\exp(\epsilon) \vert X]$,
 
 $$
 \begin{aligned}
@@ -111,7 +110,7 @@ We can see that adjusting for non-normality makes almost no difference in the RM
 ### Predictive Simulation
 We have focused on estimating mean expenditures so the distribution of the error term has not been terribly important. In other cases we might want to construct prediction intervals or simulate the entire distribution of expenditures for a new population. 
 
-Here we will use simulation to compare predictions from the models to observed data. [Andrew Gelman and Jennifer Hill](references.html#GH07) refer to this type of simulation as predictive simulation. 
+Here we will use simulation to compare predictions from the models to observed data. [Andrew Gelman and Jennifer Hill]({{site.url}}/references.html#GH07) refer to this type of simulation as predictive simulation. 
 
 We will consider three two-part models for health expenditures: a logistic-normal model, a logistic-lognormal model and a logistic-gamma model. For the normal and lognormal models we will assume that the error term is constant across individuals. Both the lognormal and gamma distributions have the desirable property that the variance is proportional to square of the mean.
 

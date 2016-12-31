@@ -1,5 +1,5 @@
 ---
-layout: rmd
+layout: page
 title: Two-part Random Effects Models for Longitudinal Data
 ---
 * TOC
@@ -7,7 +7,7 @@ title: Two-part Random Effects Models for Longitudinal Data
 
 
 ### Overview
-This page describes the dynamic two-part model that I have used in my research (see [here](papers\longterm_spending.pdf)). It extends the [cross-sectional two-part model](twopart.html) to a longitudinal setting and provides the R code necessary for estimation. 
+This page describes the dynamic two-part model that I have used in my research (see [here](papers\longterm_spending.pdf)). It extends the [cross-sectional two-part model](2015/09/11/twopart.html) to a longitudinal setting and provides the R code necessary for estimation. 
 
 With longitudinal data, it is necessary to model the persistence in spending from one period to the next. The model does this in two ways: first, it includes lagged dependent variables and second, it allows for individual specific random regression coefficients. I focus on the case in which only intercepts vary across individuals so the model can be referred to as a dynamic random-intercept two-part model.
 
@@ -207,7 +207,7 @@ The function can be summarized as follows. First, it draws the random intercepts
 The simulation ultimately returns a dataset with all relevant variables from the simulation.
 
 ### A Model with No Random Intercepts
-Before moving on to the full model, we will investigate a model in which everyone has the same intercept. This is similar to a [cross-sectional two-part model](twopart.html) except that it includes lagged dependent variables. We will simulate data for 10, 000 individuals over 5 periods using the `sim` function.
+Before moving on to the full model, we will investigate a model in which everyone has the same intercept. This is similar to a [cross-sectional two-part model](2015/09/11/twopart.html) except that it includes lagged dependent variables. We will simulate data for 10, 000 individuals over 5 periods using the `sim` function.
 
 {% highlight r %}
 library(mvtnorm) 

@@ -155,3 +155,31 @@ max-width: 730px;
     font-size: 10px;
     color: #fff;
   }
+
+/* Style dt and dd so they are on the same line */
+dl {
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0
+}
+
+dt {
+  float: left;
+  width: 10%;
+  margin-right, margin-left, margin-top: 0;
+  margin-bottom: 10px;
+}
+
+dd {
+  float: left;
+  width: 90%;
+  margin-right, margin-left, margin-top: 0;
+  margin-bottom: 10px;
+}
+
+/* List for blog posts*/
+.blog-archive {
+  list-style: none;
+	padding-bottom: 20px;
+}

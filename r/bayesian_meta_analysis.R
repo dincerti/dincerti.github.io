@@ -1,7 +1,3 @@
-
-# This is the R code for the R Markdown file bayesian_meta_analysis.Rmd
-setwd("C:/Users/Devin/Dropbox/Projects/dincerti.github.io")
-
 ## ---- PREVIOUS RCTS ----------------------------------------------------------
 ## @knitr rcts
 rct <- data.frame(study = c("New York", "Malamo I", "Kopparberg", "Ostergotland",

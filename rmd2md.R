@@ -1,0 +1,5 @@
+opts_chunk$set(fig.path = "figs/", fig.width = 8, fig.height = 5, fig.align = 'center')
+opts_knit$set(base.url = "/", root.dir = getwd())
+knit("_rmd/twopart.Rmd", "_posts/2015-09-11-twopart.md")
+knit("_rmd/bayesian_meta_analysis.Rmd", "_posts/2015-10-31-bayesian-meta-analysis.md")
+knit("_rmd/diabetes_highcost.Rmd", "_posts/2015-10-13-diabetes-highcost.md")

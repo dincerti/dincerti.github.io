@@ -1,7 +1,3 @@
-
-# This is the R code for the R Markdown file diabetes_highcost.Rmd
-setwd("C:/Users/Devin/Dropbox/Projects/dincerti.github.io")
-
 ## ---- DATA -------------------------------------------------------------------
 ## @knitr data
 library("data.table")
@@ -113,7 +109,7 @@ for (i in 1:length(tp)){
 }
 ggplot(data.frame(x = pctile, y = tp), aes(x = x, y = y)) + geom_line() +
   xlab("Percentile cutoff") + ylab("Positive predicted value") + 
-  geom_vline(x = 0.9, lty = "dotted", col = "red")
+  geom_vline(xintercept = 0.9, lty = "dotted", col = "red")
 
 ## @knitr spending_ratio
 fsaf <- sum(ppv.dat$exp[ppv.dat$ecdf.p >= .9])/sum(ppv.dat$exp[ppv.dat$y == 1])
