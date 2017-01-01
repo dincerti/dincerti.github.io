@@ -5,4 +5,4 @@ The website is made with Jekyll and hosted on Github.
 
 My blog posts containing R code are created by converting Rmarkdown documents to markdown. This is done by running the script  `rmd2md.R`.
 
-My CV is written using markdown and then converted to PDF and HTML using pandoc. This is done by running running ./cv.sh.
+My CV is written using markdown and then converted to PDF and HTML using pandoc. This is done by running ./cv.sh.
