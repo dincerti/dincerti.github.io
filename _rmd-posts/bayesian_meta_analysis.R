@@ -45,7 +45,7 @@ J <- nrow(rct)
 stan.dat <- list(J = J, y = rct$lrr, sigma = rct$lse)
 
 ## @knitr stan_fit
-fit <- stan(file = "stan/bayesian_meta_analysis.stan",
+fit <- stan(file = "_rmd-posts/bayesian_meta_analysis.stan",
             data = stan.dat, iter = 2000, chains = 4)
 post <- extract(fit, permuted = TRUE)
 

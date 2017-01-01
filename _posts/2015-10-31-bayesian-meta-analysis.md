@@ -11,7 +11,7 @@ Meta-analysis is frequently used to summarize results from multiple research stu
 
 This page uses a Bayesian hierarchical model to conduct a meta-analysis of 9 randomized controlled trials (RCTs) of breast cancer screening. The analysis first replicates the frequentist results reported in [Marm13]({{site.url}}/references.html#Marm13) and then reexamines them in a Bayesian framework. The RCTs used in the meta-analysis are summarized in more detail by [GJ11]({{site.url}}/references.html#GJ11).
 
-To replicate this page you will need the following [R]({{site.url}}/r/bayesian_meta_analysis.R) and [Stan]({{site.url}}/stan/bayesian_meta_analysis.stan) scripts. 
+R and Stan code for the analysis can be found [here](https://github.com/dincerti/dincerti.github.io) and [here](https://github.com/dincerti/dincerti.github.io). 
 
 ### Previous RCTs and Relative Risks
 We begin by placing data from previous trials into a data frame using the summaries provided in [GJ11]({{site.url}}/references.html#GJ11). The treatment (group 1) is screening with mammography and the control (group 0) is no screening. The outcome in the treatment and control groups for study $$j$$, $$d_{1j}$$ and $$d_{0j}$$ respectively, is the number of breast cancer deaths during 13 years of follow up for women at least 50 years of age. There are $$n_{1j}$$ and $$n_{0j}$$ patients in the treatment and control groups respectively. 
@@ -132,7 +132,7 @@ J <- nrow(rct)
 stan.dat <- list(J = J, y = rct$lrr, sigma = rct$lse)
 ```
 
-The model is specified in the file [bayesian_meta_analysis.stan]({{site.url}}/stan/bayesian_meta_analysis.stan). Note that we can rewrite the upper-level model as $$\theta_j =  \mu + \tau \eta$$ where $$\eta \sim N(0, 1)$$, which speeds up the Stan code. Furthermore, $$\mu$$ and $$\tau$$ are given uniform priors.
+Next we specify the model. Note that we can rewrite the upper-level model as $$\theta_j =  \mu + \tau \eta$$ where $$\eta \sim N(0, 1)$$, which speeds up the Stan code. Furthermore, $$\mu$$ and $$\tau$$ are given uniform priors.
 
 {% highlight stan %}
 data {
@@ -160,7 +160,7 @@ We fit the model and extract samples from the joint posterior distribution.
 
 
 ```r
-fit <- stan(file = "stan/bayesian_meta_analysis.stan",
+fit <- stan(file = "_rmd-posts/bayesian_meta_analysis.stan",
             data = stan.dat, iter = 2000, chains = 4)
 post <- extract(fit, permuted = TRUE)
 ```
