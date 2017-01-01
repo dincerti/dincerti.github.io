@@ -13,7 +13,7 @@ Disease management programs provide organized, proactive care to patients with s
 
 This section uses a few machine learning techniques (logistic regression, ridge regression, and random forests) to predict future high cost diabetes patients.
 
-R code for the analysis can be found [here](https://github.com/dincerti/dincerti.github.io) and the dataset analyzed is [here](https://github.com/dincerti/dincerti.github.io).
+R code for the analysis can be found [here](https://raw.githubusercontent.com/dincerti/dincerti.github.io/master/_rmd-posts/diabetes_highcost.R), which needs [this]({{site.url}}/data/mepsdiab.csv) dataset.
 
 ### Data
 We first load the data and examine some summary statistics.

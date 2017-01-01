@@ -11,7 +11,7 @@ Meta-analysis is frequently used to summarize results from multiple research stu
 
 This page uses a Bayesian hierarchical model to conduct a meta-analysis of 9 randomized controlled trials (RCTs) of breast cancer screening. The analysis first replicates the frequentist results reported in [Marm13]({{site.url}}/references.html#Marm13) and then reexamines them in a Bayesian framework. The RCTs used in the meta-analysis are summarized in more detail by [GJ11]({{site.url}}/references.html#GJ11).
 
-R and Stan code for the analysis can be found [here](https://github.com/dincerti/dincerti.github.io) and [here](https://github.com/dincerti/dincerti.github.io). 
+R and Stan code for the analysis can be found [here](https://raw.githubusercontent.com/dincerti/dincerti.github.io/master/_rmd-posts/bayesian_meta_analysis.R) and [here](https://raw.githubusercontent.com/dincerti/dincerti.github.io/master/_rmd-posts/bayesian_meta_analysis.stan). 
 
 ### Previous RCTs and Relative Risks
 We begin by placing data from previous trials into a data frame using the summaries provided in [GJ11]({{site.url}}/references.html#GJ11). The treatment (group 1) is screening with mammography and the control (group 0) is no screening. The outcome in the treatment and control groups for study $$j$$, $$d_{1j}$$ and $$d_{0j}$$ respectively, is the number of breast cancer deaths during 13 years of follow up for women at least 50 years of age. There are $$n_{1j}$$ and $$n_{0j}$$ patients in the treatment and control groups respectively. 
