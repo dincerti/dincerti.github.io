@@ -1,3 +1,4 @@
+library("knitr")
 opts_chunk$set(fig.path = "figs/", fig.width = 8, fig.height = 5, fig.align = 'center')
 opts_knit$set(base.url = "/", root.dir = getwd())
 knit("_rmd-posts/twopart.Rmd", "_posts/2015-09-11-twopart.md")

@@ -20,24 +20,24 @@ ggplot(meps, aes(x = logtotexp12)) +
 
 ## ---- PREDICTING MEAN EXPENDITURES -------------------------------------------
 ## @knitr meps_vars
-meps <- meps[, age := ifelse(age12x < 0, NA, age12x)]
-meps <- meps[, age2 := age^2]
-meps <- meps[, srh := as.factor(ifelse(rthlth53 < 0, NA, rthlth53))] # health status
-meps <- meps[, hisp := ifelse(racethx == 1, 1, 0)] # hispanic race
-meps <- meps[, black := ifelse(racebx == 1 | racebx == 2, 1, 0)]
-meps <- meps[, prvins := ifelse(inscov12 == 1, 1, 0)] # private insurance
-meps <- meps[, pubins := ifelse(inscov12 == 2, 1, 0)] # public insurance
-meps <- meps[, d_totexp12 := ifelse(totexp12 == 0, 0, 1)] # indicator for positive spending
+meps[, age := ifelse(age12x < 0, NA, age12x)]
+meps[, age2 := age^2]
+meps[, srh := as.factor(ifelse(rthlth53 < 0, NA, rthlth53))] # health status
+meps[, hisp := ifelse(racethx == 1, 1, 0)] # hispanic race
+meps[, black := ifelse(racebx == 1 | racebx == 2, 1, 0)]
+meps[, prvins := ifelse(inscov12 == 1, 1, 0)] # private insurance
+meps[, pubins := ifelse(inscov12 == 2, 1, 0)] # public insurance
+meps[, d_totexp12 := ifelse(totexp12 == 0, 0, 1)] # indicator for positive spending
 
 ## @knitr meps_subset
-meps <- meps[, id := seq(1, nrow(meps))]
+meps[, id := seq(1, nrow(meps))]
 xvars <- c("age", "age2", "srh", "hisp", "black", "prvins", "pubins")
 meps <- meps[, c("id", "totexp12", "d_totexp12", "logtotexp12", xvars), with = FALSE]
 meps <- meps[complete.cases(meps[, xvars, with = FALSE])]
 
 ## @knitr meps_sample
 set.seed(100)
-meps <- meps[, sample := sample(c("train", "test"), nrow(meps), replace = TRUE)]
+meps[, sample := sample(c("train", "test"), nrow(meps), replace = TRUE)]
 
 ## @knitr fit
 Fm <- function(y, xvars){
@@ -68,10 +68,10 @@ names(rmse) <- c("OLS", "Log OLS", "Gamma")
 print(rmse)
 
 ## @knitr smearing
-meps <- meps[, agecat := cut(age, breaks = c(0, 1, seq(5, 90, 5)), 
+meps[, agecat := cut(age, breaks = c(0, 1, seq(5, 90, 5)), 
                              right = FALSE)]
 epsilon <- data.table(age = logols.fit$mode$age, res = logols.fit$res)
-epsilon <- epsilon[, agecat := cut(age, breaks = c(0, 1, seq(5, 90, 5)), 
+epsilon[, agecat := cut(age, breaks = c(0, 1, seq(5, 90, 5)), 
                                    right = FALSE)]
 epsilon <- epsilon[, .(phihat = mean(exp(res))), by = "agecat"]
 meps <- merge(meps, epsilon, by = "agecat", all.x = TRUE)
