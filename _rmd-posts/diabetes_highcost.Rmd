@@ -35,21 +35,24 @@ For the purpose of this analysis, we will classify high cost patients as those i
 Data from the 10th - 15th panels is used as training data and data from the 16th and 17th panels is used as test data. 
 ```{r datasets}
 ```
+
 #### Logistic Regression
 Logistic regression is commonly used to predict binary outcomes. We estimate a logistic regression using the training data and then calculate the predicted probability of being a high spender on the test data.
 ```{r logistic_regression, warning = FALSE}
 ```
+
 #### Logistic Ridge Regression
 It is worth noting that the logistic regression above includes all CCS categories as predictor variables. This is problematic because 1) some CCS categories are very uncommon and 2) the CCS categories are highly collinear. As a result, the variances of the regression coefficients are large.
 
 Ridge regression---which penalizes large coefficient estimates---is often used to deal with these issues. Below I use the [glmnet](https://web.stanford.edu/~hastie/glmnet/glmnet_alpha.html) package to estimate a logistic ridge regression. The degree to which the regression coefficients are shrunk toward zero is determined by the parameter $$\lambda$$. Predictions are made using a value of $$\lambda$$ that minimizes the model deviance in 10-fold cross-validation.
-```{r logistic_ridge_regression, cache = TRUE}
+```{r logistic_ridge_regression, cache = TRUE, message = FALSE}
 ```
+
 #### Random Forests
 Classification trees are non-linear predictive models commonly used for classification. Random forests aggregate predictions from multiple trees in order to improve prediction accuracy. In the random forest algorithm, $$m$$ predictor variables are randomly chosen at each node of each tree. Model performance depends on the parameter $$m$$ so it should be treated as a tuning variable. However, in this case, the default value of $$m=\sqrt{p}$$ where $$p$$ is the number of predictor variables turned out to be sensible and is consequently used for predictions. Furthermore, the number of trees had very little effect on classification error rates and was set to 501. 
 
 Here, I implement the random forest algorithm using the `randomForest` package in R.
-```{r rf, cache = TRUE}
+```{r rf, cache = TRUE, message = FALSE}
 ```
 
 ### Evaluation

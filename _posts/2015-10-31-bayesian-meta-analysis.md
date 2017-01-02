@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Bayesian Meta-Analysis
+title: Bayesian Meta-Analysis with R and Stan
 ---
 * TOC
 {:toc}
@@ -53,6 +53,18 @@ The results can be visualized nicely by creating a [forest plot](https://en.wiki
 
 ```r
 library("metafor")
+```
+
+```
+## Loading required package: Matrix
+```
+
+```
+## Loading 'metafor' package (version 1.9-9). For an overview 
+## and introduction to the package please type: help(metafor).
+```
+
+```r
 p <- forest(x = rct$rr, ci.lb = rct$lower, ci.ub = rct$upper, 
        slab = paste(rct$study, rct$year, sep = ", "), refline = 1)
 text(min(p$xlim), .88 * max(p$ylim), "Study and Year", pos = 4, font = 2)
@@ -174,7 +186,7 @@ quantile(exp(post$mu), probs = c(.025, .5, .975))
 
 ```
 ##      2.5%       50%     97.5% 
-## 0.7006339 0.8038632 0.9175472
+## 0.7078854 0.8030712 0.9144106
 ```
 
 This addditional uncertainty comes from averaging over $$\tau$$, which has a rather wide probability distribution. 
@@ -186,7 +198,7 @@ quantile(post$tau, probs = c(.025, .5, .975))
 
 ```
 ##        2.5%         50%       97.5% 
-## 0.005990983 0.105502220 0.299436967
+## 0.004831274 0.098252967 0.298344587
 ```
 
 The effects, $$\theta_j$$, are shrunk toward the overall mean, $$\mu$$. The following plot examines the degree of shrinkage by comparing the effects from the Bayesian model to the relative risks when each study is analyzed separately. 
@@ -235,7 +247,7 @@ quantile(exp(theta.new), probs = c(.025, .5, .975))
 
 ```
 ##      2.5%       50%     97.5% 
-## 0.5771417 0.8023410 1.1319152
+## 0.5994494 0.8031927 1.0997960
 ```
 
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Bayesian Meta-Analysis
+title: Bayesian Meta-Analysis with R and Stan
 ---
 * TOC
 {:toc}

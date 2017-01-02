@@ -22,7 +22,7 @@ ggplot(lorenz, aes(x = p, y = L)) + geom_line() +
   theme(legend.position = "bottom") +
   geom_text(data = quants, aes(x = frac - .02, y = quant + .02,
                               label = round(quant, 2), size = 8),
-            show_guide  = F)
+            show.legend  = F)
 
 ## ---- TRAINING AND TEST DATA -------------------------------------------------
 ## @knitr variables

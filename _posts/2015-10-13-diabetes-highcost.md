@@ -48,12 +48,7 @@ ggplot(lorenz, aes(x = p, y = L)) + geom_line() +
   theme(legend.position = "bottom") +
   geom_text(data = quants, aes(x = frac - .02, y = quant + .02,
                               label = round(quant, 2), size = 8),
-            show_guide  = F)
-```
-
-```
-## Warning: `show_guide` has been deprecated. Please use `show.legend`
-## instead.
+            show.legend  = F)
 ```
 
 <img src="/figs/lorenz_curve-1.png" title="plot of chunk lorenz_curve" alt="plot of chunk lorenz_curve" style="display: block; margin: auto;" />
@@ -79,6 +74,7 @@ train <- train[complete.cases(train)]
 test <- meps[panel > 15]
 test <- test[complete.cases(test)]
 ```
+
 #### Logistic Regression
 Logistic regression is commonly used to predict binary outcomes. We estimate a logistic regression using the training data and then calculate the predicted probability of being a high spender on the test data.
 
@@ -89,6 +85,7 @@ Fm <- function(y, x){
 logistic <- glm(Fm("topexp", xvars), family = binomial, train)
 p.logistic <- predict.glm(logistic, test, type = "response")
 ```
+
 #### Logistic Ridge Regression
 It is worth noting that the logistic regression above includes all CCS categories as predictor variables. This is problematic because 1) some CCS categories are very uncommon and 2) the CCS categories are highly collinear. As a result, the variances of the regression coefficients are large.
 
@@ -103,6 +100,7 @@ y.test <- test$topexp
 cv.ridge <- cv.glmnet(x.train, y.train, family = "binomial", alpha = 0)
 p.ridge <- predict(cv.ridge, x.test, s = "lambda.min", type = "response")
 ```
+
 #### Random Forests
 Classification trees are non-linear predictive models commonly used for classification. Random forests aggregate predictions from multiple trees in order to improve prediction accuracy. In the random forest algorithm, $$m$$ predictor variables are randomly chosen at each node of each tree. Model performance depends on the parameter $$m$$ so it should be treated as a tuning variable. However, in this case, the default value of $$m=\sqrt{p}$$ where $$p$$ is the number of predictor variables turned out to be sensible and is consequently used for predictions. Furthermore, the number of trees had very little effect on classification error rates and was set to 501. 
 
