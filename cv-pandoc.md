@@ -12,6 +12,8 @@
 :  B.A. Political Science, University of California, San Diego
 
 ### Employment
+2017-17
+: Research economist, Precision Health Economics, Oakland CA
 
 2016-17
 : Associate research economist, Precision Health Economics, Oakland CA
@@ -23,7 +25,7 @@
 : Research Associate, NERA Economic Consulting, Los Angeles, CA
 
 ### Working Papers
-An Assessment of Long-term Healthcare Expenditure Risk Using a Dynamic Bayesian Model ([PDF](http://devinincerti.com/papers/longterm_spending.pdf), [GitHub](https://github.com/dincerti/optimal-house), [Fake-data simulation](/twopart_re_longitudinal.html))
+An Assessment of Long-term Healthcare Expenditure Risk Using a Dynamic Bayesian Model ([PDF](http://devinincerti.com/papers/longterm_spending.pdf), [GitHub](https://github.com/dincerti/optimal-house), [fake-data simulation](/twopart_re_longitudinal.html))
 
 Racial, Ethnic and Educational Disparities in Pharmaceutical Expenditures ([PDF](http://devinincerti.com/papers/disparities_rx.pdf))
 
@@ -42,7 +44,7 @@ Shiraito Y, Incerti, D, Lopez-Moctezuma G. A Reassessment of the Resource Curse:
 
 *R Packages*
 
-`cea`: an R package for cost-effectiveness analysis.
+`hesim`: an R package for fast health-economic simulation modeling ([website](http://devinincerti.com/hesim/)).
 
 *R shiny web applications*
 
