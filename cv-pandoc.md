@@ -25,13 +25,14 @@
 : Research Associate, NERA Economic Consulting, Los Angeles, CA
 
 ### Working Papers
-An Assessment of Long-term Healthcare Expenditure Risk Using a Dynamic Bayesian Model ([PDF](http://devinincerti.com/papers/longterm_spending.pdf), [GitHub](https://github.com/dincerti/optimal-house), [fake-data simulation](/twopart_re_longitudinal.html))
+An Assessment of Long-term Healthcare Expenditure Risk Using a Dynamic Bayesian Model ([PDF](http://devinincerti.com/papers/longterm_spending.pdf), [fake-data simulation](/twopart_re_longitudinal.html))
 
 Racial, Ethnic and Educational Disparities in Pharmaceutical Expenditures ([PDF](http://devinincerti.com/papers/disparities_rx.pdf))
 
-The Optimal Allocation of Campaign Funds in House Elections ([PDF](http://devinincerti.com/papers/optimal_house.pdf))
+The Optimal Allocation of Campaign Funds in House Elections ([PDF](http://devinincerti.com/papers/optimal_house.pdf), [GitHub](https://github.com/dincerti/optimal-house))
 
-Political Instability and Financial Markets ([PDF](http://devinincerti.com/papers/instability_finance.pdf))
+Political Instability and Financial Markets ([PDF](http://devinincerti.com/papers/instability_finance.pdf), 
+[GitHub](https://github.com/dincerti/political-instability))
 
 ### Presentations
 Wan J, Mongan J, Incerti D, Courtier J. A Shiny New World: Creating Your Own Radiology Decision Support Webapps Using R. Radiological Society of North America, Annual Meeting, Chicago, 2016.

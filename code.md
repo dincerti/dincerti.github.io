@@ -2,6 +2,9 @@
 layout: default
 ---
 
+### [My Website](https://github.com/dincerti/dincerti.github.io)
+The GitHub repository for this Jekyll-powered website can be found [here](https://github.com/dincerti/dincerti.github.io). 
+
 ### [hesim](http://devinincerti.com/hesim/)
 `hesim` is an package for fast health-economic simulation modeling. It can currently be used for conducting Bayesian cost-effectiveness analysis (e.g. summarize probabilistic sensitivity analyses) at the subgroup level. It is under development and new functionality for efficiently simulating and analyzing health-economic models is being added. ([website](http://devinincerti.com/hesim/))
 
