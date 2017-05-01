@@ -63,9 +63,9 @@ Shiraito Y, **Incerti, D**, Lopez-Moctezuma G. A Reassessment of the Resource Cu
 
 *R shiny web applications*
 
-**Incerti D**. An R Shiny web application that aids diagnosis of skeletal dysplasias based on clinical features ([link](http://104.131.159.61:3838/skeletal-dysplasias/)).
+**Incerti D**. An R Shiny web application that aids diagnosis of skeletal dysplasias based on clinical features. ([link](http://104.131.159.61:3838/skeletal-dysplasias/)).
 
-**Incerti D**. Interactive plots of parametric survival distributions ([link](http://104.131.159.61:3838/survival-curves/)).
+**Incerti D**. Interactive plots of parametric survival distributions. ([link](http://104.131.159.61:3838/survival-curves/)).
 
 ### Honors and Awards
 2010-15
