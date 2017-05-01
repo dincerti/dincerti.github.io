@@ -29,7 +29,7 @@ Stevens W, Shih T, **Incerti D**, Ton TG, Lee H, Peneva D, Macones GA, Sibai BM,
 
 Jansen JP, **Incerti, D**, Mutebi A, Peneva, D, MacEwan JP, Stolshek B, Kaur P, Gharaibeh M, Strand V. (in press). Cost-effectiveness of sequenced treatment of rheumatoid arthritis with targeted immune modulators. *Journal of Medical Economics*. [http://dx.doi.org/10.1080/13696998.2017.1307205](http://dx.doi.org/10.1080/13696998.2017.1307205) ([Supplement](http://devinincerti.com/papers/ce-bdmards-ra-jme-2017-supplement.pdf)).
 
-### Manuscripts under review
+### Manuscripts Under Review
 **Incerti, D**. The Optimal Allocation of Campaign Funds in House Elections. ([PDF](http://devinincerti.com/papers/optimal_house.pdf), [GitHub](https://github.com/dincerti/optimal-house)).
 
 Shahabi A, Peneva D, **Incerti D**, Mclaurin KK, Stevens W. Variation in cost of palivizumab prophylaxis and the implications for policy considerations.
