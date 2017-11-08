@@ -74,7 +74,7 @@ Stevens W, Shih T, **Incerti D**. Estimates of costs of preeclampsia to the Unit
 * [IVI-RA Model Interface](https://innovationandvalueinitiative.shinyapps.io/ivi-ra-expert/): an R Shiny web interface providing full control over the treatments, the patient population, model parameters, model structures, and time horizon.
 * [IVI-RA Value Tool](http://apps.thevalueinitiative.org/ivi-ra/): a more streamlined R Shiny web application for users with less experience in decision-analytic modeling and rheumatoid arthritis.
 
-**Incerti D**. `hesim`: an R package for fast health-economic simulation modeling. ([website](http://devinincerti.com/hesim/)).
+**Incerti D**. `hesim`: an R package for fast health-economic simulation modeling. ([website](https://innovationvalueinitiative.github.io/hesim/)).
 
 **Incerti D**. An R Shiny web application that aids diagnosis of skeletal dysplasias based on clinical features. ([link](http://104.131.159.61:3838/skeletal-dysplasias/)).
 
