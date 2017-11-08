@@ -53,7 +53,7 @@ Ton TG, Bennett M, **Incerti D**, Peneva D, Druzin M, Stevens W, Butwick A, Lee 
 **Incerti, D**. Political Instability and Financial Markets. ([PDF](http://devinincerti.com/papers/instability_finance.pdf), 
 [GitHub](https://github.com/dincerti/political-instability)).
 
-### Abstracts and presentations
+### Abstracts and Presentations
 Incerti D, Curtis JR, Lorenzi M, **Jansen JP**. Exploring Structural Uncertainty With An Open-Source Cost-Effectiveness Model For Rheumatoid Arthritis. ISPOR Annual European Congress, Glasgow, Scotland, 2017. [http://dx.doi.org/10.1016/j.jval.2017.08.2098](http://dx.doi.org/10.1016/j.jval.2017.08.2098)
 
 Incerti D, Peneva D, Shrestha A, Ramaswamy K, **Smith G**, Stevens W. An Empirical Analysis of the Role of Learning by Doing in Dynamic Cost-effectiveness. ISPOR Annual European Congress, Glasgow, Scotland, 2017. [http://dx.doi.org/10.1016/j.jval.2017.08.215](http://dx.doi.org/10.1016/j.jval.2017.08.215)
