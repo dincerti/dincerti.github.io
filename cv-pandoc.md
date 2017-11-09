@@ -34,7 +34,7 @@ Stevens W, Shih T, **Incerti D**, Ton TG, Lee H, Peneva D, Macones GA, Sibai BM,
 
 Shahabi A, Peneva D, **Incerti D**, McLaurin K, Stevens W. Assessing Variation in the Cost of Palivizumab for Respiratory Syncytial Virus Prevention in Preterm Infants. *PharmacoEconomics-Open*. 2017:1-9. [https://doi.org/10.1007/s41669-017-0042-3](https://doi.org/10.1007/s41669-017-0042-3)
 
-Jansen JP, **Incerti, D**, Mutebi A, Peneva, D, MacEwan JP, Stolshek B, Kaur P, Gharaibeh M, Strand V. (in press). Cost-effectiveness of sequenced treatment of rheumatoid arthritis with targeted immune modulators. *Journal of Medical Economics*. 2017 Jul 3;20(7):703-14. [http://dx.doi.org/10.1080/13696998.2017.1307205](http://dx.doi.org/10.1080/13696998.2017.1307205) ([Supplement](http://devinincerti.com/papers/ce-bdmards-ra-jme-2017-supplement.pdf)).
+Jansen JP, **Incerti, D**, Mutebi A, Peneva, D, MacEwan JP, Stolshek B, Kaur P, Gharaibeh M, Strand V. Cost-effectiveness of sequenced treatment of rheumatoid arthritis with targeted immune modulators. *Journal of Medical Economics*. 2017 Jul 3;20(7):703-14. [http://dx.doi.org/10.1080/13696998.2017.1307205](http://dx.doi.org/10.1080/13696998.2017.1307205) ([Supplement](http://devinincerti.com/papers/ce-bdmards-ra-jme-2017-supplement.pdf)).
 
 ### Manuscripts Under Review
 **Incerti, D**. The Optimal Allocation of Campaign Funds in House Elections. ([PDF](http://devinincerti.com/papers/optimal_house.pdf), [GitHub](https://github.com/dincerti/optimal-house)).
@@ -68,7 +68,7 @@ Stevens W, Shih T, **Incerti D**. Estimates of costs of preeclampsia to the Unit
 
 ### Software
 
-**Incerti D**, Jansen JP. The IVI-RA model: an open-source simulation model for assessing the value of disease-modifying anti-rheumatic drugs (DMARDs) to treatment rheumatoid arthritis. ([GitHub](https://github.com/InnovationValueInitiative/IVI-RA))
+**Incerti D**, Jansen JP. The IVI-RA model: an open-source simulation model for assessing the value of disease-modifying anti-rheumatic drugs (DMARDs) to treat rheumatoid arthritis. ([GitHub](https://github.com/InnovationValueInitiative/IVI-RA))
 
 * [iviRA R package](https://innovationvalueinitiative.github.io/IVI-RA): an R package for running the IVI-RA model.
 * [IVI-RA Model Interface](https://innovationandvalueinitiative.shinyapps.io/ivi-ra-expert/): an R Shiny web interface providing full control over the treatments, the patient population, model parameters, model structures, and time horizon.
