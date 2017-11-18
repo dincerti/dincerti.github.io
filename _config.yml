@@ -3,3 +3,5 @@ name: Devin Incerti
 markdown: kramdown
 highlighter:  Rouge
 host: localhost
+plugins_dir:
+  - jekyll-feed
