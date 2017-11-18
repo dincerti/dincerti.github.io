@@ -3,5 +3,6 @@ name: Devin Incerti
 markdown: kramdown
 highlighter:  Rouge
 host: localhost
+title: Health economics with R
 plugins_dir:
   - jekyll-feed
