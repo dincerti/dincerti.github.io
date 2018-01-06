@@ -6,7 +6,7 @@ title: Bayesian Markov Cohort Models
 {:toc}
 
 ### Overview
-One problem with the [Markov cohort model](markov_cohort.html) estimated on the previous page is that it does not account for parameter uncertainty. A Bayesian approach provides a natural modeling framework for doing this. 
+One problem with a deterministic [Markov cohort model](markov_cohort.html) estimated is that it does not account for parameter uncertainty. A Bayesian approach provides a natural modeling framework for doing this. 
 
 Here, we repeat the HIV example in a Bayesian manner.
 
@@ -200,23 +200,11 @@ TMatrix <- function(probs, rr){
 }
 ```
 
-We load in the function ```MavkovCohort``` described on the [previous page](markov_cohort.html). We use the function to simulate the Markov Model ``3000`` times using each random draw of the parameters from their posterior distribution.
+We load in the function ```MavkovCohort``` described [previously](markov_cohort.html). We use the function to simulate the Markov Model ``3000`` times using each random draw of the parameters from their posterior distribution.
 
 
 ```r
-source("markov.R")
-```
-
-```
-## Warning in file(filename, "r", encoding = encoding): cannot open file
-## 'markov.R': No such file or directory
-```
-
-```
-## Error in file(filename, "r", encoding = encoding): cannot open the connection
-```
-
-```r
+source("_rmd-posts/markov.R")
 ncycles <- 20
 delta.c <- rep(NA, nrow(jagsfit.mcmc))
 delta.e <- rep(NA, nrow(jagsfit.mcmc))

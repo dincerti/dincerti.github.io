@@ -107,7 +107,7 @@ A cohort simulation uses the Makov model to measure the experiences of a hypothe
 We load an R function that simulates the costs and effects of an intervention given a transition matrix ```P```; an initial row vector ```z0``` containing the number of patients in each state at time $$0$$; the number of cycles ```ncycles```, the costs in each state; the quality of life weights; and a discount factor for future costs. (Note that, like the original paper, the discount factor is only applied to costs, although a discount could be applied to life-years as well.) 
 
 ```{r markov_cohort}
-source("markov.R")
+source("_rmd-posts/markov.R")
 ```
 
 At each cycle, the function calculates the number of patients in each state ```z[t, ]```; total costs per patient, ```c[t]```; and life-years ```e[t]```. The algorithm is very simple but appears more complicated because it allows for both time constant and time-varying transition matrices and costs. The time-varying transition matrices are necessary because lamivudine is only assumed to be given for the first two-years of treatment. 

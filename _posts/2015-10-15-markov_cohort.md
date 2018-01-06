@@ -111,16 +111,7 @@ We load an R function that simulates the costs and effects of an intervention gi
 
 
 ```r
-source("markov.R")
-```
-
-```
-## Warning in file(filename, "r", encoding = encoding): cannot open file
-## 'markov.R': No such file or directory
-```
-
-```
-## Error in file(filename, "r", encoding = encoding): cannot open the connection
+source("_rmd-posts/markov.R")
 ```
 
 At each cycle, the function calculates the number of patients in each state ```z[t, ]```; total costs per patient, ```c[t]```; and life-years ```e[t]```. The algorithm is very simple but appears more complicated because it allows for both time constant and time-varying transition matrices and costs. The time-varying transition matrices are necessary because lamivudine is only assumed to be given for the first two-years of treatment. 
