@@ -88,7 +88,7 @@ We run 3 chains of 10,000 iterations. The first 5,000 iterations in each chain a
 library("R2jags")
 set.seed(100)
 jagsfit <- jags(data = jags.data, parameters.to.save = params,
-                 model.file = "markov_cohort.txt", n.chains = 3,
+                 model.file = "_rmd-posts/markov_cohort.txt", n.chains = 3,
                  n.iter = 10000, n.thin = 5, progress.bar = "none")
 ```
 

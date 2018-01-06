@@ -92,17 +92,8 @@ We run 3 chains of 10,000 iterations. The first 5,000 iterations in each chain a
 library("R2jags")
 set.seed(100)
 jagsfit <- jags(data = jags.data, parameters.to.save = params,
-                 model.file = "markov_cohort.txt", n.chains = 3,
+                 model.file = "_rmd-posts/markov_cohort.txt", n.chains = 3,
                  n.iter = 10000, n.thin = 5, progress.bar = "none")
-```
-
-```
-## Warning in file(modfile, "rt"): cannot open file 'markov_cohort.txt': No
-## such file or directory
-```
-
-```
-## Error in jags.model(model.file, data = data, inits = init.values, n.chains = n.chains, : Cannot open model file "markov_cohort.txt"
 ```
 
 We can view output from the model.
@@ -113,7 +104,7 @@ print(jagsfit)
 ```
 
 ```
-## Inference for Bugs model at "markov_cohort.txt", fit using jags,
+## Inference for Bugs model at "_rmd-posts/markov_cohort.txt", fit using jags,
 ##  3 chains, each with 10000 iterations (first 5000 discarded), n.thin = 5
 ##  n.sims = 3000 iterations saved
 ##          mu.vect sd.vect   2.5%    25%    50%    75%  97.5%  Rhat n.eff
@@ -159,7 +150,7 @@ summary(rdirichlet(nrow(jagsfit.mcmc), tt[1, ] + alpha[1])[, 2])
 
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.1674  0.1957  0.2018  0.2021  0.2086  0.2362
+##  0.1674  0.1959  0.2019  0.2023  0.2086  0.2362
 ```
 
 ```r

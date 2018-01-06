@@ -1,0 +1,18 @@
+model {
+# lognormal model for relative risk
+  rr ~ dlnorm(mu.lrr, tau.lrr)
+  
+# multinomial-dirichlet model for transition matrix
+  # priors
+    p[1, 1:S] ~ ddirch(alpha[1:S])
+    p[2, 1] <- 0
+    p[2, 2:S] ~ ddirch(alpha[2:S])
+    p[3, 1] <- 0
+    p[3, 2] <- 0
+    p[3, 3:S] ~ ddirch(alpha[3:S])
+
+  # likelihood
+    tt[1, 1:S] ~ dmulti(p[1, 1:S], n[1])
+    tt[2, 2:S] ~ dmulti(p[2, 2:S], n[2])
+    tt[3, 3:S] ~ dmulti(p[3, 3:S], n[3])
+}
