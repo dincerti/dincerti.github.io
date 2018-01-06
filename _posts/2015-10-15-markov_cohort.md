@@ -62,7 +62,8 @@ Transition probabilities for combination therapy (treatment $$1$$) are based on 
 
 We set up the transition probabilities in R.
 
-```{r transition_matrices}
+
+```r
 P.0 <- matrix(c(.721, .202, .067, .01, 
               0, .581, .407, .012,
               0, 0, .75, .25,
@@ -86,7 +87,8 @@ Treatment costs are due to a) direct medical and community expenses and b) the p
 
 In R, we have:
 
-```{r costs}
+
+```r
 c.zidovudine <- 2278
 c.lamivudine <- 2086.50
 c.0 <- c(2756 + c.zidovudine, 3052 + c.zidovudine, 9007 + c.zidovudine, 0)
@@ -97,7 +99,8 @@ c.1 <- c(c.0[1:3] + c.lamivudine, 0)
 **Quality of Life Weights**
 
 Treatment effects are typically measured by quality-adjusted life-years (QALYs). However, we follow the original paper which measured effectiveness with (unadjusted) life-years. In mathematical terms, this means that the 4 states are weighted with the row vector $$[1\; 1\; 1\; 0]$$. 
-```{r effects}
+
+```r
 qolw <- c(1, 1, 1, 0)
 ```
 
@@ -106,14 +109,25 @@ A cohort simulation uses the Makov model to measure the experiences of a hypothe
 
 We load an R function that simulates the costs and effects of an intervention given a transition matrix ```P```; an initial row vector ```z0``` containing the number of patients in each state at time $$0$$; the number of cycles ```ncycles```, the costs in each state; the quality of life weights; and a discount factor for future costs. (Note that, like the original paper, the discount factor is only applied to costs, although a discount could be applied to life-years as well.) 
 
-```{r markov_cohort}
+
+```r
 source("markov.R")
+```
+
+```
+## Warning in file(filename, "r", encoding = encoding): cannot open file
+## 'markov.R': No such file or directory
+```
+
+```
+## Error in file(filename, "r", encoding = encoding): cannot open the connection
 ```
 
 At each cycle, the function calculates the number of patients in each state ```z[t, ]```; total costs per patient, ```c[t]```; and life-years ```e[t]```. The algorithm is very simple but appears more complicated because it allows for both time constant and time-varying transition matrices and costs. The time-varying transition matrices are necessary because lamivudine is only assumed to be given for the first two-years of treatment. 
 
 Using the function we simulate outcomes under both treatments.
-```{r simulation}
+
+```r
 ncycles <- 20
 z0 <- matrix(c(1000, 0, 0, 0), nrow = 1)
 sim0 <- MarkovCohort(P = P.0,  z0 = c(1000, 0, 0, 0), ncycles = ncycles,
@@ -129,7 +143,8 @@ sim1 <- MarkovCohort(P = c(replicate(2, P.1, simplify = FALSE),
 
 ### Decision Analysis
 Armed with the simulation results, we can plot survival curves by treatment.
-```{r survival}
+
+```r
 library("ggplot2")
 theme_set(theme_bw())
 surv.df <- data.frame(surv = c(sim0$e, sim1$e),
@@ -141,6 +156,8 @@ ggplot(dat = surv.df, aes(x = cylce, y = surv, col = lab)) + geom_line() +
   theme(legend.title=element_blank()) + 
   theme(legend.position = "bottom")
 ```
+
+<img src="/figs/survival-1.png" title="plot of chunk survival" alt="plot of chunk survival" style="display: block; margin: auto;" />
 Due to the estimated relative risk of disease progression, the survival curve for combination therapy lies above the curve for monotherapy. That said, costs are higher for combination therapy because of 1) additional drug costs for lamivudine and 2) patients being treated longer due to increased survival.
 
 To summarize the cost-effectiveness of the intervention we can use the incremental cost-effectiveness ratio (ICER), or,
@@ -152,8 +169,13 @@ $$
 $$
 
 where $$c_k$$ and $$e_k$$ refer to the costs and effects under treatment $$k$$ respectively. In R,
-```{r icer}
+
+```r
 icer <- (sum(sim1$c) - sum(sim0$c))/(sum(sim1$e) - sum(sim0$e))
 print(icer)
 ```
-which suggest that a decision-maker should only approve combination therapy if he or she is willing to pay over ```r round(icer, 0)``` pounds for an additional life-year gained.
+
+```
+## [1] 6276.083
+```
+which suggest that a decision-maker should only approve combination therapy if he or she is willing to pay over ``6276`` pounds for an additional life-year gained.
