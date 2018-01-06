@@ -53,12 +53,17 @@ Ton TG, Bennett M, **Incerti D**, Peneva D, Druzin M, Stevens W, Butwick A, Lee 
 **Incerti, D**. Political Instability and Financial Markets. ([PDF](http://devinincerti.com/papers/instability_finance.pdf), 
 [GitHub](https://github.com/dincerti/political-instability)).
 
+### Blog Posts
+Jansen JP, **Incerti D**, Linthicum, M. [An Open-Source Consensus-Based Approach To Value Assessment](https://www.healthaffairs.org/action/showDoPubSecure?doi=10.1377%2Fhblog20171212.640960&format=full). Health Affairs Blog. 2017 Dec 1.
+
 ### Abstracts and Presentations
 Incerti D, Curtis JR, Lorenzi M, **Jansen JP**. Exploring Structural Uncertainty With An Open-Source Cost-Effectiveness Model For Rheumatoid Arthritis. ISPOR Annual European Congress, Glasgow, Scotland, 2017. [http://dx.doi.org/10.1016/j.jval.2017.08.2098](http://dx.doi.org/10.1016/j.jval.2017.08.2098)
 
 Incerti D, Peneva D, Shrestha A, Ramaswamy K, **Smith G**, Stevens W. An Empirical Analysis of the Role of Learning by Doing in Dynamic Cost-effectiveness. ISPOR Annual European Congress, Glasgow, Scotland, 2017. [http://dx.doi.org/10.1016/j.jval.2017.08.215](http://dx.doi.org/10.1016/j.jval.2017.08.215)
 
 **Incerti D**, Curtis JR, Lorenzi M, Jansen JP. Open-Source Consensus-Based Models to Improve the Cost-Effectiveness of Rheumatology Care. ACR/ARHP Annual Meeting, Annual Meeting, San Diego, 2017. 
+
+**Jansen JP**, Jeffers A, Chang K, Incerti D. An Outcomes Regression Approach for Indirect Comparisons of Survival Outcomes when Standard Network Meta-Analysis is Not Feasible. ISPOR Annual International Meeting, Boston, 2017. 
 
 **Wan J**, Mongan J, Incerti D, Courtier J. A Shiny New World: Creating Your Own Radiology Decision Support Webapps Using R. Radiological Society of North America, Annual Meeting, Chicago, 2016.
 

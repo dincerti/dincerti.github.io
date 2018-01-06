@@ -5,3 +5,4 @@ knit("_rmd-posts/twopart.Rmd", "_posts/2015-09-11-twopart.md")
 knit("_rmd-posts/bayesian_meta_analysis.Rmd", 
      "_posts/2015-10-31-bayesian-meta-analysis.md")
 knit("_rmd-posts/diabetes_highcost.Rmd", "_posts/2015-10-13-diabetes-highcost.md")
+knit("_rmd-posts/psa.Rmd", "_posts/2017-11-13-psa.md")
