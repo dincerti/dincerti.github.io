@@ -5,7 +5,7 @@ layout: default
 ### [My Website](https://github.com/dincerti/dincerti.github.io)
 The GitHub repository for this Jekyll-powered website can be found [here](https://github.com/dincerti/dincerti.github.io). 
 
-### [IVI-RA model](https://innovationvalueinitiative.github.io/IVI-RA)
+### [IVI-RA Model](https://innovationvalueinitiative.github.io/IVI-RA)
 The IVI-RA model is an open-source individual patient simulation for assessing the value of disease-modifying anti-rheumatic drugs (DMARDs) used to treat rheumatoid arthritis. You can interact with the model in a number of ways:
 
 * [iviRA package](https://innovationvalueinitiative.github.io/IVI-RA): an R package for running the model.
