@@ -34,7 +34,7 @@ Stevens W, Shih T, **Incerti D**, Ton TG, Lee H, Peneva D, Macones GA, Sibai BM,
 
 Shahabi A, Peneva D, **Incerti D**, McLaurin K, Stevens W. Assessing Variation in the Cost of Palivizumab for Respiratory Syncytial Virus Prevention in Preterm Infants. *PharmacoEconomics-Open*. 2017:1-9. [https://doi.org/10.1007/s41669-017-0042-3](https://doi.org/10.1007/s41669-017-0042-3)
 
-Jansen JP, **Incerti, D**, Mutebi A, Peneva, D, MacEwan JP, Stolshek B, Kaur P, Gharaibeh M, Strand V. Cost-effectiveness of sequenced treatment of rheumatoid arthritis with targeted immune modulators. *Journal of Medical Economics*. 2017 Jul 3;20(7):703-14. [http://dx.doi.org/10.1080/13696998.2017.1307205](http://dx.doi.org/10.1080/13696998.2017.1307205) ([Supplement](http://devinincerti.com/papers/ce-bdmards-ra-jme-2017-supplement.pdf)).
+Jansen JP, **Incerti D**, Mutebi A, Peneva, D, MacEwan JP, Stolshek B, Kaur P, Gharaibeh M, Strand V. Cost-effectiveness of sequenced treatment of rheumatoid arthritis with targeted immune modulators. *Journal of Medical Economics*. 2017 Jul 3;20(7):703-14. [http://dx.doi.org/10.1080/13696998.2017.1307205](http://dx.doi.org/10.1080/13696998.2017.1307205) ([Supplement](http://devinincerti.com/papers/ce-bdmards-ra-jme-2017-supplement.pdf)).
 
 ### Manuscripts Under Review
 **Incerti, D**. The Optimal Allocation of Campaign Funds in House Elections. ([PDF](http://devinincerti.com/papers/optimal_house.pdf), [GitHub](https://github.com/dincerti/optimal-house)).
@@ -46,15 +46,15 @@ Ton TG, Bennett M, **Incerti D**, Peneva D, Druzin M, Stevens W, Butwick A, Lee 
 **Incerti D**, Browne J, Huber C, Baker CL, Makinson G, Goren A, Wilke R, Stevens W. An empirical tool for estimating and categorizing unmet need. 
 
 ### Working Papers
-**Incerti, D**. An Assessment of Long-term Healthcare Expenditure Risk Using a Dynamic Bayesian Model. ([PDF](http://devinincerti.com/papers/longterm_spending.pdf), [fake-data simulation](http://devinincerti.com/twopart_re_longitudinal.html)).
+**Incerti D**. An Assessment of Long-term Healthcare Expenditure Risk Using a Dynamic Bayesian Model. ([PDF](http://devinincerti.com/papers/longterm_spending.pdf), [fake-data simulation](http://devinincerti.com/twopart_re_longitudinal.html)).
 
-**Incerti, D**. Racial, Ethnic and Educational Disparities in Pharmaceutical Expenditures. ([PDF](http://devinincerti.com/papers/disparities_rx.pdf)).
+**Incerti D**. Racial, Ethnic and Educational Disparities in Pharmaceutical Expenditures. ([PDF](http://devinincerti.com/papers/disparities_rx.pdf)).
 
-**Incerti, D**. Political Instability and Financial Markets. ([PDF](http://devinincerti.com/papers/instability_finance.pdf), 
+**Incerti D**. Political Instability and Financial Markets. ([PDF](http://devinincerti.com/papers/instability_finance.pdf), 
 [GitHub](https://github.com/dincerti/political-instability)).
 
 ### Blog Posts
-Jansen JP, **Incerti D**, Linthicum, M. [An Open-Source Consensus-Based Approach To Value Assessment](https://www.healthaffairs.org/action/showDoPubSecure?doi=10.1377%2Fhblog20171212.640960&format=full). Health Affairs Blog. 2017 Dec 1.
+Jansen JP, **Incerti D**, Linthicum M. [An Open-Source Consensus-Based Approach To Value Assessment](https://www.healthaffairs.org/action/showDoPubSecure?doi=10.1377%2Fhblog20171212.640960&format=full). Health Affairs Blog. 2017 Dec 1.
 
 ### Abstracts and Presentations
 Incerti D, Curtis JR, Lorenzi M, **Jansen JP**. Exploring Structural Uncertainty With An Open-Source Cost-Effectiveness Model For Rheumatoid Arthritis. ISPOR Annual European Congress, Glasgow, Scotland, 2017. [http://dx.doi.org/10.1016/j.jval.2017.08.2098](http://dx.doi.org/10.1016/j.jval.2017.08.2098)
