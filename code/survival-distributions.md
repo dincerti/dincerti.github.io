@@ -41,11 +41,6 @@ $$\begin{aligned}
 H(t) = \int_0^t h(z)dz = -log S(t) 
 \end{aligned}$$
 
-Median:
-$$\begin{aligned}
-H(t) = \int_0^t h(z)dz = -log S(t) 
-\end{aligned}$$
-
 ### Exponential Distribution
 Notation: 
 $$\lambda$$ = rate
