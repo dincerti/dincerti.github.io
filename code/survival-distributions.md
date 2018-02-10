@@ -49,7 +49,7 @@ Density:
 $$f(t) = \lambda e^{-\lambda t}$$
 
 Survival:
-$$S(t) = 1 - e^{-\lambda t}$$
+$$S(t) = e^{-\lambda t}$$
 
 Hazard:
 $$h(t) = \lambda$$
