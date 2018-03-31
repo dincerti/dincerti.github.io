@@ -12,10 +12,10 @@
 :  B.A. Political Science, University of California, San Diego
 
 ### Employment
-2017-17
+2017-18
 : Lead economist - Open-Source Value Project, Innovation and Value Initiative, Oakland CA
 
-2017-17
+2017-18
 : Research economist, Precision Health Economics, Oakland CA
 
 2016-17
@@ -53,23 +53,21 @@ Ton TG, Bennett M, **Incerti D**, Peneva D, Druzin M, Stevens W, Butwick A, Lee 
 **Incerti D**. Political Instability and Financial Markets. ([PDF](http://devinincerti.com/papers/instability_finance.pdf), 
 [GitHub](https://github.com/dincerti/political-instability)).
 
-### Blog Posts
+### Blog Post
 Jansen JP, **Incerti D**, Linthicum M. [An Open-Source Consensus-Based Approach To Value Assessment](https://www.healthaffairs.org/action/showDoPubSecure?doi=10.1377%2Fhblog20171212.640960&format=full). Health Affairs Blog. 2017 Dec 1.
 
 ### Abstracts and Presentations
-Incerti D, Curtis JR, Lorenzi M, **Jansen JP**. Exploring Structural Uncertainty With An Open-Source Cost-Effectiveness Model For Rheumatoid Arthritis. ISPOR Annual European Congress, Glasgow, Scotland, 2017. [http://dx.doi.org/10.1016/j.jval.2017.08.2098](http://dx.doi.org/10.1016/j.jval.2017.08.2098)
+**Incerti D**, Curtis JR, Lorenzi M, Jansen JP. Exploring Structural Uncertainty With An Open-Source Cost-Effectiveness Model For Rheumatoid Arthritis. ISPOR Annual European Congress, Glasgow, Scotland, 2017. [http://dx.doi.org/10.1016/j.jval.2017.08.2098](http://dx.doi.org/10.1016/j.jval.2017.08.2098)
 
-Incerti D, Peneva D, Shrestha A, Ramaswamy K, **Smith G**, Stevens W. An Empirical Analysis of the Role of Learning by Doing in Dynamic Cost-effectiveness. ISPOR Annual European Congress, Glasgow, Scotland, 2017. [http://dx.doi.org/10.1016/j.jval.2017.08.215](http://dx.doi.org/10.1016/j.jval.2017.08.215)
+**Incerti D**, Peneva D, Shrestha A, Ramaswamy K, Smith G, Stevens W. An Empirical Analysis of the Role of Learning by Doing in Dynamic Cost-effectiveness. ISPOR Annual European Congress, Glasgow, Scotland, 2017. [http://dx.doi.org/10.1016/j.jval.2017.08.215](http://dx.doi.org/10.1016/j.jval.2017.08.215)
 
 **Incerti D**, Curtis JR, Lorenzi M, Jansen JP. Open-Source Consensus-Based Models to Improve the Cost-Effectiveness of Rheumatology Care. ACR/ARHP Annual Meeting, Annual Meeting, San Diego, 2017. 
 
-**Jansen JP**, Jeffers A, Chang K, Incerti D. An Outcomes Regression Approach for Indirect Comparisons of Survival Outcomes when Standard Network Meta-Analysis is Not Feasible. ISPOR Annual International Meeting, Boston, 2017. 
+Jansen JP, Jeffers A, Chang K, **Incerti D**. An Outcomes Regression Approach for Indirect Comparisons of Survival Outcomes when Standard Network Meta-Analysis is Not Feasible. ISPOR Annual International Meeting, Boston, 2017. 
 
-**Wan J**, Mongan J, Incerti D, Courtier J. A Shiny New World: Creating Your Own Radiology Decision Support Webapps Using R. Radiological Society of North America, Annual Meeting, Chicago, 2016.
+Wan J, Mongan J, **Incerti D**, Courtier J. A Shiny New World: Creating Your Own Radiology Decision Support Webapps Using R. Radiological Society of North America, Annual Meeting, Chicago, 2016.
 
-Stevens W, Shih T, **Incerti D**. Estimates of costs of preeclampsia to the United States health care system. March of Dimes Prematurity Research Center at Stanford University, Palo Alto, 2016.
-
-**Shiraito Y**, Incerti, D, Lopez-Moctezuma G. A Reassessment of the Resource Curse: A Bayesian Dynamic Analysis of Panel Data. Midwest Political Science Association, Annual Meeting, Chicago, 2013.
+Shiraito Y, **Incerti**, D, Lopez-Moctezuma G. A Reassessment of the Resource Curse: A Bayesian Dynamic Analysis of Panel Data. Midwest Political Science Association, Annual Meeting, Chicago, 2013.
 
 ### Software
 
