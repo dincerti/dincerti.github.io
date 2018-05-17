@@ -28,6 +28,8 @@
 : Research Associate, NERA Economic Consulting, Los Angeles, CA
 
 ### Publications
+**Incerti D**, Summers N, Ton TG, Boscoe A, Chandraker A, Stevens W. The Lifetime Health Burden of Delayed Graft Function in Kidney Transplant Recipients in the United States. *Medicial Decision Making Policy & Practice*. Forthcoming.
+
 Frasco MA, Shih T, **Incerti D**, Diaz Espinosa O, Vania DK, Thomas N. Incremental net monetary benefit of ocrelizumab relative to subcutaneous interferon $\beta$-1$\alpha$. *Journal of Medical Economics*. 2017 Oct 3;20(10):1074-82. [http://dx.doi.org/10.1080/13696998.2017.1357564](http://dx.doi.org/10.1080/13696998.2017.1357564)
 
 Stevens W, Shih T, **Incerti D**, Ton TG, Lee H, Peneva D, Macones GA, Sibai BM, Jena AB. 2017. Short-term costs of preeclampsia to the United States health care system. *American Journal of Obsetrics & Gynecology*. 2017 Sep 1;217(3):237-48. [http://dx.doi.org/10.1016/j.ajog.2017.04.032](http://dx.doi.org/10.1016/j.ajog.2017.04.032)
@@ -41,9 +43,9 @@ Jansen JP, **Incerti D**, Mutebi A, Peneva, D, MacEwan JP, Stolshek B, Kaur P, G
 
 Ton TG, Bennett M, **Incerti D**, Peneva D, Druzin M, Stevens W, Butwick A, Lee HC. Maternal and infant adverse outcomes associated with preeclampsia with and without severe features in the Untied States.
 
-**Incerti D**, Summers N, Ton TG, Boscoe A, Chandraker A, Stevens W. The Lifetime Health Burden of Delayed Graft Function in Kidney Transplant Recipients in the United States.
-
 **Incerti D**, Browne J, Huber C, Baker CL, Makinson G, Goren A, Wilke R, Stevens W. An empirical tool for estimating and categorizing unmet need. 
+
+Stevens W, **Incerti D**, Peneva D, Shrestha A, Ramaswamy K, Smith G. An Empirical Analysis of the Role of Learning by Doing in Dynamic Cost-effectiveness.
 
 ### Working Papers
 **Incerti D**. An Assessment of Long-term Healthcare Expenditure Risk Using a Dynamic Bayesian Model. ([PDF](http://devinincerti.com/papers/longterm_spending.pdf), [fake-data simulation](http://devinincerti.com/twopart_re_longitudinal.html)).
@@ -56,12 +58,21 @@ Ton TG, Bennett M, **Incerti D**, Peneva D, Druzin M, Stevens W, Butwick A, Lee 
 ### Blog Post
 Jansen JP, **Incerti D**, Linthicum M. [An Open-Source Consensus-Based Approach To Value Assessment](https://www.healthaffairs.org/action/showDoPubSecure?doi=10.1377%2Fhblog20171212.640960&format=full). Health Affairs Blog. 2017 Dec 1.
 
-### Abstracts and Presentations
+### Oral Presentations
+Developing flexible, iterative, and transparent decision models: a detailed look at a rheumatoid arthritis individual patient simulation. ISPOR Student Network Educational Webinar, 2018 
+
+Open-Source Consensus-Based Models to Improve the Cost-Effectiveness of Rheumatology Care (selected oral abstract). ACR/ARHP Annual Meeting, Annual Meeting, San Diego, 2017. 
+
+Estimates of costs of preeclampsia to the United States health care system. March of Dimes Prematurity Research Center at Stanford University, Palo Alto, 2016 (with Thanh G.N. Ton).
+
+### Abstracts and Poster Presentations
+**Incerti D**, Jansen JP. An Open-Source Toolkit for Developing Flexible Evidence-Based Decision and Simulation Models for Value Assessment in Oncology with R. ISPOR 23rd Annual International Meeting, Baltimore, 2018. 
+
+**Incerti D**, Jansen JP. Quantifying the Importance of Model Parameters and Structural Assumptions on the Value of Treatments for Rheumatoid Arthritis using Metamodeling. ISPOR 23rd Annual International Meeting, Baltimore, 2018. 
+
 **Incerti D**, Curtis JR, Lorenzi M, Jansen JP. Exploring Structural Uncertainty With An Open-Source Cost-Effectiveness Model For Rheumatoid Arthritis. ISPOR Annual European Congress, Glasgow, Scotland, 2017. [http://dx.doi.org/10.1016/j.jval.2017.08.2098](http://dx.doi.org/10.1016/j.jval.2017.08.2098)
 
 **Incerti D**, Peneva D, Shrestha A, Ramaswamy K, Smith G, Stevens W. An Empirical Analysis of the Role of Learning by Doing in Dynamic Cost-effectiveness. ISPOR Annual European Congress, Glasgow, Scotland, 2017. [http://dx.doi.org/10.1016/j.jval.2017.08.215](http://dx.doi.org/10.1016/j.jval.2017.08.215)
-
-**Incerti D**, Curtis JR, Lorenzi M, Jansen JP. Open-Source Consensus-Based Models to Improve the Cost-Effectiveness of Rheumatology Care. ACR/ARHP Annual Meeting, Annual Meeting, San Diego, 2017. 
 
 Jansen JP, Jeffers A, Chang K, **Incerti D**. An Outcomes Regression Approach for Indirect Comparisons of Survival Outcomes when Standard Network Meta-Analysis is Not Feasible. ISPOR Annual International Meeting, Boston, 2017. 
 
@@ -70,14 +81,14 @@ Wan J, Mongan J, **Incerti D**, Courtier J. A Shiny New World: Creating Your Own
 Shiraito Y, **Incerti**, D, Lopez-Moctezuma G. A Reassessment of the Resource Curse: A Bayesian Dynamic Analysis of Panel Data. Midwest Political Science Association, Annual Meeting, Chicago, 2013.
 
 ### Software
+**Incerti D**. `hesim`: a general-purpose R package for health-economic simulation modeling. ([website](https://innovationvalueinitiative.github.io/hesim/)).
 
 **Incerti D**, Jansen JP. The IVI-RA model: an open-source simulation model for assessing the value of disease-modifying anti-rheumatic drugs (DMARDs) to treat rheumatoid arthritis. ([GitHub](https://github.com/InnovationValueInitiative/IVI-RA))
 
+* [Model documentation](https://innovationvalueinitiative.github.io/IVI-RA/model-description/model-description.pdf): PDF documentation describing the IVI-RA model.
 * [iviRA R package](https://innovationvalueinitiative.github.io/IVI-RA): an R package for running the IVI-RA model.
 * [IVI-RA Model Interface](https://innovationandvalueinitiative.shinyapps.io/ivi-ra-expert/): an R Shiny web interface providing full control over the treatments, the patient population, model parameters, model structures, and time horizon.
 * [IVI-RA Value Tool](http://apps.thevalueinitiative.org/ivi-ra/): a more streamlined R Shiny web application for users with less experience in decision-analytic modeling and rheumatoid arthritis.
-
-**Incerti D**. `hesim`: an R package for fast health-economic simulation modeling. ([website](https://innovationvalueinitiative.github.io/hesim/)).
 
 **Incerti D**. An R Shiny web application that aids diagnosis of skeletal dysplasias based on clinical features. ([link](http://104.131.159.61:3838/skeletal-dysplasias/)).
 
