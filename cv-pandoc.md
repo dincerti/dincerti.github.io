@@ -59,7 +59,7 @@ Stevens W, **Incerti D**, Peneva D, Shrestha A, Ramaswamy K, Smith G. An Empiric
 Jansen JP, **Incerti D**, Linthicum M. [An Open-Source Consensus-Based Approach To Value Assessment](https://www.healthaffairs.org/action/showDoPubSecure?doi=10.1377%2Fhblog20171212.640960&format=full). Health Affairs Blog. 2017 Dec 1.
 
 ### Oral Presentations
-Developing flexible, iterative, and transparent decision models: a detailed look at a rheumatoid arthritis individual patient simulation. ISPOR Student Network Educational Webinar, 2018 
+Developing flexible, iterative, and transparent decision models: a detailed look at a rheumatoid arthritis individual patient simulation. ISPOR Student Network Educational Webinar, 2018. 
 
 Open-Source Consensus-Based Models to Improve the Cost-Effectiveness of Rheumatology Care (selected oral abstract). ACR/ARHP Annual Meeting, Annual Meeting, San Diego, 2017. 
 
