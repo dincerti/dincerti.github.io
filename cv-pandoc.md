@@ -61,7 +61,7 @@ Jansen JP, **Incerti D**, Linthicum M. [An Open-Source Consensus-Based Approach 
 ### Oral Presentations
 Developing flexible, iterative, and transparent decision models: a detailed look at a rheumatoid arthritis individual patient simulation. ISPOR Student Network Educational Webinar, 2018. 
 
-Open-Source Consensus-Based Models to Improve the Cost-Effectiveness of Rheumatology Care (selected oral abstract). ACR/ARHP Annual Meeting, Annual Meeting, San Diego, 2017. 
+Open-Source Consensus-Based Models to Improve the Cost-Effectiveness of Rheumatology Care (selected oral abstract). ACR/ARHP Annual Meeting, San Diego, 2017. 
 
 Estimates of costs of preeclampsia to the United States health care system. March of Dimes Prematurity Research Center at Stanford University, Palo Alto, 2016 (with Thanh G.N. Ton).
 
