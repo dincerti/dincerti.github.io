@@ -81,18 +81,24 @@ Wan J, Mongan J, **Incerti D**, Courtier J. A Shiny New World: Creating Your Own
 Shiraito Y, **Incerti**, D, Lopez-Moctezuma G. A Reassessment of the Resource Curse: A Bayesian Dynamic Analysis of Panel Data. Midwest Political Science Association, Annual Meeting, Chicago, 2013.
 
 ### Software
-**Incerti D**. `hesim`: a general-purpose R package for health-economic simulation modeling. ([website](https://innovationvalueinitiative.github.io/hesim/)).
+*hesim*
 
-**Incerti D**, Jansen JP. The IVI-RA model: an open-source simulation model for assessing the value of disease-modifying anti-rheumatic drugs (DMARDs) to treat rheumatoid arthritis. ([GitHub](https://github.com/InnovationValueInitiative/IVI-RA))
+Author of `hesim`, an R package for health economic simulation modeling and decision analysis that provides a general framework for integrating statistical analyses with economic evaluation. The package currently supports N-state partitioned survival analysis and summarizing the output of probabilistic sensitivity analysis. It is designed for high performance simulation modeling and heavily utilizes `Rcpp` and `data.table`. ([website](https://innovationvalueinitiative.github.io/hesim/)).
+
+*The IVI-RA model*
+
+Author of the IVI-RA model, an open-source simulation model for assessing the value of disease-modifying anti-rheumatic drugs (DMARDs) to treat rheumatoid arthritis. ([GitHub](https://github.com/InnovationValueInitiative/IVI-RA))
 
 * [Model documentation](https://innovationvalueinitiative.github.io/IVI-RA/model-description/model-description.pdf): PDF documentation describing the IVI-RA model.
 * [iviRA R package](https://innovationvalueinitiative.github.io/IVI-RA): an R package for running the IVI-RA model.
 * [IVI-RA Model Interface](https://innovationandvalueinitiative.shinyapps.io/ivi-ra-expert/): an R Shiny web interface providing full control over the treatments, the patient population, model parameters, model structures, and time horizon.
 * [IVI-RA Value Tool](http://apps.thevalueinitiative.org/ivi-ra/): a more streamlined R Shiny web application for users with less experience in decision-analytic modeling and rheumatoid arthritis.
 
-**Incerti D**. An R Shiny web application that aids diagnosis of skeletal dysplasias based on clinical features. ([link](http://104.131.159.61:3838/skeletal-dysplasias/)).
+*R Shiny web applications*
 
-**Incerti D**. Interactive plots of parametric survival distributions. ([link](http://104.131.159.61:3838/survival-curves/)).
+* An R Shiny web application that aids diagnosis of skeletal dysplasias based on clinical features. ([link](http://104.131.159.61:3838/skeletal-dysplasias/)).
+
+* Interactive plots of parametric survival distributions. ([link](http://104.131.159.61:3838/survival-curves/)).
 
 ### Honors and Awards
 2010-15
