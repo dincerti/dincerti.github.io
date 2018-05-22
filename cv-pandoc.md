@@ -13,16 +13,16 @@
 
 ### Employment
 2017-18
-: Lead economist - Open-Source Value Project, Innovation and Value Initiative, Oakland CA
+: Lead Economist - Open-Source Value Project, Innovation and Value Initiative, Oakland CA
 
 2017-18
-: Research economist, Precision Health Economics, Oakland CA
+: Research Economist, Precision Health Economics, Oakland CA
 
 2016-17
-: Associate research economist, Precision Health Economics, Oakland CA
+: Associate Research Economist, Precision Health Economics, Oakland CA
 
 2015-16
-: Reseach economist intern, Precision Health Economics, Oakland CA
+: Reseach Economist Intern, Precision Health Economics, Oakland CA
 
 2009-10
 : Research Associate, NERA Economic Consulting, Los Angeles, CA
@@ -30,11 +30,11 @@
 ### Publications
 **Incerti D**, Summers N, Ton TG, Boscoe A, Chandraker A, Stevens W. The Lifetime Health Burden of Delayed Graft Function in Kidney Transplant Recipients in the United States. *Medicial Decision Making Policy & Practice*. Forthcoming.
 
-Frasco MA, Shih T, **Incerti D**, Diaz Espinosa O, Vania DK, Thomas N. Incremental net monetary benefit of ocrelizumab relative to subcutaneous interferon $\beta$-1$\alpha$. *Journal of Medical Economics*. 2017 Oct 3;20(10):1074-82. [http://dx.doi.org/10.1080/13696998.2017.1357564](http://dx.doi.org/10.1080/13696998.2017.1357564)
+Frasco MA, Shih T, **Incerti D**, Diaz Espinosa O, Vania DK, Thomas N. Incremental net monetary benefit of ocrelizumab relative to subcutaneous interferon $\beta$-1$\alpha$. *Journal of Medical Economics*. 2017 Oct 3;20(10):1074-82. [http://dx.doi.org/10.1080/13696998.2017.1357564](http://dx.doi.org/10.1080/13696998.2017.1357564).
 
-Stevens W, Shih T, **Incerti D**, Ton TG, Lee H, Peneva D, Macones GA, Sibai BM, Jena AB. 2017. Short-term costs of preeclampsia to the United States health care system. *American Journal of Obsetrics & Gynecology*. 2017 Sep 1;217(3):237-48. [http://dx.doi.org/10.1016/j.ajog.2017.04.032](http://dx.doi.org/10.1016/j.ajog.2017.04.032)
+Stevens W, Shih T, **Incerti D**, Ton TG, Lee H, Peneva D, Macones GA, Sibai BM, Jena AB. 2017. Short-term costs of preeclampsia to the United States health care system. *American Journal of Obsetrics & Gynecology*. 2017 Sep 1;217(3):237-48. [http://dx.doi.org/10.1016/j.ajog.2017.04.032](http://dx.doi.org/10.1016/j.ajog.2017.04.032).
 
-Shahabi A, Peneva D, **Incerti D**, McLaurin K, Stevens W. Assessing Variation in the Cost of Palivizumab for Respiratory Syncytial Virus Prevention in Preterm Infants. *PharmacoEconomics-Open*. 2017:1-9. [https://doi.org/10.1007/s41669-017-0042-3](https://doi.org/10.1007/s41669-017-0042-3)
+Shahabi A, Peneva D, **Incerti D**, McLaurin K, Stevens W. Assessing Variation in the Cost of Palivizumab for Respiratory Syncytial Virus Prevention in Preterm Infants. *PharmacoEconomics-Open*. 2017:1-9. [https://doi.org/10.1007/s41669-017-0042-3](https://doi.org/10.1007/s41669-017-0042-3).
 
 Jansen JP, **Incerti D**, Mutebi A, Peneva, D, MacEwan JP, Stolshek B, Kaur P, Gharaibeh M, Strand V. Cost-effectiveness of sequenced treatment of rheumatoid arthritis with targeted immune modulators. *Journal of Medical Economics*. 2017 Jul 3;20(7):703-14. [http://dx.doi.org/10.1080/13696998.2017.1307205](http://dx.doi.org/10.1080/13696998.2017.1307205) ([Supplement](http://devinincerti.com/papers/ce-bdmards-ra-jme-2017-supplement.pdf)).
 
@@ -48,7 +48,7 @@ Ton TG, Bennett M, **Incerti D**, Peneva D, Druzin M, Stevens W, Butwick A, Lee 
 Stevens W, **Incerti D**, Peneva D, Shrestha A, Ramaswamy K, Smith G. An Empirical Analysis of the Role of Learning by Doing in Dynamic Cost-effectiveness.
 
 ### Working Papers
-**Incerti D**. An Assessment of Long-term Healthcare Expenditure Risk Using a Dynamic Bayesian Model. ([PDF](http://devinincerti.com/papers/longterm_spending.pdf), [fake-data simulation](http://devinincerti.com/twopart_re_longitudinal.html)).
+**Incerti D**. An Assessment of Long-term Healthcare Expenditure Risk Using a Dynamic Bayesian Model. ([PDF](http://devinincerti.com/papers/longterm_spending.pdf), [Fake-data simulation](http://devinincerti.com/twopart_re_longitudinal.html)).
 
 **Incerti D**. Racial, Ethnic and Educational Disparities in Pharmaceutical Expenditures. ([PDF](http://devinincerti.com/papers/disparities_rx.pdf)).
 
@@ -70,9 +70,9 @@ Estimates of costs of preeclampsia to the United States health care system. Marc
 
 **Incerti D**, Jansen JP. Quantifying the Importance of Model Parameters and Structural Assumptions on the Value of Treatments for Rheumatoid Arthritis using Metamodeling. ISPOR 23rd Annual International Meeting, Baltimore, 2018. 
 
-**Incerti D**, Curtis JR, Lorenzi M, Jansen JP. Exploring Structural Uncertainty With An Open-Source Cost-Effectiveness Model For Rheumatoid Arthritis. ISPOR Annual European Congress, Glasgow, Scotland, 2017. [http://dx.doi.org/10.1016/j.jval.2017.08.2098](http://dx.doi.org/10.1016/j.jval.2017.08.2098)
+**Incerti D**, Curtis JR, Lorenzi M, Jansen JP. Exploring Structural Uncertainty With An Open-Source Cost-Effectiveness Model For Rheumatoid Arthritis. ISPOR Annual European Congress, Glasgow, Scotland, 2017. [http://dx.doi.org/10.1016/j.jval.2017.08.2098](http://dx.doi.org/10.1016/j.jval.2017.08.2098).
 
-**Incerti D**, Peneva D, Shrestha A, Ramaswamy K, Smith G, Stevens W. An Empirical Analysis of the Role of Learning by Doing in Dynamic Cost-effectiveness. ISPOR Annual European Congress, Glasgow, Scotland, 2017. [http://dx.doi.org/10.1016/j.jval.2017.08.215](http://dx.doi.org/10.1016/j.jval.2017.08.215)
+**Incerti D**, Peneva D, Shrestha A, Ramaswamy K, Smith G, Stevens W. An Empirical Analysis of the Role of Learning by Doing in Dynamic Cost-effectiveness. ISPOR Annual European Congress, Glasgow, Scotland, 2017. [http://dx.doi.org/10.1016/j.jval.2017.08.215](http://dx.doi.org/10.1016/j.jval.2017.08.215).
 
 Jansen JP, Jeffers A, Chang K, **Incerti D**. An Outcomes Regression Approach for Indirect Comparisons of Survival Outcomes when Standard Network Meta-Analysis is Not Feasible. ISPOR Annual International Meeting, Boston, 2017. 
 
@@ -83,11 +83,11 @@ Shiraito Y, **Incerti**, D, Lopez-Moctezuma G. A Reassessment of the Resource Cu
 ### Software
 *hesim*
 
-Author of `hesim`, an R package for health economic simulation modeling and decision analysis that provides a general framework for integrating statistical analyses with economic evaluation. The package currently supports N-state partitioned survival analysis and summarizing the output of probabilistic sensitivity analysis. It is designed for high performance simulation modeling and heavily utilizes `Rcpp` and `data.table`. ([website](https://innovationvalueinitiative.github.io/hesim/)).
+Author of `hesim`, an R package for health economic simulation modeling and decision analysis that provides a general framework for integrating statistical analyses with economic evaluation. The package currently supports N-state partitioned survival analysis and summarizing the output of probabilistic sensitivity analysis. It is designed for high performance simulation modeling and heavily utilizes `Rcpp` and `data.table`. ([Website](https://innovationvalueinitiative.github.io/hesim/)).
 
 *The IVI-RA model*
 
-Author of the IVI-RA model, an open-source simulation model for assessing the value of disease-modifying anti-rheumatic drugs (DMARDs) to treat rheumatoid arthritis. ([GitHub](https://github.com/InnovationValueInitiative/IVI-RA))
+Author of the IVI-RA model, an open-source individual patient simulation model for assessing the value of disease-modifying anti-rheumatic drugs (DMARDs) to treat rheumatoid arthritis. ([GitHub](https://github.com/InnovationValueInitiative/IVI-RA)).
 
 * [Model documentation](https://innovationvalueinitiative.github.io/IVI-RA/model-description/model-description.pdf): PDF documentation describing the IVI-RA model.
 * [iviRA R package](https://innovationvalueinitiative.github.io/IVI-RA): an R package for running the IVI-RA model.
@@ -96,9 +96,9 @@ Author of the IVI-RA model, an open-source simulation model for assessing the va
 
 *R Shiny web applications*
 
-* An R Shiny web application that aids diagnosis of skeletal dysplasias based on clinical features. ([link](http://104.131.159.61:3838/skeletal-dysplasias/)).
+* An R Shiny web application that aids diagnosis of skeletal dysplasias based on clinical features. ([Link](http://104.131.159.61:3838/skeletal-dysplasias/)).
 
-* Interactive plots of parametric survival distributions. ([link](http://104.131.159.61:3838/survival-curves/)).
+* Interactive plots of parametric survival distributions. ([Link](http://104.131.159.61:3838/survival-curves/)).
 
 ### Honors and Awards
 2010-15
