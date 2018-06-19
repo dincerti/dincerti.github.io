@@ -13,7 +13,7 @@ The IVI-RA model is an open-source individual patient simulation for assessing t
 * [IVI-RA Value Tool](https://innovationandvalueinitiative.shinyapps.io/ivi-ra/): An R Shiny web application providing a more streamlined experience for users with less experience in decision-analytic modeling and rheumatoid arthritis.
 
 ### [hesim](https://innovationvalueinitiative.github.io/hesim/)
-`hesim` is an R package for health economic simulation modeling and decision analysis. The package can help facilitate computationally intensive simulation modeling and be used to analyze the output of simulation models. ([website](https://innovationvalueinitiative.github.io/hesim/))
+`hesim` is an R package for health economic simulation modeling and decision analysis that provides a general framework for integrating statistical analyses with economic evaluation. The package currently supports N-state partitioned survival analysis and summarizing the output of probabilistic sensitivity analysis. It is designed for high performance simulation modeling and heavily utilizes `Rcpp` and `data.table`. ([Website](https://innovationvalueinitiative.github.io/hesim/)).
 
 ### [Skeletal Dysplasias](http://104.131.159.61:3838/skeletal-dysplasias/)
 An R [Shiny](http://shiny.rstudio.com/) web application that aids diagnosis of skeletal dysplasias based on clinical features ([link](http://104.131.159.61:3838/skeletal-dysplasias/)). A tutorial supplementing our RSNA education exhibit can be found [here](code/skeletal-dysplasias.html).
