@@ -6,12 +6,12 @@ title: Markov Cohort Models
 {:toc}
 
 ### Overview
-This page shows how to employ a Markov cohort model for cost-effectiveness analysis using R. The analysis replicates a paper ([Chanc97](references.html#Chanc97)) that is commonly used for teaching purposes ([BSC06](references.html#BSC06), [Drum05](references.html#Drum05)), which compares combination HIV therapy using zidovudine and lamivudine to zidovudine monotherapy.
+This page shows how to employ a Markov cohort model for cost-effectiveness analysis using R. The analysis replicates a [paper](https://www.ncbi.nlm.nih.gov/pubmed/10169387) that is commonly used for [teaching purposes](https://www.amazon.com/Decision-Modelling-Economic-Evaluation-Handbooks/dp/0198526628) and compares combination HIV therapy using zidovudine and lamivudine to zidovudine monotherapy.
 
 ### Setting Up a Markov Model
 In a Markov model patients move from one mutually exclusive disease state to another over a series of discrete time periods. A fully specified model consists of 1) disease states, 2) the probability of transitioning from one stage to the next, 3) treatment costs in each stage, and 4) quality of life weights by stage. 
 
-**States**
+#### States
 
 In our example, HIV patients can be in one of the following 4 states at a given point in time:
 
@@ -20,7 +20,7 @@ In our example, HIV patients can be in one of the following 4 states at a given 
 * State C: Aids,
 * State D: Death.
 
-**Transition Matrix**
+#### Transition Matrix
 
 At any given points in time, the row vector $$z_{kt} = [z_{1kt}\; z_{2kt}\; z_{3kt}\; z_{4kt}]$$ represents the total number of HIV patients in each of the 4 states using treatment $$k$$ at time $$t$$. This vector, $$z_{kt}$$, changes over time according to a transition matrix, $$P_{kt}$$,
 
@@ -76,7 +76,7 @@ P.1 <- matrix(c(.858, .103, .034, .005,
              ncol = 4, nrow = 4, byrow = TRUE)
 ```
 
-**Costs**
+#### Costs
 
 Treatment costs are due to a) direct medical and community expenses and b) the prices of each drug. The drug costs of zidovudine and lamivudine are &pound;2278 and &pound;2086 respectively. Medical and community expenses in each state are as follows:
 
@@ -96,7 +96,7 @@ c.1 <- c(c.0[1:3] + c.lamivudine, 0)
 ```
 
 
-**Quality of Life Weights**
+#### Quality of Life Weights
 
 Treatment effects are typically measured by quality-adjusted life-years (QALYs). However, we follow the original paper which measured effectiveness with (unadjusted) life-years. In mathematical terms, this means that the 4 states are weighted with the row vector $$[1\; 1\; 1\; 0]$$. 
 
@@ -142,7 +142,7 @@ surv.df <- data.frame(surv = c(sim0$e, sim1$e),
                       cylce = rep(seq(1, ncycles), 2),
                        lab = rep(c("Monotherapy", "Combination therapy"), 
                        each = ncycles))
-ggplot(dat = surv.df, aes(x = cylce, y = surv, col = lab)) + geom_line() + 
+ggplot2::ggplot(dat = surv.df, aes(x = cylce, y = surv, col = lab)) + geom_line() + 
   xlab("Cycle") + ylab("Fraction surviving") +
   theme(legend.title=element_blank()) + 
   theme(legend.position = "bottom")
