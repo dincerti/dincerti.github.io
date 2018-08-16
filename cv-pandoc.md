@@ -47,6 +47,8 @@ Ton TG, Bennett M, **Incerti D**, Peneva D, Druzin M, Stevens W, Butwick A, Lee 
 
 Stevens W, **Incerti D**, Peneva D, Shrestha A, Ramaswamy K, Smith G. An Empirical Analysis of the Role of Learning by Doing in Dynamic Cost-effectiveness.
 
+**Incerti D**, Curtis JR, Shafrin J, Lakdawalla DN, Jansen JP. A flexible open-source decision model for value assessment of biologic treatment for rheumatoid arthritis.
+
 ### Working Papers
 **Incerti D**. An Assessment of Long-term Healthcare Expenditure Risk Using a Dynamic Bayesian Model. ([PDF](http://devinincerti.com/papers/longterm_spending.pdf), [Fake-data simulation](http://devinincerti.com/twopart_re_longitudinal.html)).
 
@@ -83,7 +85,7 @@ Shiraito Y, **Incerti**, D, Lopez-Moctezuma G. A Reassessment of the Resource Cu
 ### Software
 *hesim*
 
-Author of `hesim`, an R package for health economic simulation modeling and decision analysis that provides a general framework for integrating statistical analyses with economic evaluation. The package currently supports N-state partitioned survival analysis and summarizing the output of probabilistic sensitivity analysis. It is designed for high performance simulation modeling and heavily utilizes `Rcpp` and `data.table`. ([Website](https://innovationvalueinitiative.github.io/hesim/)).
+Author of `hesim`, an R package for health economic simulation modeling and decision analysis that provides a general framework for integrating statistical analyses with economic evaluation. The package currently supports N-state partitioned survival models and state-transition models, as well as summarizing the output of probabilistic sensitivity analysis. It is designed for high performance simulation modeling including microsimulation and heavily utilizes `Rcpp` and `data.table`. ([Website](https://innovationvalueinitiative.github.io/hesim/)).
 
 *The IVI-RA model*
 
