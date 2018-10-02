@@ -28,7 +28,9 @@
 : Research Associate, NERA Economic Consulting, Los Angeles, CA
 
 ### Publications
-**Incerti D**, Summers N, Ton TG, Boscoe A, Chandraker A, Stevens W. The Lifetime Health Burden of Delayed Graft Function in Kidney Transplant Recipients in the United States. *Medicial Decision Making Policy & Practice*. [http://journals.sagepub.com/doi/full/10.1177/2381468318781811](http://journals.sagepub.com/doi/full/10.1177/2381468318781811).
+**Incerti, D**. The Optimal Allocation of Campaign Funds in House Elections. *Electoral Studies*. (in press). ([PDF](http://devinincerti.com/papers/optimal_house.pdf), [Supplement](http://devinincerti.com/papers/optimal_house_supplement.pdf), [GitHub](https://github.com/dincerti/optimal-house)).
+
+**Incerti D**, Summers N, Ton TG, Boscoe A, Chandraker A, Stevens W. The Lifetime Health Burden of Delayed Graft Function in Kidney Transplant Recipients in the United States. *Medicial Decision Making Policy & Practice*. 2018. Jun;3(1):2381468318781811. [http://journals.sagepub.com/doi/full/10.1177/2381468318781811](http://journals.sagepub.com/doi/full/10.1177/2381468318781811).
 
 Frasco MA, Shih T, **Incerti D**, Diaz Espinosa O, Vania DK, Thomas N. Incremental net monetary benefit of ocrelizumab relative to subcutaneous interferon $\beta$-1$\alpha$. *Journal of Medical Economics*. 2017 Oct 3;20(10):1074-82. [http://dx.doi.org/10.1080/13696998.2017.1357564](http://dx.doi.org/10.1080/13696998.2017.1357564).
 
@@ -39,8 +41,6 @@ Shahabi A, Peneva D, **Incerti D**, McLaurin K, Stevens W. Assessing Variation i
 Jansen JP, **Incerti D**, Mutebi A, Peneva, D, MacEwan JP, Stolshek B, Kaur P, Gharaibeh M, Strand V. Cost-effectiveness of sequenced treatment of rheumatoid arthritis with targeted immune modulators. *Journal of Medical Economics*. 2017 Jul 3;20(7):703-14. [http://dx.doi.org/10.1080/13696998.2017.1307205](http://dx.doi.org/10.1080/13696998.2017.1307205) ([Supplement](http://devinincerti.com/papers/ce-bdmards-ra-jme-2017-supplement.pdf)).
 
 ### Manuscripts Under Review
-**Incerti, D**. The Optimal Allocation of Campaign Funds in House Elections. ([PDF](http://devinincerti.com/papers/optimal_house.pdf), [GitHub](https://github.com/dincerti/optimal-house)).
-
 Ton TG, Bennett M, **Incerti D**, Peneva D, Druzin M, Stevens W, Butwick A, Lee HC. Maternal and infant adverse outcomes associated with preeclampsia with and without severe features in the Untied States.
 
 **Incerti D**, Browne J, Huber C, Baker CL, Makinson G, Goren A, Wilke R, Stevens W. An empirical tool for estimating and categorizing unmet need. 
