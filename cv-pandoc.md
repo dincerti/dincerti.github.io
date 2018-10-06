@@ -30,7 +30,7 @@
 ### Publications
 **Incerti, D**. The Optimal Allocation of Campaign Funds in House Elections. *Electoral Studies*. (in press). ([PDF](http://devinincerti.com/papers/optimal_house.pdf), [Supplement](http://devinincerti.com/papers/optimal_house_supplement.pdf), [GitHub](https://github.com/dincerti/optimal-house)).
 
-**Incerti D**, Summers N, Ton TG, Boscoe A, Chandraker A, Stevens W. The Lifetime Health Burden of Delayed Graft Function in Kidney Transplant Recipients in the United States. *Medicial Decision Making Policy & Practice*. 2018. Jun;3(1):2381468318781811. [http://journals.sagepub.com/doi/full/10.1177/2381468318781811](http://journals.sagepub.com/doi/full/10.1177/2381468318781811).
+**Incerti D**, Summers N, Ton TG, Boscoe A, Chandraker A, Stevens W. The Lifetime Health Burden of Delayed Graft Function in Kidney Transplant Recipients in the United States. *Medical Decision Making Policy & Practice*. 2018. Jun;3(1):2381468318781811. [http://journals.sagepub.com/doi/full/10.1177/2381468318781811](http://journals.sagepub.com/doi/full/10.1177/2381468318781811).
 
 Frasco MA, Shih T, **Incerti D**, Diaz Espinosa O, Vania DK, Thomas N. Incremental net monetary benefit of ocrelizumab relative to subcutaneous interferon $\beta$-1$\alpha$. *Journal of Medical Economics*. 2017 Oct 3;20(10):1074-82. [http://dx.doi.org/10.1080/13696998.2017.1357564](http://dx.doi.org/10.1080/13696998.2017.1357564).
 
