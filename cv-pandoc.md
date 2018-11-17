@@ -28,7 +28,7 @@
 : Research Associate, NERA Economic Consulting, Los Angeles, CA
 
 ### Publications
-**Incerti, D**. The Optimal Allocation of Campaign Funds in House Elections. *Electoral Studies*. (in press). ([PDF](http://devinincerti.com/papers/optimal_house.pdf), [Supplement](http://devinincerti.com/papers/optimal_house_supplement.pdf), [GitHub](https://github.com/dincerti/optimal-house)).
+**Incerti, D**. The Optimal Allocation of Campaign Funds in House Elections. *Electoral Studies*. 2018 Dec 1;56:102-13. ([PDF](http://devinincerti.com/papers/optimal_house.pdf), [Supplement](http://devinincerti.com/papers/optimal_house_supplement.pdf), [GitHub](https://github.com/dincerti/optimal-house)).
 
 **Incerti D**, Summers N, Ton TG, Boscoe A, Chandraker A, Stevens W. The Lifetime Health Burden of Delayed Graft Function in Kidney Transplant Recipients in the United States. *Medical Decision Making Policy & Practice*. 2018. Jun;3(1):2381468318781811. [http://journals.sagepub.com/doi/full/10.1177/2381468318781811](http://journals.sagepub.com/doi/full/10.1177/2381468318781811).
 
@@ -61,13 +61,23 @@ Stevens W, **Incerti D**, Peneva D, Shrestha A, Ramaswamy K, Smith G. An Empiric
 Jansen JP, **Incerti D**, Linthicum M. [An Open-Source Consensus-Based Approach To Value Assessment](https://www.healthaffairs.org/action/showDoPubSecure?doi=10.1377%2Fhblog20171212.640960&format=full). Health Affairs Blog. 2017 Dec 1.
 
 ### Oral Presentations
-Developing flexible, iterative, and transparent decision models: a detailed look at a rheumatoid arthritis individual patient simulation. ISPOR Student Network Educational Webinar, 2018. 
+R You Seriously Still Using Excel? The Many Advantages of Open Source Decision Modeling in Efficient Programming Languages. ISPOR Annual European Congress, Barcelona, Spain, 2018 (with Jeroen Jansen, Howard Thom, and Gianluca Baio). ([PDF](http://devinincerti.com/presentations/ispor_barcelona_12-14-2018_R.pdf)) 
+
+Developing flexible, iterative, and transparent decision models: a detailed look at a rheumatoid arthritis individual patient simulation. ISPOR Student Network Educational Webinar, 2018. ([PDF](http://devinincerti.com/presentations/ISPOR_student_webinar_4-18-2018.pdf))  
 
 Open-Source Consensus-Based Models to Improve the Cost-Effectiveness of Rheumatology Care (selected oral abstract). ACR/ARHP Annual Meeting, San Diego, 2017. 
 
-Estimates of costs of preeclampsia to the United States health care system. March of Dimes Prematurity Research Center at Stanford University, Palo Alto, 2016 (with Thanh G.N. Ton).
+Estimates of the costs of preeclampsia to the United States health care system. March of Dimes Prematurity Research Center at Stanford University, Palo Alto, 2016 (with Thanh G.N. Ton).
 
 ### Abstracts and Poster Presentations
+**Incerti D**, Jansen JP. Open-Source Software for Developing Computationally Efficient Cost-effectiveness models to evaluate sequential treatment strategies in oncology. ISPOR Annual European Congress, Barcelona, Spain, 2018. 
+
+**Jansen JP**, Incerti D, Shafrin J, Frederickson A, Lakdawalla DN, Reckamp KL. A flexible open-source cost-effectiveness model for metastatic EGFR+ non-small cell lung cancer. ISPOR Annual European Congress, Barcelona, Spain, 2018. 
+
+**Incerti D**, Shafrin J, Lakdawalla DN, Zhao L, Linthicum M, Jansen JP. Improvement of an open-source cost-effectiveness model based on public feedback. ISPOR Annual European Congress, Barcelona, Spain, 2018.  
+
+May SG, Shafrin J, Linthicum M, Incerti D, **Jansen JP**, Bright J. Toward patient-centered value assessment: Lessons from the IVI Open-Source Value Project. ISPOR Annual European Congress, Barcelona, Spain, 2018. 
+
 **Incerti D**, Jansen JP. An Open-Source Toolkit for Developing Flexible Evidence-Based Decision and Simulation Models for Value Assessment in Oncology with R. ISPOR 23rd Annual International Meeting, Baltimore, 2018. 
 
 **Incerti D**, Jansen JP. Quantifying the Importance of Model Parameters and Structural Assumptions on the Value of Treatments for Rheumatoid Arthritis using Metamodeling. ISPOR 23rd Annual International Meeting, Baltimore, 2018. 
