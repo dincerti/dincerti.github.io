@@ -28,7 +28,7 @@
 : Research Associate, NERA Economic Consulting, Los Angeles, CA
 
 ### Publications
-**Incerti, D**. The Optimal Allocation of Campaign Funds in House Elections. *Electoral Studies*. 2018 Dec 1;56:102-13. ([PDF](http://devinincerti.com/papers/optimal_house.pdf), [Supplement](http://devinincerti.com/papers/optimal_house_supplement.pdf), [GitHub](https://github.com/dincerti/optimal-house)).
+**Incerti, D**. The Optimal Allocation of Campaign Funds in House Elections. *Electoral Studies*. 2018 Dec 1;56:102-13. [https://doi.org/10.1016/j.electstud.2018.09.010](https://doi.org/10.1016/j.electstud.2018.09.010) ([PDF](http://devinincerti.com/papers/optimal_house.pdf), [Supplement](http://devinincerti.com/papers/optimal_house_supplement.pdf), [GitHub](https://github.com/dincerti/optimal-house)).
 
 **Incerti D**, Summers N, Ton TG, Boscoe A, Chandraker A, Stevens W. The Lifetime Health Burden of Delayed Graft Function in Kidney Transplant Recipients in the United States. *Medical Decision Making Policy & Practice*. 2018. Jun;3(1):2381468318781811. [http://journals.sagepub.com/doi/full/10.1177/2381468318781811](http://journals.sagepub.com/doi/full/10.1177/2381468318781811).
 
