@@ -74,15 +74,15 @@ In our context, we might be willing to decrease specificity in order to increase
 
 The `ROCR` package provides a simple way to plot ROC curves using base R. I prefer the graphics in `ggplot`, so the code below uses `ggplot` to plot ROC curves using `ROCR` objects.
 
-```{r roc}
+```{r roc, message = FALSE, warning = FALSE}
 ```
 The area under the ROC curve, or the AUC, can be used to summarize the performance of the models. It has a nice interpretation because it can be shown to be equal to the Wilcoxon rank-sum test, or as the proportion of random pairs consisting of a high cost and a non high-cost patient in which the model assigns a higher probability of being a high cost patient to the actual high cost patient.
-```{r auc}
+```{r auc, message = FALSE, warning = FALSE}
 ```
 We can see that both the logistic ridge regression and the random forest yield similar results.
 
 Another important quantity of interest for disease management programs is the positive predictive value (PPV), or $$Pr(y_i=1 \mid \hat{y}_i =1)$$. Below, I plot this value using the logistic ridge regression against threshold values defined in terms of the percentage of the population with predictive probabilities above the cutoff.
-```{r ppv, warning = FALSE}
+```{r ppv, message = FALSE, warning = FALSE}
 ```
 The PPV is increasing in the threshold value which means that there is a tradeoff between correctly identifying high spenders and the number of patients identified. Indeed, if the cutoff is chosen so that only 10 percent of patients are targeted, then the PPV is only `r  round(tp[ which(pctile > .895 & pctile < .905)], 2)`. 
 

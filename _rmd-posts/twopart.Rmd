@@ -22,7 +22,7 @@ Now lets plot the distribution of expenditures.
 The distribution of expenditures is heavily right skewed: there are many small values (the fraction of nonspenders is `r round(mean(meps$totexp12 == 0), 2)`) and a few very large ones. This suggests 1) that a two-part model might be appropriate for this data and 2) that positive expenditures are not normally distributed. Common right skewed distributions that could be used to model positive expenditures include the lognormal distribution and the gamma distribution. 
 
 If the data is lognormally distributed, then the log of expenditures follows a normal distribution. We can investigate whether this is the case with the following plot. (Note that the syntax `DT <- DT[...]` is redundant but R Markdown prints the the output otherwise.)
-```{r twopart_loghist}
+```{r twopart_loghist, message = FALSE, warning=FALSE}
 ```
 The data is approximately normally distributed, albeit skewed slightly to the left. Since the response variable is essentially normal, the error term in a linear regression model---or equivalently the response variable conditional on covariates---is likely approximately normal as well.
 
