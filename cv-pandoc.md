@@ -76,7 +76,7 @@ Estimates of the costs of preeclampsia to the United States health care system. 
 
 **Incerti D**, Shafrin J, Lakdawalla DN, Zhao L, Linthicum M, Jansen JP. Improvement of an open-source cost-effectiveness model based on public feedback. ISPOR Annual European Congress, Barcelona, Spain, 2018.  
 
-May SG, Shafrin J, Linthicum M, Incerti D, **Jansen JP**, Bright J. Toward patient-centered value assessment: Lessons from the IVI Open-Source Value Project. ISPOR Annual European Congress, Barcelona, Spain, 2018. 
+May SG, Shafrin J, Linthicum M, **Incerti D**, Jansen JP, Bright J. Toward patient-centered value assessment: Lessons from the IVI Open-Source Value Project. ISPOR Annual European Congress, Barcelona, Spain, 2018. 
 
 **Incerti D**, Jansen JP. An Open-Source Toolkit for Developing Flexible Evidence-Based Decision and Simulation Models for Value Assessment in Oncology with R. ISPOR 23rd Annual International Meeting, Baltimore, 2018. 
 
