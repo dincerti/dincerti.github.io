@@ -9,12 +9,12 @@ title: Bayesian Meta-Analysis with R and Stan
 ### Overview
 Meta-analysis is frequently used to summarize results from multiple research studies. Since studies can be thought of as [exchangeable](https://en.wikipedia.org/wiki/Bayesian_hierarchical_modeling#Exchangeability), it is natural to analyze them using a hierarchical structure. 
 
-This page uses a Bayesian hierarchical model to conduct a meta-analysis of 9 randomized controlled trials (RCTs) of breast cancer screening. The analysis first replicates the frequentist results reported in [Marm13]({{site.url}}/references.html#Marm13) and then reexamines them in a Bayesian framework. The RCTs used in the meta-analysis are summarized in more detail by [GJ11]({{site.url}}/references.html#GJ11).
+This page uses a Bayesian hierarchical model to conduct a meta-analysis of 9 randomized controlled trials (RCTs) of breast cancer screening. The analysis first replicates the frequentist results reported by [Marmot et al.](https://www.nature.com/articles/bjc2013177) and then reexamines them in a Bayesian framework. The RCTs used in the meta-analysis are summarized in more detail by [Gøtzsche et al.](https://test.qmplus.qmul.ac.uk/pluginfile.php/154534/mod_book/chapter/3137/G%C3%B8tzsche%202009.pdf).
 
 R and Stan code for the analysis can be found [here](https://raw.githubusercontent.com/dincerti/dincerti.github.io/master/_rmd-posts/bayesian_meta_analysis.R) and [here](https://raw.githubusercontent.com/dincerti/dincerti.github.io/master/_rmd-posts/bayesian_meta_analysis.stan). 
 
 ### Previous RCTs and Relative Risks
-We begin by placing data from previous trials into a data frame using the summaries provided in [GJ11]({{site.url}}/references.html#GJ11). The treatment (group 1) is screening with mammography and the control (group 0) is no screening. The outcome in the treatment and control groups for study $$j$$, $$d_{1j}$$ and $$d_{0j}$$ respectively, is the number of breast cancer deaths during 13 years of follow up for women at least 50 years of age. There are $$n_{1j}$$ and $$n_{0j}$$ patients in the treatment and control groups respectively. 
+We begin by placing data from previous trials into a data frame using the summaries provided by [Gøtzsche et al.](https://test.qmplus.qmul.ac.uk/pluginfile.php/154534/mod_book/chapter/3137/G%C3%B8tzsche%202009.pdf). The treatment (group 1) is screening with mammography and the control (group 0) is no screening. The outcome in the treatment and control groups for study $$j$$, $$d_{1j}$$ and $$d_{0j}$$ respectively, is the number of breast cancer deaths during 13 years of follow up for women at least 50 years of age. There are $$n_{1j}$$ and $$n_{0j}$$ patients in the treatment and control groups respectively. 
 
 
 ```r
@@ -53,18 +53,6 @@ The results can be visualized nicely by creating a [forest plot](https://en.wiki
 
 ```r
 library("metafor")
-```
-
-```
-## Loading required package: Matrix
-```
-
-```
-## Loading 'metafor' package (version 1.9-9). For an overview 
-## and introduction to the package please type: help(metafor).
-```
-
-```r
 p <- forest(x = rct$rr, ci.lb = rct$lower, ci.ub = rct$upper, 
        slab = paste(rct$study, rct$year, sep = ", "), refline = 1)
 text(min(p$xlim), .88 * max(p$ylim), "Study and Year", pos = 4, font = 2)
@@ -131,7 +119,7 @@ c(exp(me.re$b), exp(me.re$ci.lb), exp(me.re$ci.ub))
 ## [1] 0.8029497 0.7259418 0.8881267
 ```
 
-This analysis reproduces the results reported in [Marm13]({{site.url}}/references.html#Marm13).
+This analysis reproduces the results reported by [Marmot et al.](https://www.nature.com/articles/bjc2013177).
 
 #### Bayesian Estimation
 One problem with the maximum likelihood approach is that it does not account for uncertainty in $$\tau$$ and produces confidence intervals for $$\mu$$ that are too narrow. A Bayesian model that produces complete probability distributions for each parameter can be estimated using the probabilistic programming language [Stan](http://mc-stan.org/). We begin by preparing the data.
@@ -186,7 +174,7 @@ quantile(exp(post$mu), probs = c(.025, .5, .975))
 
 ```
 ##      2.5%       50%     97.5% 
-## 0.7078854 0.8030712 0.9144106
+## 0.6889931 0.8011223 0.9110904
 ```
 
 This addditional uncertainty comes from averaging over $$\tau$$, which has a rather wide probability distribution. 
@@ -198,7 +186,7 @@ quantile(post$tau, probs = c(.025, .5, .975))
 
 ```
 ##        2.5%         50%       97.5% 
-## 0.004831274 0.098252967 0.298344587
+## 0.006847247 0.102239111 0.337733161
 ```
 
 The effects, $$\theta_j$$, are shrunk toward the overall mean, $$\mu$$. The following plot examines the degree of shrinkage by comparing the effects from the Bayesian model to the relative risks when each study is analyzed separately. 
@@ -247,7 +235,7 @@ quantile(exp(theta.new), probs = c(.025, .5, .975))
 
 ```
 ##      2.5%       50%     97.5% 
-## 0.5994494 0.8031927 1.0997960
+## 0.5711096 0.8017504 1.1106414
 ```
 
 

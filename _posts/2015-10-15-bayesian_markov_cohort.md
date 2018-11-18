@@ -6,7 +6,7 @@ title: Bayesian Markov Cohort Models
 {:toc}
 
 ### Overview
-One problem with a deterministic [Markov cohort model](markov_cohort.html) estimated is that it does not account for parameter uncertainty. A Bayesian approach provides a natural modeling framework for doing this. 
+One problem with a deterministic [Markov cohort model](markov_cohort.html) is that it does not account for parameter uncertainty. A Bayesian approach provides a natural modeling framework for doing this. 
 
 Here, we repeat the HIV example in a Bayesian manner.
 
@@ -17,7 +17,7 @@ There are three sources of parameter uncertainty that the model might account fo
 * uncertainty in the relative risk estimates,
 * uncertainty in estimated costs.
 
-[Chanc97](references.html#Chanc97) provide information that can be used for the first two parameter types but not the cost estimates. 
+[Chancellor et al.](https://www.ncbi.nlm.nih.gov/pubmed/10169387) provide information that can be used for the first two parameter types but not the cost estimates. 
 
 **Transition Matrices**
 

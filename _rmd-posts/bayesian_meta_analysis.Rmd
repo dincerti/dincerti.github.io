@@ -11,12 +11,12 @@ read_chunk('_rmd-posts/bayesian_meta_analysis.R')
 ### Overview
 Meta-analysis is frequently used to summarize results from multiple research studies. Since studies can be thought of as [exchangeable](https://en.wikipedia.org/wiki/Bayesian_hierarchical_modeling#Exchangeability), it is natural to analyze them using a hierarchical structure. 
 
-This page uses a Bayesian hierarchical model to conduct a meta-analysis of 9 randomized controlled trials (RCTs) of breast cancer screening. The analysis first replicates the frequentist results reported in [Marm13]({{site.url}}/references.html#Marm13) and then reexamines them in a Bayesian framework. The RCTs used in the meta-analysis are summarized in more detail by [GJ11]({{site.url}}/references.html#GJ11).
+This page uses a Bayesian hierarchical model to conduct a meta-analysis of 9 randomized controlled trials (RCTs) of breast cancer screening. The analysis first replicates the frequentist results reported by [Marmot et al.](https://www.nature.com/articles/bjc2013177) and then reexamines them in a Bayesian framework. The RCTs used in the meta-analysis are summarized in more detail by [Gøtzsche et al.](https://test.qmplus.qmul.ac.uk/pluginfile.php/154534/mod_book/chapter/3137/G%C3%B8tzsche%202009.pdf).
 
 R and Stan code for the analysis can be found [here](https://raw.githubusercontent.com/dincerti/dincerti.github.io/master/_rmd-posts/bayesian_meta_analysis.R) and [here](https://raw.githubusercontent.com/dincerti/dincerti.github.io/master/_rmd-posts/bayesian_meta_analysis.stan). 
 
 ### Previous RCTs and Relative Risks
-We begin by placing data from previous trials into a data frame using the summaries provided in [GJ11]({{site.url}}/references.html#GJ11). The treatment (group 1) is screening with mammography and the control (group 0) is no screening. The outcome in the treatment and control groups for study $$j$$, $$d_{1j}$$ and $$d_{0j}$$ respectively, is the number of breast cancer deaths during 13 years of follow up for women at least 50 years of age. There are $$n_{1j}$$ and $$n_{0j}$$ patients in the treatment and control groups respectively. 
+We begin by placing data from previous trials into a data frame using the summaries provided by [Gøtzsche et al.](https://test.qmplus.qmul.ac.uk/pluginfile.php/154534/mod_book/chapter/3137/G%C3%B8tzsche%202009.pdf). The treatment (group 1) is screening with mammography and the control (group 0) is no screening. The outcome in the treatment and control groups for study $$j$$, $$d_{1j}$$ and $$d_{0j}$$ respectively, is the number of breast cancer deaths during 13 years of follow up for women at least 50 years of age. There are $$n_{1j}$$ and $$n_{0j}$$ patients in the treatment and control groups respectively. 
 
 ```{r rcts}
 ```
@@ -77,7 +77,7 @@ A hierarchical model applied to meta-analysis is typically referred to as a rand
 ```{r random_effects}
 ```
 
-This analysis reproduces the results reported in [Marm13]({{site.url}}/references.html#Marm13).
+This analysis reproduces the results reported by [Marmot et al.](https://www.nature.com/articles/bjc2013177).
 
 #### Bayesian Estimation
 One problem with the maximum likelihood approach is that it does not account for uncertainty in $$\tau$$ and produces confidence intervals for $$\mu$$ that are too narrow. A Bayesian model that produces complete probability distributions for each parameter can be estimated using the probabilistic programming language [Stan](http://mc-stan.org/). We begin by preparing the data.
