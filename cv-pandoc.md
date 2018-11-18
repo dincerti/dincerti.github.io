@@ -70,7 +70,7 @@ Open-Source Consensus-Based Models to Improve the Cost-Effectiveness of Rheumato
 Estimates of the costs of preeclampsia to the United States health care system. March of Dimes Prematurity Research Center at Stanford University, Palo Alto, 2016 (with Thanh G.N. Ton).
 
 ### Abstracts and Poster Presentations
-**Incerti D**, Jansen JP. Open-Source Software for Developing Computationally Efficient Cost-effectiveness models to evaluate sequential treatment strategies in oncology. ISPOR Annual European Congress, Barcelona, Spain, 2018. 
+**Incerti D**, Jansen JP. Open-source software for developing computationally efficient cost-effectiveness models to evaluate sequential treatment strategies in oncology. ISPOR Annual European Congress, Barcelona, Spain, 2018. 
 
 **Jansen JP**, Incerti D, Shafrin J, Frederickson A, Lakdawalla DN, Reckamp KL. A flexible open-source cost-effectiveness model for metastatic EGFR+ non-small cell lung cancer. ISPOR Annual European Congress, Barcelona, Spain, 2018. 
 
