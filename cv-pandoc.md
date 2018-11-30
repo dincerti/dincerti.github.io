@@ -1,3 +1,8 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
 ### Education
 2015
 : Ph.D. Public Policy (Political Economy), Princeton University
@@ -41,7 +46,7 @@ Shahabi A, Peneva D, **Incerti D**, McLaurin K, Stevens W. Assessing Variation i
 Jansen JP, **Incerti D**, Mutebi A, Peneva, D, MacEwan JP, Stolshek B, Kaur P, Gharaibeh M, Strand V. Cost-effectiveness of sequenced treatment of rheumatoid arthritis with targeted immune modulators. *Journal of Medical Economics*. 2017 Jul 3;20(7):703-14. [http://dx.doi.org/10.1080/13696998.2017.1307205](http://dx.doi.org/10.1080/13696998.2017.1307205) ([Supplement](http://devinincerti.com/papers/ce-bdmards-ra-jme-2017-supplement.pdf)).
 
 ### Manuscripts Under Review
-Ton TG, Bennett M, **Incerti D**, Peneva D, Druzin M, Stevens W, Butwick A, Lee HC. Maternal and infant adverse outcomes associated with preeclampsia with and without severe features in the Untied States.
+Ton TG, Bennett M, **Incerti D**, Peneva D, Druzin M, Stevens W, Butwick A, Lee HC. Maternal and infant adverse outcomes associated with preeclampsia with and without severe features in the United States.
 
 **Incerti D**, Browne J, Huber C, Baker CL, Makinson G, Goren A, Wilke R, Stevens W. An empirical tool for estimating and categorizing unmet need. 
 
@@ -78,9 +83,9 @@ Estimates of the costs of preeclampsia to the United States health care system. 
 
 May SG, Shafrin J, Linthicum M, **Incerti D**, Jansen JP, Bright J. Toward patient-centered value assessment: Lessons from the IVI Open-Source Value Project. ISPOR Annual European Congress, Barcelona, Spain, 2018. 
 
-**Incerti D**, Jansen JP. An Open-Source Toolkit for Developing Flexible Evidence-Based Decision and Simulation Models for Value Assessment in Oncology with R. ISPOR 23rd Annual International Meeting, Baltimore, 2018. 
+**Incerti D**, Jansen JP. An Open-Source Toolkit for Developing Flexible Evidence-Based Decision and Simulation Models for Value Assessment in Oncology with R. ISPOR 23rd Annual International Meeting, Baltimore, 2018. [https://doi.org/10.1016/j.jval.2018.04.1508](https://doi.org/10.1016/j.jval.2018.04.1508). 
 
-**Incerti D**, Jansen JP. Quantifying the Importance of Model Parameters and Structural Assumptions on the Value of Treatments for Rheumatoid Arthritis using Metamodeling. ISPOR 23rd Annual International Meeting, Baltimore, 2018. 
+**Incerti D**, Jansen JP. Quantifying the Importance of Model Parameters and Structural Assumptions on the Value of Treatments for Rheumatoid Arthritis using Metamodeling. ISPOR 23rd Annual International Meeting, Baltimore, 2018. [https://doi.org/10.1016/j.jval.2018.04.1333](https://doi.org/10.1016/j.jval.2018.04.1333).
 
 **Incerti D**, Curtis JR, Lorenzi M, Jansen JP. Exploring Structural Uncertainty With An Open-Source Cost-Effectiveness Model For Rheumatoid Arthritis. ISPOR Annual European Congress, Glasgow, Scotland, 2017. [http://dx.doi.org/10.1016/j.jval.2017.08.2098](http://dx.doi.org/10.1016/j.jval.2017.08.2098).
 
