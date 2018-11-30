@@ -27,7 +27,7 @@ output:
 : Associate Research Economist, Precision Health Economics, Oakland CA
 
 2015-16
-: Reseach Economist Intern, Precision Health Economics, Oakland CA
+: Research Economist Intern, Precision Health Economics, Oakland CA
 
 2009-10
 : Research Associate, NERA Economic Consulting, Los Angeles, CA
@@ -77,7 +77,7 @@ Estimates of the costs of preeclampsia to the United States health care system. 
 ### Abstracts and Poster Presentations
 **Incerti D**, Jansen JP. Open-source software for developing computationally efficient cost-effectiveness models to evaluate sequential treatment strategies in oncology. ISPOR Annual European Congress, Barcelona, Spain, 2018. 
 
-**Jansen JP**, Incerti D, Shafrin J, Frederickson A, Lakdawalla DN, Reckamp KL. A flexible open-source cost-effectiveness model for metastatic EGFR+ non-small cell lung cancer. ISPOR Annual European Congress, Barcelona, Spain, 2018. 
+Jansen JP, **Incerti D**, Shafrin J, Frederickson A, Lakdawalla DN, Reckamp KL. A flexible open-source cost-effectiveness model for metastatic EGFR+ non-small cell lung cancer. ISPOR Annual European Congress, Barcelona, Spain, 2018. 
 
 **Incerti D**, Shafrin J, Lakdawalla DN, Zhao L, Linthicum M, Jansen JP. Improvement of an open-source cost-effectiveness model based on public feedback. ISPOR Annual European Congress, Barcelona, Spain, 2018.  
 
@@ -100,7 +100,7 @@ Shiraito Y, **Incerti**, D, Lopez-Moctezuma G. A Reassessment of the Resource Cu
 ### Software
 *hesim*
 
-Author of `hesim`, an R package for health economic simulation modeling and decision analysis that provides a general framework for integrating statistical analyses with economic evaluation. The package currently supports N-state partitioned survival models and state-transition models, as well as summarizing the output of probabilistic sensitivity analysis. It is designed for high performance simulation modeling including microsimulation and heavily utilizes `Rcpp` and `data.table`. ([Website](https://innovationvalueinitiative.github.io/hesim/)).
+Author of `hesim`, an R package for health economic simulation modeling and decision analysis that provides a general framework for integrating statistical analyses with economic evaluation. The package currently supports N-state partitioned survival models and state-transition models, as well as individualized cost-effectiveness analysis. It is designed for high performance simulation modeling including microsimulation and probabilistic sensitivity analysis with core code written in C++ ([Website](https://innovationvalueinitiative.github.io/hesim/)).
 
 *The IVI-RA model*
 
