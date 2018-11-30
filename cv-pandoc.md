@@ -18,16 +18,16 @@ output:
 
 ### Employment
 2017-18
-: Lead Economist - Open-Source Value Project, Innovation and Value Initiative, Oakland CA
+: Lead Economist - Open-Source Value Project, Innovation and Value Initiative, Oakland, CA
 
 2017-18
-: Research Economist, Precision Health Economics, Oakland CA
+: Research Economist, Precision Health Economics, Oakland, CA
 
 2016-17
-: Associate Research Economist, Precision Health Economics, Oakland CA
+: Associate Research Economist, Precision Health Economics, Oakland, CA
 
 2015-16
-: Research Economist Intern, Precision Health Economics, Oakland CA
+: Research Economist Intern, Precision Health Economics, Oakland, CA
 
 2009-10
 : Research Associate, NERA Economic Consulting, Los Angeles, CA
