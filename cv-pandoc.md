@@ -33,6 +33,8 @@ output:
 : Research Associate, NERA Economic Consulting, Los Angeles, CA
 
 ### Publications
+**Incerti D**, Curtis JR, Shafrin J, Lakdawalla DN, Jansen JP. A flexible open-source decision model for value assessment of biologic treatment for rheumatoid arthritis. *Pharmacoeconomics* (in press).
+
 **Incerti, D**. The Optimal Allocation of Campaign Funds in House Elections. *Electoral Studies*. 2018 Dec 1;56:102-13. [https://doi.org/10.1016/j.electstud.2018.09.010](https://doi.org/10.1016/j.electstud.2018.09.010) ([PDF](http://devinincerti.com/papers/optimal_house.pdf), [Supplement](http://devinincerti.com/papers/optimal_house_supplement.pdf), [GitHub](https://github.com/dincerti/optimal-house)).
 
 **Incerti D**, Summers N, Ton TG, Boscoe A, Chandraker A, Stevens W. The Lifetime Health Burden of Delayed Graft Function in Kidney Transplant Recipients in the United States. *Medical Decision Making Policy & Practice*. 2018. Jun;3(1):2381468318781811. [http://journals.sagepub.com/doi/full/10.1177/2381468318781811](http://journals.sagepub.com/doi/full/10.1177/2381468318781811).
@@ -52,7 +54,7 @@ Ton TG, Bennett M, **Incerti D**, Peneva D, Druzin M, Stevens W, Butwick A, Lee 
 
 Stevens W, **Incerti D**, Peneva D, Shrestha A, Ramaswamy K, Smith G. An Empirical Analysis of the Role of Learning by Doing in Dynamic Cost-effectiveness.
 
-**Incerti D**, Curtis JR, Shafrin J, Lakdawalla DN, Jansen JP. A flexible open-source decision model for value assessment of biologic treatment for rheumatoid arthritis.
+**Incerti D**, Thom H, Baio Gianluca, and Jansen JP. R you still using Excel? The advantages of modern software tools for health technology assessment.
 
 ### Working Papers
 **Incerti D**. An Assessment of Long-term Healthcare Expenditure Risk Using a Dynamic Bayesian Model. ([PDF](http://devinincerti.com/papers/longterm_spending.pdf), [Fake-data simulation](http://devinincerti.com/twopart_re_longitudinal.html)).
