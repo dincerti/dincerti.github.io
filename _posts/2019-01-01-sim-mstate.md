@@ -407,7 +407,7 @@ print(time_hesim_1000)
 ##   4.665   0.422   5.093
 ```
 
-`hesim` is fast, even when performing a PSA. With 1,000 patients, 100 PSA iterations can be simulated in less than a second and 1,000 PSA iterations in less than 5 seconds. Computational efficiency becomes increasingly important as the computational demands grow: with 1,000 patients and 100 PSA iterations, `mstate` takes around ``34`` minutes to run and `hesim` is ``4633.57`` times faster. 
+`hesim` is fast, even when performing a PSA. With 1,000 patients, 100 PSA iterations can be simulated in less than a second and 1,000 PSA iterations in approximately 5 seconds. Computational efficiency becomes increasingly important as the computational demands grow: with 1,000 patients and 100 PSA iterations, `mstate` takes around ``34`` minutes to run and `hesim` is ``4633.57`` times faster. 
 
 ### Conclusion
 In this post, we describe some of the R packages that facilitate multi-state modeling. The `flexsurv` package is particularly useful for estimating parametric models. When "clock-reset" models are fit, state occupancy probabilities can only be predicted for general multi-state models using simulation. Both the `hesim` and `mstate` packages provide functionality for running such simulations. However, when parametric models are fit, `hesim` is considerably faster and this computational advantage grows with the number of required iterations. The speed advantage may be particularly useful when running a PSA, multiple subgroup analyses, and/or simulations using competing survival distributions.
