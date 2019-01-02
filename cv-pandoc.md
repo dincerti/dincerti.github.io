@@ -57,12 +57,12 @@ Stevens W, **Incerti D**, Peneva D, Shrestha A, Ramaswamy K, Smith G. An Empiric
 **Incerti D**, Thom H, Baio Gianluca, and Jansen JP. R you still using Excel? The advantages of modern software tools for health technology assessment.
 
 ### Working Papers
+**Incerti D**, Incerti T. Are regime changes always bad economics? Evidence from daily financial data. ([PDF](papers/political-instability-finance.pdf), 
+[GitHub](https://github.com/dincerti/political-instability)).
+
 **Incerti D**. An Assessment of Long-term Healthcare Expenditure Risk Using a Dynamic Bayesian Model. ([PDF](http://devinincerti.com/papers/longterm_spending.pdf), [Fake-data simulation](http://devinincerti.com/twopart_re_longitudinal.html)).
 
 **Incerti D**. Racial, Ethnic and Educational Disparities in Pharmaceutical Expenditures. ([PDF](http://devinincerti.com/papers/disparities_rx.pdf)).
-
-**Incerti D**. Political Instability and Financial Markets. ([PDF](http://devinincerti.com/papers/instability_finance.pdf), 
-[GitHub](https://github.com/dincerti/political-instability)).
 
 ### Blog Post
 Jansen JP, **Incerti D**, Linthicum M. [An Open-Source Consensus-Based Approach To Value Assessment](https://www.healthaffairs.org/action/showDoPubSecure?doi=10.1377%2Fhblog20171212.640960&format=full). Health Affairs Blog. 2017 Dec 1.
