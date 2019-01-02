@@ -94,7 +94,7 @@ c(exp(me.fe$b), exp(me.fe$ci.lb), exp(me.fe$ci.ub))
 ## [1] 0.8041868 0.7406291 0.8731987
 ```
 
-The relative risk and 95 percent confidence intervals are identical to the fixed-effect meta-analysis results reported in [GJ11]({{site.url}}/references.html#GJ11). We can check to see that the point estimate is identical to taking a weighted average of the relative risks in the RCTs.
+The relative risk and 95 percent confidence intervals are identical to the fixed-effect meta-analysis results reported in [Gøtzsche et al.](https://test.qmplus.qmul.ac.uk/pluginfile.php/154534/mod_book/chapter/3137/G%C3%B8tzsche%202009.pdf). We can check to see that the point estimate is identical to taking a weighted average of the relative risks in the RCTs.
 
 
 ```r
@@ -148,7 +148,7 @@ parameters {
 transformed parameters {
   real theta[J];
   for (j in 1:J)
-    theta[j] <- mu + tau * eta[j];
+    theta[j] = mu + tau * eta[j];
 }
 model {
   eta ~ normal(0, 1);
