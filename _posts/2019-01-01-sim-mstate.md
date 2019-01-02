@@ -306,7 +306,7 @@ print(time_hesim)
 ##   0.036   0.000   0.037
 ```
 
-The elapsed times (in seconds) suggest that `hesim` is ``671.41`` faster than `mstate` when simulating a parametric multi-state model.
+The elapsed times (in seconds) suggest that `hesim` is ``671.41`` times faster than `mstate` when simulating a parametric multi-state model.
 
 ### Probabilistic sensitivity analysis
 The results presented so far have ignored the impact of parameter uncertainty. In contrast, probabilistic sensitivity analysis (PSA) propagates uncertainty in the parameters to the state occupancy probabilities. In our case, the regression coefficients from the multi-state model are drawn from a suitable probability distribution and the multi-state simulation is run for each draw of the coefficients. There are a number of ways to simulate the distribution of the coefficients including bootstrapping, Bayesian modeling, and [asymptotic Monte Carlo approximation](https://www.tandfonline.com/doi/abs/10.1080/00031305.2013.783880). We will take the latter approach by sampling the maximum likelihood estimates from an asymptotic multivariate distribution, which is the fastest option. 
@@ -335,18 +335,7 @@ predict_cumhaz_dist_2(n_samples = 3)
 ```
 
 ```
-##        trans sample strategy_id patient_id  time       Haz
-##     1:     1      1           1          1  0.00 0.0000000
-##     2:     1      1           1          1  0.01 0.1106806
-##     3:     1      1           1          1  0.02 0.1472472
-##     4:     1      1           1          1  0.03 0.1740076
-##     5:     1      1           1          1  0.04 0.1958947
-##    ---                                                    
-## 61304:    12      3           1          1 16.98 0.3965328
-## 61305:    12      3           1          1 16.99 0.3966496
-## 61306:    12      3           1          1 17.00 0.3967664
-## 61307:    12      3           1          1 17.01 0.3968832
-## 61308:    12      3           1          1 17.02 0.3969999
+## Error in setnames(cumhaz_pat2_dist, c("t", "cumhazard"), c("time", "Haz")): could not find function "setnames"
 ```
 
 A distribution of simulated state occupancy probabilities for patient 2 can then be simulated by looping over the cumulative hazards for each parameter sample.

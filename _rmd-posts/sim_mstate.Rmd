@@ -230,7 +230,7 @@ print(time_mstate)
 print(time_hesim)
 ```
 
-The elapsed times (in seconds) suggest that `hesim` is ```r round(time_mstate[["elapsed"]]/time_hesim[["elapsed"]], 2)``` faster than `mstate` when simulating a parametric multi-state model.
+The elapsed times (in seconds) suggest that `hesim` is ```r round(time_mstate[["elapsed"]]/time_hesim[["elapsed"]], 2)``` times faster than `mstate` when simulating a parametric multi-state model.
 
 ### Probabilistic sensitivity analysis
 The results presented so far have ignored the impact of parameter uncertainty. In contrast, probabilistic sensitivity analysis (PSA) propagates uncertainty in the parameters to the state occupancy probabilities. In our case, the regression coefficients from the multi-state model are drawn from a suitable probability distribution and the multi-state simulation is run for each draw of the coefficients. There are a number of ways to simulate the distribution of the coefficients including bootstrapping, Bayesian modeling, and [asymptotic Monte Carlo approximation](https://www.tandfonline.com/doi/abs/10.1080/00031305.2013.783880). We will take the latter approach by sampling the maximum likelihood estimates from an asymptotic multivariate distribution, which is the fastest option. 
