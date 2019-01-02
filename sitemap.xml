@@ -1,117 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
-    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-    http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-    <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-    
-    
-    <url>
-        <loc>http://devinincerti.com/</loc>
-        <lastmod>2018-02-11T01:09:34+00:00</lastmod>
-        <priority>1.00</priority>
-    </url>
-    <url>
-        <loc>http://devinincerti.com/index.html</loc>
-        <lastmod>2018-02-11T01:09:34+00:00</lastmod>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>http://devinincerti.com/cv.html</loc>
-        <lastmod>2018-02-11T01:09:34+00:00</lastmod>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>http://devinincerti.com/code.html</loc>
-        <lastmod>2018-02-11T01:09:34+00:00</lastmod>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>http://devinincerti.com/blog.html</loc>
-        <lastmod>2018-02-11T01:09:34+00:00</lastmod>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>http://devinincerti.com/dincerti-cv.pdf</loc>
-        <lastmod>2018-02-11T01:09:29+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>http://devinincerti.com/papers/ce-bdmards-ra-jme-2017-supplement.pdf</loc>
-        <lastmod>2018-02-11T01:09:29+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>http://devinincerti.com/papers/optimal_house.pdf</loc>
-        <lastmod>2018-02-11T01:09:29+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>http://devinincerti.com/papers/longterm_spending.pdf</loc>
-        <lastmod>2018-02-11T01:09:29+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>http://devinincerti.com/twopart_re_longitudinal.html</loc>
-        <lastmod>2018-02-11T01:09:34+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>http://devinincerti.com/papers/disparities_rx.pdf</loc>
-        <lastmod>2018-02-11T01:09:29+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>http://devinincerti.com/papers/instability_finance.pdf</loc>
-        <lastmod>2018-02-11T01:09:29+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>http://devinincerti.com/code/skeletal-dysplasias.html</loc>
-        <lastmod>2018-02-11T01:09:34+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>http://devinincerti.com/code/survival-distributions.html</loc>
-        <lastmod>2018-02-11T01:09:34+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>http://devinincerti.com/2018/02/10/psa.html</loc>
-        <lastmod>2018-02-11T01:09:34+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>http://devinincerti.com/2015/10/31/bayesian-meta-analysis.html</loc>
-        <lastmod>2018-02-11T01:09:34+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>http://devinincerti.com/2015/10/15/markov_cohort.html</loc>
-        <lastmod>2018-02-11T01:09:34+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>http://devinincerti.com/2015/10/15/bayesian_markov_cohort.html</loc>
-        <lastmod>2018-02-11T01:09:34+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>http://devinincerti.com/2015/10/13/diabetes-highcost.html</loc>
-        <lastmod>2018-02-11T01:09:34+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>http://devinincerti.com/2015/09/11/twopart.html</loc>
-        <lastmod>2018-02-11T01:09:34+00:00</lastmod>
-        <priority>0.64</priority>
-    </url>
-    <url>
-        <loc>http://devinincerti.com/references.html</loc>
-        <lastmod>2018-02-11T01:09:34+00:00</lastmod>
-        <priority>0.51</priority>
-    </url>
-    
-    
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>http://devinincerti.com/</loc>
+  <lastmod>2019-01-02T00:09:03+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>http://devinincerti.com/index.html</loc>
+  <lastmod>2019-01-02T00:09:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://devinincerti.com/cv.html</loc>
+  <lastmod>2019-01-02T00:09:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://devinincerti.com/code.html</loc>
+  <lastmod>2019-01-02T00:09:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://devinincerti.com/blog.html</loc>
+  <lastmod>2019-01-02T00:09:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://devinincerti.com/dincerti-cv.pdf</loc>
+  <lastmod>2019-01-02T00:08:59+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://devinincerti.com/papers/optimal_house.pdf</loc>
+  <lastmod>2019-01-02T00:08:59+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://devinincerti.com/papers/optimal_house_supplement.pdf</loc>
+  <lastmod>2019-01-02T00:08:59+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://devinincerti.com/papers/ce-bdmards-ra-jme-2017-supplement.pdf</loc>
+  <lastmod>2019-01-02T00:08:59+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://devinincerti.com/papers/longterm_spending.pdf</loc>
+  <lastmod>2019-01-02T00:08:59+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://devinincerti.com/papers/disparities_rx.pdf</loc>
+  <lastmod>2019-01-02T00:08:59+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://devinincerti.com/papers/instability_finance.pdf</loc>
+  <lastmod>2019-01-02T00:08:59+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://devinincerti.com/presentations/ispor_barcelona_12-14-2018_R.pdf</loc>
+  <lastmod>2019-01-02T00:08:59+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://devinincerti.com/presentations/ISPOR_student_webinar_4-18-2018.pdf</loc>
+  <lastmod>2019-01-02T00:08:59+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://devinincerti.com/code/skeletal-dysplasias.html</loc>
+  <lastmod>2019-01-02T00:09:03+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://devinincerti.com/code/survival-distributions.html</loc>
+  <lastmod>2019-01-02T00:09:03+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://devinincerti.com/2019/01/01/sim-mstate.html</loc>
+  <lastmod>2019-01-02T00:09:03+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://devinincerti.com/2018/02/10/psa.html</loc>
+  <lastmod>2019-01-02T00:09:03+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://devinincerti.com/2015/10/31/bayesian-meta-analysis.html</loc>
+  <lastmod>2019-01-02T00:09:03+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://devinincerti.com/2015/10/15/markov_cohort.html</loc>
+  <lastmod>2019-01-02T00:09:03+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://devinincerti.com/2015/10/15/bayesian_markov_cohort.html</loc>
+  <lastmod>2019-01-02T00:09:03+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://devinincerti.com/2015/10/13/diabetes-highcost.html</loc>
+  <lastmod>2019-01-02T00:09:03+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://devinincerti.com/2015/09/11/twopart.html</loc>
+  <lastmod>2019-01-02T00:09:03+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
 </urlset>
