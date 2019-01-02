@@ -7,3 +7,4 @@ knit("_rmd-posts/bayesian_markov_cohort.Rmd", "_posts/2015-10-15-bayesian_markov
 knit("_rmd-posts/bayesian_meta_analysis.Rmd", "_posts/2015-10-31-bayesian-meta-analysis.md")
 knit("_rmd-posts/diabetes_highcost.Rmd", "_posts/2015-10-13-diabetes-highcost.md")
 knit("_rmd-posts/psa.Rmd", "_posts/2018-02-10-psa.md")
+knit("_rmd-posts/sim_mstate.Rmd", "_posts/2019-01-01-sim-mstate.md")
