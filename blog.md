@@ -1,7 +1,6 @@
 ---
 layout: default
 ---
-## Health economics with R
 
 <ul style="margin:10px;padding:0">
   {% for post in site.posts %}

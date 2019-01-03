@@ -3,7 +3,7 @@ name: Devin Incerti
 markdown: kramdown
 highlighter:  Rouge
 host: localhost
-title: Health Economics with R
-description: Analyses of the economics of health care with R
+title: Devin Incerti's blog
+description: Data science with an emphasis on health economics and R programming
 plugins_dir:
   - jekyll-feed
