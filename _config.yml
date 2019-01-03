@@ -1,9 +1,10 @@
 
 name: Devin Incerti
+author: Devin Incerti
 markdown: kramdown
 highlighter:  Rouge
 host: localhost
 title: Devin Incerti's blog
 description: Data science with an emphasis on health economics and R programming
-plugins_dir:
+plugins:
   - jekyll-feed
