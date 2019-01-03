@@ -8,3 +8,4 @@ title: Devin Incerti's blog
 description: Data science with an emphasis on health economics and R programming
 plugins:
   - jekyll-feed
+google_analytics: UA-131661920-1
