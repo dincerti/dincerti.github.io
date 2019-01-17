@@ -69,7 +69,9 @@ Jansen JP, **Incerti D**, Curtis, JR. Towards relevant and credible cost-effecti
 
 **Incerti D**. Racial, Ethnic and Educational Disparities in Pharmaceutical Expenditures. ([PDF](http://devinincerti.com/papers/disparities_rx.pdf)).
 
-### Blog Post
+### Blogs
+Contributor to [R-bloggers](https://www.r-bloggers.com/). ([Link to posts](http://devinincerti.com/blog.html)).
+
 Jansen JP, **Incerti D**, Linthicum M. [An Open-Source Consensus-Based Approach To Value Assessment](https://www.healthaffairs.org/action/showDoPubSecure?doi=10.1377%2Fhblog20171212.640960&format=full). Health Affairs Blog. 2017 Dec 1.
 
 ### Oral Presentations
