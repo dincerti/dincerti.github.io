@@ -17,7 +17,10 @@ output:
 :  B.A. Political Science, University of California, San Diego
 
 ### Employment
-2017-18
+2019-
+: Senior Research Economist, Precision Health Economics, Oakland, CA
+
+2017-
 : Lead Economist - Open-Source Value Project, Innovation and Value Initiative, Oakland, CA
 
 2017-18
@@ -35,7 +38,9 @@ output:
 ### Publications
 **Incerti D**, Curtis JR, Shafrin J, Lakdawalla DN, Jansen JP. A flexible open-source decision model for value assessment of biologic treatment for rheumatoid arthritis. *Pharmacoeconomics* (in press).
 
-**Incerti, D**. The Optimal Allocation of Campaign Funds in House Elections. *Electoral Studies*. 2018 Dec 1;56:102-13. [https://doi.org/10.1016/j.electstud.2018.09.010](https://doi.org/10.1016/j.electstud.2018.09.010) ([PDF](http://devinincerti.com/papers/optimal_house.pdf), [Supplement](http://devinincerti.com/papers/optimal_house_supplement.pdf), [GitHub](https://github.com/dincerti/optimal-house)).
+**Incerti D**, Browne J, Huber C, Baker CL, Makinson G, Goren A, Wilke R, Stevens W. An empirical tool for estimating and categorizing unmet need. *BMC Health Services Research* (in press). 
+
+**Incerti, D**. The Optimal Allocation of Campaign Funds in U.S. House Elections. *Electoral Studies*. 2018 Dec 1;56:102-13. [https://doi.org/10.1016/j.electstud.2018.09.010](https://doi.org/10.1016/j.electstud.2018.09.010) ([PDF](http://devinincerti.com/papers/optimal_house.pdf), [Supplement](http://devinincerti.com/papers/optimal_house_supplement.pdf), [GitHub](https://github.com/dincerti/optimal-house)).
 
 **Incerti D**, Summers N, Ton TG, Boscoe A, Chandraker A, Stevens W. The Lifetime Health Burden of Delayed Graft Function in Kidney Transplant Recipients in the United States. *Medical Decision Making Policy & Practice*. 2018. Jun;3(1):2381468318781811. [http://journals.sagepub.com/doi/full/10.1177/2381468318781811](http://journals.sagepub.com/doi/full/10.1177/2381468318781811).
 
@@ -50,11 +55,11 @@ Jansen JP, **Incerti D**, Mutebi A, Peneva, D, MacEwan JP, Stolshek B, Kaur P, G
 ### Manuscripts Under Review
 Ton TG, Bennett M, **Incerti D**, Peneva D, Druzin M, Stevens W, Butwick A, Lee HC. Maternal and infant adverse outcomes associated with preeclampsia with and without severe features in the United States.
 
-**Incerti D**, Browne J, Huber C, Baker CL, Makinson G, Goren A, Wilke R, Stevens W. An empirical tool for estimating and categorizing unmet need. 
-
 Stevens W, **Incerti D**, Peneva D, Shrestha A, Ramaswamy K, Smith G. An Empirical Analysis of the Role of Learning by Doing in Dynamic Cost-effectiveness.
 
-**Incerti D**, Thom H, Baio Gianluca, and Jansen JP. R you still using Excel? The advantages of modern software tools for health technology assessment.
+**Incerti D**, Thom H, Baio Gianluca, Jansen JP. R you still using Excel? The advantages of modern software tools for health technology assessment.
+
+Jansen JP, **Incerti D**, Curtis, JR. Towards relevant and credible cost-effectiveness analysis for value assessment in the decentralized US healthcare system.
 
 ### Working Papers
 **Incerti D**, Incerti T. Are regime changes always bad economics? Evidence from daily financial data. ([PDF](http://devinincerti.com/papers/political-instability-finance.pdf), 
