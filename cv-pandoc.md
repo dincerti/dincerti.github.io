@@ -23,7 +23,7 @@ output:
 2017-
 : Lead Economist - Open-Source Value Project, Innovation and Value Initiative, Oakland, CA
 
-2017-18
+2017-19
 : Research Economist, Precision Health Economics, Oakland, CA
 
 2016-17
