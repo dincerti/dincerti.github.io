@@ -36,7 +36,7 @@ output:
 : Research Associate, NERA Economic Consulting, Los Angeles, CA
 
 ### Publications
-**Incerti D**, Thom H, Baio Gianluca, Jansen JP. R you still using Excel? The advantages of modern software tools for health technology assessment. *Value in Health* (in press).
+**Incerti D**, Thom H, Baio G, Jansen JP. R you still using Excel? The advantages of modern software tools for health technology assessment. *Value in Health* (in press).
 
 **Incerti D**, Curtis JR, Shafrin J, Lakdawalla DN, Jansen JP. A flexible open-source decision model for value assessment of biologic treatment for rheumatoid arthritis. *Pharmacoeconomics* (in press).
 
