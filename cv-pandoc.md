@@ -36,9 +36,13 @@ output:
 : Research Associate, NERA Economic Consulting, Los Angeles, CA
 
 ### Publications
+**Incerti D**, Thom H, Baio Gianluca, Jansen JP. R you still using Excel? The advantages of modern software tools for health technology assessment. *Value in Health* (in press).
+
 **Incerti D**, Curtis JR, Shafrin J, Lakdawalla DN, Jansen JP. A flexible open-source decision model for value assessment of biologic treatment for rheumatoid arthritis. *Pharmacoeconomics* (in press).
 
 **Incerti D**, Browne J, Huber C, Baker CL, Makinson G, Goren A, Wilke R, Stevens W. An empirical tool for estimating and categorizing unmet need. *BMC Health Services Research* (in press). 
+
+Ton TG, Bennett M, **Incerti D**, Peneva D, Druzin M, Stevens W, Butwick A, Lee HC. Maternal and infant adverse outcomes associated with preeclampsia with and without severe features in the United States. *American Journal of Perinatology* (in press).
 
 **Incerti, D**. The Optimal Allocation of Campaign Funds in U.S. House Elections. *Electoral Studies*. 2018 Dec 1;56:102-13. [https://doi.org/10.1016/j.electstud.2018.09.010](https://doi.org/10.1016/j.electstud.2018.09.010) ([PDF](http://devinincerti.com/papers/optimal_house.pdf), [Supplement](http://devinincerti.com/papers/optimal_house_supplement.pdf), [GitHub](https://github.com/dincerti/optimal-house)).
 
@@ -53,11 +57,7 @@ Shahabi A, Peneva D, **Incerti D**, McLaurin K, Stevens W. Assessing Variation i
 Jansen JP, **Incerti D**, Mutebi A, Peneva, D, MacEwan JP, Stolshek B, Kaur P, Gharaibeh M, Strand V. Cost-effectiveness of sequenced treatment of rheumatoid arthritis with targeted immune modulators. *Journal of Medical Economics*. 2017 Jul 3;20(7):703-14. [http://dx.doi.org/10.1080/13696998.2017.1307205](http://dx.doi.org/10.1080/13696998.2017.1307205) ([Supplement](http://devinincerti.com/papers/ce-bdmards-ra-jme-2017-supplement.pdf)).
 
 ### Manuscripts Under Review
-Ton TG, Bennett M, **Incerti D**, Peneva D, Druzin M, Stevens W, Butwick A, Lee HC. Maternal and infant adverse outcomes associated with preeclampsia with and without severe features in the United States.
-
 Stevens W, **Incerti D**, Peneva D, Shrestha A, Ramaswamy K, Smith G. An Empirical Analysis of the Role of Learning by Doing in Dynamic Cost-effectiveness.
-
-**Incerti D**, Thom H, Baio Gianluca, Jansen JP. R you still using Excel? The advantages of modern software tools for health technology assessment.
 
 Jansen JP, **Incerti D**, Curtis, JR. Towards relevant and credible cost-effectiveness analysis for value assessment in the decentralized US healthcare system.
 
