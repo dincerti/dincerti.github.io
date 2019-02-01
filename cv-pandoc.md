@@ -113,7 +113,7 @@ Author of `hesim`, an R package for health economic simulation modeling and deci
 
 *IVI-NSCLC model*
 
-Author of the IVI-NSCLC model, an open-source simulation model for assessing the value of sequences of treatment to treat patients with epidermal growth factor receptor (EGFR) positive non-small cell lung cancer. Lead programmer of the R package. ([GitHub](https://github.com/InnovationValueInitiative/IVI-NSCLC)) 
+Author of the IVI-NSCLC model, an open-source simulation model for assessing the value of sequences of treatment to treat patients with epidermal growth factor receptor (EGFR) positive non-small cell lung cancer (NSCLC). Lead programmer of the R package. ([GitHub](https://github.com/InnovationValueInitiative/IVI-NSCLC)) 
 
 * [Model documentation](https://innovationvalueinitiative.github.io/IVI-NSCLC/model-doc/model-doc.pdf): PDF documentation describing the IVI-NSCLC model.
 * [iviNSCLC R package](https://innovationvalueinitiative.github.io/IVI-NSCLC/): an R package for running the IVI-NSCLC model.
