@@ -111,13 +111,22 @@ Shiraito Y, **Incerti**, D, Lopez-Moctezuma G. A Reassessment of the Resource Cu
 
 Author of `hesim`, an R package for health economic simulation modeling and decision analysis that provides a general framework for integrating statistical analyses with economic evaluation. The package currently supports N-state partitioned survival models and state-transition models, as well as individualized cost-effectiveness analysis. It is designed for high performance simulation modeling including microsimulation and probabilistic sensitivity analysis with core code written in C++ ([Website](https://innovationvalueinitiative.github.io/hesim/)).
 
-*The IVI-RA model*
+*IVI-NSCLC model*
 
-Author of the IVI-RA model, an open-source individual patient simulation model for assessing the value of disease-modifying anti-rheumatic drugs (DMARDs) to treat rheumatoid arthritis. ([GitHub](https://github.com/InnovationValueInitiative/IVI-RA)).
+Author of the IVI-NSCLC model, an open-source simulation model for assessing the value of sequences of treatment to treat patients with epidermal growth factor receptor (EGFR) positive non-small cell lung cancer. Lead programmer of the R package. ([GitHub](https://github.com/InnovationValueInitiative/IVI-NSCLC)) 
+
+* [Model documentation](https://innovationvalueinitiative.github.io/IVI-NSCLC/model-doc/model-doc.pdf): PDF documentation describing the IVI-NSCLC model.
+* [iviNSCLC R package](https://innovationvalueinitiative.github.io/IVI-NSCLC/): an R package for running the IVI-NSCLC model.
+* [IVI-NSCLC basic interface](https://vt-nsclc.clarityviz.com/): a general audience web application allowing those who are not experts in health economics to run the model and learn more about value assessment.
+* [IVI-NSCLC advanced interface](https://et-nsclc.clarityviz.com/): a web application that allows users full control over the model for performing cost-effectiveness and multi-criteria decision analyses.
+
+*IVI-RA model*
+
+Author of the IVI-RA model, an open-source individual patient simulation model for assessing the value of disease-modifying anti-rheumatic drugs (DMARDs) to treat rheumatoid arthritis. Lead programmer of the R package and R Shiny web apps. ([GitHub](https://github.com/InnovationValueInitiative/IVI-RA)) 
 
 * [Model documentation](https://innovationvalueinitiative.github.io/IVI-RA/model-description/model-description.pdf): PDF documentation describing the IVI-RA model.
 * [iviRA R package](https://innovationvalueinitiative.github.io/IVI-RA): an R package for running the IVI-RA model.
-* [IVI-RA Model Interface](https://innovationandvalueinitiative.shinyapps.io/ivi-ra-expert/): an R Shiny web interface providing full control over the treatments, the patient population, model parameters, model structures, and time horizon.
+* [IVI-RA Model Interface](https://innovationandvalueinitiative.shinyapps.io/ivi-ra-expert/): an R Shiny web application providing full control over the treatments, the patient population, model parameters, model structures, and time horizon.
 * [IVI-RA Value Tool](http://apps.thevalueinitiative.org/ivi-ra/): a more streamlined R Shiny web application for users with less experience in decision-analytic modeling and rheumatoid arthritis.
 
 *R Shiny web applications*
