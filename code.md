@@ -8,7 +8,7 @@ The GitHub repository for this Jekyll-powered website can be found [here](https:
 ### [hesim](https://innovationvalueinitiative.github.io/hesim/)
 `hesim` is an R package for health economic simulation modeling and decision analysis that provides a general framework for integrating statistical analyses with economic evaluation. The package currently supports N-state partitioned survival models and state-transition models, as well as individualized cost-effectiveness analysis. It is designed for high performance simulation modeling including microsimulation and probabilistic sensitivity analysis with core code written in C++ ([Website](https://innovationvalueinitiative.github.io/hesim/)).
 
-### IVI-NSCLC Model
+### [IVI-NSCLC Model](https://innovationvalueinitiative.github.io/IVI-NSCLC)
 The IVI-NSCLC model is an open-source simulation model for assessing the value of sequences of treatment to treat patients with epidermal growth factor receptor (EGFR) positive non-small cell lung cancer (NSCLC). You can can interact with the model in a number of ways:
 
 * [iviNSCLC R package](https://innovationvalueinitiative.github.io/IVI-NSCLC/): an R package for running the IVI-NSCLC model.
