@@ -122,7 +122,7 @@ msebmt$years <- msebmt$time/365.25
 for (i in 1:n_trans){
   fits_wei[[i]] <- flexsurvreg(Surv(years, status) ~ match + proph + year + agecl ,
                        data = subset(msebmt, trans == i),
-                       dist = "weibull")
+                       dist = "gompertz")
 }
 ```
 
@@ -162,13 +162,13 @@ head(cumhaz_pat_2$Haz)
 ```
 
 ```
-##   time       Haz trans
-## 1 0.00 0.0000000     1
-## 2 0.01 0.1136587     1
-## 3 0.02 0.1535433     1
-## 4 0.03 0.1830811     1
-## 5 0.04 0.2074241     1
-## 6 0.05 0.2285137     1
+##   time        Haz trans
+## 1 0.00 0.00000000     1
+## 2 0.01 0.05802611     1
+## 3 0.02 0.11247756     1
+## 4 0.03 0.16357455     1
+## 5 0.04 0.21152374     1
+## 6 0.05 0.25651905     1
 ```
 
 ```r
@@ -177,12 +177,12 @@ tail(cumhaz_pat_2$Haz)
 
 ```
 ##        time       Haz trans
-## 20431 16.97 0.3752974    12
-## 20432 16.98 0.3754027    12
-## 20433 16.99 0.3755079    12
-## 20434 17.00 0.3756132    12
-## 20435 17.01 0.3757183    12
-## 20436 17.02 0.3758235    12
+## 20431 16.97 0.2366846    12
+## 20432 16.98 0.2366849    12
+## 20433 16.99 0.2366853    12
+## 20434 17.00 0.2366856    12
+## 20435 17.01 0.2366859    12
+## 20436 17.02 0.2366863    12
 ```
 
 The `mstate::mssample()` function works by sampling survival times from each possible transition from the cumulative hazards. More precisely, the cumulative hazards are used to simulate the (discrete) times at which patients transition between health states using the base R function `sample()`, which is, in turn, used to count the number of patients in each health state at the times specified by the argument `tvec`. 
@@ -208,6 +208,7 @@ We set up input data for the simulation by creating a dataset of many identical 
 
 ```r
 library("hesim")
+library("data.table")
 
 create_input_data_2 <- function(n_pats){
   # Patients
@@ -262,6 +263,32 @@ sim_stprobs_hesim_2 <- function(n_pats, fits, point_estimate = TRUE,
 We simulate state occupancy probabilities using both `mstate` and `hesim` and vary the number of simulated patients to examine the impact on precision.
 
 
+```r
+n_pats <- seq(from = 200, to = 1000, by = 200)
+stprobs2 <- vector(mode = "list", length = length(n_pats))
+for (i in 1:length(n_pats)){
+  # mstate
+  mstate_stprobs2 <- sim_stprobs_mstate_2(n_pats[i])
+  mstate_stprobs2 <- melt(mstate_stprobs2, id.vars = "time",
+                          variable.name = "state_id",
+                          value.name = "prob")
+  mstate_stprobs2$state_id <- sub("pstate", "", mstate_stprobs2$state_id)
+  mstate_stprobs2$state_id <- as.numeric(mstate_stprobs2$state_id)
+  mstate_stprobs2$lab <- "mstate"
+
+  # hesim
+  hesim_stprobs2 <- sim_stprobs_hesim_2(n_pats[i], fits_wei)
+  hesim_stprobs2$lab <- "hesim"
+  hesim_stprobs2[, c("sample", "strategy_id") := NULL]
+  setnames(hesim_stprobs2, "t", "time")
+
+  # combine
+  stprobs2[[i]] <- rbind(mstate_stprobs2, hesim_stprobs2)
+  stprobs2[[i]]$n_pats <- n_pats[i]
+  print(i)
+}
+stprobs2 <- rbindlist(stprobs2)
+```
 
 As shown in the plot below, the differences in state occupancy probabilities generally become smaller as the number of simulated patients increases. Further, (although not shown) the simulation results from `mstate` become increasingly close to `hesim` as the time grid becomes finer. 
 
@@ -335,7 +362,18 @@ predict_cumhaz_dist_2(n_samples = 3)
 ```
 
 ```
-## Error in setnames(cumhaz_pat2_dist, c("t", "cumhazard"), c("time", "Haz")): could not find function "setnames"
+##        trans sample strategy_id patient_id  time        Haz
+##     1:     1      1           1          1  0.00 0.00000000
+##     2:     1      1           1          1  0.01 0.06755236
+##     3:     1      1           1          1  0.02 0.13070470
+##     4:     1      1           1          1  0.03 0.18974361
+##     5:     1      1           1          1  0.04 0.24493701
+##    ---                                                     
+## 61304:    12      3           1          1 16.98 0.23223958
+## 61305:    12      3           1          1 16.99 0.23223995
+## 61306:    12      3           1          1 17.00 0.23224033
+## 61307:    12      3           1          1 17.01 0.23224070
+## 61308:    12      3           1          1 17.02 0.23224107
 ```
 
 A distribution of simulated state occupancy probabilities for patient 2 can then be simulated by looping over the cumulative hazards for each parameter sample.

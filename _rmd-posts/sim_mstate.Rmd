@@ -6,7 +6,7 @@ layout: post
 {:toc }
 
 ```{r seed, include=FALSE}
-set.seed(102)
+set.seed(125)
 ```
 
 ### Introduction
@@ -87,7 +87,7 @@ msebmt$years <- msebmt$time/365.25
 for (i in 1:n_trans){
   fits_wei[[i]] <- flexsurvreg(Surv(years, status) ~ match + proph + year + agecl ,
                        data = subset(msebmt, trans == i),
-                       dist = "weibull")
+                       dist = "gompertz")
 }
 ```
 
@@ -140,6 +140,7 @@ We set up input data for the simulation by creating a dataset of many identical 
 
 ```{r input-data, warning=FALSE, message=FALSE}
 library("hesim")
+library("data.table")
 
 create_input_data_2 <- function(n_pats){
   # Patients
@@ -177,7 +178,7 @@ sim_stprobs_hesim_2 <- function(n_pats, fits, point_estimate = TRUE,
 #### Comparison
 We simulate state occupancy probabilities using both `mstate` and `hesim` and vary the number of simulated patients to examine the impact on precision.
 
-```{r sim-comparison, cache=TRUE, cache.lazy=FALSE, include=FALSE}
+```{r sim-comparison, cache=TRUE, cache.lazy=FALSE, results='hide'}
 n_pats <- seq(from = 200, to = 1000, by = 200)
 stprobs2 <- vector(mode = "list", length = length(n_pats))
 for (i in 1:length(n_pats)){
