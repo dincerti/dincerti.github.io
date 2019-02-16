@@ -38,11 +38,11 @@ output:
 ### Publications
 **Incerti D**, Thom H, Baio G, Jansen JP. R you still using Excel? The advantages of modern software tools for health technology assessment. *Value in Health* (in press).
 
-**Incerti D**, Curtis JR, Shafrin J, Lakdawalla DN, Jansen JP. A flexible open-source decision model for value assessment of biologic treatment for rheumatoid arthritis. *Pharmacoeconomics* (in press).
-
-**Incerti D**, Browne J, Huber C, Baker CL, Makinson G, Goren A, Wilke R, Stevens W. An empirical tool for estimating and categorizing unmet need. *BMC Health Services Research* (in press). 
-
 Ton TG, Bennett M, **Incerti D**, Peneva D, Druzin M, Stevens W, Butwick A, Lee HC. Maternal and infant adverse outcomes associated with preeclampsia with and without severe features in the United States. *American Journal of Perinatology* (in press).
+
+**Incerti D**, Curtis JR, Shafrin J, Lakdawalla DN, Jansen JP. A flexible open-source decision model for value assessment of biologic treatment for rheumatoid arthritis. *Pharmacoeconomics*. 2019. [https://doi.org/10.1007/s40273-018-00765-2](https://doi.org/10.1007/s40273-018-00765-2). ([Full-text](https://rdcu.be/blVj1)).
+
+**Incerti D**, Browne J, Huber C, Baker CL, Makinson G, Goren A, Wilke R, Stevens W. An empirical tool for estimating the share of unmet need due to healthcare inefficiencies, suboptimal access, and lack of effective technologies. *BMC Health Services Research*. [https://doi.org/10.1186/s12913-019-3914-7](https://doi.org/10.1186/s12913-019-3914-7).
 
 **Incerti, D**. The Optimal Allocation of Campaign Funds in U.S. House Elections. *Electoral Studies*. 2018 Dec 1;56:102-13. [https://doi.org/10.1016/j.electstud.2018.09.010](https://doi.org/10.1016/j.electstud.2018.09.010) ([PDF](http://devinincerti.com/papers/optimal_house.pdf), [Supplement](http://devinincerti.com/papers/optimal_house_supplement.pdf), [GitHub](https://github.com/dincerti/optimal-house)).
 
