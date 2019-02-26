@@ -38,9 +38,9 @@ output:
 ### Publications
 **Incerti D**, Thom H, Baio G, Jansen JP. R you still using Excel? The advantages of modern software tools for health technology assessment. *Value in Health* (in press).
 
-Ton TG, Bennett M, **Incerti D**, Peneva D, Druzin M, Stevens W, Butwick A, Lee HC. Maternal and infant adverse outcomes associated with preeclampsia with and without severe features in the United States. *American Journal of Perinatology* (in press).
+Ton TG, Bennett M, **Incerti D**, Peneva D, Druzin M, Stevens W, Butwick A, Lee HC. Maternal and Infant Adverse Outcomes Associated with Mild and Severe Preeclampsia during the First Year after Delivery in the United States. *American Journal of Perinatology*. 2019 Feb 19. [https://doi.org//10.1055/s-0039-1679916](https://doi.org//10.1055/s-0039-1679916).
 
-**Incerti D**, Curtis JR, Shafrin J, Lakdawalla DN, Jansen JP. A flexible open-source decision model for value assessment of biologic treatment for rheumatoid arthritis. *Pharmacoeconomics*. 2019. [https://doi.org/10.1007/s40273-018-00765-2](https://doi.org/10.1007/s40273-018-00765-2). ([Full-text](https://rdcu.be/blVj1)).
+**Incerti D**, Curtis JR, Shafrin J, Lakdawalla DN, Jansen JP. A flexible open-source decision model for value assessment of biologic treatment for rheumatoid arthritis. *Pharmacoeconomics*. 2019 Feb 9:1-15. [https://doi.org/10.1007/s40273-018-00765-2](https://doi.org/10.1007/s40273-018-00765-2). ([Full-text](https://rdcu.be/blVj1)).
 
 **Incerti D**, Browne J, Huber C, Baker CL, Makinson G, Goren A, Wilke R, Stevens W. An empirical tool for estimating the share of unmet need due to healthcare inefficiencies, suboptimal access, and lack of effective technologies. *BMC Health Services Research*. [https://doi.org/10.1186/s12913-019-3914-7](https://doi.org/10.1186/s12913-019-3914-7).
 
