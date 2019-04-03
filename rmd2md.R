@@ -8,3 +8,4 @@ knit("_rmd-posts/bayesian_meta_analysis.Rmd", "_posts/2015-10-31-bayesian-meta-a
 knit("_rmd-posts/diabetes_highcost.Rmd", "_posts/2015-10-13-diabetes-highcost.md")
 knit("_rmd-posts/psa.Rmd", "_posts/2018-02-10-psa.md")
 knit("_rmd-posts/sim_mstate.Rmd", "_posts/2019-01-01-sim-mstate.md")
+knit("_rmd-posts/hesim_0_2_0.Rmd", "_posts/2019-04-03-hesim_0_2_0.md")
