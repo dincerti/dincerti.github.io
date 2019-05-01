@@ -109,7 +109,7 @@ Shiraito Y, **Incerti**, D, Lopez-Moctezuma G. A Reassessment of the Resource Cu
 ### Software
 *hesim*
 
-Author of `hesim`, an R package for health economic simulation modeling and decision analysis that provides a general framework for integrating statistical analyses with economic evaluation. The package currently supports N-state partitioned survival models and state-transition models, as well as individualized cost-effectiveness analysis. It is designed for high performance simulation modeling including microsimulation and probabilistic sensitivity analysis with core code written in C++ ([Website](https://innovationvalueinitiative.github.io/hesim/)).
+Author of `hesim`, an R package for health economic simulation modeling and decision analysis that provides a general framework for integrating statistical analyses with economic evaluation. The package currently supports N-state partitioned survival models and state-transition models, as well as individualized cost-effectiveness analysis. It is designed for high performance simulation modeling including microsimulation and probabilistic sensitivity analysis with core code written in C++ ([Website](https://hesim-dev.github.io/hesim/)).
 
 *IVI-NSCLC model*
 
