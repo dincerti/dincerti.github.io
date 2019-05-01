@@ -14,7 +14,7 @@ In this post, we will consider "clock-reset" (i.e., semi-Markov) models rather t
 
 The analysis will be restricted to parametric models, which are useful for extrapolating beyond the the time horizon in the existing data. Example probability distributions include the exponential, Weibull, Gompertz, gamma, log-logistic, lognormal, and generalized gamma.  
 
-The [flexsurv](https://cran.r-project.org/web/packages/flexsurv/index.html) package will be used to estimate the parametric models and the [mstate](https://cran.r-project.org/web/packages/mstate/index.html) and [hesim](http://innovationvalueinitiative.github.io/hesim/) (admittedly developed by me) packages will be used to simulate the estimated models. We will compare the computational efficiency of different simulation methods.
+The [flexsurv](https://cran.r-project.org/web/packages/flexsurv/index.html) package will be used to estimate the parametric models and the [mstate](https://cran.r-project.org/web/packages/mstate/index.html) and [hesim](http://hesim-dev.github.io/hesim/) (admittedly developed by me) packages will be used to simulate the estimated models. We will compare the computational efficiency of different simulation methods.
 
 ### An example 6-state model
 To illustrate, we will follow [Wreede et al.](https://www.jstatsoft.org/article/view/v038i07) and use a 6-state model for leukemia patients following bone marrow transplantation (see figure below). The six states are (1) Transplant (Tx), (2) Recovery (Rec), (3) Adverse Event (AE), (4) AE and Rec, (5) Relapse (Rel), and (6) Death. The following 12 transitions are possible. 

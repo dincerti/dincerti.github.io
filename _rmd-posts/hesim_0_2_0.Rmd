@@ -10,7 +10,7 @@ set.seed(125)
 ```
 
 # Overview
-hesim is an R package for health-economic simulation modeling and decision analysis. The most recent release, v0.2.0, is now on [CRAN](https://cran.r-project.org/web/packages/hesim/index.html) with new support for simulating partitioned survival models (PSMs) and continuous-time state transition models (CTSTMs). Documentation is provided on the package [website](https://innovationvalueinitiative.github.io/hesim/).
+hesim is an R package for health-economic simulation modeling and decision analysis. The most recent release, v0.2.0, is now on [CRAN](https://cran.r-project.org/web/packages/hesim/index.html) with new support for simulating partitioned survival models (PSMs) and continuous-time state transition models (CTSTMs). Documentation is provided on the package [website](https://hesim-dev.github.io/hesim/).
 
 Analyses are performed by constructing economic models that consist of (1) a disease model, (2) a utility model, and (3) cost models. A disease model simulates the progression of disease over time. In CTSTMs and  PSMs this entails simulating the probability that patients are in mutually exclusive health states as a function of time. The utility model attaches utility values to the different health states and is used to compute quality-adjusted life-years ([QALYs](https://en.wikipedia.org/wiki/Quality-adjusted_life_year)). Similarly, the cost models attach cost values to the health states for different categories of costs (e.g., drug costs, inpatient costs, outpatient costs, etc.).
 
@@ -75,7 +75,7 @@ for (i in 1:length(gg_fits)){
 gg_fits <- flexsurvreg_list(gg_fits)
 ```
 
-Mean utility and cost values can be attached to the health states using a `stateval_tbl`. In our PSA, we will assume that utility in each health state follows a beta distribution, which are parameterized using [methods of moments](https://innovationvalueinitiative.github.io/hesim/reference/mom_beta.html) after specifying the mean and standard errors.
+Mean utility and cost values can be attached to the health states using a `stateval_tbl`. In our PSA, we will assume that utility in each health state follows a beta distribution, which are parameterized using [methods of moments](https://hesim-dev.github.io/hesim/reference/mom_beta.html) after specifying the mean and standard errors.
 
 ```{r}
 utility_tbl <- stateval_tbl(data.table(state_id = states$state_id,
