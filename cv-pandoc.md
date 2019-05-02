@@ -38,7 +38,7 @@ output:
 ### Publications
 **Incerti D**, Thom H, Baio G, Jansen JP. R you still using Excel? The advantages of modern software tools for health technology assessment. *Value in Health* (in press).
 
-Jansen JP, **Incerti D**, Curtis, JR. Towards relevant and credible cost-effectiveness analysis for value assessment in the decentralized US healthcare system. *Journal of Managed Care & Specialty Pharmacy*, 2019 May;25(5):518-521. [https://doi.org/10.18553/jmcp.2019.25.5.518](https://doi.org/10.18553/jmcp.2019.25.5.518).
+Jansen JP, **Incerti D**, Curtis, JR. Towards relevant and credible cost-effectiveness analysis for value assessment in the decentralized US healthcare system. *Journal of Managed Care & Specialty Pharmacy*. 2019 May;25(5):518-521. [https://doi.org/10.18553/jmcp.2019.25.5.518](https://doi.org/10.18553/jmcp.2019.25.5.518).
 
 Ton TG, Bennett M, **Incerti D**, Peneva D, Druzin M, Stevens W, Butwick A, Lee HC. Maternal and Infant Adverse Outcomes Associated with Mild and Severe Preeclampsia during the First Year after Delivery in the United States. *American Journal of Perinatology*. 2019 Feb 19. [https://doi.org//10.1055/s-0039-1679916](https://doi.org//10.1055/s-0039-1679916).
 
