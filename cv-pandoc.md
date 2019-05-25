@@ -75,11 +75,11 @@ Contributor to [R-bloggers](https://www.r-bloggers.com/). ([Link to posts](http:
 Jansen JP, **Incerti D**, Linthicum M. [An Open-Source Consensus-Based Approach To Value Assessment](https://www.healthaffairs.org/action/showDoPubSecure?doi=10.1377%2Fhblog20171212.640960&format=full). Health Affairs Blog. 2017 Dec 1.
 
 ### Oral Presentations
-Excel With Your Economic Models Using R. ISPOR Annual International Meeting, New Orleans, 2018 (with Jeroen Jansen and Joseph Levy). ([PDF](http://devinincerti.com/presentations/ispor_new_orleans_R_workshop_5-14-2019), [GitHub](https://github.com/hesim-dev/hesim-presentations/tree/master/ispor-annual-2019)).
+Excel With Your Economic Models Using R. ISPOR Annual International Meeting, New Orleans, 2018 (with Jeroen Jansen and Joseph Levy). ([PDF](http://devinincerti.com/presentations/ispor_new_orleans_R_workshop_5-14-2019.pdf), [GitHub](https://github.com/hesim-dev/hesim-presentations/tree/master/ispor-annual-2019)).
 
-Can We Make Global Value Assessments More Flexible and Comprehensive? ISPOR Annual International Meeting, New Orleans, 2018 (with Peter Neumann, Finn Børlum Kristensen, and Mark Sculpher). ([PDF](http://devinincerti.com/presentations/ispor_new_orleans_3-vs-4-state-model_5-13-2019)).
+Can We Make Global Value Assessments More Flexible and Comprehensive? ISPOR Annual International Meeting, New Orleans, 2018 (with Peter Neumann, Finn Børlum Kristensen, and Mark Sculpher). ([PDF](http://devinincerti.com/presentations/ispor_new_orleans_3-vs-4-state-model_5-13-2019.pdf)).
 
-A Comparison of Three and Four State Economic Models for Cost-effectiveness Analysis in Oncology (selected oral abstract). ISPOR Annual International Meeting, New Orleans, 2018. ([PDF](http://devinincerti.com/presentations/ispor_new_orleans_3-vs-4-state-model_5-13-2019)).
+A Comparison of Three and Four State Economic Models for Cost-effectiveness Analysis in Oncology (selected oral abstract). ISPOR Annual International Meeting, New Orleans, 2018. ([PDF](http://devinincerti.com/presentations/ispor_new_orleans_3-vs-4-state-model_5-13-2019.pdf)).
 
 R You Seriously Still Using Excel? The Many Advantages of Open Source Decision Modeling in Efficient Programming Languages. ISPOR Annual European Congress, Barcelona, Spain, 2018 (with Jeroen Jansen, Howard Thom, and Gianluca Baio). ([PDF](http://devinincerti.com/presentations/ispor_barcelona_R_workshop_12-14-2018.pdf)). 
 
