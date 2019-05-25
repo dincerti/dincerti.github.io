@@ -36,7 +36,7 @@ output:
 : Research Associate, NERA Economic Consulting, Los Angeles, CA
 
 ### Publications
-**Incerti D**, Thom H, Baio G, Jansen JP. R you still using Excel? The advantages of modern software tools for health technology assessment. *Value in Health* (in press).
+**Incerti D**, Thom H, Baio G, Jansen JP. R you still using Excel? The advantages of modern software tools for health technology assessment. *Value in Health*. 2019 May 1;22(5):575-9. [https://doi.org/10.1016/j.jval.2019.01.003](https://doi.org/10.1016/j.jval.2019.01.003).
 
 Jansen JP, **Incerti D**, Curtis, JR. Towards relevant and credible cost-effectiveness analysis for value assessment in the decentralized US healthcare system. *Journal of Managed Care & Specialty Pharmacy*. 2019 May;25(5):518-521. [https://doi.org/10.18553/jmcp.2019.25.5.518](https://doi.org/10.18553/jmcp.2019.25.5.518).
 
@@ -61,11 +61,11 @@ Jansen JP, **Incerti D**, Mutebi A, Peneva, D, MacEwan JP, Stolshek B, Kaur P, G
 ### Manuscripts Under Review
 Stevens W, **Incerti D**, Peneva D, Shrestha A, Ramaswamy K, Smith G. An Empirical Analysis of the Role of Learning by Doing in Dynamic Cost-effectiveness.
 
-### Working Papers
-**Incerti D**, Incerti T. Are regime changes always bad economics? Evidence from daily financial data. ([PDF](http://devinincerti.com/papers/political-instability-finance.pdf), 
+**Incerti D**, Incerti T. Are regime changes always bad economics? Evidence from daily financial data. ([PDF](https://github.com/dincerti/political-instability/blob/master/doc/paper.pdf), 
 [GitHub](https://github.com/dincerti/political-instability)).
 
-**Incerti D**. An Assessment of Long-term Healthcare Expenditure Risk Using a Dynamic Bayesian Model. ([PDF](http://devinincerti.com/papers/longterm_spending.pdf), [Fake-data simulation](http://devinincerti.com/twopart_re_longitudinal.html)).
+### Working Papers
+**Incerti D**. An Assessment of Long-term Healthcare Expenditure Risk Using a Dynamic Bayesian Model. ([PDF](http://devinincerti.com/papers/longterm_spending.pdf)).
 
 **Incerti D**. Racial, Ethnic and Educational Disparities in Pharmaceutical Expenditures. ([PDF](http://devinincerti.com/papers/disparities_rx.pdf)).
 
@@ -75,26 +75,39 @@ Contributor to [R-bloggers](https://www.r-bloggers.com/). ([Link to posts](http:
 Jansen JP, **Incerti D**, Linthicum M. [An Open-Source Consensus-Based Approach To Value Assessment](https://www.healthaffairs.org/action/showDoPubSecure?doi=10.1377%2Fhblog20171212.640960&format=full). Health Affairs Blog. 2017 Dec 1.
 
 ### Oral Presentations
-R You Seriously Still Using Excel? The Many Advantages of Open Source Decision Modeling in Efficient Programming Languages. ISPOR Annual European Congress, Barcelona, Spain, 2018 (with Jeroen Jansen, Howard Thom, and Gianluca Baio). ([PDF](http://devinincerti.com/presentations/ispor_barcelona_12-14-2018_R.pdf)) 
+Excel With Your Economic Models Using R. ISPOR Annual International Meeting, New Orleans, 2018 (with Jeroen Jansen and Joseph Levy). ([PDF](http://devinincerti.com/presentations/ispor_new_orleans_R_workshop_5-14-2019), [GitHub](https://github.com/hesim-dev/hesim-presentations/tree/master/ispor-annual-2019)).
 
-Developing flexible, iterative, and transparent decision models: a detailed look at a rheumatoid arthritis individual patient simulation. ISPOR Student Network Educational Webinar, 2018. ([PDF](http://devinincerti.com/presentations/ISPOR_student_webinar_4-18-2018.pdf))  
+Can We Make Global Value Assessments More Flexible and Comprehensive? ISPOR Annual International Meeting, New Orleans, 2018 (with Peter Neumann, Finn Børlum Kristensen, and Mark Sculpher). ([PDF](http://devinincerti.com/presentations/ispor_new_orleans_3-vs-4-state-model_5-13-2019)).
+
+A Comparison of Three and Four State Economic Models for Cost-effectiveness Analysis in Oncology (selected oral abstract). ISPOR Annual International Meeting, New Orleans, 2018. ([PDF](http://devinincerti.com/presentations/ispor_new_orleans_3-vs-4-state-model_5-13-2019)).
+
+R You Seriously Still Using Excel? The Many Advantages of Open Source Decision Modeling in Efficient Programming Languages. ISPOR Annual European Congress, Barcelona, Spain, 2018 (with Jeroen Jansen, Howard Thom, and Gianluca Baio). ([PDF](http://devinincerti.com/presentations/ispor_barcelona_R_workshop_12-14-2018.pdf)). 
+
+Developing flexible, iterative, and transparent decision models: a detailed look at a rheumatoid arthritis individual patient simulation. ISPOR Student Network Educational Webinar, 2018. ([PDF](http://devinincerti.com/presentations/ISPOR_student_webinar_4-18-2018.pdf)).  
 
 Open-Source Consensus-Based Models to Improve the Cost-Effectiveness of Rheumatology Care (selected oral abstract). ACR/ARHP Annual Meeting, San Diego, 2017. 
 
 Estimates of the costs of preeclampsia to the United States health care system. March of Dimes Prematurity Research Center at Stanford University, Palo Alto, 2016 (with Thanh G.N. Ton).
 
+<!---
 ### Abstracts and Poster Presentations
-**Incerti D**, Jansen JP. Open-source software for developing computationally efficient cost-effectiveness models to evaluate sequential treatment strategies in oncology. ISPOR Annual European Congress, Barcelona, Spain, 2018. 
+**Incerti D**, Jansen JP. A comparison of R packages for prediction and simulation of multi-state models for cost-effectiveness analysis. ISPOR Annual International Meeting, New Orleans, 2018. 
 
-Jansen JP, **Incerti D**, Shafrin J, Frederickson A, Lakdawalla DN, Reckamp KL. A flexible open-source cost-effectiveness model for metastatic EGFR+ non-small cell lung cancer. ISPOR Annual European Congress, Barcelona, Spain, 2018. 
+**Incerti D**, Maksabedian EJ, Tkacz J, Moore-Schiltz L, Collier DH, Gharaibeh MMF, Stolshek BS. Understanding The Impact of Dose Escalation on the Cost-Effectiveness of Etanercept Among Patients With Rheumatoid Arthritis. AMCP Managed Care & Specialty Pharmacy Annual Meeting, San Diego, 2019.
 
-**Incerti D**, Shafrin J, Lakdawalla DN, Zhao L, Linthicum M, Jansen JP. Improvement of an open-source cost-effectiveness model based on public feedback. ISPOR Annual European Congress, Barcelona, Spain, 2018.  
+**Incerti D**, Jansen JP. Open-source software for developing computationally efficient cost-effectiveness models to evaluate sequential treatment strategies in oncology. ISPOR Annual European Congress, Barcelona, Spain, 2018. [https://doi.org/10.1016/j.jval.2018.09.2250](https://doi.org/10.1016/j.jval.2018.09.2250). 
 
-May SG, Shafrin J, Linthicum M, **Incerti D**, Jansen JP, Bright J. Toward patient-centered value assessment: Lessons from the IVI Open-Source Value Project. ISPOR Annual European Congress, Barcelona, Spain, 2018. 
+Jansen JP, **Incerti D**, Shafrin J, Frederickson A, Lakdawalla DN, Reckamp KL. A flexible open-source cost-effectiveness model for metastatic EGFR+ non-small cell lung cancer. ISPOR Annual European Congress, Barcelona, Spain, 2018. [https://doi.org/10.1016/j.jval.2018.09.252](https://doi.org/10.1016/j.jval.2018.09.252). 
 
-**Incerti D**, Jansen JP. An Open-Source Toolkit for Developing Flexible Evidence-Based Decision and Simulation Models for Value Assessment in Oncology with R. ISPOR 23rd Annual International Meeting, Baltimore, 2018. [https://doi.org/10.1016/j.jval.2018.04.1508](https://doi.org/10.1016/j.jval.2018.04.1508). 
+**Incerti D**, Shafrin J, Lakdawalla DN, Zhao L, Linthicum M, Jansen JP. Improvement of an open-source cost-effectiveness model based on public feedback. ISPOR Annual European Congress, Barcelona, Spain, 2018. [https://doi.org/10.1016/j.jval.2018.09.250](https://doi.org/10.1016/j.jval.2018.09.250).  
 
-**Incerti D**, Jansen JP. Quantifying the Importance of Model Parameters and Structural Assumptions on the Value of Treatments for Rheumatoid Arthritis using Metamodeling. ISPOR 23rd Annual International Meeting, Baltimore, 2018. [https://doi.org/10.1016/j.jval.2018.04.1333](https://doi.org/10.1016/j.jval.2018.04.1333).
+May SG, Shafrin J, Linthicum M, **Incerti D**, Jansen JP, Bright J. Toward patient-centered value assessment: Lessons from the IVI Open-Source Value Project. ISPOR Annual European Congress, Barcelona, Spain, 2018. [https://doi.org/10.1016/j.jval.2018.09.1827](https://doi.org/10.1016/j.jval.2018.09.1827). 
+
+**Incerti D**, Jansen JP. An Open-Source Toolkit for Developing Flexible Evidence-Based Decision and Simulation Models for Value Assessment in Oncology with R. ISPOR Annual International Meeting, Baltimore, 2018. [https://doi.org/10.1016/j.jval.2018.04.1508](https://doi.org/10.1016/j.jval.2018.04.1508). 
+
+**Incerti D**, Jansen JP. Quantifying the Importance of Model Parameters and Structural Assumptions on the Value of Treatments for Rheumatoid Arthritis using Metamodeling. ISPOR Annual International Meeting, Baltimore, 2018. [https://doi.org/10.1016/j.jval.2018.04.1333](https://doi.org/10.1016/j.jval.2018.04.1333).
+
+Tkacz J, Maksabedian EJ, **Incerti D**, Bonafede M, Moore-Schiltz L, Collier DH, Gharaibeh, M, Stolshek, BS. Dose Escalation of Targeted Immune Modulators Among Patients with Rheumatoid Arthritis. AMCP Nexus, Orlando, 2018.
 
 **Incerti D**, Curtis JR, Lorenzi M, Jansen JP. Exploring Structural Uncertainty With An Open-Source Cost-Effectiveness Model For Rheumatoid Arthritis. ISPOR Annual European Congress, Glasgow, Scotland, 2017. [http://dx.doi.org/10.1016/j.jval.2017.08.2098](http://dx.doi.org/10.1016/j.jval.2017.08.2098).
 
@@ -102,9 +115,13 @@ May SG, Shafrin J, Linthicum M, **Incerti D**, Jansen JP, Bright J. Toward patie
 
 Jansen JP, Jeffers A, Chang K, **Incerti D**. An Outcomes Regression Approach for Indirect Comparisons of Survival Outcomes when Standard Network Meta-Analysis is Not Feasible. ISPOR Annual International Meeting, Boston, 2017. 
 
+Shahabi A, Peneva D, **Incerti D**, McLaurin K, Stevens W. Variation in Cost of Palivizumab Prophylaxis and the Implications for Policy Considerations. AMCP Nexus, National Harbor, 2016.
+
 Wan J, Mongan J, **Incerti D**, Courtier J. A Shiny New World: Creating Your Own Radiology Decision Support Webapps Using R. Radiological Society of North America, Annual Meeting, Chicago, 2016.
 
 Shiraito Y, **Incerti**, D, Lopez-Moctezuma G. A Reassessment of the Resource Curse: A Bayesian Dynamic Analysis of Panel Data. Midwest Political Science Association, Annual Meeting, Chicago, 2013.
+
+--->
 
 ### Software
 *hesim*
@@ -113,7 +130,7 @@ Author of `hesim`, an R package for health economic simulation modeling and deci
 
 *IVI-NSCLC model*
 
-Author of the IVI-NSCLC model, an open-source simulation model for assessing the value of sequences of treatment to treat patients with epidermal growth factor receptor (EGFR) positive non-small cell lung cancer (NSCLC). Lead programmer of the R package. ([GitHub](https://github.com/InnovationValueInitiative/IVI-NSCLC)) 
+Author of the IVI-NSCLC model, an open-source simulation model for assessing the value of sequences of treatment to treat patients with epidermal growth factor receptor (EGFR) positive non-small cell lung cancer (NSCLC). Lead programmer of the R package. ([GitHub](https://github.com/InnovationValueInitiative/IVI-NSCLC)). 
 
 * [Model documentation](https://innovationvalueinitiative.github.io/IVI-NSCLC/model-doc/model-doc.pdf): PDF documentation describing the IVI-NSCLC model.
 * [iviNSCLC R package](https://innovationvalueinitiative.github.io/IVI-NSCLC/): an R package for running the IVI-NSCLC model.
@@ -122,7 +139,7 @@ Author of the IVI-NSCLC model, an open-source simulation model for assessing the
 
 *IVI-RA model*
 
-Author of the IVI-RA model, an open-source individual patient simulation model for assessing the value of disease-modifying anti-rheumatic drugs (DMARDs) to treat rheumatoid arthritis. Lead programmer of the R package and R Shiny web apps. ([GitHub](https://github.com/InnovationValueInitiative/IVI-RA)) 
+Author of the IVI-RA model, an open-source individual patient simulation model for assessing the value of disease-modifying anti-rheumatic drugs (DMARDs) to treat rheumatoid arthritis. Lead programmer of the R package and R Shiny web apps. ([GitHub](https://github.com/InnovationValueInitiative/IVI-RA)). 
 
 * [Model documentation](https://innovationvalueinitiative.github.io/IVI-RA/model-description/model-description.pdf): PDF documentation describing the IVI-RA model.
 * [iviRA R package](https://innovationvalueinitiative.github.io/IVI-RA): an R package for running the IVI-RA model.
