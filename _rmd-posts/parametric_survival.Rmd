@@ -1,0 +1,50 @@
+---
+title: "Parametric and flexible parametric survival models"
+layout: post
+---
+* TOC
+{:toc }
+
+
+# Introduction
+
+# Survival distributions 
+```{r setup, warning = FALSE, message = FALSE}
+library("flexsurv")
+library("data.table")
+library("ggplot2")
+ggplot2::theme_set(theme_minimal())
+times <- seq(1, 30, 1)
+```
+
+```{r hazfun}
+hazfun <- function(FUN, param_vals, times){
+  values <- do.call("mapply", c(list(FUN = FUN),
+                                as.list(expand.grid(param_vals)),
+                                list(MoreArgs = list(x = times))))
+  x <- data.table(expand.grid(c(param_vals, list(time = times))),
+                  value = c(t(values)))
+  return(x)
+}
+```
+
+## Exponential distribution
+```{r haz_exp, warning = FALSE, message = FALSE}
+haz_exp <- hazfun(flexsurv::hexp, 
+                  list(rate = seq(0, 10, 1)),
+                  times = times)
+ggplot(haz_exp, aes(x = time, y = value, col = rate, group = rate)) +
+  geom_line() + xlab("Time") + ylab("Hazard") +
+  #scale_color_discrete(name = "Rate") +
+  scale_color_gradient(name = "Rate", low = "blue", high = "red")
+```
+
+
+
+# Regression 
+
+# Conclusion
+
+
+
+
