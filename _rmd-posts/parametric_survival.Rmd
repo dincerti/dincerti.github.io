@@ -1,5 +1,5 @@
 ---
-title: "Parametric and flexible parametric survival models"
+title: "Parametric survival modeling"
 layout: post
 ---
 * TOC
@@ -9,21 +9,209 @@ layout: post
 # Introduction
 
 # Survival distributions 
+```{r Rfuns, echo = FALSE}
+library("knitr")
+library("kableExtra")
+
+# Exponential
+exp <- c("[stats::dexp](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/Exponential.html)",
+         "[stats::pexp](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/Exponential.html)",
+         "[flexsurv::hexp](https://www.rdocumentation.org/packages/flexsurv/versions/1.1.1/topics/hexp)",
+         "[flexsurv::rexp](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/Exponential.html)")
+
+# Weibull (AFT)
+wei <- c("[stats::dweibull](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/Weibull.html)",
+         "[stats::pweibull](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/Weibull.html)",
+         "[flexsurv::hweibull](https://www.rdocumentation.org/packages/flexsurv/versions/1.1.1/topics/hexp)",
+         "[stats::rweibull](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/Weibull.html)")
+
+# Weibull (PH)
+weiPH <- c("[flexsurv::dweibullPH](https://www.rdocumentation.org/packages/flexsurv/versions/1.1.1/topics/WeibullPH)",
+            "[flexsurv::pweibullPH](https://www.rdocumentation.org/packages/flexsurv/versions/1.1.1/topics/WeibullPH)",
+            "[flexsurv::hweibullPH](https://www.rdocumentation.org/packages/flexsurv/versions/1.1.1/topics/WeibullPH)",
+            "[flexsurv::rweibullPH](https://www.rdocumentation.org/packages/flexsurv/versions/1.1.1/topics/WeibullPH)")
+
+# Gompertz
+gomp <- c("[flexsurv::dgompertz](https://www.rdocumentation.org/packages/flexsurv/versions/1.1.1/topics/Gompertz)",
+          "[flexsurv::pgompertz](https://www.rdocumentation.org/packages/flexsurv/versions/1.1.1/topics/Gompertz)",
+          "[flexsurv::hgompertz](https://www.rdocumentation.org/packages/flexsurv/versions/1.1.1/topics/Gompertz)",
+          "[flexsurv::rgompertz](https://www.rdocumentation.org/packages/flexsurv/versions/1.1.1/topics/Gompertz)")
+
+# Gamma
+gamma <- c("[stats::dgamma](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/GammaDist.html)",
+           "[stats::pgamma](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/GammaDist.html)",
+           "[flexsurv::hgamma](https://www.rdocumentation.org/packages/flexsurv/versions/1.1.1/topics/hexp)",
+            "[stats::rgamma](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/GammaDist.html)")
+
+# Lognormal
+lnorm <- c("[stats::dlnorm](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/Lognormal.html)",
+           "[stats::plnorm](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/Lognormal.html)",
+           "[flexsurv::hlnorm](https://www.rdocumentation.org/packages/flexsurv/versions/1.1.1/topics/hexp)",
+           "[stats::rlnorm](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/Lognormal.html)")
+
+# Log-logistic
+llogis <- c("[flexsurv::dllogis](https://www.rdocumentation.org/packages/flexsurv/versions/1.1.1/topics/Llogis)",
+            "[flexsurv::pllogis](https://www.rdocumentation.org/packages/flexsurv/versions/1.1.1/topics/Llogis)",
+            "[flexsurv::hllogis](https://www.rdocumentation.org/packages/flexsurv/versions/1.1.1/topics/Llogis)",
+            "[flexsurv::rllogis](https://www.rdocumentation.org/packages/flexsurv/versions/1.1.1/topics/Llogis)")
+
+# Generalized gamma
+gengamma <- c("[flexsurv::dgengamma](https://www.rdocumentation.org/packages/flexsurv/versions/1.1.1/topics/GenGamma)",
+              "[flexsurv::gengamma](https://www.rdocumentation.org/packages/flexsurv/versions/1.1.1/topics/GenGamma)",
+              "[flexsurv::hgengamma](https://www.rdocumentation.org/packages/flexsurv/versions/1.1.1/topics/GenGamma)",
+              "[flexsurv::rgengamma](https://www.rdocumentation.org/packages/flexsurv/versions/1.1.1/topics/GenGamma)")
+
+# Create table
+x <- rbind(exp, wei, weiPH, gomp, gamma, lnorm, llogis, gengamma)
+rownames(x) <- c("Exponential",
+                 "Weibull (AFT)",
+                 "Weibull (PH)",
+                 "Gompertz", 
+                 "Gamma", 
+                 "Lognormal",
+                 "Log-logistic",
+                 "Generalized gamma")
+colnames(x) <- c("PDF", "CDF", "Hazard", "Random sampling")
+x  %>%
+  kable() %>%
+  kable_styling()
+
+```
+
+```{r surv_dists, echo = FALSE}
+# Exponential
+exp <- c("$\\lambda e^{-\\lambda t}$",
+         "$1 - e^{-\\lambda t}$",
+         "$\\lambda$",
+         "$\\color{red}{\\text{rate}} = \\lambda  \\gt 0$", 
+         "Constant")
+
+# Weibull (AFT)
+wei <- c("$\\frac{a}{b}\\left(\\frac{t}{b}\\right)^{a-1}e^{-(t/b)^a}$",
+         "$1 - e^{-(t/b)^a}$",
+         "$\\frac{a}{b}\\left(\\frac{t}{b}\\right)^{a-1}$",
+         "$\\text{shape} = a  \\gt 0 \\\\ \\color{red}{\\text{scale}} = b \\gt 0$", 
+         "Constant, monotonically increasing/decreasing")
+
+# Weibull (PH)
+weiPH <- c("$a m t^{a-1} e^{-m t^a}$",
+         "$1 - e^{-mt^a}$",
+         "$amt^{a-1}$",
+         "$\\text{shape} = a  \\gt 0 \\\\ \\color{red}{\\text{scale}} = m \\gt 0$", 
+         "Constant, monotonically increasing/decreasing")
+  
+# Gompertz
+gomp <- c("$b e^{at} \\exp\\left[-\\frac{b}{a}(e^{at}-1)\\right]$",
+         "$1 - \\exp\\left[-\\frac{b}{a}(e^{at}-1)\\right]$",
+         "$b e^{at}$",
+         "$\\text{shape} = a \\in (-\\infty, \\infty) \\\\ \\color{red}{\\text{rate}} = b \\gt 0$",
+         "Constant, monotonically increasing/decreasing")
+
+# Gamma
+gamma <- c("$\\frac{b^a}{\\Gamma(a)}t^{a -1}e^{-bt}$",
+         "$\\frac{\\gamma(a, bt)}{\\Gamma(a)}$",
+         "$f(t)/S(t)$",
+         "$\\text{shape} = a \\gt 0 \\\\ \\color{red}{\\text{rate}} = b \\gt 0$",
+         "Constant, monotonically increasing/decreasing")
+
+
+# Lognormal
+lnorm <- c("$\\frac{1}{t\\sigma\\sqrt{2\\pi}}e^{-\\frac{(\\ln t - \\mu)^2}{2\\sigma^2}}$",
+         "$\\Phi\\left(\\frac{\\ln t - \\mu}{\\sigma}\\right)$",
+         "$f(t)/S(t)$",
+         "$\\color{red}{\\text{meanlog}} = \\mu \\in (-\\infty, \\infty) \\\\  \\text{sdlog} = \\sigma \\gt 0$",
+         "Arc-shaped, monotonically decreasing")
+
+
+# Log-logistic
+llogis <- c("$\\frac{(a/b)(t/b)^{a-1}}{\\left(1 + (t/b)^a\\right)^2}$",
+         "$\\frac{1}{(1+(t/b)^a)}$",
+         "$1-\\frac{(a/b)(t/b)^{a-1}}{\\left(1 + (t/b)^a\\right)}$",
+         "$\\text{shape} = a \\gt 0 \\\\ \\color{red}{\\text{scale}} = b \\gt 0$",
+         "Arc-shaped, monotonically decreasing")
+
+
+# Generalized gamma
+gengamma <- c("$\\frac{|Q|(Q^{-2})^{Q^{-2}}}{\\sigma t \\Gamma(Q^{-2})}  \\exp\\left[Q^{-2}\\left(Qw-e^{Qw}\\right)\\right]$",
+              "$\\begin{cases}
+              \\frac{\\gamma(Q^{-2}, u)}{\\Gamma(Q^{-2})} \\text{ if } Q \\neq 0  \\\\
+               \\Phi(w) \\text{ if } Q = 0 
+               \\end{cases}$",
+              "$f(t)/S(t)$",
+              "$\\color{red}{\\text{mu}} = \\mu \\gt 0 \\\\ \\text{sigma} = \\sigma \\gt 0 \\\\ \\text{Q} = Q \\in (-\\infty, \\infty)$",
+              "Arc-shaped, bathtub-shaped, monotonically increasing/decreasing")
+
+
+# Create table
+x <- rbind(exp, wei, weiPH, gomp, gamma, lnorm, llogis, gengamma)
+rownames(x) <- c("Exponential",
+                 "Weibull (AFT)",
+                 paste0("Weibull (PH)", footnote_marker_alphabet(1)),
+                 "Gompertz",
+                 paste0("Gamma", footnote_marker_alphabet(2)),
+                 "Lognormal",
+                 "Log-logistic",
+                 paste0("Generalized gamma", footnote_marker_alphabet(3)))
+colnames(x) <- c("PDF", "CDF", "Hazard", "Parameters", "Hazard shape")
+footnote_a <- c("The proportional hazard (PH) model is a reparameterization of the accelerated failure time (AFT) model with $m = b^{-a}$.")
+footnote_b <- "$\\Gamma(z) = \\int_{0}^{\\infty} x^{z-1}e^{-x} dx$ is the [gamma function](https://en.wikipedia.org/wiki/Gamma_function) and $\\gamma(s,x) = \\int_{0}^{x} t^{s-1}e^{-t}dt$ is the lower [incomplete gamma function](https://en.wikipedia.org/wiki/Incomplete_gamma_function)."
+footnote_c <- "$w = (log(t) - \\mu)/\\sigma; u = Q^{-2}e^{Qw}$."
+
+x  %>%
+  kable(escape = F, align = c(rep("l", ncol(x) - 2), "l", "l")) %>%
+  kable_styling(font_size = 13) %>%  
+  footnote(alphabet = c(footnote_a, footnote_b, footnote_c),
+           footnote_as_chunk = F)  %>%
+  column_spec(5, width = "60em") %>%
+  scroll_box(width = "100%")
+
+# dgengamma(5, mu = 2, sigma = 1.5, Q = -1.5)
+# 
+# my_dgengamma <- function(x, mu, sigma, Q){
+#   w <- (log(x) - mu)/sigma
+#   Qneg2 <- Q^(-2)
+#   term1 <- abs(Q) * Qneg2^Qneg2
+#   term2 <- sigma * x * gamma(Qneg2)
+#   term3 <- exp(Qneg2 *(Q * w - exp(Q * w)))
+#   return(term1/term2 * term3)
+# }
+# my_dgengamma(5, 2, 1.5, -1.5)
+  
+```
+
+
 ```{r setup, warning = FALSE, message = FALSE}
 library("flexsurv")
 library("data.table")
 library("ggplot2")
 ggplot2::theme_set(theme_minimal())
-times <- seq(1, 30, 1)
+times <- seq(1, 10, 1)
 ```
 
 ```{r hazfun}
 hazfun <- function(FUN, param_vals, times){
+  # Compute hazard for all possible combinations of parameters and times
   values <- do.call("mapply", c(list(FUN = FUN),
                                 as.list(expand.grid(param_vals)),
                                 list(MoreArgs = list(x = times))))
   x <- data.table(expand.grid(c(param_vals, list(time = times))),
                   value = c(t(values)))
+  
+  # Create factor variables and nice names for plotting
+  param_names <- names(param_vals)
+  x[[param_names[1]]] <- factor(x[[param_names[1]]],
+                                levels = unique(x[[param_names[1]]]))
+  if (length(param_vals) > 1){
+    for (j in 2:length(param_vals)){
+      ordered_vals <- unique(x[[param_names[j]]])
+      x[[param_names[j]]] <- paste0(param_names[j], " = ", x[[param_names[j]]])
+      factor_levels <- paste0(param_names[j], " = ", ordered_vals)
+      x[[param_names[j]]] <- factor(x[[param_names[j]]],
+                                    levels = factor_levels)
+    }
+  }
+  
+  # Return
   return(x)
 }
 ```
@@ -33,13 +221,100 @@ hazfun <- function(FUN, param_vals, times){
 haz_exp <- hazfun(flexsurv::hexp, 
                   list(rate = seq(0, 10, 1)),
                   times = times)
-ggplot(haz_exp, aes(x = time, y = value, col = rate, group = rate)) +
+ggplot(haz_exp, aes(x = time, y = value, col = rate)) +
   geom_line() + xlab("Time") + ylab("Hazard") +
-  #scale_color_discrete(name = "Rate") +
-  scale_color_gradient(name = "Rate", low = "blue", high = "red")
+  scale_y_continuous(breaks = seq(0, 10, 1)) 
 ```
 
+## Weibull distribution (AFT)
+The hazard is increasing for ``shape`` < 1 and decreasing for ``shape`` > 1. For ``shape=1`` the Weibull distribution is equivalent to an exponential distribution with rate parameter 1/``scale``.
 
+```{r haz_wei, warning = FALSE, message = FALSE}
+haz_wei <- hazfun(flexsurv::hweibull, 
+                  list(scale = seq(2, 5, .5),
+                       shape = seq(.5, 5, .5)),
+                  times = times)
+ggplot(haz_wei, aes(x = time, y = value, col = scale)) +
+  geom_line() + facet_wrap(~shape, scales = "free_y") +
+  xlab("Time") + ylab("Hazard") 
+```
+
+## Weibull distribution (PH)
+```{r haz_weiPH, warning = FALSE, message = FALSE}
+haz_weiPH <- hazfun(flexsurv::hweibullPH, 
+                  list(scale = seq(2, 5, .5),
+                       shape = seq(.5, 5, .5)),
+                  times = times)
+ggplot(haz_weiPH, aes(x = time, y = value, col = scale)) +
+  geom_line() + facet_wrap(~shape, scales = "free_y") +
+  xlab("Time") + ylab("Hazard") 
+```
+
+## Gompertz distribution
+The hazard is increasing for `shape` > 0 and decreasing for ``shape` <0. When $$shape =0$$, Gompertz distribution is equivalent to an exponential distribution with a constant hazard and rate determined by the $$rate$$ 
+
+```{r haz_gomp, warning = FALSE, message = FALSE}
+haz_gomp <- hazfun(flexsurv::hgompertz, 
+                  list(rate = seq(0, 2, .5),
+                       shape = seq(-2, 2, .5)),
+                  times = times)
+ggplot(haz_gomp, aes(x = time, y = value, col = rate)) +
+  geom_line() + facet_wrap(~shape, scales = "free_y") +
+  xlab("Time") + ylab("Hazard") 
+```
+
+## Gamma distribution
+The hazard is increasing for `shape` > 1 and decreasing for ``shape` < 1. When $$shape = 1$$, Gompertz distribution is equivalent to an exponential distribution with a constant hazard and rate determined by the $$rate$$.
+
+```{r haz_gam, warning = FALSE, message = FALSE}
+haz_gam <- hazfun(flexsurv::hgamma, 
+                  list(rate = seq(0, 3, .5),
+                       shape = c(1e-5, .5, 1, seq(2, 6))),
+                  times = times)
+ggplot(haz_gam, aes(x = time, y = value, col = rate)) +
+  geom_line() + facet_wrap(~shape, scales = "free_y") +
+  xlab("Time") + ylab("Hazard") 
+```
+
+## Lognormal distribution
+```{r haz_lnorm, warning = FALSE, message = FALSE}
+haz_lnorm <- hazfun(flexsurv::hlnorm, 
+                    list(meanlog = seq(0, 4, .5),
+                         sdlog = seq(.5, 3, .5)),
+                  times = seq(0, 20, .1))
+ggplot(haz_lnorm, aes(x = time, y = value, col = meanlog)) +
+  geom_line() + facet_wrap(~sdlog, scales = "free_y") +
+  xlab("Time") + ylab("Hazard") 
+```
+
+## Log-logistic distribution
+The hazard is decreasing for ``shape`` >=1 and unimodal or ``shape`` > 1.
+```{r haz_llogis, warning = FALSE, message = FALSE}
+haz_llogis <- hazfun(flexsurv::hllogis, 
+                    list(scale = seq(.5, 4, .5),
+                         shape = seq(.5, 3, .5)),
+                  times = seq(0, 20, 1))
+ggplot(haz_llogis, aes(x = time, y = value, col = scale)) +
+  geom_line() + facet_wrap(~shape, scales = "free_y") +
+  xlab("Time") + ylab("Hazard") 
+```
+
+## Generalized gamma distribution
+```{r haz_gengamma, warning = FALSE, message = FALSE, fig.width = 10, fig.height = 9}
+haz_gengamma <- hazfun(flexsurv::hgengamma, 
+                       list(mu = seq(1, 4, .5),
+                            sigma = seq(.5, 2, .5),
+                            Q = seq(-3, 3, 1)),
+                  times = seq(0, 20, 1))
+ggplot(haz_gengamma, aes(x = time, y = value, col = mu)) +
+  geom_line() + 
+  facet_wrap(sigma ~ Q,
+             ncol = length(levels(haz_gengamma$Q)),
+             scales = "free") +
+  xlab("Time") + ylab("Hazard") + 
+  theme(legend.position = "bottom") +
+  guides(col = guide_legend(nrow = 2, byrow = TRUE))
+```
 
 # Regression 
 
