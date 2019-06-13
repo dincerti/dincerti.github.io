@@ -7,6 +7,9 @@ layout: post
 
 
 # Introduction
+Although [Cox models](https://en.wikipedia.org/wiki/Proportional_hazards_model#The_Cox_model) are widely using in medical research, parametric models can be advantageous in many contexts. For instance, parametric models are essential for extrapolating survival outcomes beyond the available follow-up data. For this reason they are nearly always used in health-economic evaluations where it is necessary to consider the lifetime health effects (and costs) of medical interventions.
+
+`R` contains a vast array of packages related to biostatistics and its support for parametric survival modeling is no different. Below we will examine a range of parametric survival distributions and their specifications in `R`. We will then show how the [`flexsurv`](https://cran.r-project.org/web/packages/flexsurv/index.html) package can make parametric survival modeling straightforward.
 
 # Survival distributions 
 ```{r Rfuns, echo = FALSE}
@@ -164,19 +167,6 @@ x  %>%
            footnote_as_chunk = F)  %>%
   column_spec(5, width = "60em") %>%
   scroll_box(width = "100%")
-
-# dgengamma(5, mu = 2, sigma = 1.5, Q = -1.5)
-# 
-# my_dgengamma <- function(x, mu, sigma, Q){
-#   w <- (log(x) - mu)/sigma
-#   Qneg2 <- Q^(-2)
-#   term1 <- abs(Q) * Qneg2^Qneg2
-#   term2 <- sigma * x * gamma(Qneg2)
-#   term3 <- exp(Qneg2 *(Q * w - exp(Q * w)))
-#   return(term1/term2 * term3)
-# }
-# my_dgengamma(5, 2, 1.5, -1.5)
-  
 ```
 
 
@@ -316,10 +306,84 @@ ggplot(haz_gengamma, aes(x = time, y = value, col = mu)) +
   guides(col = guide_legend(nrow = 2, byrow = TRUE))
 ```
 
-# Regression 
+# Regression
+```{r reg_data, warning = FALSE, message = FALSE}
+dat <- data.table(lung)
+dat[, status := ifelse(status == 1, 0, 1)]
+head(dat)
 
-# Conclusion
+```
+
+```{r data, warning = FALSE, message = FALSE}
+library("muhaz")
+kernel_haz_est <- muhaz(dat$time, dat$status)
+kernel_haz <- data.table(time = kernel_haz_est$est.grid,
+                            est = kernel_haz_est$haz.est,
+                            method = "Kernel density")
+```
+
+```{r parametric_haz, warning = FALSE, message = FALSE}
+dists <- c("exp", "weibull", "gompertz", "gamma", 
+           "lognormal", "llogis", "gengamma")
+dists_long <- c("Exponential", "Weibull (AFT)",
+                "Gompertz", "Gamma", "Lognormal", "Log-logistic",
+                "Generalized gamma")
+parametric_haz <- vector(mode = "list", length = length(dists))
+for (i in 1:length(dists)){
+  fit <- flexsurvreg(Surv(time, status) ~ 1, data = dat, dist = dists[i]) 
+  parametric_haz[[i]] <- summary(fit, type = "hazard", 
+                                     ci = FALSE, tidy = TRUE)
+  parametric_haz[[i]]$method <- dists_long[i]
+}
+parametric_haz <- rbindlist(parametric_haz)
+```
 
 
+```{r reg_plot, message = FALSE, warning = FALSE, fig.width = 9, fig.height = 6}
+haz <- rbind(kernel_haz, parametric_haz)
+haz[, method := factor(method,
+                       levels = c("Kernel density",
+                                  dists_long))]
+n_dists <- length(dists) 
+ggplot(haz, aes(x = time, y = est, col = method, linetype = method)) +
+  geom_line() +
+  xlab("Days") + ylab("Hazard") + 
+  scale_colour_manual(name = "", 
+                      values = c("black", rainbow(n_dists))) +
+  scale_linetype_manual(name = "",
+                        values = c(1, rep_len(2:6, n_dists)))
+```
+
+## Adding covariates
+```{r reg_covs1, message = FALSE, warning = FALSE}
+dat[, ph.ecog := factor(ph.ecog)]
+
+# On location parameter only
+fit_covs1 <- flexsurvreg(Surv(time, status) ~ ph.ecog,
+                   data = dat, dist = "gompertz")
+print(fit_covs1)
+```
+
+```{r reg_covs2, message = FALSE, warning = FALSE}
+# On location parameter only
+fit_covs2 <- flexsurvreg(Surv(time, status) ~ ph.ecog,
+                         anc = list(shape = ~ph.ecog),
+                         data = dat, dist = "gompertz")
+print(fit_covs2)
+```
+
+```{r prediction_data, message = FALSE, warning = FALSE}
+newdat <- data.table(ph.ecog = sort(unique(dat[!is.na(ph.ecog)]$ph.ecog)))
+newdat[, ph.ecog := factor(ph.ecog)]
+print(newdat)
+```
 
 
+```{r prediction, message = FALSE, warning = FALSE}
+haz_covs1 <- summary(fit_covs1, newdat = newdat, type = "hazard", tidy = TRUE)
+ggplot(haz_covs1, aes(x = time, y = est, col = ph.ecog)) + 
+  geom_line() +
+  xlab("Days") + ylab("Hazard") +
+  scale_color_discrete(name = "ECOG performance score") +
+  theme(legend.position = "bottom")
+```
