@@ -1,5 +1,6 @@
 library("knitr")
-opts_chunk$set(fig.path = "figs/", fig.width = 8, fig.height = 5, fig.align = 'center')
+opts_chunk$set(fig.path = "figs/", fig.width = 8, fig.height = 5, fig.align = 'center',
+               dpi = 200)
 opts_knit$set(base.url = "/", root.dir = getwd())
 knit("_rmd-posts/twopart.Rmd", "_posts/2015-09-11-twopart.md")
 knit("_rmd-posts/markov_cohort.Rmd", "_posts/2015-10-15-markov_cohort.md")
@@ -9,3 +10,4 @@ knit("_rmd-posts/diabetes_highcost.Rmd", "_posts/2015-10-13-diabetes-highcost.md
 knit("_rmd-posts/psa.Rmd", "_posts/2018-02-10-psa.md")
 knit("_rmd-posts/sim_mstate.Rmd", "_posts/2019-01-01-sim-mstate.md")
 knit("_rmd-posts/hesim_0_2_0.Rmd", "_posts/2019-04-03-hesim_0_2_0.md")
+knit("_rmd-posts/parametric_survival.Rmd", "_posts/2019-06-14-parametric_survival.md")
