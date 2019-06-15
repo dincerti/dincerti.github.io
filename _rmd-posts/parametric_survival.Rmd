@@ -198,7 +198,7 @@ gengamma <- c("$\\frac{|Q|(Q^{-2})^{Q^{-2}}}{\\sigma t \\Gamma(Q^{-2})}  \\exp\\
                \\Phi(w) \\text{ if } Q = 0 
                \\end{cases}$",
               "$f(t)/S(t)$",
-              "$\\color{red}{\\text{mu}} = \\mu \\gt 0 \\\\ \\text{sigma} = \\sigma \\gt 0 \\\\ \\text{Q} = Q \\in (-\\infty, \\infty)$",
+              "$\\color{red}{\\text{mu}} = \\mu \\in (-\\infty, \\infty) \\\\ \\text{sigma} = \\sigma \\gt 0 \\\\ \\text{Q} = Q \\in (-\\infty, \\infty)$",
               "Arc-shaped, bathtub-shaped, monotonically increasing/decreasing")
 
 

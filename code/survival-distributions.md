@@ -43,7 +43,7 @@ H(t) = \int_0^t h(z)dz = -log S(t)
 
 ### Exponential Distribution
 Notation: 
-$$\lambda$$ = rate
+$$\lambda > 0$$ (rate)
 
 Density:
 $$f(t) = \lambda e^{-\lambda t}$$
@@ -63,12 +63,9 @@ $$1/\lambda$$
 Median:
 $$\ln(2)/\lambda$$
 
-Regression:
-$$\lambda = exp(x\beta)$$
-
 ### Weibull Distribution
 Notation: 
-$$\kappa$$ = shape, $$\eta$$ = scale, $$\Gamma(x)$$ = [gamma function](https://en.wikipedia.org/wiki/Gamma_function)
+$$\kappa > 0$$ (shape), $$\eta > 0$$ (scale), $$\Gamma(x)$$ = [gamma function](https://en.wikipedia.org/wiki/Gamma_function)
 
 Density:
 $$f(t) = \frac{\kappa}{\eta}\left(\frac{t}{\eta}\right)^{\kappa -1}e^{-(x/\eta)^\kappa}$$
@@ -88,14 +85,11 @@ $$\eta \Gamma(1 + 1/\kappa)$$
 Median:
 $$\eta (\ln(2))^{1/\kappa}$$
 
-Regression:
-$$\eta = exp(x\beta)$$
-
 Notes: The exponential distribution is a special case of the Weibull with $$\kappa = 1$$ and $$\lambda = 1/\eta$$
 
 ### Gamma Distribution
 Notation: 
-$$a$$ = shape, $$b$$ = rate, $$\gamma(k, x) = \int_0^x z^{k-1}e^{-z}dz$$ is the lower [incomplete gamma function](https://en.wikipedia.org/wiki/Incomplete_gamma_function)
+$$a > 0$$ (shape), $$b > 0$$ (rate), $$\gamma(k, x) = \int_0^x z^{k-1}e^{-z}dz$$ is the lower [incomplete gamma function](https://en.wikipedia.org/wiki/Incomplete_gamma_function)
 
 Density:
 $$f(t) = \frac{b^a}{\Gamma(a)}t^{a -1}e^{-bt}$$
@@ -105,12 +99,11 @@ $$S(t) = 1 - \frac{\gamma(a, bt)}{\Gamma(a)}$$
 
 Mean: $$a/b$$
 
-Regression: 
-$$b = exp(x\beta)$$
+Notes: When $$a=1$$, the gamma distribution simplifies to the exponential distribution with rate parameter $$b$$. 
 
 ### Lognormal Distribution
 Notation: 
-$$\mu$$ = mean, $$\sigma^2$$ = variance, $$\Phi(t)$$ is the [CDF of the standard normal distribution](https://en.wikipedia.org/wiki/Normal_distribution#Cumulative_distribution_function) 
+$$\mu \in (-\infty, \infty)$$ (mean), $$\sigma > 0$$ (standard deviation), $$\Phi(t)$$ is the [CDF of the standard normal distribution](https://en.wikipedia.org/wiki/Normal_distribution#Cumulative_distribution_function) 
 
 Density:
 $$f(t) = \frac{1}{t\sigma\sqrt{2\pi}}e^{-\frac{(\ln t - \mu)^2}{2\sigma^2}}$$
@@ -124,11 +117,8 @@ $$e^{\mu + \sigma^2/2}$$
 Median:
 $$e^\mu$$
 
-Regression
-$$\mu = x\beta$$
-
 ### Gompertz Distribution
-Notation: $$a$$ = shape, $$b$$ = rate
+Notation: $$a \in (-\infty, \infty)$$ (shape), $$b > 0$$ (rate)
 
 Density: 
 $$f(t) = be^{at}\exp\left[-\frac{b}{a}(e^{at}-1)\right]$$
@@ -145,15 +135,12 @@ $$H(t) = \frac{b}{a}\left(e^{at}-1\right)$$
 Median:
 $$\frac{1}{b}\ln\left[-(1/a)\ln(1/2) + 1\right]$$
 
-Regression:
-$$b = exp(x\beta)$$
-
 Notes:
 When $$a=0$$ the Gompertz distribution is equivalent to the exponential with constant hazard and rate $$b$$.
 
 ### Log-logistic Distribution
 Notation: 
-$$\kappa$$ = shape, $$\eta$$ = scale
+$$\kappa>0$$ (shape), $$\eta > 0$$ (scale)
 
 Density: 
 $$\begin{aligned}
@@ -180,19 +167,21 @@ $$\begin{aligned}
 \end{aligned}$$
 else undefined
 
-Regression: 
-$$\eta = \exp(x\beta)$$
-
 ### Generalized Gamma Distribution
 Notation: 
-$$\mu$$ = location parameter, $$\sigma$$ = scale parameter, $$Q$$ = shape parameter
+$$\mu \in (-\infty, \infty)$$ (location parameter), $$\sigma > 0$$ (scale parameter), $$Q \in (-\infty, \infty)$$ (shape parameter), $w = (log(t) - \mu)/\sigma$, and $u = Q^{-2}e^{Qw}$ 
 
 Density: 
 $$\begin{aligned}
-f(t) = \frac{|Q|}{\sigma t \Gamma(Q^{-2})}\left[Q^{-2}(e^{-\mu}t)^{Q/\sigma}\right]^{Q^{-2}}\exp\left[-Q^{-2}(e^{-\mu}t)^{Q/\sigma}\right]
-\end{aligned}$$
+f(t) = \frac{|Q|(Q^{-2})^{Q^{-2}}}{\sigma t \Gamma(Q^{-2})} \exp\left[Q^{-2}\left(Qw-e^{Qw}\right)\right]
+\end{aligned}$$  
 
-Regression:
-$$\mu = x\beta$$
+Survival:
+$$\begin{aligned}
+S(t) =
+\begin{cases} 1 - \frac{\gamma(Q^{-2}, u)}{\Gamma(Q^{-2})} \text{ if } Q \neq 0  \\
+       1 - \Phi(w) \text{ if } Q = 0 
+\end{cases}
+\end{aligned}$$  
 
 Notes: Simplifies to lognormal when $$Q=0$$, Weibull when $$Q=1$$, exponential when $$Q=\sigma=1$$, and gamma when $$Q = \sigma$$
