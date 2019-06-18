@@ -1,5 +1,6 @@
 ---
 title: "Parametric survival modeling"
+output: html_document
 layout: post
 ---
 * TOC
@@ -7,9 +8,9 @@ layout: post
 
 
 # Introduction
-Although [Cox models](https://en.wikipedia.org/wiki/Proportional_hazards_model#The_Cox_model) are widely used to analyze time-to-event data, parametric models can be advantageous in many contexts. For instance, parametric models are essential for extrapolating survival outcomes beyond the available follow-up data. For this reason they are nearly always used in health-economic evaluations where it is necessary to consider the lifetime health effects (and costs) of medical interventions.
+Survival analysis is used to analyze the time until the occurrence of an event (or multiple events). [Cox models](https://en.wikipedia.org/wiki/Proportional_hazards_model#The_Cox_model)---which are often referred to as semiparametric because they do not assume any particular baseline survival distribution---are perhaps the most widely used technique; however, Cox models are not without limitations and parametric approaches can be advantageous in many contexts. For instance, parametric models are essential for extrapolating survival outcomes beyond the available follow-up data. For this reason they are nearly always used in health-economic evaluations where it is necessary to consider the lifetime health effects (and costs) of medical interventions.
 
-`R` contains a vast array of packages related to biostatistics and its support for parametric survival modeling is no different. Below we will examine a range of parametric survival distributions, their specifications in `R`, and the hazard shapes they support. We will then show how the [`flexsurv`](https://cran.r-project.org/web/packages/flexsurv/index.html) package can make parametric regression modeling of survival data straightforward.
+`R` contains a large number of packages related to biostatistics and its support for parametric survival modeling is no different. Below we will examine a range of parametric survival distributions, their specifications in `R`, and the hazard shapes they support. We will then show how the [`flexsurv`](https://cran.r-project.org/web/packages/flexsurv/index.html) package can make parametric regression modeling of survival data straightforward.
 
 # Survival distributions 
 The primary quantity of interest in survival analysis is the survivor function, defined as the probability of survival beyond time $t$,
@@ -18,7 +19,7 @@ $$
 S(t) = Pr(T > t) = 1 - F(t),
 $$
 
-where $T$ is a random variable denoting the time that the event occurs. The survival function is the complement of the cumulative density function (CDF), $F(t) = \int_0^t f(u)du$, where $f(t)$ is the probability density function.
+where $T$ is a random variable denoting the time that the event occurs. The survival function is the complement of the cumulative density function (CDF), $F(t) = \int_0^t f(u)du$, where $f(t)$ is the probability density function (PDF).
 
 The hazard function, or the instantaneous rate at which an event occurs at time $t$ given survival until time $t$ is given by,
 
@@ -32,7 +33,7 @@ $$
 S(t) = e^{-\Lambda(t)}.
 $$
 
-`R` functions for parametric distributions used for survival analysis are shown in the table below. Functions for the PDF, CDF, and random number generation of many of the distributions are provided by the default `stats` package. Additional distributions as well as support for hazard functions are provided by `flexsurv`.    
+`R` functions for parametric distributions used for survival analysis are shown in the table below. The default `stats` package contains functions for the PDF, the CDF, and random number generation for many of the distributions. Additional distributions as well as support for hazard functions are provided by `flexsurv`.    
 
 ```{r Rfuns, echo = FALSE}
 library("knitr")
@@ -136,7 +137,7 @@ The parameterizations of these distributions in `R` are shown in the next table.
 * the exponential distribution only supports a constant hazard;
 * the Weibull, Gompertz, and gamma distributions support monotonically increasing and decreasing hazards;
 * the log-logistic and lognormal distributions support arc-shaped and monotonically decreasing hazards; and
-* the generalized gamma distribution supports an arc-shaped, bathtub-shaped, and monotonically increasing and decreasing hazard.
+* the generalized gamma distribution supports an arc-shaped, bathtub-shaped, monotonically increasing, and monotonically decreasing hazards.
 
 ```{r surv_dists, echo = FALSE}
 # Exponential
@@ -247,7 +248,7 @@ mapply(flexsurv::hweibull,
        MoreArgs = list(x = 1:2))
 ```
 
-The more general function uses `mapply` to return a `data.table` of hazards at all possible combinations of the parameter values and time points. Factor variables and nice names are also returned to facilitate plotting with ``ggplot2``. 
+The more general function uses `mapply` to return a `data.table` of hazards at all possible combinations of the parameter values and time points. Factor variables and intuitive names are also returned to facilitate plotting with ``ggplot2``. 
 
 ```{r hazfun}
 hazfun <- function(FUN, param_vals, times){
@@ -258,7 +259,7 @@ hazfun <- function(FUN, param_vals, times){
   x <- data.table(expand.grid(c(param_vals, list(time = times))),
                   value = c(t(values)))
   
-  # Create factor variables and nice names for plotting
+  # Create factor variables and intuitive names for plotting
   param_names <- names(param_vals)
   x[[param_names[1]]] <- factor(x[[param_names[1]]],
                                 levels = unique(x[[param_names[1]]]))
@@ -278,7 +279,7 @@ hazfun <- function(FUN, param_vals, times){
 ```
 
 ## Exponential distribution
-The exponential distribution is parameterized by single rate parameter and only supports a hazard that is constant over time. The hazard is simply equal to the rate parameter.
+The exponential distribution is parameterized by a single rate parameter and only supports a hazard that is constant over time. The hazard is simply equal to the rate parameter.
 
 ```{r haz_exp, warning = FALSE, message = FALSE}
 times <- seq(1, 10, 1)
@@ -292,7 +293,7 @@ ggplot(haz_exp, aes(x = time, y = value, col = rate)) +
 ```
 
 ## Weibull distribution (AFT)
-The Weibull distribution can be parameterized as both an [accelerated failure time (AFT) model](https://en.wikipedia.org/wiki/Accelerated_failure_time_model) or as a [proportional hazard (PH) model](https://en.wikipedia.org/wiki/Proportional_hazards_model). The parameterization in the base `stats` package is an AFT model. 
+The Weibull distribution can be parameterized as both an [accelerated failure time (AFT) model](https://en.wikipedia.org/wiki/Accelerated_failure_time_model) or as a [proportional hazards (PH) model](https://en.wikipedia.org/wiki/Proportional_hazards_model). The parameterization in the base `stats` package is an AFT model. 
 
 The hazard is decreasing for shape parameter $a < 1$ and increasing for $a > 1$. For $a = 1$, the Weibull distribution is equivalent to an exponential distribution with rate parameter $1/b$ where $b$ is the scale parameter.
 
@@ -336,7 +337,7 @@ ggplot(haz_gomp, aes(x = time, y = value, col = rate)) +
 ```
 
 ## Gamma distribution
-The gamma distribution is parameterized  by a shape parameter $a$ and a rate parameter $b$. Like the Weibull distribution, the hazard is decreasing for $a < 1$, constant for $a = 1$, and decreasing for $a >1$. In the case where $a = 1$, the gamma distribution is an exponential distribution with rate parameter $b$. 
+The gamma distribution is parameterized  by a shape parameter $a$ and a rate parameter $b$. Like the Weibull distribution, the hazard is decreasing for $a < 1$, constant for $a = 1$, and increasing for $a >1$. In the case where $a = 1$, the gamma distribution is an exponential distribution with rate parameter $b$. 
 
 ```{r haz_gam, warning = FALSE, message = FALSE}
 haz_gam <- hazfun(flexsurv::hgamma, 
@@ -349,7 +350,7 @@ ggplot(haz_gam, aes(x = time, y = value, col = rate)) +
 ```
 
 ## Lognormal distribution
-The lognormal distribution is parameterized by the mean $\mu$ and standard deviation $\sigma$ of the distribution on the log scale. The lognormal hazard is either monotonically decreasing or arc-shaped. Note that the shape of the hazard depends on the values of both $\mu$ and $\sigma$. 
+The lognormal distribution is parameterized by the mean $\mu$ and standard deviation $\sigma$ of survival time on the log scale. The lognormal hazard is either monotonically decreasing or arc-shaped. Note that the shape of the hazard depends on the values of both $\mu$ and $\sigma$. 
 
 ```{r haz_lnorm, warning = FALSE, message = FALSE}
 haz_lnorm <- hazfun(flexsurv::hlnorm, 
@@ -377,7 +378,7 @@ ggplot(haz_llogis, aes(x = time, y = value, col = scale)) +
 ## Generalized gamma distribution
 The generalized gamma distribution is parameterized by a location parameter $\mu$, a scale parameter $\sigma$, and a shape parameter $Q$. It is the most flexible distribution reviewed in this post and includes the exponential ($Q = \sigma = 1$), Weibull ($Q = 1$), gamma ($Q = \sigma$), and lognormal ($Q = 0$) distributions as special cases.
 
-Each row in the figure corresponds to a unique value of $\sigma$ and each column corresponds to a unique value of $Q$.The generalized gamma distribution is clearly quite flexible as it supports hazard functions that are monotonically increasing, monotonically decreasing, arc-shaped, and bathtub shaped. 
+Each row in the figure corresponds to a unique value of $\sigma$ and each column corresponds to a unique value of $Q$.The generalized gamma distribution is quite flexible as it supports hazard functions that are monotonically increasing, monotonically decreasing, arc-shaped, and bathtub shaped. 
 
 ```{r haz_gengamma, warning = FALSE, message = FALSE, fig.width = 10, fig.height = 9}
 haz_gengamma <- hazfun(flexsurv::hgengamma, 
@@ -401,7 +402,8 @@ In `flexsurv`, survival models are fit to the data using maximum likelihood. Eac
 $$
 \alpha_l = g^{-1}\left(z^t\beta \right),
 $$
-where $\alpha_l$ is the $l$th parameter and $g^{-1}()$ is a link function (typically $log()$ if the parameter is strictly positive and the identity function is defined on the real line).
+
+where $\alpha_l$ is the $l$th parameter and $g^{-1}()$ is a link function (typically $log()$ if the parameter is strictly positive and the identity function if the parameter is defined on the real line).
 
 We will illustrate by modeling survival in a dataset of patients with advanced lung cancer from the `survival` package. The dataset uses a status indicator where 2 denotes death and 1 denotes alive at the time of last follow-up; we will convert this to the more traditional coding where 0 is dead and 1 is alive. 
 
@@ -411,17 +413,18 @@ dat[, status := ifelse(status == 1, 0, 1)]
 head(dat)
 ```
 
-Before estimating the model, it's helpful to estimate the hazard function (among all patients) non-parametrically. We will do this using the kernel density estimator from the `muhaz` package.
+## Intercept only model
+We will begin by estimating intercept only parametric regression models (i.e., without covariates). But first, it's helpful to estimate the hazard function (among all patients) using nonparametric techniques. We can do this using the kernel density estimator from the `muhaz` package.
 
 ```{r data, warning = FALSE, message = FALSE}
 library("muhaz")
 kernel_haz_est <- muhaz(dat$time, dat$status)
 kernel_haz <- data.table(time = kernel_haz_est$est.grid,
-                            est = kernel_haz_est$haz.est,
-                            method = "Kernel density")
+                         est = kernel_haz_est$haz.est,
+                         method = "Kernel density")
 ```
 
-Next, let's use `flexsurv` to estimate intercept only parametric survival models for a range of probability distributions. The hazard function for each fitted model is returned using `summary.flexsurvreg()`. 
+Then we can use `flexsurv` to estimate intercept only models for a range of probability distributions. The hazard function for each fitted model is returned using `summary.flexsurvreg()`. 
 
 ```{r parametric_haz, warning = FALSE, message = FALSE}
 dists <- c("exp", "weibull", "gompertz", "gamma", 
@@ -439,7 +442,7 @@ for (i in 1:length(dists)){
 parametric_haz <- rbindlist(parametric_haz)
 ```
 
-We can then plot the hazard functions from the parametric models and compare them to the kernel density estimate.
+We can plot the hazard functions from the parametric models and compare them to the kernel density estimate.
 
 ```{r reg_plot, message = FALSE, warning = FALSE, fig.width = 9, fig.height = 6}
 haz <- rbind(kernel_haz, parametric_haz)
@@ -456,7 +459,7 @@ ggplot(haz, aes(x = time, y = est, col = method, linetype = method)) +
                         values = c(1, rep_len(2:6, n_dists)))
 ```
 
-The kernel density estimate is monotonically increasing and the slope increases considerably after around 500 days. The arc-shaped lognormal and log-logistic hazards perform poorly as does the constant exponential hazard. The best performing models are those that support monotonically increasing functions (Gompertz, Weibull, gamma, and generalized gamma). The flexible generalized gamma and the Gompertz perform the best with the Gompertz model following the increase in the slope of the hazard the most closely. 
+The kernel density estimate is monotonically increasing and the slope increases considerably after around 500 days. The arc-shaped lognormal and log-logistic hazards and the constant exponential hazard do not fit the data well. The best performing models are those that support monotonically increasing hazards (Gompertz, Weibull, gamma, and generalized gamma). The flexible generalized gamma and the Gompertz models perform the best with the Gompertz modeling the increase in the slope of the hazard the most closely. 
 
 ## Adding covariates
 As mentioned above each parameter can be modeled as a function of covariates. By default, `flexsurv` only uses covariates to model the location parameter. To demonstrate, we will let the rate parameter of the Gompertz distribution depend on the ECOG performance score (0 = good, 5 = dead), which describes a patient's level of functioning and has been [shown to be](https://www.ncbi.nlm.nih.gov/pubmed/8120560) a prognostic factor for survival. The model is fit using `flexsurvreg()`.
@@ -464,7 +467,7 @@ As mentioned above each parameter can be modeled as a function of covariates. By
 ```{r reg_covs1, message = FALSE, warning = FALSE}
 dat[, ph.ecog := factor(ph.ecog)]
 
-# On location parameter only
+# Covariates on rate parameter only
 fit_covs1 <- flexsurvreg(Surv(time, status) ~ ph.ecog,
                    data = dat, dist = "gompertz")
 print(fit_covs1)
@@ -473,14 +476,14 @@ print(fit_covs1)
 Covariates for ancillary parameters can be supplied using the `anc` argument to `flexsurvreg()`. 
 
 ```{r reg_covs2, message = FALSE, warning = FALSE}
-# On location parameter only
+# Covariates on rate and shape parameter
 fit_covs2 <- flexsurvreg(Surv(time, status) ~ ph.ecog,
                          anc = list(shape =~ ph.ecog),
                          data = dat, dist = "gompertz")
 print(fit_covs2)
 ```
 
-The standard errors and confidence intervals are very large on the shape parameter coefficients, suggesting that they are not reliably estimated and that there is little evidence to suggest that the shape parameter depends on the ECOG score. A such, we will use the first model to predict the hazards. In `flexsurv`, input data for prediction can be specified by using the `newdata` argument in `summary.flexsurvreg()`. So we will first create this "new" dataset for prediction consisting of each possible value of the ECOG score in the data. 
+The standard errors and confidence intervals are very large on the shape parameter coefficients, suggesting that they are not reliably estimated and that there is little evidence that the shape parameter depends on the ECOG score. A such, we will use the first model to predict the hazards. In `flexsurv`, input data for prediction can be specified by using the `newdata` argument in `summary.flexsurvreg()`. So we will first create this "new" dataset for prediction consisting of each possible value of the ECOG score in the data. 
 
 ```{r prediction_data, message = FALSE, warning = FALSE}
 newdat <- data.table(ph.ecog = sort(unique(dat[!is.na(ph.ecog)]$ph.ecog)))
@@ -488,7 +491,7 @@ newdat[, ph.ecog := factor(ph.ecog)]
 print(newdat)
 ```
 
-We can then predict the hazard for each level of the ECOG score. The hazard increases with the ECOG score which is expected since higher ECOG scores denote higher levels of disability. Note, however, that the shape of the hazard remains the same since we did not find evidence that the shape parameter of the Gompertz distribution depended on the ECOG score.
+We can then predict the hazard for each level of the ECOG score. The hazard increases with the ECOG score which is expected since higher scores denote higher levels of disability. Note, however, that the shape of the hazard remains the same since we did not find evidence that the shape parameter of the Gompertz distribution depended on the ECOG score.
 
 ```{r prediction, message = FALSE, warning = FALSE}
 haz_covs1 <- summary(fit_covs1, newdata = newdat, type = "hazard", tidy = TRUE)
