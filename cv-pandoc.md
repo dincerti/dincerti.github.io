@@ -18,9 +18,12 @@ output:
 
 ### Employment
 2019-
+: Senior Data Scientist, Genentech, South San Francisco, CA
+
+2019-19
 : Senior Research Economist, Precision Health Economics, Oakland, CA
 
-2017-
+2017-19
 : Lead Economist - Open-Source Value Project, Innovation and Value Initiative, Oakland, CA
 
 2017-19
@@ -36,6 +39,8 @@ output:
 : Research Associate, NERA Economic Consulting, Los Angeles, CA
 
 ### Publications
+Jansen JP, **Incerti D**, Linthicum M. (in press). Developing Open-Source Models for the US Health System: Practical Experiences and Challenges to Date with the Open Source Value Project. *Pharmacoeconomics*. 
+
 **Incerti D**, Thom H, Baio G, Jansen JP. R you still using Excel? The advantages of modern software tools for health technology assessment. *Value in Health*. 2019 May 1;22(5):575-9. [https://doi.org/10.1016/j.jval.2019.01.003](https://doi.org/10.1016/j.jval.2019.01.003).
 
 Jansen JP, **Incerti D**, Curtis, JR. Towards relevant and credible cost-effectiveness analysis for value assessment in the decentralized US healthcare system. *Journal of Managed Care & Specialty Pharmacy*. 2019 May;25(5):518-521. [https://doi.org/10.18553/jmcp.2019.25.5.518](https://doi.org/10.18553/jmcp.2019.25.5.518).
