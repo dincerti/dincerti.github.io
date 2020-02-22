@@ -98,6 +98,7 @@ Open-Source Consensus-Based Models to Improve the Cost-Effectiveness of Rheumato
 
 Estimates of the costs of preeclampsia to the United States health care system. March of Dimes Prematurity Research Center at Stanford University, Palo Alto, 2016 (with Thanh G.N. Ton).
 
+<!---
 ### Abstracts and Poster Presentations
 
 Jansen JP, **Incerti D**, Shafrin J, Frederickson A, Reckamp K. A Flexible Open-Source Cost-Effectiveness Model for Metastatic EGFR+ Non-Small Cell Lung Cancer. AMCP Nexus, National Harbor, 2019.
@@ -131,6 +132,7 @@ Shahabi A, Peneva D, **Incerti D**, McLaurin K, Stevens W. Variation in Cost of 
 Wan J, Mongan J, **Incerti D**, Courtier J. A Shiny New World: Creating Your Own Radiology Decision Support Webapps Using R. Radiological Society of North America, Annual Meeting, Chicago, 2016.
 
 Shiraito Y, **Incerti**, D, Lopez-Moctezuma G. A Reassessment of the Resource Curse: A Bayesian Dynamic Analysis of Panel Data. Midwest Political Science Association, Annual Meeting, Chicago, 2013.
+--->
 
 ### Software
 *hesim*
