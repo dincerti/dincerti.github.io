@@ -39,7 +39,11 @@ output:
 : Research Associate, NERA Economic Consulting, Los Angeles, CA
 
 ### Publications
-Jansen JP, **Incerti D**, Linthicum M. (in press). Developing Open-Source Models for the US Health System: Practical Experiences and Challenges to Date with the Open Source Value Project. *Pharmacoeconomics*. 
+Stevens W, **Incerti D**, Peneva D, Shrestha A, Ramaswamy K, Smith G (in press). An empirical investigation of time-varying cost-effectiveness across the product life cycle. *Health Economics*. 2020 February 21. [ https://doi.org/10.1002/hec.4004](https://doi.org/10.1002/hec.4004).
+
+Sussell J, Silverstein AR, Goutam P, **Incerti D**, Kee R, Chen CX, Batty Jr DS, Jansen JP, Kasiske BL. The economic burden of kidney graft failure in the United States. *American Journal of Transplantation*. 2020 February 4. [https://doi.org/10.1111/ajt.15750](https://doi.org/10.1111/ajt.15750).
+
+Jansen JP, **Incerti D**, Linthicum M. Developing Open-Source Models for the US Health System: Practical Experiences and Challenges to Date with the Open Source Value Project. *Pharmacoeconomics*. 2019 November 1;37(11):1313-20. [https://doi.org/10.1007/s40273-019-00827-z](https://doi.org/10.1007/s40273-019-00827-z).
 
 **Incerti D**, Thom H, Baio G, Jansen JP. R you still using Excel? The advantages of modern software tools for health technology assessment. *Value in Health*. 2019 May 1;22(5):575-9. [https://doi.org/10.1016/j.jval.2019.01.003](https://doi.org/10.1016/j.jval.2019.01.003).
 
@@ -47,7 +51,7 @@ Jansen JP, **Incerti D**, Curtis, JR. Towards relevant and credible cost-effecti
 
 Ton TG, Bennett M, **Incerti D**, Peneva D, Druzin M, Stevens W, Butwick A, Lee HC. Maternal and Infant Adverse Outcomes Associated with Mild and Severe Preeclampsia during the First Year after Delivery in the United States. *American Journal of Perinatology*. 2019 Feb 19. [https://doi.org//10.1055/s-0039-1679916](https://doi.org//10.1055/s-0039-1679916).
 
-**Incerti D**, Curtis JR, Shafrin J, Lakdawalla DN, Jansen JP. A flexible open-source decision model for value assessment of biologic treatment for rheumatoid arthritis. *Pharmacoeconomics*. 2019 Feb 9:1-15. [https://doi.org/10.1007/s40273-018-00765-2](https://doi.org/10.1007/s40273-018-00765-2). ([Full-text](https://rdcu.be/blVj1)).
+**Incerti D**, Curtis JR, Shafrin J, Lakdawalla DN, Jansen JP. A flexible open-source decision model for value assessment of biologic treatment for rheumatoid arthritis. *Pharmacoeconomics*. 2019 Jun 1;37(6):829-43. [https://doi.org/10.1007/s40273-018-00765-2](https://doi.org/10.1007/s40273-018-00765-2). ([Full-text](https://rdcu.be/blVj1)).
 
 **Incerti D**, Browne J, Huber C, Baker CL, Makinson G, Goren A, Wilke R, Stevens W. An empirical tool for estimating the share of unmet need due to healthcare inefficiencies, suboptimal access, and lack of effective technologies. *BMC Health Services Research*. 2019 Dec;19(1):113. [https://doi.org/10.1186/s12913-019-3914-7](https://doi.org/10.1186/s12913-019-3914-7).
 
@@ -64,8 +68,6 @@ Shahabi A, Peneva D, **Incerti D**, McLaurin K, Stevens W. Assessing Variation i
 Jansen JP, **Incerti D**, Mutebi A, Peneva, D, MacEwan JP, Stolshek B, Kaur P, Gharaibeh M, Strand V. Cost-effectiveness of sequenced treatment of rheumatoid arthritis with targeted immune modulators. *Journal of Medical Economics*. 2017 Jul 3;20(7):703-14. [http://dx.doi.org/10.1080/13696998.2017.1307205](http://dx.doi.org/10.1080/13696998.2017.1307205) ([Supplement](http://devinincerti.com/papers/ce-bdmards-ra-jme-2017-supplement.pdf)).
 
 ### Manuscripts Under Review
-Stevens W, **Incerti D**, Peneva D, Shrestha A, Ramaswamy K, Smith G. An Empirical Analysis of the Role of Learning by Doing in Dynamic Cost-effectiveness.
-
 **Incerti D**, Incerti T. Are regime changes always bad economics? Evidence from daily financial data. ([PDF](https://github.com/dincerti/political-instability/blob/master/doc/paper.pdf), 
 [GitHub](https://github.com/dincerti/political-instability)).
 
@@ -80,6 +82,8 @@ Contributor to [R-bloggers](https://www.r-bloggers.com/). ([Link to posts](http:
 Jansen JP, **Incerti D**, Linthicum M. [An Open-Source Consensus-Based Approach To Value Assessment](https://www.healthaffairs.org/action/showDoPubSecure?doi=10.1377%2Fhblog20171212.640960&format=full). Health Affairs Blog. 2017 Dec 1.
 
 ### Oral Presentations
+Data science with R for personalized and efficient drug development. rstudio::conf, 2020.
+
 Excel With Your Economic Models Using R. ISPOR Annual International Meeting, New Orleans, 2019 (with Jeroen Jansen and Joseph Levy). ([PDF](http://devinincerti.com/presentations/ispor_new_orleans_R_workshop_5-14-2019.pdf), [GitHub](https://github.com/hesim-dev/hesim-presentations/tree/master/ispor-annual-2019)).
 
 Can We Make Global Value Assessments More Flexible and Comprehensive? ISPOR Annual International Meeting, New Orleans, 2019 (with Peter Neumann, Finn Børlum Kristensen, and Mark Sculpher). ([PDF](http://devinincerti.com/presentations/ispor_new_orleans_value_assessments_5-13-2019.pdf)).
@@ -94,8 +98,10 @@ Open-Source Consensus-Based Models to Improve the Cost-Effectiveness of Rheumato
 
 Estimates of the costs of preeclampsia to the United States health care system. March of Dimes Prematurity Research Center at Stanford University, Palo Alto, 2016 (with Thanh G.N. Ton).
 
-<!---
 ### Abstracts and Poster Presentations
+
+Jansen JP, **Incerti D**, Shafrin J, Frederickson A, Reckamp K. A Flexible Open-Source Cost-Effectiveness Model for Metastatic EGFR+ Non-Small Cell Lung Cancer. AMCP Nexus, National Harbor, 2019.
+
 **Incerti D**, Jansen JP. A comparison of R packages for prediction and simulation of multi-state models for cost-effectiveness analysis. ISPOR Annual International Meeting, New Orleans, 2019. 
 
 **Incerti D**, Maksabedian EJ, Tkacz J, Moore-Schiltz L, Collier DH, Gharaibeh MMF, Stolshek BS. Understanding The Impact of Dose Escalation on the Cost-Effectiveness of Etanercept Among Patients With Rheumatoid Arthritis. AMCP Managed Care & Specialty Pharmacy Annual Meeting, San Diego, 2019.
@@ -125,8 +131,6 @@ Shahabi A, Peneva D, **Incerti D**, McLaurin K, Stevens W. Variation in Cost of 
 Wan J, Mongan J, **Incerti D**, Courtier J. A Shiny New World: Creating Your Own Radiology Decision Support Webapps Using R. Radiological Society of North America, Annual Meeting, Chicago, 2016.
 
 Shiraito Y, **Incerti**, D, Lopez-Moctezuma G. A Reassessment of the Resource Curse: A Bayesian Dynamic Analysis of Panel Data. Midwest Political Science Association, Annual Meeting, Chicago, 2013.
-
---->
 
 ### Software
 *hesim*
