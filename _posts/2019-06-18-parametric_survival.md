@@ -203,7 +203,7 @@ The parameterizations of these distributions in `R` are shown in the next table.
 </table></div>
 
 # Shapes of hazard functions
-We will now examine the shapes of the hazards in a bit more detail and show how both the location and shape vary with the parameters of each distribution. Readers interested in a more interactive experience can also view my `Shiny` app [here](http://104.131.159.61:3838/survival-curves/). 
+We will now examine the shapes of the hazards in a bit more detail and show how both the location and shape vary with the parameters of each distribution. Readers interested in a more interactive experience can also view my `Shiny` app [here](https://devin-incerti.shinyapps.io/survival-curves/). 
 
 To do so we will load some needed packages: we will use `flexsurv` to compute the hazards, `data.table` as a fast alternative to `data.frame`, and `ggplot2` for plotting.
 

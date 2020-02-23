@@ -39,7 +39,7 @@ output:
 : Research Associate, NERA Economic Consulting, Los Angeles, CA
 
 ### Publications
-Stevens W, **Incerti D**, Peneva D, Shrestha A, Ramaswamy K, Smith G (in press). An empirical investigation of time-varying cost-effectiveness across the product life cycle. *Health Economics*. 2020 February 21. [ https://doi.org/10.1002/hec.4004](https://doi.org/10.1002/hec.4004).
+Stevens W, **Incerti D**, Peneva D, Shrestha A, Ramaswamy K, Smith G. An empirical investigation of time-varying cost-effectiveness across the product life cycle. *Health Economics*. 2020 February 21. [ https://doi.org/10.1002/hec.4004](https://doi.org/10.1002/hec.4004).
 
 Sussell J, Silverstein AR, Goutam P, **Incerti D**, Kee R, Chen CX, Batty Jr DS, Jansen JP, Kasiske BL. The economic burden of kidney graft failure in the United States. *American Journal of Transplantation*. 2020 February 4. [https://doi.org/10.1111/ajt.15750](https://doi.org/10.1111/ajt.15750).
 
@@ -159,9 +159,9 @@ Author of the IVI-RA model, an open-source individual patient simulation model f
 
 *R Shiny web applications*
 
-* An R Shiny web application that aids diagnosis of skeletal dysplasias based on clinical features. ([Link](http://104.131.159.61:3838/skeletal-dysplasias/)).
+* An R Shiny web application that aids diagnosis of skeletal dysplasias based on clinical features. ([Link](https://devin-incerti.shinyapps.io/skeletal-dysplasias/)).
 
-* Interactive plots of parametric survival distributions. ([Link](http://104.131.159.61:3838/survival-curves/)).
+* Interactive plots of parametric survival distributions. ([Link](https://devin-incerti.shinyapps.io/survival-curves/)).
 
 ### Honors and Awards
 2010-15

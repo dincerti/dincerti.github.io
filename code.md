@@ -22,8 +22,8 @@ The IVI-RA model is an open-source individual patient simulation for assessing t
 * [IVI-RA Model Interface](https://innovationandvalueinitiative.shinyapps.io/ivi-ra-expert/): An R Shiny web interface for running the model online with full control over treatments, the patient population, model parameters, model structures, and time horizon.
 * [IVI-RA Value Tool](https://innovationandvalueinitiative.shinyapps.io/ivi-ra/): An R Shiny web application providing a more streamlined experience for users with less experience in decision-analytic modeling and rheumatoid arthritis.
 
-### [Skeletal Dysplasias](http://104.131.159.61:3838/skeletal-dysplasias/)
-An R [Shiny](http://shiny.rstudio.com/) web application that aids diagnosis of skeletal dysplasias based on clinical features ([link](http://104.131.159.61:3838/skeletal-dysplasias/)). A tutorial supplementing our RSNA education exhibit can be found [here](code/skeletal-dysplasias.html).
+### [Skeletal Dysplasias](https://devin-incerti.shinyapps.io/skeletal-dysplasias/)
+An R [Shiny](http://shiny.rstudio.com/) web application that aids diagnosis of skeletal dysplasias based on clinical features ([link](https://devin-incerti.shinyapps.io/skeletal-dysplasias/)). A tutorial supplementing our RSNA education exhibit can be found [here](code/skeletal-dysplasias.html).
 
-### [Survival Distributions](http://104.131.159.61:3838/survival-curves/)
-Plots of parametric survival distributions ([link](http://104.131.159.61:3838/survival-curves/)). Details on distributions used in R can be found [here](code/survival-distributions.html).
+### [Survival Distributions](https://devin-incerti.shinyapps.io/survival-curves/)
+Plots of parametric survival distributions ([link](https://devin-incerti.shinyapps.io/survival-curves/)). Details on distributions used in R can be found [here](code/survival-distributions.html).
