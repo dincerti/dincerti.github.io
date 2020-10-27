@@ -39,6 +39,8 @@ output:
 : Research Associate, NERA Economic Consulting, Los Angeles, CA
 
 ### Publications
+**Incerti D**, Hernandez EJ, Tkacz J, Jansen JP, Collier D, Gharaibeh M, Moore-Schiltz L, Stolshek BS. The Effect of Dose Escalation on the Cost-Effectiveness of Etanercept and Adalimumab with Methotrexate Among Patients with Moderate to Severe Rheumatoid Arthritis. *Journal of Managed Care & Specialty Pharmacy*. 2020 Oct;26(10):1236-42. [https://doi.org/10.18553/jmcp.2020.26.10.1236](https://doi.org/10.18553/jmcp.2020.26.10.1236).
+
 Stevens W, **Incerti D**, Peneva D, Shrestha A, Ramaswamy K, Smith G. An empirical investigation of time-varying cost-effectiveness across the product life cycle. *Health Economics*. 2020 February 21. [ https://doi.org/10.1002/hec.4004](https://doi.org/10.1002/hec.4004).
 
 Sussell J, Silverstein AR, Goutam P, **Incerti D**, Kee R, Chen CX, Batty Jr DS, Jansen JP, Kasiske BL. The economic burden of kidney graft failure in the United States. *American Journal of Transplantation*. 2020 February 4. [https://doi.org/10.1111/ajt.15750](https://doi.org/10.1111/ajt.15750).
@@ -71,7 +73,10 @@ Jansen JP, **Incerti D**, Mutebi A, Peneva, D, MacEwan JP, Stolshek B, Kaur P, G
 **Incerti D**, Incerti T. Are regime changes always bad economics? Evidence from daily financial data. ([PDF](https://github.com/dincerti/political-instability/blob/master/doc/paper.pdf), 
 [GitHub](https://github.com/dincerti/political-instability)).
 
-### Working Papers
+### Preprints
+**Incerti D**, Rizzo S, Li X, Lindsay L, Yau V, Keebler D, Chia J, Tsai L. Risk factors for mortality among hospitalized patients with COVID-19. medRxiv. 2020 Jan 1. [https://doi.org/10.1101/2020.09.22.20196204](https://doi.org/10.1101/2020.09.22.20196204).
+
+### Unpublished Papers
 **Incerti D**. An Assessment of Long-term Healthcare Expenditure Risk Using a Dynamic Bayesian Model. ([PDF](http://devinincerti.com/papers/longterm_spending.pdf)).
 
 **Incerti D**. Racial, Ethnic and Educational Disparities in Pharmaceutical Expenditures. ([PDF](http://devinincerti.com/papers/disparities_rx.pdf)).
@@ -81,7 +86,12 @@ Contributor to [R-bloggers](https://www.r-bloggers.com/). ([Link to posts](http:
 
 Jansen JP, **Incerti D**, Linthicum M. [An Open-Source Consensus-Based Approach To Value Assessment](https://www.healthaffairs.org/action/showDoPubSecure?doi=10.1377%2Fhblog20171212.640960&format=full). Health Affairs Blog. 2017 Dec 1.
 
+### Teaching
+Applied Cost-Effectiveness Modeling with R. SMDM Virtual Meeting Short Course, 2020 (with Jeroen Jansen). ([Course website](https://hesim-dev.github.io/rcea/)).
+
 ### Oral Presentations
+Multistate Semi-Markov modeling in R. R for HTA Annual Workshop, 2020. ([PDF](http://devinincerti.com/presentations/rhta_mstate_semi-markov_10-09-2020), [GitHub](https://github.com/hesim-dev/hesim-presentations/tree/master/r-hta-2020))
+
 Data science with R for personalized and efficient drug development. rstudio::conf, 2020.
 
 Excel With Your Economic Models Using R. ISPOR Annual International Meeting, New Orleans, 2019 (with Jeroen Jansen and Joseph Levy). ([PDF](http://devinincerti.com/presentations/ispor_new_orleans_R_workshop_5-14-2019.pdf), [GitHub](https://github.com/hesim-dev/hesim-presentations/tree/master/ispor-annual-2019)).
@@ -100,6 +110,8 @@ Estimates of the costs of preeclampsia to the United States health care system. 
 
 <!---
 ### Abstracts and Poster Presentations
+
+Meyer L, Wright JD, Downer MK, **Incerti D**, Luhn P, Dolado I, Bastiere-Truchot L, Lin-Liu Y, Chan JK. Patterns and adoption of BRCA testing in ovarian cancer in the real world: Observations from Flatiron Health. SGO Annual Meeting, 2020.
 
 Jansen JP, **Incerti D**, Shafrin J, Frederickson A, Reckamp K. A Flexible Open-Source Cost-Effectiveness Model for Metastatic EGFR+ Non-Small Cell Lung Cancer. AMCP Nexus, National Harbor, 2019.
 
