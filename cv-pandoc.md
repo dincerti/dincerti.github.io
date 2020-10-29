@@ -90,7 +90,7 @@ Jansen JP, **Incerti D**, Linthicum M. [An Open-Source Consensus-Based Approach 
 Applied Cost-Effectiveness Modeling with R. SMDM Virtual Meeting Short Course, 2020 (with Jeroen Jansen). ([Course website](https://hesim-dev.github.io/rcea/)).
 
 ### Oral Presentations
-Multistate Semi-Markov modeling in R. R for HTA Annual Workshop, 2020. ([PDF](http://devinincerti.com/presentations/rhta_mstate_semi-markov_10-09-2020), [GitHub](https://github.com/hesim-dev/hesim-presentations/tree/master/r-hta-2020))
+Multistate Semi-Markov modeling in R. R for HTA Annual Workshop, 2020. ([PDF](http://devinincerti.com/presentations/rhta_mstate_semi-markov_10-09-2020.pdf), [GitHub](https://github.com/hesim-dev/hesim-presentations/tree/master/r-hta-2020))
 
 Data science with R for personalized and efficient drug development. rstudio::conf, 2020.
 
