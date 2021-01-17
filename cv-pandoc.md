@@ -17,7 +17,10 @@ output:
 :  B.A. Political Science, University of California, San Diego
 
 ### Employment
-2019-
+2021-
+: Principal Data Scientist, Genentech, South San Francisco, CA
+
+2019-20
 : Senior Data Scientist, Genentech, South San Francisco, CA
 
 2019-19
@@ -191,9 +194,9 @@ Author of the IVI-RA model, an open-source individual patient simulation model f
 ### Skills and Interests
 *Computing*
 
-Most experienced: R, Stata, LaTeX, Excel
+Most experienced: R, LaTeX
 
-Some experience: C++, Python, MySQL, Stan, JAGS
+Some experience: C++, Python, MySQL, Stan, JAGS, Stata, Excel
 
 *Athletics*
 
