@@ -42,6 +42,8 @@ output:
 : Research Associate, NERA Economic Consulting, Los Angeles, CA
 
 ### Publications
+**Incerti D**, Rizzo S, Li X, Lindsay L, Yau V, Keebler D, Chia J, Tsai L. Prognostic model to identify and quantify risk factors for mortality among hospitalised patients with COVID-19 in the USA. *BMJ Open*. 2021 Apr 1;11(4):e047121. [http://dx.doi.org/10.1136/bmjopen-2020-047121](http://dx.doi.org/10.1136/bmjopen-2020-047121).
+
 **Incerti D**, Hernandez EJ, Tkacz J, Jansen JP, Collier D, Gharaibeh M, Moore-Schiltz L, Stolshek BS. The Effect of Dose Escalation on the Cost-Effectiveness of Etanercept and Adalimumab with Methotrexate Among Patients with Moderate to Severe Rheumatoid Arthritis. *Journal of Managed Care & Specialty Pharmacy*. 2020 Oct;26(10):1236-42. [https://doi.org/10.18553/jmcp.2020.26.10.1236](https://doi.org/10.18553/jmcp.2020.26.10.1236).
 
 Stevens W, **Incerti D**, Peneva D, Shrestha A, Ramaswamy K, Smith G. An empirical investigation of time-varying cost-effectiveness across the product life cycle. *Health Economics*. 2020 February 21. [ https://doi.org/10.1002/hec.4004](https://doi.org/10.1002/hec.4004).
@@ -77,7 +79,10 @@ Jansen JP, **Incerti D**, Mutebi A, Peneva, D, MacEwan JP, Stolshek B, Kaur P, G
 [GitHub](https://github.com/dincerti/political-instability)).
 
 ### Preprints
-**Incerti D**, Rizzo S, Li X, Lindsay L, Yau V, Keebler D, Chia J, Tsai L. Risk factors for mortality among hospitalized patients with COVID-19. medRxiv. 2020 Jan 1. [https://doi.org/10.1101/2020.09.22.20196204](https://doi.org/10.1101/2020.09.22.20196204).
+**Incerti D**, Jansen JP. hesim: Health Economic Simulation Modeling and Decision Analysis. *arXiv*:2102.09437
+[stat.AP]. [https://arxiv.org/abs/2102.09437](https://arxiv.org/abs/2102.09437).
+
+McGough SF, **Incerti D**, Lyalina S, Copping R, Narasimhan B, Tibshirani R. Penalized regression for left-truncated and right-censored survival data. *medRxiv*. 2021 Jan 1.[https://doi.org/10.1101/2021.02.09.21251373](https://doi.org/10.1101/2021.02.09.21251373).
 
 ### Unpublished Papers
 **Incerti D**. An Assessment of Long-term Healthcare Expenditure Risk Using a Dynamic Bayesian Model. ([PDF](http://devinincerti.com/papers/longterm_spending.pdf)).
