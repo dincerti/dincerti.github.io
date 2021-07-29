@@ -42,6 +42,8 @@ output:
 : Research Associate, NERA Economic Consulting, Los Angeles, CA
 
 ### Publications
+McGough SF, **Incerti D**, Lyalina S, Copping R, Narasimhan B, Tibshirani R. Penalized regression for left-truncated and right-censored survival data. *Statistics in Medicine*. 2021 July; 1– 14. [https://doi.org/10.1002/sim.9136](https://doi.org/10.1002/sim.9136)
+
 **Incerti D**, Rizzo S, Li X, Lindsay L, Yau V, Keebler D, Chia J, Tsai L. Prognostic model to identify and quantify risk factors for mortality among hospitalised patients with COVID-19 in the USA. *BMJ Open*. 2021 Apr 1;11(4):e047121. [http://dx.doi.org/10.1136/bmjopen-2020-047121](http://dx.doi.org/10.1136/bmjopen-2020-047121).
 
 **Incerti D**, Hernandez EJ, Tkacz J, Jansen JP, Collier D, Gharaibeh M, Moore-Schiltz L, Stolshek BS. The Effect of Dose Escalation on the Cost-Effectiveness of Etanercept and Adalimumab with Methotrexate Among Patients with Moderate to Severe Rheumatoid Arthritis. *Journal of Managed Care & Specialty Pharmacy*. 2020 Oct;26(10):1236-42. [https://doi.org/10.18553/jmcp.2020.26.10.1236](https://doi.org/10.18553/jmcp.2020.26.10.1236).
@@ -82,8 +84,6 @@ Jansen JP, **Incerti D**, Mutebi A, Peneva, D, MacEwan JP, Stolshek B, Kaur P, G
 **Incerti D**, Jansen JP. hesim: Health Economic Simulation Modeling and Decision Analysis. *arXiv*:2102.09437
 [stat.AP]. [https://arxiv.org/abs/2102.09437](https://arxiv.org/abs/2102.09437).
 
-McGough SF, **Incerti D**, Lyalina S, Copping R, Narasimhan B, Tibshirani R. Penalized regression for left-truncated and right-censored survival data. *medRxiv*. 2021 Jan 1.[https://doi.org/10.1101/2021.02.09.21251373](https://doi.org/10.1101/2021.02.09.21251373).
-
 ### Unpublished Papers
 **Incerti D**. An Assessment of Long-term Healthcare Expenditure Risk Using a Dynamic Bayesian Model. ([PDF](http://devinincerti.com/papers/longterm_spending.pdf)).
 
@@ -98,6 +98,12 @@ Jansen JP, **Incerti D**, Linthicum M. [An Open-Source Consensus-Based Approach 
 Applied Cost-Effectiveness Modeling with R. SMDM Virtual Meeting Short Course, 2020 (with Jeroen Jansen). ([Course website](https://hesim-dev.github.io/rcea/)).
 
 ### Oral Presentations
+Decision modeling with R: lessons learned from the development of hesim. R for HTA Annual Workshop, 2021. ([PDF](http://devinincerti.com/presentations/rhta_lessons_learned_7-1-2021.pdf), [GitHub](https://github.com/dincerti/r-hta-2021)) 
+
+A meta-analytic framework for decision making and error control in clinical trials with external control arms. Leveraging Observational Data With Machine Learning, 2021. ([PDF](http://devinincerti.com/presentations/leveraging_observational_6-23-2021.pdf)).
+
+Projecting enrollment in a pragmatic trial that utilizes real-world data. ENAR Webinar Series, 2021 (with Katherine Tan, Wendy Wang, and Ram Tiwari). ([PDF](http://devinincerti.com/presentations/enar_webinar_series_6-11-2021.pdf)).
+
 Multistate Semi-Markov modeling in R. R for HTA Annual Workshop, 2020. ([PDF](http://devinincerti.com/presentations/rhta_mstate_semi-markov_10-09-2020.pdf), [GitHub](https://github.com/hesim-dev/hesim-presentations/tree/master/r-hta-2020))
 
 Data science with R for personalized and efficient drug development. rstudio::conf, 2020.
