@@ -4,9 +4,9 @@
 /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc cv-pandoc.md --template latex-cv-template.tex \
 --variable author="Devin Incerti" --variable title="CV" --variable linkcolor="blue" \
 --variable fontfamily="mathpazo" --variable fontfamilyoptions="sc, osf" --variable fontsize="11pt" \
---variable geometry="margin=1in" --variable jobtitle="Principal Data Scientist" \
+--variable geometry="margin=1in" --variable jobtitle="Head of Data Science" \
 --variable email="devin.incerti@gmail.com" --variable fontawesome="yes" \
---variable address="350 DNA Way, South San Francisco, CA 94080" --variable urlcolor="blue" \
+--variable address="San Francisco, CA" --variable urlcolor="blue" \
 --variable web="devinincerti.com" \
 --pdf-engine /Library/TeX/texbin/pdflatex -o dincerti-cv.pdf
 

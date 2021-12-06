@@ -18,28 +18,31 @@ output:
 
 ### Employment
 2021-
-: Principal Data Scientist, Genentech, South San Francisco, CA
+: Head of Data Science, EntityRisk, Inc.
+
+2021-21
+: Principal Data Scientist, Genentech, Inc.
 
 2019-20
-: Senior Data Scientist, Genentech, South San Francisco, CA
+: Senior Data Scientist, Genentech, Inc.
 
 2019-19
-: Senior Research Economist, Precision Health Economics, Oakland, CA
+: Senior Research Economist, Precision Health Economics
 
 2017-19
-: Lead Economist - Open-Source Value Project, Innovation and Value Initiative, Oakland, CA
+: Lead Economist - Open-Source Value Project, Innovation and Value Initiative
 
 2017-19
-: Research Economist, Precision Health Economics, Oakland, CA
+: Research Economist, Precision Health Economics
 
 2016-17
-: Associate Research Economist, Precision Health Economics, Oakland, CA
+: Associate Research Economist, Precision Health Economics
 
 2015-16
-: Research Economist Intern, Precision Health Economics, Oakland, CA
+: Research Economist Intern, Precision Health Economics
 
 2009-10
-: Research Associate, NERA Economic Consulting, Los Angeles, CA
+: Research Associate, NERA Economic Consulting
 
 ### Publications
 McGough SF, **Incerti D**, Lyalina S, Copping R, Narasimhan B, Tibshirani R. Penalized regression for left-truncated and right-censored survival data. *Statistics in Medicine*. 2021 July; 1– 14. [https://doi.org/10.1002/sim.9136](https://doi.org/10.1002/sim.9136)
@@ -81,8 +84,12 @@ Jansen JP, **Incerti D**, Mutebi A, Peneva, D, MacEwan JP, Stolshek B, Kaur P, G
 [GitHub](https://github.com/dincerti/political-instability)).
 
 ### Preprints
+**Incerti D**, Bretscher, Bretscher MT, Lin R, Harbron C. A meta-analytic framework to adjust for bias in external control studies. *arXiv*:2110.03827 [stat.ME]. [https://arxiv.org/abs/2110.03827](https://arxiv.org/abs/2110.03827).
+
 **Incerti D**, Jansen JP. hesim: Health Economic Simulation Modeling and Decision Analysis. *arXiv*:2102.09437
 [stat.AP]. [https://arxiv.org/abs/2102.09437](https://arxiv.org/abs/2102.09437).
+
+Jansen JP, **Incerti D**, Trikalinos T. Multi-state network meta-analysis of cause-specific survival data. *medRxiv*. [https://doi.org/10.1101/2020.11.13.20231332](https://doi.org/10.1101/2020.11.13.20231332).
 
 ### Unpublished Papers
 **Incerti D**. An Assessment of Long-term Healthcare Expenditure Risk Using a Dynamic Bayesian Model. ([PDF](http://devinincerti.com/papers/longterm_spending.pdf)).
@@ -95,9 +102,11 @@ Contributor to [R-bloggers](https://www.r-bloggers.com/). ([Link to posts](http:
 Jansen JP, **Incerti D**, Linthicum M. [An Open-Source Consensus-Based Approach To Value Assessment](https://www.healthaffairs.org/action/showDoPubSecure?doi=10.1377%2Fhblog20171212.640960&format=full). Health Affairs Blog. 2017 Dec 1.
 
 ### Teaching
-Applied Cost-Effectiveness Modeling with R. SMDM Virtual Meeting Short Course, 2020 (with Jeroen Jansen). ([Course website](https://hesim-dev.github.io/rcea/)).
+Applied Cost-Effectiveness Modeling with R (with Jeroen Jansen). Variations taught at ISPOR and SMDM. ([Course website](https://hesim-dev.github.io/rcea/)).
 
 ### Oral Presentations
+Selection matters: addressing biases in linked clinico-genomic data sets. ICPE Symposium, August 25, 2021 (with Kenneth L. Kehl, Katherine Panageas, and Til Stürmer). ([PDF](http://devinincerti.com/presentations/icpe_symposium_08_25_2021.pdf)). 
+
 Decision modeling with R: lessons learned from the development of hesim. R for HTA Annual Workshop, 2021. ([PDF](http://devinincerti.com/presentations/rhta_lessons_learned_7-1-2021.pdf), [GitHub](https://github.com/dincerti/r-hta-2021)) 
 
 A meta-analytic framework for decision making and error control in clinical trials with external control arms. Leveraging Observational Data With Machine Learning, 2021. ([PDF](http://devinincerti.com/presentations/leveraging_observational_6-23-2021.pdf)).
@@ -116,7 +125,7 @@ A Comparison of Three and Four State Economic Models for Cost-effectiveness Anal
 
 R You Seriously Still Using Excel? The Many Advantages of Open Source Decision Modeling in Efficient Programming Languages. ISPOR Annual European Congress, Barcelona, Spain, 2018 (with Jeroen Jansen, Howard Thom, and Gianluca Baio). ([PDF](http://devinincerti.com/presentations/ispor_barcelona_R_workshop_12-14-2018.pdf)). 
 
-Developing flexible, iterative, and transparent decision models: a detailed look at a rheumatoid arthritis individual patient simulation. ISPOR Student Network Educational Webinar, 2018. ([PDF](http://devinincerti.com/presentations/ISPOR_student_webinar_4-18-2018.pdf)).  
+Developing flexible, iterative, and transparent decision models: a detailed look at a rheumatoid arthritis individual patient simulation. ISPOR Student Network Educational Webinar, 2018. ([PDF](http://devinincerti.com/presentations/ispor_student_webinar_4-18-2018.pdf)).  
 
 Open-Source Consensus-Based Models to Improve the Cost-Effectiveness of Rheumatology Care (selected oral abstract). ACR/ARHP Annual Meeting, San Diego, 2017. 
 
