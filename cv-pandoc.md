@@ -45,6 +45,8 @@ output:
 : Research Associate, NERA Economic Consulting
 
 ### Publications
+**Incerti D**, Xu XM, Chou JW, Gonzaludo N, Belmont JW, Schroeder BE. Cost-effectiveness of genome sequencing for diagnosing patients with undiagnosed rare genetic diseases. *Genetics in Medicine*. 2021 Nov 30. [https://doi.org/10.1016/j.gim.2021.08.015](https://doi.org/10.1016/j.gim.2021.08.015)
+
 McGough SF, **Incerti D**, Lyalina S, Copping R, Narasimhan B, Tibshirani R. Penalized regression for left-truncated and right-censored survival data. *Statistics in Medicine*. 2021 July; 1– 14. [https://doi.org/10.1002/sim.9136](https://doi.org/10.1002/sim.9136)
 
 **Incerti D**, Rizzo S, Li X, Lindsay L, Yau V, Keebler D, Chia J, Tsai L. Prognostic model to identify and quantify risk factors for mortality among hospitalised patients with COVID-19 in the USA. *BMJ Open*. 2021 Apr 1;11(4):e047121. [http://dx.doi.org/10.1136/bmjopen-2020-047121](http://dx.doi.org/10.1136/bmjopen-2020-047121).
